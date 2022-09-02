@@ -1,0 +1,47 @@
+body {
+    font-family:'Acme'; 
+    font-size: 24px;
+    background-color: lavender;
+
+    padding: 0;
+    margin: 0;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #a749a4;
+    
+}
+nav a {
+    font-family: 'londers';
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: rgb(255, 203, 220);
+    margin-right: 10px;
+    text-decoration: none;
+}
+.small-screen {
+    display: none;
+ }
+ @media screen and (max-width: 760px){
+    .big-screen {
+        display: none;
+    }
+     .small-screen {
+        display: block;
+     }
+ }
+
+ /* Main content */
+ main {
+    color: #444;
+    padding: 10px;
+    margin: 10px 10px;
+    background-color: #efefef;
+ }
+ main h1,h2,h3,h4,h5,h6,p,legend{
+    margin: 0;
+    color: #a749a4;
+ }
