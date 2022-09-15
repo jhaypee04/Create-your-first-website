@@ -6,21 +6,17 @@ body {
     padding: 0;
     margin: 0;
 }
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #a749a4;
-    
-}
 nav a {
-    font-family: 'londers';
-    font-weight: bold;
+    font-family: 'Acme';
+    /* font-weight: bold; */
     letter-spacing: 1.5px;
-    color: rgb(255, 203, 220);
+    color: rgb(228, 191, 255);
     margin-right: 10px;
     text-decoration: none;
+}
+img {
+    width: 50px;
+    height: 50px;
 }
 .small-screen {
     display: none;
@@ -36,12 +32,24 @@ nav a {
 
  /* Main content */
  main {
-    color: #444;
-    padding: 10px;
-    margin: 10px 10px;
-    background-color: #efefef;
+     margin: 20px 20px;
+ }
+.intro {
+     padding: 10px;
+     text-align: center;
+     background-color: rgb(155, 25, 248);
+}
+.intro p {
+     color: rgb(255, 255, 255);
+}
+ hr{
+    border: 1px solid indigo
+    /* color: indigo; */
  }
  main h1,h2,h3,h4,h5,h6,p,legend{
     margin: 0;
     color: #a749a4;
+ }
+ .text_dark_purple {
+    color: rgb(89, 55, 112);
  }

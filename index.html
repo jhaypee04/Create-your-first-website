@@ -6,36 +6,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
     <title>Home page</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <div class="big-screen">
-                <img src="assets/images/logo-long.png" alt="logo image">
-            </div>
-            <div class="small-screen">
-                <img src="assets/images/logo.png" alt="logo image">
-            </div>
-        </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="pages/contact-me.html">Contact me</a>
-            <a href="pages/about-me.html">About me</a>
-            <a href="pages/my-blog.html">Achievements and Prospects</a>
-        </nav>
+    <header style="margin-top: 70px;">
+
     </header>
 
+    <nav class="navbar navbar-dark fixed-top" style="background: indigo">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img  src="assets/images/Biography.png" alt="">
+            Biography- My First Website
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title fw-bold fs-2" style="color: rgb(228, 191, 255)" id="offcanvasDarkNavbarLabel">Biography</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item" href="pages/contact-me.html">Contact me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item" href="pages/about-me.html">About me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item" href="pages/my-blog.html">Achievements and Prospects</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      
     <main>
         
-        <div>This is supposed to be a very simple website. Actually not my first. But I called it so because of educational purposes.</div>
+        <div class="intro">
+          <p>When it comes to operating Computers and Programming; be it Web or Mobile Applications...</p>
+          <p><i>"I am so good!" </i></p>
+          <hr>
+        </div>
+
+
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-sm-4">
+              <div class="card mt-3">
+                <img src="..." class="card-img-top" alt="An image">
+                <div class="card-body">
+                  <h5 class="card-title fs-2 text-primary">HTML</h5>
+                  <hr>
+                  <p class="card-text text_dark_purple">I know HTML which stands for <span style="color: rgb(81, 177, 255);">Hyper Text Markup Language</span> . With the concept of Mobile first websites in mind, I use this tool to create Responsive websites both for desktop, tablets and mobile devices.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="card mt-3" >
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title fs-2 text-primary">CSS</h5>
+                  <hr>
+                  <p class="card-text text_dark_purple">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="card mt-3">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title fs-2 text-primary">JavaScript Programming Language</h5>
+                  <hr>
+                  <p class="card-text text_dark_purple">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         
-        <div>Feel free to enjoy your journey ride through my First Website</div>
-
         <span class="bi bi-facebook"></span>
-    </main>
+      </main>
+      
+      
 
+    
+
+    <script src="assets/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
