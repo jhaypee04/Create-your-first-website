@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
     <title>Home page</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
@@ -21,14 +23,14 @@
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img  src="assets/images/Biography.png" alt="">
-            Biography- My First Website
+            CodeWithPaulEdozie
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title fw-bold fs-2" style="color: rgb(228, 191, 255)" id="offcanvasDarkNavbarLabel">Biography</h5>
+              <h5 class="offcanvas-title fw-bold fs-2" style="color: rgb(228, 191, 255)" id="offcanvasDarkNavbarLabel">Menu</h5>
               <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -57,21 +59,40 @@
         <div class="intro">
           <p>When it comes to operating Computers and Programming; be it Web or Mobile Applications...</p>
           <p><i>"I am so good!" </i></p>
-          <hr>
         </div>
 
 
         <div class="container-fluid">
-          <div class="row">
+
+          <div class="card mt-3" >
+            <div class="card-body">
+              <h5 class="card-title fs-2 text-primary text-center">My Skill-Sets</h5>
+            </div>
+          </div>
+
+          <div class="card mt-3">
+
+            <div class="row justify-content-center">
+              <div class="col-sm-4">
+                <img src="assets/images/mypic.jpg" class="card-img-top mt-sm-3 img-fluid  text-center" alt="An image">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fs-2 text-primary text-center">I'm a Full Stack Web Designer and Developer</h5>
+            </div>
+            
+          </div>
+
+          
+          
+          <div class="row align-items-center">
 
             <div class="col-sm-4">
               <div class="card mt-3">
                 <img src="..." class="card-img-top" alt="An image">
                 <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary">HTML</h5>
-                  <hr>
-                  <p class="card-text text_dark_purple">I know HTML which stands for <span style="color: rgb(81, 177, 255);">Hyper Text Markup Language</span> . With the concept of Mobile first websites in mind, I use this tool to create Responsive websites both for desktop, tablets and mobile devices.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <h5 class="card-title fs-2 text-primary text-center">HTML</h5>
+                  <p class="card-text text_dark_purple text-center">I am very good at creating very responsive, mobile friendly websites with the Hyper Text Markup Language Technology!</p>
                 </div>
               </div>
             </div>
@@ -80,10 +101,8 @@
               <div class="card mt-3" >
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary">CSS</h5>
-                  <hr>
-                  <p class="card-text text_dark_purple">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <h5 class="card-title fs-2 text-primary text-center">CSS</h5>
+                  <p class="card-text text_dark_purple text-center">I use this Technology to design the look of my websites</p>
                 </div>
               </div>
             </div>
@@ -92,23 +111,101 @@
               <div class="card mt-3">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary">JavaScript Programming Language</h5>
-                  <hr>
-                  <p class="card-text text_dark_purple">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <h5 class="card-title fs-2 text-primary text-center">JavaScript Programming Language</h5>
+                  <p class="card-text text_dark_purple text-center">There is no problem I can't solve with this Technology</p>
                 </div>
               </div>
             </div>
           </div>
+          
+          <div class="card mt-3" >
+            <div class="card-body">
+              <h5 class="card-title fs-2 text-primary text-center">All The JavaScript Frameworks I Know</h5>
+            </div>
+          </div>
+          
+          <div class="row align-items-center">
+
+            <div class="col-sm-3">
+              <div class="card mt-3">
+                <img src="..." class="card-img-top" alt="An image">
+                <div class="card-body">
+                  <h5 class="card-title fs-2 text-primary text-center">React.js</h5>
+                  <p class="card-text text_dark_purple text-center">I am very good at creating very responsive, mobile friendly websites with the Hyper Text Markup Language Technology!</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="card mt-3" >
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title fs-2 text-primary text-center">Node.js</h5>
+                  <p class="card-text text_dark_purple text-center">I use this Technology to design the look of my websites</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="card mt-3">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title fs-2 text-primary text-center">Express.js</h5>
+                  <p class="card-text text_dark_purple text-center">There is no problem I can't solve with this Technology</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="card mt-3">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title fs-2 text-primary text-center">Mongoose &amp; MongoDB</h5>
+                  <p class="card-text text_dark_purple text-center">There is no problem I can't solve with this Technology</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card mt-3">
+                <div class="row justify-content-center">
+                  <div class="col-sm-4">
+                    <img src="assets/images/mypic.jpg" class="card-img-top mt-sm-3 img-fluid  text-center" alt="An image">
+                  </div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title fs-2 text-primary text-center">I also Design Mobile Applications with React Native</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card mt-3">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title fs-2 text-primary text-center">React Native</h5>
+                  <p class="card-text text_dark_purple text-center">With my experience of React.js, React Native and Mobile Friendly Designs, I design and develop Nice looking Applications both for Android and iOS. I can also implement any kind of functionality in these Apps!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        
         <span class="bi bi-facebook"></span>
       </main>
       
+      <footer class="bg-secondary">
+        <div class="container-fluid">
+          sdfd
+
+        </div>
+      </footer>
       
 
     
-
+  <!-- Bootstrap CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src="assets/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
