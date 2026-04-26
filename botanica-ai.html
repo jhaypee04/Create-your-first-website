@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+  <title>Botanica AI · Plant Identification</title>
+  <!-- TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #1e3c2f 0%, #2a4a32 100%);
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      margin: 0;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 3.5rem;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      width: 100%;
+      max-width: 580px;
+      padding: 2rem 1.8rem 2.2rem;
+      color: #f5f7f2;
+      transition: all 0.2s ease;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .logo i {
+      font-size: 2.5rem;
+      color: #b9e6b0;
+      filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.5));
+    }
+
+    .logo h1 {
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to right, #e9f5db, #c8e7b5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .badge {
+      background: rgba(185, 230, 176, 0.2);
+      padding: 0.5rem 1.2rem;
+      border-radius: 3rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid #b9e6b0;
+      color: #dcf5d0;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .upload-area {
+      background: rgba(20, 30, 20, 0.5);
+      border: 2px dashed #b9e6b0;
+      border-radius: 2.5rem;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin: 1.5rem 0 1.8rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .upload-area:hover {
+      background: rgba(40, 60, 40, 0.55);
+      border-color: #e1ffd6;
+      transform: scale(1.01);
+    }
+
+    .upload-area i {
+      font-size: 3.2rem;
+      color: #cfecc7;
+      margin-bottom: 0.7rem;
+    }
+
+    .upload-text {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .file-hint {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    #fileInput {
+      display: none;
+    }
+
+    .preview-container {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .image-preview-box {
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 1 / 1;
+      border-radius: 2rem;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(185, 230, 176, 0.5);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .image-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .placeholder-icon {
+      font-size: 4rem;
+      color: #6b8f71;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      flex: 1 1 0;
+      min-width: 120px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 3rem;
+      padding: 0.9rem 1.2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #f0f7ea;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: rgba(30, 50, 30, 0.7);
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary {
+      background: #3b5e3b;
+      border-color: #b9e6b0;
+      color: white;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: #4c784c;
+      border-color: #e0ffd6;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      filter: grayscale(0.3);
+    }
+
+    .result-panel {
+      background: rgba(10, 25, 15, 0.7);
+      backdrop-filter: blur(15px);
+      border-radius: 2rem;
+      padding: 1.4rem 1.5rem;
+      margin-top: 1.8rem;
+      border: 1px solid rgba(185, 230, 176, 0.4);
+      transition: all 0.3s;
+    }
+
+    .plant-name {
+      font-size: 2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #dcf5ce;
+    }
+
+    .scientific {
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1rem;
+      opacity: 0.85;
+      margin: 0.2rem 0 0.9rem;
+      color: #c2ddb5;
+    }
+
+    .confidence-bar {
+      width: 100%;
+      height: 10px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 20px;
+      margin: 0.8rem 0 1rem;
+      overflow: hidden;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #b9e6b0, #8fc97c);
+      border-radius: 20px;
+      transition: width 0.5s ease;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 450px) {
+      .glass-card {
+        padding: 1.5rem 1.2rem;
+      }
+      .logo h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-card">
+    <div class="app-header">
+      <div class="logo">
+        <i class="fas fa-leaf"></i>
+        <h1>Botanica AI</h1>
+      </div>
+      <div class="badge">
+        <i class="fas fa-microchip"></i> <span>TensorFlow.js</span>
+      </div>
+    </div>
+
+    <p style="margin-bottom: 0.3rem; font-weight: 300; color: #d0e8c8;">
+      <i class="fas fa-camera-retro"></i> Identify plants instantly with a custom model
+    </p>
+
+    <!-- Upload / Drop Zone -->
+    <div id="dropZone" class="upload-area">
+      <i class="fas fa-cloud-upload-alt"></i>
+      <div class="upload-text">Tap to upload a plant photo</div>
+      <div class="file-hint">JPEG or PNG · clear leaf/flower</div>
+    </div>
+    <input type="file" id="fileInput" accept="image/*, .jpg, .jpeg, .png">
+
+    <!-- Image preview -->
+    <div class="preview-container" id="previewContainer">
+      <div class="image-preview-box" id="imageBox">
+        <i class="fas fa-seedling placeholder-icon" id="placeholderIcon"></i>
+        <img id="previewImage" src="" alt="Plant preview" class="hidden">
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="action-buttons">
+      <button class="btn" id="uploadBtn">
+        <i class="fas fa-image"></i> Choose
+      </button>
+      <button class="btn btn-primary" id="identifyBtn" disabled>
+        <i class="fas fa-search"></i> Identify
+      </button>
+    </div>
+
+    <!-- Results -->
+    <div id="resultPanel" class="result-panel hidden">
+      <div class="plant-name" id="plantCommon">
+        <i class="fas fa-tree"></i> <span id="commonName">--</span>
+      </div>
+      <div class="scientific" id="scientificName"><i>--</i></div>
+      <div class="confidence-bar">
+        <div class="confidence-fill" id="confidenceFill" style="width: 0%;"></div>
+      </div>
+      <div class="meta">
+        <span id="confidenceText">Confidence: 0%</span>
+        <span id="modelNote"><i class="fas fa-brain"></i> custom model</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // ---- DOM Elements ----
+      const dropZone = document.getElementById('dropZone');
+      const fileInput = document.getElementById('fileInput');
+      const uploadBtn = document.getElementById('uploadBtn');
+      const identifyBtn = document.getElementById('identifyBtn');
+      const previewImage = document.getElementById('previewImage');
+      const placeholderIcon = document.getElementById('placeholderIcon');
+      const resultPanel = document.getElementById('resultPanel');
+      const commonNameSpan = document.getElementById('commonName');
+      const scientificNameSpan = document.getElementById('scientificName');
+      const confidenceFill = document.getElementById('confidenceFill');
+      const confidenceText = document.getElementById('confidenceText');
+
+      // ---- State ----
+      let model = null;
+      let currentImageFile = null;
+      // Plant classes used by our custom model (simulated)
+      const PLANT_CLASSES = [
+        { common: 'Monstera Deliciosa', scientific: 'Monstera deliciosa' },
+        { common: 'Snake Plant', scientific: 'Dracaena trifasciata' },
+        { common: 'Peace Lily', scientific: 'Spathiphyllum wallisii' },
+        { common: 'Aloe Vera', scientific: 'Aloe barbadensis miller' },
+        { common: 'Boston Fern', scientific: 'Nephrolepis exaltata' },
+        { common: 'Orchid', scientific: 'Phalaenopsis amabilis' },
+        { common: 'Rubber Plant', scientific: 'Ficus elastica' },
+        { common: 'Spider Plant', scientific: 'Chlorophytum comosum' }
+      ];
+
+      // ---- Model Loading (simulated custom model) ----
+      async function loadModel() {
+        try {
+          // In a real scenario you would load a custom model like:
+          // model = await tf.loadLayersModel('model.json');
+          // or tf.loadGraphModel(...). Here we simulate with a small delay.
+          console.log('🌿 Loading Botanica custom model...');
+          
+          // Simulate model loading time (like fetching model.json + weights)
+          await new Promise(resolve => setTimeout(resolve, 800));
+          
+          // Create a mock model object that mimics TensorFlow model API
+          model = {
+            predict: async (imageElement) => {
+              // Simulate inference delay
+              await new Promise(resolve => setTimeout(resolve, 400));
+              
+              // Generate pseudo-random but consistent probabilities based on image input
+              // We use a simple hash from image dimensions to create variety
+              const width = imageElement.naturalWidth || 200;
+              const height = imageElement.naturalHeight || 200;
+              const seed = (width * 7 + height * 3) % PLANT_CLASSES.length;
+              
+              // Create probability distribution
+              const probabilities = new Array(PLANT_CLASSES.length).fill(0.02);
+              // Make one class dominant (simulate detection)
+              const primaryIndex = seed % PLANT_CLASSES.length;
+              probabilities[primaryIndex] = 0.65 + (Math.random() * 0.25); // between 0.65 and 0.9
+              
+              // Normalize remaining
+              const remaining = 1.0 - probabilities[primaryIndex];
+              const otherSum = probabilities.reduce((acc, val, idx) => idx !== primaryIndex ? acc + val : acc, 0);
+              for (let i = 0; i < probabilities.length; i++) {
+                if (i !== primaryIndex) {
+                  probabilities[i] = (probabilities[i] / otherSum) * remaining;
+                }
+              }
+              
+              // Return as tensor-like object with dataSync
+              const tensorValues = new Float32Array(probabilities);
+              return {
+                dataSync: () => tensorValues,
+                dispose: () => {},
+                shape: [1, PLANT_CLASSES.length]
+              };
+            },
+            dispose: () => {}
+          };
+          
+          console.log('✅ Custom plant model ready (simulated)');
+          return true;
+        } catch (error) {
+          console.error('Model loading failed:', error);
+          return false;
+        }
+      }
+
+      // ---- UI Helpers ----
+      function showPreview(file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          previewImage.src = e.target.result;
+          previewImage.classList.remove('hidden');
+          placeholderIcon.classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+        currentImageFile = file;
+        identifyBtn.disabled = false;
+      }
+
+      function resetPreview() {
+        previewImage.src = '';
+        previewImage.classList.add('hidden');
+        placeholderIcon.classList.remove('hidden');
+        currentImageFile = null;
+        identifyBtn.disabled = true;
+        resultPanel.classList.add('hidden');
+      }
+
+      function displayResult(common, scientific, confidence) {
+        commonNameSpan.textContent = common;
+        scientificNameSpan.innerHTML = `<i>${scientific}</i>`;
+        const percentage = Math.round(confidence * 100);
+        confidenceFill.style.width = `${percentage}%`;
+        confidenceText.textContent = `Confidence: ${percentage}%`;
+        resultPanel.classList.remove('hidden');
+      }
+
+      // ---- Identification Process ----
+      async function runIdentification() {
+        if (!currentImageFile) {
+          alert('Please select a plant image first.');
+          return;
+        }
+        
+        if (!model) {
+          alert('Model is still loading. Please wait a moment.');
+          return;
+        }
+
+        // Show loading state
+        identifyBtn.disabled = true;
+        const originalBtnHTML = identifyBtn.innerHTML;
+        identifyBtn.innerHTML = '<i class="fas fa-spinner loading-spinner"></i> Analyzing...';
+        
+        try {
+          // Create an image element to feed to model
+          const img = new Image();
+          const imageUrl = URL.createObjectURL(currentImageFile);
+          
+          await new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = imageUrl;
+          });
+          
+          // Run prediction using our model (simulated or real)
+          const prediction = model.predict(img);
+          const probabilities = prediction.dataSync(); // Float32Array
+          
+          // Find index with max probability
+          let maxIndex = 0;
+          let maxProb = 0;
+          for (let i = 0; i < probabilities.length; i++) {
+            if (probabilities[i] > maxProb) {
+              maxProb = probabilities[i];
+              maxIndex = i;
+            }
+          }
+          
+          // Dispose tensors if real model used
+          if (prediction.dispose) prediction.dispose();
+          
+          // Release object URL
+          URL.revokeObjectURL(imageUrl);
+          
+          // Get plant info
+          const plant = PLANT_CLASSES[maxIndex];
+          if (plant) {
+            displayResult(plant.common, plant.scientific, maxProb);
+          } else {
+            displayResult('Unknown plant', 'Species not in database', 0);
+          }
+          
+        } catch (error) {
+          console.error('Identification error:', error);
+          alert('Could not identify plant. Try another image.');
+          resultPanel.classList.add('hidden');
+        } finally {
+          identifyBtn.disabled = false;
+          identifyBtn.innerHTML = originalBtnHTML;
+        }
+      }
+
+      // ---- Event Listeners ----
+      function handleFileSelect(file) {
+        if (file && file.type.startsWith('image/')) {
+          showPreview(file);
+        } else {
+          alert('Please select a valid image file (JPEG/PNG).');
+          resetPreview();
+        }
+      }
+
+      // File input change
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) handleFileSelect(file);
+      });
+
+      // Click on drop zone triggers file input
+      dropZone.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      // Upload button also triggers file input
+      uploadBtn.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      // Drag and drop support
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#e1ffd6';
+        dropZone.style.background = 'rgba(50, 70, 50, 0.6)';
+      });
+
+      dropZone.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#b9e6b0';
+        dropZone.style.background = 'rgba(20, 30, 20, 0.5)';
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#b9e6b0';
+        dropZone.style.background = 'rgba(20, 30, 20, 0.5)';
+        const file = e.dataTransfer.files[0];
+        if (file) {
+          // Update file input as well (optional)
+          const dataTransfer = new DataTransfer();
+          dataTransfer.items.add(file);
+          fileInput.files = dataTransfer.files;
+          handleFileSelect(file);
+        }
+      });
+
+      // Identify button
+      identifyBtn.addEventListener('click', runIdentification);
+
+      // ---- Initialize App ----
+      async function init() {
+        resetPreview();
+        // Load model automatically on start
+        const modelLoaded = await loadModel();
+        if (!modelLoaded) {
+          alert('Failed to load the plant identification model. Please refresh.');
+        }
+        // Enable identify button only if model loaded and image present
+        identifyBtn.disabled = !currentImageFile || !model;
+      }
+
+      init();
+    })();
+  </script>
+</body>
+</html>
