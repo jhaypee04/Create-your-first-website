@@ -1,211 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <title>Home page</title>
-    <!-- Bootstrap CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Elena Morris · Creative Developer</title>
+  <!-- Font Awesome 6 (free CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header & navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    /* hero section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 60px 0;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1 1 400px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #4b5563;
+      margin-bottom: 28px;
+      max-width: 500px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-outline {
+      border: 2px solid #d1d5db;
+      color: #1f2937;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: #2563eb;
+      color: #2563eb;
+      background: #eff6ff;
+    }
+
+    .hero-image {
+      flex: 1 1 350px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar-frame {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dbeafe, #ede9fe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7rem;
+      color: #2563eb;
+      box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.2);
+      border: 6px solid white;
+    }
+
+    /* sections general */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 650;
+      margin-bottom: 36px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: linear-gradient(to right, #2563eb, #a78bfa);
+      border-radius: 4px;
+    }
+
+    /* about */
+    .about-content {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 2;
+      font-size: 1.1rem;
+      color: #374151;
+    }
+
+    .about-text p {
+      margin-bottom: 18px;
+    }
+
+    .skills-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .badge {
+      background: white;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: #1f2937;
+      border: 1px solid #e5e7eb;
+    }
+
+    .badge i {
+      color: #2563eb;
+    }
+
+    /* projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 25px -8px rgba(0,0,0,0.08);
+      transition: all 0.25s ease;
+      border: 1px solid #f0f0f0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(37, 99, 235, 0.2);
+      border-color: #c7d2fe;
+    }
+
+    .project-icon {
+      font-size: 2.2rem;
+      color: #2563eb;
+      margin-bottom: 16px;
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    .tag {
+      background: #f3f4f6;
+      color: #4b5563;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .project-link {
+      margin-top: auto;
+      text-decoration: none;
+      font-weight: 600;
+      color: #2563eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .project-link:hover {
+      gap: 10px;
+      color: #1d4ed8;
+    }
+
+    /* contact */
+    .contact-wrapper {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      background: white;
+      border-radius: 32px;
+      padding: 40px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+      margin-top: 20px;
+    }
+
+    .contact-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 1.1rem;
+    }
+
+    .contact-item i {
+      font-size: 1.6rem;
+      color: #2563eb;
+      width: 36px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .social-links a {
+      color: #4b5563;
+      font-size: 1.6rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .social-links a:hover {
+      color: #2563eb;
+      transform: scale(1.15);
+    }
+
+    .contact-form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 14px 18px;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #f9fafb;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+    }
+
+    .contact-form button {
+      align-self: flex-start;
+      padding: 12px 32px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .hero-text h1 {
+        font-size: 2.6rem;
+      }
+      .avatar-frame {
+        width: 200px;
+        height: 200px;
+        font-size: 5rem;
+      }
+      .contact-wrapper {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <header style="margin-top: 70px;">
-
+  <div class="container">
+    <!-- Header / Nav -->
+    <header>
+      <nav class="navbar">
+        <div class="logo"><i class="fas fa-code"></i> Elena Morris</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <nav class="navbar navbar-dark fixed-top" style="background: indigo">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img  src="assets/images/Biography.png" alt="">
-            CodeWithPaulEdozie
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title fw-bold fs-2" style="color: rgb(228, 191, 255)" id="offcanvasDarkNavbarLabel">Menu</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item" href="pages/contact-me.html">Contact me</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item" href="pages/about-me.html">About me</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-item" href="pages/my-blog.html">Achievements and Prospects</a>
-                </li>
-              </ul>
-            </div>
+    <!-- Hero Section -->
+    <section id="home">
+      <div class="hero">
+        <div class="hero-text">
+          <h1>
+            Crafting digital<br>
+            <span class="highlight">experiences.</span>
+          </h1>
+          <p>
+            Full-stack developer & UI enthusiast focused on building clean, accessible, and performant web applications.
+          </p>
+          <div class="btn-group">
+            <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> View work</a>
+            <a href="#contact" class="btn btn-outline"><i class="far fa-comment"></i> Let's talk</a>
           </div>
         </div>
-      </nav>
-
-      
-    <main>
-        
-        <div class="intro">
-          <p>When it comes to operating Computers and Programming; be it Web or Mobile Applications...</p>
-          <p><i>"I am so good!" </i></p>
+        <div class="hero-image">
+          <div class="avatar-frame">
+            <i class="fas fa-user-astronaut"></i>
+          </div>
         </div>
+      </div>
+    </section>
 
-
-        <div class="container-fluid">
-
-          <div class="card mt-3" >
-            <div class="card-body">
-              <h5 class="card-title fs-2 text-primary text-center">My Skill-Sets</h5>
-            </div>
+    <!-- About Section -->
+    <section id="about">
+      <h2 class="section-title">About me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            I'm Elena, a creative developer based in Barcelona. With over 6 years of experience, I specialize in React, Node.js, and modern CSS. I love turning complex problems into intuitive interfaces.
+          </p>
+          <p>
+            When I'm not coding, you'll find me sketching UI ideas, contributing to open-source, or exploring the Pyrenees.
+          </p>
+          <div class="skills-badges">
+            <span class="badge"><i class="fab fa-react"></i> React</span>
+            <span class="badge"><i class="fab fa-node-js"></i> Node.js</span>
+            <span class="badge"><i class="fab fa-js"></i> TypeScript</span>
+            <span class="badge"><i class="fas fa-database"></i> PostgreSQL</span>
+            <span class="badge"><i class="fab fa-figma"></i> Figma</span>
+            <span class="badge"><i class="fas fa-cloud"></i> AWS</span>
           </div>
-
-          <div class="card mt-3">
-
-            <div class="row justify-content-center">
-              <div class="col-sm-4">
-                <img src="assets/images/mypic.jpg" class="card-img-top mt-sm-3 img-fluid  text-center" alt="An image">
-              </div>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title fs-2 text-primary text-center">I'm a Full Stack Web Designer and Developer</h5>
-            </div>
-            
-          </div>
-
-          
-          
-          <div class="row align-items-center">
-
-            <div class="col-sm-4">
-              <div class="card mt-3">
-                <img src="..." class="card-img-top" alt="An image">
-                <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary text-center">HTML</h5>
-                  <p class="card-text text_dark_purple text-center">I am very good at creating very responsive, mobile friendly websites with the Hyper Text Markup Language Technology!</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4">
-              <div class="card mt-3" >
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary text-center">CSS</h5>
-                  <p class="card-text text_dark_purple text-center">I use this Technology to design the look of my websites</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-4">
-              <div class="card mt-3">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary text-center">JavaScript Programming Language</h5>
-                  <p class="card-text text_dark_purple text-center">There is no problem I can't solve with this Technology</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="card mt-3" >
-            <div class="card-body">
-              <h5 class="card-title fs-2 text-primary text-center">All The JavaScript Frameworks I Know</h5>
-            </div>
-          </div>
-          
-          <div class="row align-items-center">
-
-            <div class="col-sm-3">
-              <div class="card mt-3">
-                <img src="..." class="card-img-top" alt="An image">
-                <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary text-center">React.js</h5>
-                  <p class="card-text text_dark_purple text-center">I am very good at creating very responsive, mobile friendly websites with the Hyper Text Markup Language Technology!</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-3">
-              <div class="card mt-3" >
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary text-center">Node.js</h5>
-                  <p class="card-text text_dark_purple text-center">I use this Technology to design the look of my websites</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-3">
-              <div class="card mt-3">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary text-center">Express.js</h5>
-                  <p class="card-text text_dark_purple text-center">There is no problem I can't solve with this Technology</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-3">
-              <div class="card mt-3">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary text-center">Mongoose &amp; MongoDB</h5>
-                  <p class="card-text text_dark_purple text-center">There is no problem I can't solve with this Technology</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="card mt-3">
-                <div class="row justify-content-center">
-                  <div class="col-sm-4">
-                    <img src="assets/images/mypic.jpg" class="card-img-top mt-sm-3 img-fluid  text-center" alt="An image">
-                  </div>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary text-center">I also Design Mobile Applications with React Native</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="card mt-3">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title fs-2 text-primary text-center">React Native</h5>
-                  <p class="card-text text_dark_purple text-center">With my experience of React.js, React Native and Mobile Friendly Designs, I design and develop Nice looking Applications both for Android and iOS. I can also implement any kind of functionality in these Apps!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
-        <span class="bi bi-facebook"></span>
-      </main>
-      
-      <footer class="bg-secondary">
-        <div class="container-fluid">
-          sdfd
+      </div>
+    </section>
 
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2 class="section-title">Selected projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Flow Analytics</h3>
+          <p>Real-time dashboard for tracking user metrics with interactive charts and dark mode.</p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">D3.js</span>
+            <span class="tag">Firebase</span>
+          </div>
+          <a href="#" class="project-link">Case study <i class="fas fa-arrow-right"></i></a>
         </div>
-      </footer>
-      
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-store"></i></div>
+          <h3>Luma Market</h3>
+          <p>Full-stack e-commerce platform with cart, Stripe payments, and admin dashboard.</p>
+          <div class="project-tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">Prisma</span>
+            <span class="tag">Postgres</span>
+          </div>
+          <a href="#" class="project-link">Live demo <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="project-card">
+          <div class="project-icon"><i class="fas fa-robot"></i></div>
+          <h3>Botanica AI</h3>
+          <p>Plant identification app using TensorFlow.js and a custom trained model.</p>
+          <div class="project-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Vite</span>
+          </div>
+          <a href="#" class="project-link">GitHub <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
 
-    
-  <!-- Bootstrap CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <script src="assets/bootstrap/js/bootstrap.js"></script>
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">Get in touch</h2>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>elena.morris@portfolio.dev</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Barcelona, Spain</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-calendar-check"></i>
+            <span>Open for freelance</span>
+          </div>
+          <div class="social-links">
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="CodePen"><i class="fab fa-codepen"></i></a>
+          </div>
+        </div>
+        <form class="contact-form" action="#" method="post">
+          <input type="text" placeholder="Your name" required>
+          <input type="email" placeholder="Email address" required>
+          <textarea rows="4" placeholder="Tell me about your project..."></textarea>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Elena Morris – Designed & built with <i class="fas fa-heart" style="color: #ef4444;"></i> and fresh coffee.</p>
+    </footer>
+  </div>
 </body>
 </html>
