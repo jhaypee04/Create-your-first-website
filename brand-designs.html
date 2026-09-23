@@ -5,32 +5,98 @@
     max-width: 100%;      
     padding: 0;           /* Removes default padding that creates margins on the side */
 }
-    .card {
-        width: 100vw;         /* 100% of the viewport/screen width */
-        max-width: 100%;      
-        padding: 0;           /* Removes default padding that creates margins on the side */
-    }
-
     .banner-img {
     width: 100%;          /* Forces the image to take up the full horizontal width of its space */
     height: auto;         /* Keeps the correct aspect ratio so the image doesn't look stretched or squished */
     display: block;       /* Removes extra white space beneath the image */
     max-width: 100%;      /* Prevents the image from overflowing its parent container */
 }
-    .logoTransparent-img {
-        width: 100%;          /* Forces the image to take up the full horizontal width of its space */
-        height: auto;         /* Keeps the correct aspect ratio so the image doesn't look stretched or squished */
-        display: block;       /* Removes extra white space beneath the image */
-        max-width: 100%;      /* Prevents the image from overflowing its parent container */
-    }
-     .logoBGCream-img {
-        width: 100%;          /* Forces the image to take up the full horizontal width of its space */
-        height: auto;         /* Keeps the correct aspect ratio so the image doesn't look stretched or squished */
-        display: block;       /* Removes extra white space beneath the image */
-        max-width: 100%;      /* Prevents the image from overflowing its parent container */
-    }
+    /* 1. Standardize the main visual boxes */
+.card .visual {
+  width: 100%;
+  height: 250px;       /* Keeps card container heights uniform */
+  position: relative;  /* Keeps the absolute positioned <small> text inside the box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 2. Control the internal image wrapper size */
+.card .visual .img-wrapper {
+  width: 100%;
+  height: 85%;         /* Leaves a tiny gap at the bottom for your text tags */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 3. Scale the first image completely without cropping */
+.logoTransparent-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* The absolute fix: stops image zoom and shows it fully */
+  display: block;
+}
+
+/* 4. Scale the second image completely without cropping */
+.logoBGCream-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* The absolute fix: stops image zoom and shows it fully */
+  display: block;
+}
+
+/* 5. Positions "Logo systems" and "Campaign visuals" tags perfectly at the bottom left */
+.card .visual small {
+  position: absolute;
+  bottom: 12px;
+  left: 15px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6); /* Readable label opacity */
+  z-index: 2;
+  pointer-events: none;
+}
+
+
 </style></head><body><nav class="nav"><div class="container navin"><a class="logo" href="index.html">JP<span>.</span></a><div class="links"><a href="index.html#work">Projects</a><a href="index.html#about">About</a><a class="back" href="index.html">← Portfolio</a></div></div></nav><main><header class="container hero"><div class="kicker">Brand design portfolio</div><h1>Brands with a clear visual voice.</h1><p>A curated collection of my logo, identity, promotional and visual design work. I build brand visuals to feel distinctive, consistent and useful across real-world applications.</p></header><section class="container grid">
 <a class="card wide" href="mailto:pauledozie004@gmail.com?subject=House%20of%20Elixir%20Stitches%20design"><div class="visual fashion"><div class=""><img src="assets/images/HouseOfElixerBannerDesign.png" alt="House Of Elixer Stitches Banner Design" class="banner-img"></div><small>Fashion identity</small></div><div class="body"><h2>House of Elixir Stitches ↗</h2><p>A refined visual direction for a fashion brand, developed across logo and promotional banner applications with an elegant, premium presentation.</p><div class="tags"><span class="tag">Brand Identity</span><span class="tag">Logo Design</span><span class="tag">Banner Design</span><span class="tag">Fashion</span></div></div></a>
-<div class="card"><div class="visual"><div class=""><img src="assets/images/LogoTransparent.png" alt="House Of Elixir Stitches Transparent Logo" class="logoTransparent-img"></div><small>Logo systems</small></div><div class="body"><h2>Logo & Identity Design</h2><p>Distinctive marks, typography and visual systems designed to give brands a recognizable foundation.</p><div class="tags"><span class="tag">Logos</span><span class="tag">Typography</span><span class="tag">Identity</span></div></div></div>
-<div class="card"><div class="visual" style="background:radial-gradient(circle at 25% 30%,rgba(196,142,255,.25),transparent 30%),linear-gradient(135deg,#261b38,#0b1525)"><div class=""><img src="assets/images/LogoBGCream.png" alt="House Of Elixir Stitches Background Cream" class="logoBGCream-img"></div><small>Campaign visuals</small></div><div class="body"><h2>Promotional Design</h2><p>Campaign graphics, business banners and marketing visuals made to communicate quickly and look polished.</p><div class="tags"><span class="tag">Banners</span><span class="tag">Campaigns</span><span class="tag">Social Graphics</span></div></div></div>
+
+<div class="card">
+  <div class="visual">
+    <div class="img-wrapper">
+      <img src="assets/images/LogoTransparent.png" alt="House Of Elixir Stitches Transparent Logo" class="logoTransparent-img">
+    </div>
+    <small>Logo systems</small>
+  </div>
+  <div class="body">
+    <h2>Logo & Identity Design</h2>
+    <p>Distinctive marks, typography and visual systems designed to give brands a recognizable foundation.</p>
+    <div class="tags">
+      <span class="tag">Logos</span>
+      <span class="tag">Typography</span>
+      <span class="tag">Identity</span>
+    </div>
+  </div>
+</div>
+
+<!-- Card 2: Promotional Design -->
+<div class="card">
+  <div class="visual" style="background:radial-gradient(circle at 25% 30%,rgba(196,142,255,.25),transparent 30%),linear-gradient(135deg,#261b38,#0b1525)">
+    <div class="img-wrapper">
+      <img src="assets/images/LogoBGCream.png" alt="House Of Elixir Stitches Background Cream" class="logoBGCream-img">
+    </div>
+    <small>Campaign visuals</small>
+  </div>
+  <div class="body">
+    <h2>Promotional Design</h2>
+    <p>Campaign graphics, business banners and marketing visuals made to communicate quickly and look polished.</p>
+    <div class="tags">
+      <span class="tag">Banners</span>
+      <span class="tag">Campaigns</span>
+      <span class="tag">Social Graphics</span>
+    </div>
+  </div>
+</div>
+
 </section><section class="container cta"><div><h2>Need a visual identity for your brand?</h2><p>Let's create something that looks professional and feels unmistakably yours.</p></div><a class="btn" href="mailto:pauledozie004@gmail.com?subject=Brand%20Design%20Project">Start a brand project ↗</a></section></main><footer><div class="container">© 2026 JohnPaul Edozie · Brand Designs</div></footer></body></html>
