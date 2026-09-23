@@ -2,558 +2,216 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>JohnPaul Edozie · Creative Developer</title>
-  <!-- Font Awesome 6 (free CDN) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JohnPaul Edozie — developer building useful websites, web applications, business systems and digital products.">
+  <meta name="theme-color" content="#07111f">
+  <title>JohnPaul Edozie — Developer & Digital Product Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg:#07111f; --bg2:#0b1728; --panel:#0e1c30; --panel2:#12243b;
+      --text:#f4f7fb; --muted:#9cafc7; --line:rgba(255,255,255,.09);
+      --brand:#61e7c2; --brand2:#6ea8ff; --white:#fff;
+      --shadow:0 24px 80px rgba(0,0,0,.28); --radius:24px;
     }
-
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: #f9fafb;
-      color: #1f2937;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* header & navigation */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #374151;
-      font-weight: 500;
-      transition: color 0.2s;
-      font-size: 1rem;
-    }
-
-    .nav-links a:hover {
-      color: #2563eb;
-    }
-
-    /* hero section */
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      padding: 60px 0;
-      flex-wrap: wrap;
-    }
-
-    .hero-text {
-      flex: 1 1 400px;
-    }
-
-    .hero-text h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-
-    .highlight {
-      background: linear-gradient(120deg, #2563eb, #7c3aed);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-text p {
-      font-size: 1.2rem;
-      color: #4b5563;
-      margin-bottom: 28px;
-      max-width: 500px;
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.25s;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: #2563eb;
-      color: white;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
-    }
-
-    .btn-primary:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.4);
-    }
-
-    .btn-outline {
-      border: 2px solid #d1d5db;
-      color: #1f2937;
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      border-color: #2563eb;
-      color: #2563eb;
-      background: #eff6ff;
-    }
-
-    .hero-image {
-      flex: 1 1 350px;
-      display: flex;
-      justify-content: center;
-    }
-    
-    .myPhoto { 
-      border-radius: 50%;
-      max-width: 300px;
-      height: auto;
-      margin-top: 30px;
-      width: 200px;
-      height: 200px;
-    }
-
-    .avatar-frame {
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #dbeafe, #ede9fe);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 7rem;
-      color: #2563eb;
-      box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.2);
-      border: 6px solid white;
-    }
-
-    /* sections general */
-    section {
-      padding: 70px 0;
-    }
-
-    .section-title {
-      font-size: 2.2rem;
-      font-weight: 650;
-      margin-bottom: 36px;
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60%;
-      height: 4px;
-      background: linear-gradient(to right, #2563eb, #a78bfa);
-      border-radius: 4px;
-    }
-
-    /* about */
-    .about-content {
-      display: flex;
-      gap: 50px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .about-text {
-      flex: 2;
-      font-size: 1.1rem;
-      color: #374151;
-    }
-
-    .about-text p {
-      margin-bottom: 18px;
-    }
-
-    .skills-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .badge {
-      background: white;
-      padding: 8px 18px;
-      border-radius: 30px;
-      font-weight: 500;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.9rem;
-      color: #1f2937;
-      border: 1px solid #e5e7eb;
-    }
-
-    .badge i {
-      color: #2563eb;
-    }
-
-    /* projects grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 28px;
-      margin-top: 20px;
-    }
-
-    .project-card {
-      background: white;
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: 0 10px 25px -8px rgba(0,0,0,0.08);
-      transition: all 0.25s ease;
-      border: 1px solid #f0f0f0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 35px -12px rgba(37, 99, 235, 0.2);
-      border-color: #c7d2fe;
-    }
-
-    .project-icon {
-      font-size: 2.2rem;
-      color: #2563eb;
-      margin-bottom: 16px;
-    }
-
-    .project-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 14px 0 18px;
-    }
-
-    .tag {
-      background: #f3f4f6;
-      color: #4b5563;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .project-link {
-      margin-top: auto;
-      text-decoration: none;
-      font-weight: 600;
-      color: #2563eb;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.2s;
-    }
-
-    .project-link:hover {
-      gap: 10px;
-      color: #1d4ed8;
-    }
-
-    /* contact */
-    .contact-wrapper {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      background: white;
-      border-radius: 32px;
-      padding: 40px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-      margin-top: 20px;
-    }
-
-    .contact-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 1.1rem;
-    }
-
-    .contact-item i {
-      font-size: 1.6rem;
-      color: #2563eb;
-      width: 36px;
-      text-align: center;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 18px;
-      margin-top: 12px;
-    }
-
-    .social-links a {
-      color: #4b5563;
-      font-size: 1.6rem;
-      transition: color 0.2s, transform 0.2s;
-    }
-
-    .social-links a:hover {
-      color: #2563eb;
-      transform: scale(1.15);
-    }
-
-    .contact-form {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      padding: 14px 18px;
-      border: 1px solid #e5e7eb;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-family: inherit;
-      background: #f9fafb;
-      transition: border 0.2s, box-shadow 0.2s;
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
-    }
-
-    .contact-form button {
-      align-self: flex-start;
-      padding: 12px 32px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 32px 0;
-      color: #6b7280;
-      border-top: 1px solid #e5e7eb;
-      margin-top: 20px;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 700px) {
-      .navbar {
-        flex-direction: column;
-        gap: 12px;
-      }
-      .hero-text h1 {
-        font-size: 2.6rem;
-      }
-      .avatar-frame {
-        width: 200px;
-        height: 200px;
-        font-size: 5rem;
-      }
-      .contact-wrapper {
-        padding: 24px;
-      }
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"DM Sans",sans-serif;background:radial-gradient(circle at 85% 10%,rgba(97,231,194,.10),transparent 28%),radial-gradient(circle at 10% 25%,rgba(110,168,255,.10),transparent 30%),var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}
+    .nav{position:sticky;top:0;z-index:50;background:rgba(7,17,31,.76);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font:700 1.25rem "Space Grotesk";letter-spacing:-.04em}
+    .logo span{color:var(--brand)}
+    .links{display:flex;gap:28px;align-items:center;color:var(--muted);font-weight:600;font-size:.92rem}
+    .links a:hover{color:var(--white)}
+    .nav-cta{padding:10px 16px;border:1px solid rgba(97,231,194,.35);border-radius:999px;color:var(--brand)!important}
+    .menu{display:none;background:none;border:0;color:var(--white);font-size:1.4rem}
+    .hero{min-height:calc(100vh - 76px);display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;padding:90px 0 80px;position:relative}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;color:#c9d6e8;font-size:.82rem;font-weight:600;margin-bottom:22px}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 6px rgba(97,231,194,.10)}
+    h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.08}
+    h1{font-size:clamp(3rem,7vw,6.1rem);letter-spacing:-.065em;max-width:800px}
+    .gradient{background:linear-gradient(100deg,var(--brand),#9beedc 45%,var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-copy{font-size:1.15rem;color:var(--muted);max-width:650px;margin:25px 0 32px}
+    .actions{display:flex;gap:13px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 19px;border-radius:13px;font-weight:700;border:1px solid var(--line);transition:.25s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--brand);color:#06121a;border-color:var(--brand);box-shadow:0 12px 30px rgba(97,231,194,.16)}
+    .btn-secondary{background:rgba(255,255,255,.035)}
+    .hero-card{position:relative;display:flex;justify-content:center}
+    .portrait-wrap{width:min(390px,100%);aspect-ratio:1/1;position:relative}
+    .portrait-wrap:before{content:"";position:absolute;inset:6%;border-radius:34% 66% 56% 44% / 48% 38% 62% 52%;background:linear-gradient(135deg,rgba(97,231,194,.22),rgba(110,168,255,.15));filter:blur(1px);transform:rotate(8deg)}
+    .portrait{position:absolute;inset:12%;width:76%;height:76%;margin:auto;object-fit:cover;border-radius:32% 68% 58% 42% / 45% 42% 58% 55%;border:1px solid rgba(255,255,255,.16);box-shadow:var(--shadow)}
+    .float{position:absolute;padding:12px 14px;background:rgba(14,28,48,.9);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);font-size:.82rem;color:#d9e4f2}
+    .float strong{display:block;color:var(--brand);font-size:1rem}
+    .f1{left:0;top:20%}.f2{right:0;bottom:17%}
+    section{padding:105px 0;border-top:1px solid var(--line)}
+    .section-kicker{color:var(--brand);font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800;margin-bottom:12px}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:42px}
+    .section-head h2{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.05em}
+    .section-head p{color:var(--muted);max-width:480px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+    .stat{background:var(--panel);padding:25px}
+    .stat b{font:700 2rem "Space Grotesk";display:block}.stat span{color:var(--muted);font-size:.9rem}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .service{padding:26px;background:linear-gradient(145deg,var(--panel),rgba(14,28,48,.62));border:1px solid var(--line);border-radius:var(--radius);transition:.25s}
+    .service:hover,.project:hover{transform:translateY(-5px);border-color:rgba(97,231,194,.28)}
+    .icon{width:45px;height:45px;border-radius:13px;display:grid;place-items:center;background:rgba(97,231,194,.09);color:var(--brand);font-size:1.2rem;margin-bottom:21px}
+    .service h3{font-size:1.18rem;margin-bottom:10px}.service p{color:var(--muted);font-size:.94rem}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project{position:relative;min-height:330px;overflow:hidden;padding:28px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);transition:.25s;display:flex;flex-direction:column;justify-content:flex-end}
+    .project-art{position:absolute;inset:0;height:55%;background:radial-gradient(circle at 70% 30%,rgba(97,231,194,.28),transparent 28%),linear-gradient(135deg,#10283c,#0a1423);border-bottom:1px solid var(--line)}
+    .project-art:after{content:"";position:absolute;inset:24px;border:1px solid rgba(255,255,255,.09);border-radius:15px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.015))}
+    .project:nth-child(2) .project-art{background:radial-gradient(circle at 30% 30%,rgba(110,168,255,.30),transparent 28%),linear-gradient(135deg,#15203b,#0b1526)}
+    .project:nth-child(3) .project-art{background:radial-gradient(circle at 65% 25%,rgba(196,142,255,.24),transparent 30%),linear-gradient(135deg,#24183a,#101426)}
+    .project:nth-child(4) .project-art{background:radial-gradient(circle at 35% 25%,rgba(255,191,102,.22),transparent 30%),linear-gradient(135deg,#322116,#111820)}
+    .project-body{position:relative;z-index:2;padding-top:130px}
+    .project-tag{display:inline-block;color:var(--brand);font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800;margin-bottom:10px}
+    .project h3{font-size:1.55rem;margin-bottom:9px}.project p{color:var(--muted);font-size:.92rem;max-width:500px}
+    .chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.chip{font-size:.72rem;padding:6px 9px;border:1px solid var(--line);border-radius:999px;color:#c7d4e5;background:rgba(255,255,255,.025)}
+    .project-link{position:absolute;right:20px;top:20px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;z-index:3;background:rgba(7,17,31,.7)}
+    .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:55px;align-items:start}
+    .about-card{padding:30px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)}
+    .about-card h3{font-size:1.4rem;margin-bottom:14px}.about-card p{color:var(--muted);margin-bottom:15px}
+    .tool-grid{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.tool{padding:9px 12px;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:10px;color:#d5e0ed;font-size:.84rem}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.step{padding:24px;border-top:2px solid rgba(97,231,194,.35);background:var(--panel);border-radius:0 0 18px 18px}.num{color:var(--brand);font:700 .82rem "Space Grotesk";margin-bottom:25px}.step h3{font-size:1.08rem;margin-bottom:8px}.step p{font-size:.86rem;color:var(--muted)}
+    .contact{background:linear-gradient(145deg,rgba(97,231,194,.10),rgba(110,168,255,.08));border:1px solid var(--line);border-radius:32px;padding:55px;display:flex;justify-content:space-between;align-items:center;gap:30px}
+    .contact h2{font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.05em;max-width:650px}.contact p{color:var(--muted);margin-top:12px}
+    footer{padding:35px 0;color:var(--muted);font-size:.85rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}.socials{display:flex;gap:17px}.socials a:hover{color:var(--brand)}
+    .reveal{opacity:0;transform:translateY(18px);transition:.65s ease}.reveal.show{opacity:1;transform:none}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:70px}.hero-card{order:-1;max-width:390px;margin:auto}.stats{grid-template-columns:repeat(2,1fr)}.services{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}}
+    @media(max-width:700px){.container{width:min(100% - 28px,1160px)}.links{display:none;position:absolute;top:76px;left:0;right:0;padding:16px 20px;background:#081424;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch}.links.open{display:flex}.nav-cta{text-align:center}.menu{display:block}.hero{min-height:auto;padding:65px 0 70px}.hero-copy{font-size:1rem}.float{display:none}section{padding:75px 0}.section-head{display:block}.section-head p{margin-top:14px}.services,.projects{grid-template-columns:1fr}.projects .project{min-height:360px}.process{grid-template-columns:1fr}.contact{padding:34px 25px;display:block}.contact .btn{margin-top:25px}.footer-inner{display:block}.socials{margin-top:12px}.stats{grid-template-columns:1fr 1fr}.stat{padding:20px}.stat b{font-size:1.55rem}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header / Nav -->
-    <header>
-      <nav class="navbar">
-        <div class="logo"><i class="fas fa-code"></i> JohnPaul Edozie</div>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#top">JP<span>.</span></a>
+      <button class="menu" aria-label="Open menu" id="menu">☰</button>
+      <div class="links" id="links">
+        <a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#process">Process</a>
+        <a class="nav-cta" href="mailto:pauledozie004@gmail.com">Let's work</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero container">
+      <div class="reveal">
+        <div class="eyebrow"><span class="dot"></span> Available for selected projects</div>
+        <h1>I build <span class="gradient">digital products</span> people can actually use.</h1>
+        <p class="hero-copy">I'm JohnPaul Edozie — a developer and digital product builder focused on websites, web applications, business systems and practical digital experiences.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#work">Explore my work <span>↗</span></a>
+          <a class="btn btn-secondary" href="mailto:pauledozie004@gmail.com">Start a project</a>
+        </div>
+      </div>
+      <div class="hero-card reveal">
+        <div class="portrait-wrap">
+          <img class="portrait" src="https://raw.githubusercontent.com/jhaypee04/Create-your-first-website/main/me.JPG" alt="JohnPaul Edozie">
+          <div class="float f1"><strong>Product builder</strong>Ideas → working products</div>
+          <div class="float f2"><strong>Based in Nigeria</strong>Working with people anywhere</div>
+        </div>
+      </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home">
-      <div class="hero">
-        <div class="hero-text">
-          <h1>
-            Crafting digital<br>
-            <span class="highlight">experiences.</span>
-          </h1>
-          <p>
-            Full-stack developer & UI enthusiast focused on building clean, accessible, and performant web applications.
-          </p>
-          <div class="btn-group">
-            <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> View work</a>
-            <a href="#contact" class="btn btn-outline"><i class="far fa-comment"></i> Let's talk</a>
-          </div>
-        </div>
-        <div class="hero-image">
-          <div class="avatar-frame">
-            <i>
-              <img class="myPhoto" src="me.JPG" alt="Photo">
-            </i>
-          </div>
+    <section class="container reveal">
+      <div class="stats">
+        <div class="stat"><b>6+</b><span>Years exploring & building</span></div>
+        <div class="stat"><b>20+</b><span>Tools & technologies used</span></div>
+        <div class="stat"><b>4</b><span>Featured projects</span></div>
+        <div class="stat"><b>∞</b><span>Ideas worth building</span></div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="section-kicker">What I build</div><h2>From idea to useful software.</h2></div><p>I care about the complete experience — not just making something look good, but making it work, feel clear and solve a real problem.</p></div>
+        <div class="services">
+          <article class="service reveal"><div class="icon">⌘</div><h3>Websites & Landing Pages</h3><p>Modern, responsive websites for businesses, personal brands, products and campaigns.</p></article>
+          <article class="service reveal"><div class="icon">▦</div><h3>Web Applications</h3><p>Interactive platforms, dashboards, portals and custom workflows built around real user needs.</p></article>
+          <article class="service reveal"><div class="icon">⚙</div><h3>Business Systems</h3><p>Tools for bookings, attendance, payroll, operations, directories and other repetitive business processes.</p></article>
+          <article class="service reveal"><div class="icon">✦</div><h3>UI / UX Implementation</h3><p>Turning product ideas and interface designs into polished, responsive experiences.</p></article>
+          <article class="service reveal"><div class="icon">↯</div><h3>Automation</h3><p>Reducing manual work with practical browser, workflow and data automation solutions.</p></article>
+          <article class="service reveal"><div class="icon">◎</div><h3>Product Prototyping</h3><p>Rapidly turning concepts into testable digital products before investing heavily in them.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
+    <section id="work">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="section-kicker">Selected work</div><h2>Things I've been building.</h2></div><p>A mix of product development, business software and digital design work.</p></div>
+        <div class="projects">
+          <article class="project reveal">
+            <div class="project-art"></div><a class="project-link" href="https://jhaypee04.github.io/WalkReach/" target="_blank" rel="noopener" aria-label="Open WalkReach">↗</a>
+            <div class="project-body"><span class="project-tag">Featured product</span><h3>WalkReach</h3><p>A location-based social discovery platform designed around nearby people, radius-based discovery, messaging, subscriptions and business listings.</p><div class="chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">JavaScript</span><span class="chip">Paystack</span></div></div>
+          </article>
+          <article class="project reveal">
+            <div class="project-art"></div><a class="project-link" href="https://github.com/jhaypee04" target="_blank" rel="noopener" aria-label="View GitHub">↗</a>
+            <div class="project-body"><span class="project-tag">Business software</span><h3>Kudivox</h3><p>A business operations platform being developed around scheduling, bookings, staff availability and practical workflow management.</p><div class="chips"><span class="chip">Web App</span><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Operations</span></div></div>
+          </article>
+          <article class="project reveal">
+            <div class="project-art"></div><a class="project-link" href="mailto:pauledozie004@gmail.com?subject=House%20of%20Elixir%20Stitches%20design" aria-label="Ask about project">↗</a>
+            <div class="project-body"><span class="project-tag">Brand design</span><h3>House of Elixir Stitches</h3><p>A polished fashion-brand visual direction including promotional banner and logo work.</p><div class="chips"><span class="chip">Branding</span><span class="chip">Graphic Design</span><span class="chip">Visual Design</span></div></div>
+          </article>
+          <article class="project reveal">
+            <div class="project-art"></div><a class="project-link" href="https://github.com/jhaypee04" target="_blank" rel="noopener" aria-label="View more projects">↗</a>
+            <div class="project-body"><span class="project-tag">More experiments</span><h3>Tools & Experiments</h3><p>Websites, automation ideas, dashboards, business tools and product experiments built while exploring new problems.</p><div class="chips"><span class="chip">JavaScript</span><span class="chip">HTML/CSS</span><span class="chip">APIs</span><span class="chip">Automation</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="about">
-      <h2 class="section-title">About me</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p>
-            I'm JohnPaul, a creative developer based in Abuja. With over 6 years of experience, I specialize in Figma, React, React Native, Flutter and Dart, Node.js, MongoDB, AWS, and modern CSS. I love turning complex problems into intuitive interfaces.
-          </p>
-          <p>
-            When I'm not coding, you'll find me sketching UI ideas, contributing to open-source, or exploring the Zuma Rock.
-          </p>
-          <div class="skills-badges">
-            <span class="badge"><i class="fab fa-react"></i> React</span>
-            <span class="badge"><i class="fab fa-node-js"></i> Node.js</span>
-            <span class="badge"><i class="fab fa-js"></i> Tailwind CSS</span>
-            <span class="badge"><i class="fas fa-database"></i> MongoDB</span>
-            <span class="badge"><i class="fab fa-figma"></i> Figma</span>
-            <span class="badge"><i class="fas fa-cloud"></i> AWS</span>
-          </div>
+      <div class="container">
+        <div class="section-head reveal"><div><div class="section-kicker">About me</div><h2>Curious enough to build.</h2></div></div>
+        <div class="about-grid">
+          <div class="about-card reveal"><h3>A developer with a product mindset.</h3><p>I enjoy taking a problem that feels messy and turning it into something people can understand and use.</p><p>My work spans frontend interfaces, backend systems, databases, payments, responsive design and experimentation with new technologies.</p><p>I don't want to only write code. I want to understand <strong>what the product is supposed to accomplish</strong> and build toward that.</p></div>
+          <div class="about-card reveal"><h3>Tools I work with</h3><p>The exact stack depends on the problem. These are some of the technologies and tools I've worked with.</p><div class="tool-grid"><span class="tool">HTML</span><span class="tool">CSS</span><span class="tool">JavaScript</span><span class="tool">PHP</span><span class="tool">MySQL</span><span class="tool">React</span><span class="tool">React Native</span><span class="tool">Flutter</span><span class="tool">Dart</span><span class="tool">Node.js</span><span class="tool">MongoDB</span><span class="tool">Figma</span><span class="tool">GitHub</span><span class="tool">Paystack</span><span class="tool">APIs</span><span class="tool">Responsive UI</span></div></div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-      <h2 class="section-title">Selected projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Flow Analytics</h3>
-          <p>Real-time dashboard for tracking user metrics with interactive charts and dark mode.</p>
-          <div class="project-tags">
-            <span class="tag">React</span>
-            <span class="tag">D3.js</span>
-            <span class="tag">Firebase</span>
-          </div>
-          <a href="flow-analytics.html" class="project-link">Case study <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="project-card">
-          <div class="project-icon"><i class="fas fa-store"></i></div>
-          <h3>Luma Market</h3>
-          <p>Full-stack e-commerce platform with cart, Stripe payments, and admin dashboard.</p>
-          <div class="project-tags">
-            <span class="tag">Next.js</span>
-            <span class="tag">Prisma</span>
-            <span class="tag">Postgres</span>
-          </div>
-          <a href="luma-market.html" class="project-link">Live demo <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="project-card">
-          <div class="project-icon"><i class="fas fa-robot"></i></div>
-          <h3>Botanica AI</h3>
-          <p>Plant identification app using TensorFlow.js and a custom trained model.</p>
-          <div class="project-tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">TensorFlow</span>
-            <span class="tag">Vite</span>
-          </div>
-          <a href="botanica-ai.html" class="project-link">Explore<i class="fas fa-arrow-right"></i></a>
+    <section id="process">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="section-kicker">How I work</div><h2>Simple process. Serious execution.</h2></div></div>
+        <div class="process">
+          <div class="step reveal"><div class="num">01 / DISCOVER</div><h3>Understand the problem</h3><p>Clarify the goal, users, constraints and what success should look like.</p></div>
+          <div class="step reveal"><div class="num">02 / DESIGN</div><h3>Shape the experience</h3><p>Map the flows and interface before spending time on unnecessary complexity.</p></div>
+          <div class="step reveal"><div class="num">03 / BUILD</div><h3>Turn it into software</h3><p>Implement the interface, backend logic, database and integrations.</p></div>
+          <div class="step reveal"><div class="num">04 / REFINE</div><h3>Test & improve</h3><p>Fix edge cases, improve responsiveness and polish the details that matter.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
-      <h2 class="section-title">Get in touch</h2>
-      <div class="contact-wrapper">
-        <div class="contact-info">
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <span>pauledozie004@gmail.com</span>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>Abuja, F.C.T.</span>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-calendar-check"></i>
-            <span>Open for freelance</span>
-          </div>
-          <div class="social-links">
-            <a href="https://github.com/jhaypee04" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/johnpaul-edozie-1b7273165/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://x.com/JohnpaulUz26088" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://codepen.io/jaypee004" aria-label="CodePen"><i class="fab fa-codepen"></i></a>
-          </div>
+      <div class="container">
+        <div class="contact reveal">
+          <div><div class="section-kicker">Let's build something</div><h2>Have an idea, a business problem, or a product in mind?</h2><p>Tell me what you're trying to accomplish. We can start from the idea and work toward something real.</p></div>
+          <a class="btn btn-primary" href="mailto:pauledozie004@gmail.com?subject=Project%20Enquiry">Get in touch ↗</a>
         </div>
-        <form class="contact-form" action="mailto:pauledozie004@gmail.com" method="post">
-          <input type="text" placeholder="Your name" required>
-          <input type="email" placeholder="Email address" required>
-          <textarea rows="4" placeholder="Tell me about your project..."></textarea>
-          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send message</button>
-        </form>
       </div>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer>
-      <p>© 2026 JohnPaul Edozie – Designed & built with <i class="fas fa-heart" style="color: #ef4444;"></i> and fresh coffee.</p>
-    </footer>
-  </div>
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 JohnPaul Edozie. Built with curiosity & code.</div>
+      <div class="socials"><a href="https://github.com/jhaypee04" target="_blank" rel="noopener">GitHub</a><a href="https://x.com/JohnpaulUz26088" target="_blank" rel="noopener">X</a><a href="mailto:pauledozie004@gmail.com">Email</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const menu=document.getElementById('menu'),links=document.getElementById('links');
+    menu.addEventListener('click',()=>links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
 </body>
 </html>
