@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="JohnPaul Edozie — developer building useful websites, web applications, business systems and digital products.">
   <meta name="theme-color" content="#07111f">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/images/favicon.svg">
   <title>JohnPaul Edozie — Developer & Digital Product Builder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,6 +88,18 @@
     @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:70px}.hero-card{order:-1;max-width:390px;margin:auto}.stats{grid-template-columns:repeat(2,1fr)}.services{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}}
     @media(max-width:700px){.container{width:min(100% - 28px,1160px)}.links{display:none;position:absolute;top:76px;left:0;right:0;padding:16px 20px;background:#081424;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch}.links.open{display:flex}.nav-cta{text-align:center}.menu{display:block}.hero{min-height:auto;padding:65px 0 70px}.hero-copy{font-size:1rem}.float{display:none}section{padding:75px 0}.section-head{display:block}.section-head p{margin-top:14px}.services,.projects{grid-template-columns:1fr}.projects .project{min-height:360px}.process{grid-template-columns:1fr}.contact{padding:34px 25px;display:block}.contact .btn{margin-top:25px}.footer-inner{display:block}.socials{margin-top:12px}.stats{grid-template-columns:1fr 1fr}.stat{padding:20px}.stat b{font-size:1.55rem}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+  
+    .socials{display:flex;gap:10px;align-items:center}
+    .social-icon{width:40px;height:40px;border:1px solid var(--line);border-radius:12px;display:grid;place-items:center;color:#cbd8e8;background:rgba(255,255,255,.035);transition:.25s ease}
+    .social-icon svg{width:19px;height:19px;fill:currentColor}
+    .social-icon:hover{color:var(--brand);border-color:rgba(97,231,194,.38);background:rgba(97,231,194,.08);transform:translateY(-2px)}
+    .whatsapp-float{position:fixed;right:24px;bottom:24px;z-index:100;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25D366;color:#fff;box-shadow:0 14px 35px rgba(0,0,0,.35),0 0 0 5px rgba(37,211,102,.12);transition:.25s ease}
+    .whatsapp-float:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 18px 40px rgba(0,0,0,.4),0 0 0 7px rgba(37,211,102,.14)}
+    .whatsapp-float svg{width:30px;height:30px;fill:currentColor}
+    .whatsapp-label{position:absolute;right:70px;white-space:nowrap;background:rgba(14,28,48,.96);border:1px solid var(--line);color:var(--text);padding:8px 11px;border-radius:10px;font-size:.78rem;font-weight:700;opacity:0;pointer-events:none;transform:translateX(6px);transition:.2s ease}
+    .whatsapp-float:hover .whatsapp-label{opacity:1;transform:none}
+    @media(max-width:700px){.whatsapp-float{right:18px;bottom:18px;width:54px;height:54px}.whatsapp-float svg{width:27px;height:27px}.whatsapp-label{display:none}.social-icon{width:42px;height:42px}}
+
   </style>
 </head>
 <body>
@@ -96,7 +108,7 @@
       <a class="logo" href="#top">JP<span>.</span></a>
       <button class="menu" aria-label="Open menu" id="menu">☰</button>
       <div class="links" id="links">
-        <a href="#work">Work</a><a href="brand-designs.html">Brand Designs</a><a href="#services">Services</a><a href="#about">About</a><a href="#process">Process</a>
+        <a href="#work">Work</a><a href="projects/brand-designs.html">Brand Designs</a><a href="#services">Services</a><a href="#about">About</a><a href="#process">Process</a>
         <a class="nav-cta" href="mailto:pauledozie004@gmail.com">Let's work</a>
       </div>
     </div>
@@ -152,7 +164,7 @@
       <div class="container">
         <div class="section-head reveal"><div><div class="section-kicker">Selected work</div><h2>Things I've been building.</h2></div><p>A mix of product development, business software and digital design work.</p></div>
         <div class="projects">
-          <a class="project reveal" href="https://walkreach.com.ng" target="_blank" rel="noopener" aria-label="Open WalkReach">
+          <a class="project reveal" href="projects/walkreach.html" target="_blank" rel="noopener" aria-label="Open WalkReach">
             <div class="project-art"><img src="assets/images/walkreachBanner.png" alt="Walkreach banner" ></div><span class="project-link" aria-hidden="true">↗</span>
             <div class="project-body"><h3>WalkReach</h3><p>A location-based social discovery platform designed around nearby people, radius-based discovery, messaging, subscriptions and business listings.</p><div class="chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">JavaScript</span><span class="chip">Paystack</span></div></div>
           </a>
@@ -160,7 +172,7 @@
             <div class="project-art"><img src="assets/images/kudivoxBanner.png" alt="Kudivox banner" ></div><span class="project-link" aria-hidden="true">↗</span>
             <div class="project-body"><span class="project-tag">Business software</span><h3>Kudivox</h3><p>A business operations platform being developed around scheduling, bookings, staff availability and practical workflow management.</p><div class="chips"><span class="chip">Web App</span><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Operations</span></div></div>
           </a>
-          <a class="project reveal" href="brand-designs.html" aria-label="View Brand Designs">
+          <a class="project reveal" href="projects/brand-designs.html" aria-label="View Brand Designs">
             <div class="project-art"><img src="assets/images/BrandBanner.png" alt="Brand banner" ></div><span class="project-link" aria-hidden="true">↗</span>
             <div class="project-body"><span class="project-tag">Brand design</span><h3>Brand Designs</h3><p>Explore my branding work, including House of Elixir Stitches, logo concepts, identity systems and promotional visual design.</p><div class="chips"><span class="chip">Branding</span><span class="chip">Graphic Design</span><span class="chip">Visual Design</span></div></div>
           </a>
@@ -168,17 +180,117 @@
             <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="My Projects banner" ></div><span class="project-link" aria-hidden="true">↗</span>
             <div class="project-body"><span class="project-tag">More experiments</span><h3>My Projects</h3><p>Websites, automation ideas, dashboards, business tools and product experiments built while exploring new problems.</p><div class="chips"><span class="chip">JavaScript</span><span class="chip">HTML/CSS</span><span class="chip">APIs</span><span class="chip">Automation</span></div></div>
           </a>
-          <a class="project reveal flow-project" href="flow-analytics.html" aria-label="Open Flow Analytics">
-            <div class="project-art"><img src="assets/images/FlowAnalyticsBanner.png" alt="Flow Analytics Banner" ></div><span class="project-link" aria-hidden="true">↗</span>
-            <div class="project-body"><span class="project-tag">Analytics product</span><h3>Flow Analytics</h3><p>A real-time analytics dashboard with event tracking, an API pipeline, MySQL storage and live product metrics.</p><div class="chips"><span class="chip">JavaScript</span><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Analytics</span></div></div>
+          <a class="project reveal flow-project" href="projects/toni_nas_collections.html" aria-label="Open Toni Nas Collections">
+            <div class="project-art"><img src="assets/images/ToniNasCollectionsBanner.png" alt="TN Collections Banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">TN Ecommerce Website</span><h3>Toni Nas Collections</h3><p>A Traditional Attire E-commerce platform with cart, Paystack payments Gateway and Admin Portal.</p><div class="chips"><span class="chip">JavaScript</span><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Paystasck</span></div></div>
           </a>
-          <a class="project reveal flow-project" href="botanica-ai.html" aria-label="Open Botanica ai">
-            <div class="project-art"><img src="assets/images/BotanicaAiBanner.png" alt="Botanica Ai Banner" ></div><span class="project-link" aria-hidden="true">↗</span>
-            <div class="project-body"><span class="project-tag">An Plant Identification Product</span><h3>Botanica ai</h3><p>Plant identification app using TensorFlow.js and a custom trained model.</p><div class="chips"><span class="chip">JavaScript</span><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Analytics</span></div></div>
-          </a> 
-          <a class="project reveal flow-project" href="luma-market.html" aria-label="Open Luma Market">
-            <div class="project-art"><img src="assets/images/LumaMarketBanner.png" alt="Luma Market Banner" ></div><span class="project-link" aria-hidden="true">↗</span>
-            <div class="project-body"><span class="project-tag">ECommerce Product</span><h3>Luma Market</h3><p>Full-stack e-commerce platform with cart, Stripe payments, and admin dashboard.</p><div class="chips"><span class="chip">JavaScript</span><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Analytics</span></div></div>
+            <a class="project reveal" href="projects/jmj_properties_premier_property_management_abuja.html" aria-label="Open jmj_properties_premier_property_management_abuja">
+            <div class="project-art"><img src="assets/images/JMJPropertiesAbujaBanner.png" alt="JMJ banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Real Estate Website</span><h3>JMJ Properties</h3><p>A Superior Property Management Services in Abuja</p><div class="chips"><span class="chip">Real Estate Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/casaperdana_real_estate_website.html" aria-label="Open casaperdana_real_estate_website">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="JMJ banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Real Estate Website</span><h3>Casaperdana Real Estate</h3><p>Find Your Dream Luxury Home in Prime Abuja</p><div class="chips"><span class="chip">Real Estate Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/the-residence-stage/index.html" aria-label="Open the residence stage">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="THE RESIDENCE banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Website</span><h3>THE RESIDENCE</h3><p>A more considered way to live.</p><div class="chips"><span class="chip">Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/marlos-tech-research-static/index.html" aria-label="Open marlos-tech-research-static_website">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="marlos-tech-research-static banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Edutech Website</span><h3>Marlos Tech Services</h3><p>Building Africa's Future Through Research, Innovation &amp; Talent Development.</p><div class="chips"><span class="chip">Edutech Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/celtiallo.html" aria-label="Open celtiallo">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="celtiallo banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Real Estate Website</span><h3>Cetiallo</h3><p>Building Timeless Homes &amp; Premium Living Spaces</p><div class="chips"><span class="chip">Real Estate Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/dayspring_hotel_website.html" aria-label="Open dayspring_hotel_website">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open dayspring_hotel_website banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Hotel Website</span><h3>Dayspring Hotel</h3><p>Experience Comfort &amp; Elegance in Central Abuja</p><div class="chips"><span class="chip">Hotel Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/grand_cubana_hotels_website.html" aria-label="Open grand_cubana_hotels">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open grand_cubana_hotels banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Hotel Website</span><h3>Grand Cubana Hotel</h3><p>Where Jabi Lake Meets Refined Elegance.</p><div class="chips"><span class="chip">Hotel Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/justiceandcounsel.html" aria-label="Open justiceandcounsel">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open justiceandcounsel banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Legal Website</span><h3>Justice And Counsel Hotel</h3><p>Law made clearer. Decisions made stronger.</p><div class="chips"><span class="chip">Legal Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="https://legal-loans-learn.lovable.app" aria-label="Open Lovable">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open barrister banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Legal Website</span><h3>Barrister Donald</h3><p>Clear-headed legal counsel, made plainly understandable.</p><div class="chips"><span class="chip">Legal Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/modern_luxury_high_fashion.html" aria-label="Open modern_luxury_high_fashion">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open modern_luxury_high_fashion banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Fashion Website</span><h3>Modern Luxury High Fashion Hotel</h3><p>Elegance in its purest form.</p><div class="chips"><span class="chip">Fashion Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="https://pixel-perfect-showcase-2637.lovable.app" aria-label="Open Lovable">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open Phones and Accessories banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Phones and Accessories Website</span><h3>GIGC Communications</h3><p>The iPhone you want, verified.</p><div class="chips"><span class="chip">Phones and Accessories Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/queentee_fashion_beauty_empire.html" aria-label="Open queentee_fashion_beauty_empire">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open queentee_fashion_beauty_empire banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Beauty and Fashion Website</span><h3>Queentee Fashion Beauty Empire</h3><p>Elegance Redefined. Tailored to Perfection.</p><div class="chips"><span class="chip">Beauty and Fashion Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="https://pixel-perfect-view-5638.lovable.app" aria-label="Open Off The Rail">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open Off The Rail banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Clothing Website</span><h3>Off The Rail</h3><p>Your one stop Clothing store</p><div class="chips"><span class="chip">Clothing Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/saint_anthony_s_nursery_primary_school.html" aria-label="Open saint_anthony_s_nursery_primary_school">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open saint_anthony_s_nursery_primary_school banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">School Website</span><h3>Saint Anthony School</h3><p>Empowering Young Minds for a Brighter Tomorrow</p><div class="chips"><span class="chip">School Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/thelampmedicals.html" aria-label="Open thelampmedicals">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open thelampmedicals banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Medical Website</span><h3>The Lamp Medicals</h3><p>Designed for Precision. Tailored for Distinction.</p><div class="chips"><span class="chip">Medical Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/vogue_co_luxury_fashion_e_commerce.html" aria-label="Open vogue_co_luxury_fashion_e_commerce">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open vogue_co_luxury_fashion_e_commerce banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Fashion Website</span><h3>Vogue Luxury Fashion E_commerce</h3><p>Elegance Redefined.</p><div class="chips"><span class="chip">Fashion Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="https://art-checker.lovable.app/" aria-label="Open Art Checker">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open art-checker banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Fashion Website</span><h3>Art Checker</h3><p>Fall '26 Women.</p><div class="chips"><span class="chip">Fashion Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/RentBridge-Frontend.html" aria-label="Open RentBridge-Frontend">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open RentBridge-Frontend banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Landlord/Tenant Website</span><h3>Rent Bridge.</h3><p>A Platform to ease the pains of property owners</p><div class="chips"><span class="chip">LandLord/Tenant Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/Mira_Dating_App_Prototype.html" aria-label="Open Mira_Dating_App_Prototype">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open Mira_Dating_App_Prototype banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">Dating App Website</span><h3>Mira Dating App Prototype</h3><p>Meet people. Understand the spark.</p><div class="chips"><span class="chip">LandLord/Tenant Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/lacque_lip_tint_gloss_landing_page.html" aria-label="Open lacque_lip_tint_gloss_landing_page">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open lacque_lip_tint_gloss_landing_page banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">E-Commerce Website</span><h3>Lacquer for lips.</h3><p>A sheer red with a glass-shine finish. It feels like balm and lasts through coffee.</p><div class="chips"><span class="chip">E-Commerce Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/merridew-website.html" aria-label="Open merridew-website">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open merridew-website banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">E-Commerce Website</span><h3>Merridew Website</h3><p>Make room for you.</p><div class="chips"><span class="chip">E-Commerce Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/ripe_cold_pressed_mango.html" aria-label="Open ripe_cold_pressed_mango">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open ripe_cold_pressed_mango banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">E-Commerce Website</span><h3>Ripe Cold Pressed Mango</h3><p>The real source of every sip.</p><div class="chips"><span class="chip">E-Commerce Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+             <a class="project reveal" href="projects/merridew_wellness_website.html" aria-label="Open merridew_wellness_website">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open merridew_wellness_website banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">E-Commerce Website</span><h3>Merridew Wellness Website</h3><p>Make room for you.</p><div class="chips"><span class="chip">E-Commerce Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+             <a class="project reveal" href="projects/oto_audio_hardware_homepage.html" aria-label="Open oto_audio_hardware_homepage">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open oto_audio_hardware_homepage banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">E-Commerce Website</span><h3>OTO Audio Hardware Homepage</h3><p>TURN THE WORLD DOWN.</p><div class="chips"><span class="chip">E-Commerce Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/otolondonstore.html" aria-label="Open oto_london_store">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open oto_london_store banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">E-Commerce Website</span><h3>OTO London Store</h3><p>LIE BACK. TUNE IN.</p><div class="chips"><span class="chip">E-Commerce Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/SanmedicPharmacyDemo.html" aria-label="Open SanmedicPharmacyDemo">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open SanmedicPharmacyDemo banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">E-Commerce Pharmacy Website</span><h3>Sanmedic Pharmacy Demo</h3><p>Your health, our priority.</p><div class="chips"><span class="chip">E-Commerce Pharmacy Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
+          </a>
+            <a class="project reveal" href="projects/dispatchflow/index.html" aria-label="Open dispatchflow">
+            <div class="project-art"><img src="assets/images/myProjectsBanner.png" alt="Open dispatchflow banner" ></div><span class="project-link" aria-hidden="true">↗</span>
+            <div class="project-body"><span class="project-tag">E-Commerce Phone Website</span><h3>Dispatch flow</h3><p>Here's what's happening with your smartphone business today.</p><div class="chips"><span class="chip">E-Commerce Phone Website</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span></div></div>
           </a>
         </div>
       </div>
@@ -219,10 +331,18 @@
   <footer>
     <div class="container footer-inner">
       <div>© 2026 JohnPaul Edozie. Built with curiosity & code.</div>
-      <div class="socials"><a href="https://github.com/jhaypee04" target="_blank" rel="noopener">GitHub</a><a href="https://x.com/JohnpaulUz26088" target="_blank" rel="noopener">X</a><a href="mailto:pauledozie004@gmail.com">Email</a></div>
+      <div class="socials" aria-label="Social media links">
+<a class="social-icon" href="https://web.facebook.com/jaypee.edozie" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.6-1.6h1.7V3.8c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.3v3h2.8v8h3.4Z"/></svg></a>
+<a class="social-icon" href="https://x.com/JohnpaulUz26088" target="_blank" rel="noopener noreferrer" aria-label="X" title="X"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.4L2.8 2h6.4l4.4 5.8L18.9 2Zm-1.1 17.9h1.7L8.3 4H6.5l11.3 15.9Z"/></svg></a>
+<a class="social-icon" href="https://www.linkedin.com/in/johnpaul-edozie-1b7273165/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M5.2 3.5A2.2 2.2 0 1 1 .8 3.5a2.2 2.2 0 0 1 4.4 0ZM1 8h4.3v13H1V8Zm7 0h4.1v1.8h.1c.6-1.1 2-2.2 4.2-2.2 4.5 0 5.3 2.8 5.3 6.5V21h-4.3v-6.1c0-1.5 0-3.5-2.1-3.5s-2.4 1.7-2.4 3.4V21H8V8Z"/></svg></a>
+<a class="social-icon" href="https://www.instagram.com/walkreach/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M7.2 2h9.6A5.2 5.2 0 0 1 22 7.2v9.6a5.2 5.2 0 0 1-5.2 5.2H7.2A5.2 5.2 0 0 1 2 16.8V7.2A5.2 5.2 0 0 1 7.2 2Zm-.1 2A3.1 3.1 0 0 0 4 7.1v9.8A3.1 3.1 0 0 0 7.1 20h9.8a3.1 3.1 0 0 0 3.1-3.1V7.1A3.1 3.1 0 0 0 16.9 4H7.1Zm9.9 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg></a>
+</div>
     </div>
   </footer>
 
+  <a class="whatsapp-float" href="https://wa.me/2348141531489" target="_blank" rel="noopener noreferrer" aria-label="Chat with JohnPaul on WhatsApp" title="Chat on WhatsApp">
+<span class="whatsapp-label">Chat on WhatsApp</span>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12.05 0C5.48 0 .14 5.34.14 11.91c0 2.1.55 4.15 1.59 5.96L.03 24l6.28-1.65a11.9 11.9 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.91 0-3.18-1.23-6.16-3.45-8.4ZM12.05 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.73.98 1-3.64-.23-.37a9.86 9.86 0 0 1-1.51-5.27C2.18 6.47 6.61 2.04 12.05 2.04c2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.98c0 5.44-4.43 9.88-9.88 9.88Zm5.42-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.09 4.49.71.31 1.26.5 1.69.64.71.23 1.35.2 1.86.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg></a>
   <script>
     const menu=document.getElementById('menu'),links=document.getElementById('links');
     menu.addEventListener('click',()=>links.classList.toggle('open'));
