@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lacqué — Peptide Lip Tint & Gloss</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        studio: '#F2F1F0',
+                        paper: '#FBFAF9',
+                        ink: '#1C1415',
+                        muted: '#6E6264',
+                        lacquer: '#B0121E',
+                        lacquerHover: '#8C0E18',
+                        hairline: '#E0DCDB',
+                    },
+                    fontFamily: {
+                        serif: ['"Bodoni Moda"', 'serif'],
+                        sans: ['Manrope', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'sharp': '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom font utility classes for specific design system requirements */
+        .font-serif-italic {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            color: #B0121E;
+        }
+        
+        .label-caps {
+            font-family: 'Manrope', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 600;
+        }
+
+        .pill-btn {
+            border-radius: 9999px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 14px rgba(176, 18, 30, 0.25);
+        }
+
+        .pill-btn:hover {
+            transform: translateY(-1.5px);
+            box-shadow: 0 6px 20px rgba(176, 18, 30, 0.35);
+        }
+
+        .pill-btn-secondary {
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+        }
+        .pill-btn-secondary:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Custom scrollbar for drawer */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F2F1F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E0DCDB;
+            border-radius: 2px;
+        }
+
+        /* Swatch active ring animation */
+        .swatch-btn {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .swatch-btn.active {
+            box-shadow: 0 0 0 2px #FBFAF9, 0 0 0 4px #1C1415;
+            transform: scale(1.08);
+        }
+
+        /* Backdrop filter blur fallback */
+        .glass-panel {
+            background: rgba(251, 250, 249, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-studio text-ink font-sans antialiased selection:bg-lacquer selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- TOP ANNOUNCEMENT / HEADER BAR -->
+    <header class="fixed top-0 left-0 right-0 z-40 transition-all duration-300" id="main-header">
+        <div class="glass-panel border-b border-hairline/60 px-4 md:px-8 py-3">
+            <div class="max-w-7xl mx-auto flex items-center justify-between">
+                
+                <!-- BRAND WORDMARK -->
+                <a href="#" class="group flex items-center space-x-1">
+                    <span class="font-serif text-2xl md:text-3xl tracking-tight text-ink font-medium">lacqu<span class="font-serif-italic font-normal">é</span></span>
+                </a>
+
+                <!-- TOP RIGHT CTAS & INSTAGRAM -->
+                <div class="flex items-center space-x-3 md:space-x-6">
+                    <div class="hidden sm:flex flex-col items-end text-right">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="flex items-center space-x-1.5 text-ink hover:text-lacquer transition-colors group">
+                            <svg class="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span class="label-caps text-[10px] tracking-widest">@lacque.beauty</span>
+                        </a>
+                    </div>
+
+                    <a href="#featured_product" class="bg-lacquer hover:bg-lacquerHover text-white px-5 py-2 text-sm font-medium pill-btn flex items-center justify-center shadow-sm">
+                        shop now
+                    </a>
+
+                    <!-- CART BUTTON ICON WITH COUNT -->
+                    <button onclick="toggleCartDrawer()" class="relative p-2 text-ink hover:text-lacquer transition-colors focus:outline-none" aria-label="Open Cart">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                        </svg>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-lacquer text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 scale-75 transition-all">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HERO (92vh height autoplay video backdrop) -->
+    <section id="hero" class="relative w-full h-[92vh] pt-16 overflow-hidden bg-studio flex flex-col justify-between">
+        
+        <!-- VIDEO BACKDROP CONTAINERS (Responsive landscape / portrait stream simulation) -->
+        <div class="absolute inset-0 w-full h-full z-0 overflow-hidden">
+            <!-- Desktop Video / HTML5 media element -->
+            <video id="hero-video-desktop" class="hidden md:block w-full h-full object-cover" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=2000&q=80">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-woman-applying-lip-gloss-41528-large.mp4" type="video/mp4">
+            </video>
+            <!-- Mobile Video / Portrait orientation stream -->
+            <video id="hero-video-mobile" class="block md:hidden w-full h-full object-cover" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1000&q=80">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-applying-lipstick-on-her-lips-41529-large.mp4" type="video/mp4">
+            </video>
+
+            <!-- GRADIENT OVERLAYS FOR LEGIBILITY -->
+            <div class="absolute inset-0 bg-gradient-to-r from-paper/90 via-paper/50 to-transparent w-full md:w-3/5 h-full pointer-events-none"></div>
+            <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-paper/80 to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-paper/90 to-transparent pointer-events-none md:hidden"></div>
+        </div>
+
+        <!-- HERO CONTENT OVERLAY -->
+        <div class="relative z-10 max-w-7xl mx-auto w-full h-full px-6 md:px-12 flex flex-col justify-end pb-12 md:pb-20">
+            <div class="max-w-md space-y-4 text-left">
+                <!-- Eyebrow -->
+                <p class="label-caps text-muted tracking-widest">Peptide Lip Tint · from $12</p>
+
+                <!-- Headline -->
+                <h1 class="font-serif text-5xl md:text-7xl font-normal tracking-tight text-ink leading-[1.05]">
+                    Lacquer <i class="font-serif-italic font-normal">for lips.</i>
+                </h1>
+
+                <!-- Subtext -->
+                <p class="text-muted text-base md:text-lg font-normal leading-relaxed pt-1">
+                    A sheer red with a glass-shine finish. It feels like balm and lasts through coffee.
+                </p>
+
+                <!-- CTAs -->
+                <div class="flex items-center space-x-6 pt-4">
+                    <a href="#featured_product" class="bg-lacquer hover:bg-lacquerHover text-white px-7 py-3 text-sm font-medium pill-btn shadow-md text-center">
+                        Shop the shade
+                    </a>
+                    <a href="#editorial" class="text-ink hover:text-lacquer text-sm font-medium underline underline-offset-8 transition-colors">
+                        See the look
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- HERO EXTRA: PAUSE/PLAY TOGGLE PILL -->
+        <div class="absolute bottom-6 right-6 z-20">
+            <button id="video-toggle-btn" onclick="toggleHeroVideo()" class="glass-panel text-ink hover:text-lacquer px-3.5 py-1.5 text-xs font-semibold rounded-full border border-hairline shadow-sm flex items-center space-x-2 transition-all">
+                <span id="video-icon" class="w-2 h-2 rounded-full bg-lacquer animate-pulse"></span>
+                <span id="video-label" class="label-caps text-[10px]">Pause</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION 2: FEATURED PRODUCT (#featured_product) -->
+    <section id="featured_product" class="bg-paper py-20 md:py-28 border-y border-hairline">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- COLUMN 1: EDITORIAL IMAGE (4:5 Portrait) -->
+                <div class="lg:col-span-6 flex flex-col items-start space-y-3">
+                    <div class="relative w-full aspect-[4/5] bg-studio rounded-sharp overflow-hidden shadow-sm group">
+                        <img id="featured-main-img" 
+                             src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=80" 
+                             alt="Model wearing Nude Petal Peptide Lip Tint" 
+                             class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                        
+                        <!-- Floating Shade Badge -->
+                        <div class="absolute top-4 left-4 glass-panel px-3 py-1 rounded-sharp border border-hairline text-[11px] font-medium tracking-wide">
+                            Bestseller
+                        </div>
+                    </div>
+                    <p id="featured-image-caption" class="text-xs text-muted font-mono tracking-tight pl-1">Shown in Nude Petal.</p>
+                </div>
+
+                <!-- COLUMN 2: PRODUCT DETAILS -->
+                <div class="lg:col-span-6 flex flex-col justify-center space-y-6">
+                    
+                    <!-- Meta Row -->
+                    <div class="label-caps text-muted text-xs tracking-widest border-b border-hairline pb-3">
+                        Tinted lip balm · 10 mL · Squeeze tube
+                    </div>
+
+                    <!-- Title & Description -->
+                    <div class="space-y-2">
+                        <h2 class="font-serif text-3xl md:text-4xl text-ink font-normal">Peptide Lip Tint, four ways</h2>
+                        <p class="text-muted text-sm md:text-base leading-relaxed">
+                            A tinted balm with peptides and hyaluronic acid. Squeeze, swipe, and get soft, glossy colour that cares for your lips while you wear it.
+                        </p>
+                    </div>
+
+                    <!-- SHADE PICKER (Dynamic swatch selector) -->
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center justify-between">
+                            <span class="label-caps text-xs">Shade: <span id="current-shade-name" class="text-ink font-bold">Nude Petal</span></span>
+                            <span id="current-shade-note" class="text-xs text-muted italic">Soft rosy nude</span>
+                        </div>
+                        
+                        <!-- SWATCH BUTTONS -->
+                        <div class="flex items-center space-x-4 pt-1" role="radiogroup" aria-label="Lip Tint Shade Options">
+                            <button onclick="selectShade('cocoa')" id="swatch-cocoa" role="radio" aria-checked="false" aria-label="Cocoa Crush" class="swatch-btn w-9 h-9 rounded-full bg-[#6E2A27] focus:outline-none"></button>
+                            <button onclick="selectShade('nude')" id="swatch-nude" role="radio" aria-checked="true" aria-label="Nude Petal" class="swatch-btn active w-9 h-9 rounded-full bg-[#C88F80] focus:outline-none"></button>
+                            <button onclick="selectShade('cherry')" id="swatch-cherry" role="radio" aria-checked="false" aria-label="Cherry Kiss" class="swatch-btn w-9 h-9 rounded-full bg-[#B5121B] focus:outline-none"></button>
+                            <button onclick="selectShade('frost')" id="swatch-frost" role="radio" aria-checked="false" aria-label="Blue Frost" class="swatch-btn w-9 h-9 rounded-full bg-[#6E93D8] focus:outline-none"></button>
+                        </div>
+                    </div>
+
+                    <!-- PRICE ROW & TUBE THUMBNAIL -->
+                    <div class="flex items-center space-x-4 pt-2">
+                        <div class="w-12 h-12 rounded-sharp bg-studio border border-hairline p-1 flex items-center justify-center overflow-hidden flex-shrink-0">
+                            <img id="shade-thumb" src="https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?auto=format&fit=crop&w=200&q=80" alt="Tube thumbnail" class="h-full object-contain">
+                        </div>
+                        <div class="flex items-baseline space-x-2">
+                            <span id="featured-price" class="font-serif text-3xl font-medium text-ink">$12</span>
+                            <span class="text-xs text-muted label-caps">USD</span>
+                        </div>
+                    </div>
+
+                    <!-- BUY ROW: STEPPER & ADD TO CART -->
+                    <div class="flex items-center space-x-4 pt-2">
+                        <!-- Quantity Stepper -->
+                        <div class="flex items-center border border-hairline rounded-full bg-studio px-3 py-2 space-x-3">
+                            <button onclick="updateQty(-1)" class="text-ink hover:text-lacquer font-bold text-base px-1 focus:outline-none" aria-label="Decrease quantity">−</button>
+                            <span id="qty-display" class="text-sm font-semibold text-ink min-w-[16px] text-center">1</span>
+                            <button onclick="updateQty(1)" class="text-ink hover:text-lacquer font-bold text-base px-1 focus:outline-none" aria-label="Increase quantity">+</button>
+                        </div>
+
+                        <!-- Add to Cart Pill -->
+                        <button onclick="addFeaturedToCart()" class="flex-1 bg-lacquer hover:bg-lacquerHover text-white py-3.5 px-6 rounded-full font-medium text-sm pill-btn text-center shadow-md">
+                            Add to cart
+                        </button>
+                    </div>
+
+                    <!-- BENEFITS GRID -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-hairline text-center md:text-left">
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-xs uppercase tracking-wider text-ink">Peptides</h4>
+                            <p class="text-xs text-muted">smooth & plump</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-xs uppercase tracking-wider text-ink">Hyaluronic</h4>
+                            <p class="text-xs text-muted">locks in moisture</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-xs uppercase tracking-wider text-ink">Comfort</h4>
+                            <p class="text-xs text-muted">non-sticky wear</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ALL PRODUCTS GRID (#all_products) -->
+    <section id="all_products" class="bg-studio py-20 md:py-28">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
+            
+            <!-- SECTION HEADER -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-hairline pb-6 space-y-2 md:space-y-0">
+                <div>
+                    <h2 class="font-serif text-3xl md:text-4xl text-ink">All products</h2>
+                    <p class="label-caps text-muted text-xs tracking-widest mt-1">Peptide Lip Tint · 10 mL</p>
+                </div>
+                <span class="text-xs text-muted font-mono">4 Shades Available</span>
+            </div>
+
+            <!-- PRODUCT GRID (4 columns desktop, 2 columns mobile) -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                
+                <!-- CARD 1: Cocoa Crush -->
+                <div class="group bg-paper p-4 rounded-sharp border border-hairline flex flex-col justify-between transition-all hover:shadow-md">
+                    <div class="space-y-3">
+                        <div class="relative aspect-square bg-studio rounded-sharp overflow-hidden p-4 flex items-center justify-center">
+                            <!-- Visual representation / image -->
+                            <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80" alt="Cocoa Crush" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-2 left-2 w-4 h-4 rounded-full border border-white shadow-xs" style="background-color: #6E2A27;"></div>
+                        </div>
+                        <div class="flex items-baseline justify-between pt-1">
+                            <h3 class="font-serif text-lg font-medium text-ink">Cocoa Crush</h3>
+                            <span class="font-serif text-base font-normal text-ink">$12</span>
+                        </div>
+                        <p class="text-xs text-muted line-clamp-1">Deep chocolate brown</p>
+                    </div>
+                    <button onclick="addToCartDirect('Cocoa Crush', 12)" class="mt-4 w-full py-2.5 px-4 rounded-full border border-ink text-ink hover:bg-ink hover:text-white text-xs font-semibold pill-btn-secondary transition-all">
+                        Add to cart
+                    </button>
+                </div>
+
+                <!-- CARD 2: Nude Petal -->
+                <div class="group bg-paper p-4 rounded-sharp border border-hairline flex flex-col justify-between transition-all hover:shadow-md">
+                    <div class="space-y-3">
+                        <div class="relative aspect-square bg-studio rounded-sharp overflow-hidden p-4 flex items-center justify-center">
+                            <img src="https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?auto=format&fit=crop&w=600&q=80" alt="Nude Petal" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-2 left-2 w-4 h-4 rounded-full border border-white shadow-xs" style="background-color: #C88F80;"></div>
+                        </div>
+                        <div class="flex items-baseline justify-between pt-1">
+                            <h3 class="font-serif text-lg font-medium text-ink">Nude Petal</h3>
+                            <span class="font-serif text-base font-normal text-ink">$12</span>
+                        </div>
+                        <p class="text-xs text-muted line-clamp-1">Soft rosy nude</p>
+                    </div>
+                    <button onclick="addToCartDirect('Nude Petal', 12)" class="mt-4 w-full py-2.5 px-4 rounded-full border border-ink text-ink hover:bg-ink hover:text-white text-xs font-semibold pill-btn-secondary transition-all">
+                        Add to cart
+                    </button>
+                </div>
+
+                <!-- CARD 3: Cherry Kiss -->
+                <div class="group bg-paper p-4 rounded-sharp border border-hairline flex flex-col justify-between transition-all hover:shadow-md">
+                    <div class="space-y-3">
+                        <div class="relative aspect-square bg-studio rounded-sharp overflow-hidden p-4 flex items-center justify-center">
+                            <img src="https://images.unsplash.com/photo-1599751449128-ec728823d727?auto=format&fit=crop&w=600&q=80" alt="Cherry Kiss" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-2 left-2 w-4 h-4 rounded-full border border-white shadow-xs" style="background-color: #B5121B;"></div>
+                        </div>
+                        <div class="flex items-baseline justify-between pt-1">
+                            <h3 class="font-serif text-lg font-medium text-ink">Cherry Kiss</h3>
+                            <span class="font-serif text-base font-normal text-ink">$12</span>
+                        </div>
+                        <p class="text-xs text-muted line-clamp-1">Classic glossy red</p>
+                    </div>
+                    <button onclick="addToCartDirect('Cherry Kiss', 12)" class="mt-4 w-full py-2.5 px-4 rounded-full border border-ink text-ink hover:bg-ink hover:text-white text-xs font-semibold pill-btn-secondary transition-all">
+                        Add to cart
+                    </button>
+                </div>
+
+                <!-- CARD 4: Blue Frost (Limited Edition) -->
+                <div class="group bg-paper p-4 rounded-sharp border border-hairline flex flex-col justify-between transition-all hover:shadow-md">
+                    <div class="space-y-3">
+                        <div class="relative aspect-square bg-studio rounded-sharp overflow-hidden p-4 flex items-center justify-center">
+                            <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=600&q=80" alt="Blue Frost" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-2 left-2 w-4 h-4 rounded-full border border-white shadow-xs" style="background-color: #6E93D8;"></div>
+                            <span class="absolute top-2 right-2 bg-ink text-white text-[9px] label-caps px-2 py-0.5 rounded-sharp">Limited</span>
+                        </div>
+                        <div class="flex items-baseline justify-between pt-1">
+                            <h3 class="font-serif text-lg font-medium text-ink">Blue Frost</h3>
+                            <span class="font-serif text-base font-normal text-ink">$14</span>
+                        </div>
+                        <p class="text-xs text-muted line-clamp-1">Icy shimmer top coat · Limited edition</p>
+                    </div>
+                    <button onclick="addToCartDirect('Blue Frost', 14)" class="mt-4 w-full py-2.5 px-4 rounded-full border border-ink text-ink hover:bg-ink hover:text-white text-xs font-semibold pill-btn-secondary transition-all">
+                        Add to cart
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: EDITORIAL CAMPAIGN BANNER (#editorial) -->
+    <section id="editorial" class="relative w-full bg-paper border-t border-hairline overflow-hidden">
+        <div class="relative w-full h-[60vh] md:h-[75vh]">
+            <!-- Full width landscape campaign visual -->
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=2000&q=80" 
+                 alt="Model with hair curlers applying gloss" 
+                 class="w-full h-full object-cover object-center">
+            
+            <!-- Desktop Overlay Text -->
+            <div class="hidden md:flex absolute inset-0 bg-gradient-to-r from-paper/85 via-paper/40 to-transparent items-center px-12 lg:px-24">
+                <div class="max-w-xl">
+                    <h2 class="font-serif text-6xl lg:text-7xl font-normal text-ink leading-tight">
+                        Curlers in.<br><i class="font-serif-italic font-normal">Gloss on.</i>
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Stacked Copy -->
+        <div class="block md:hidden bg-paper px-6 py-10 border-b border-hairline text-center">
+            <h2 class="font-serif text-4xl font-normal text-ink">
+                Curlers in. <i class="font-serif-italic font-normal">Gloss on.</i>
+            </h2>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FOOTER -->
+    <footer class="bg-ink text-white py-16 md:py-24 px-6 md:px-12 border-t border-hairline/20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end space-y-12 md:space-y-0">
+            
+            <!-- Left Branding & Links -->
+            <div class="space-y-8">
+                <a href="#" class="inline-block">
+                    <span class="font-serif text-4xl text-white font-medium">lacqu<span class="font-serif-italic font-normal text-lacquer">é</span></span>
+                </a>
+
+                <nav class="flex flex-wrap gap-6 text-xs label-caps text-hairline">
+                    <a href="#featured_product" class="hover:text-white transition-colors">Shop</a>
+                    <a href="#all_products" class="hover:text-white transition-colors">All products</a>
+                    <a href="#editorial" class="hover:text-white transition-colors">The look</a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener" class="hover:text-white transition-colors">Instagram</a>
+                </nav>
+            </div>
+
+            <!-- Right Copyright & Disclaimer -->
+            <div class="text-left md:text-right space-y-2">
+                <p class="text-xs text-muted font-sans">High-gloss peptide lip care for effortless beauty.</p>
+                <p class="text-xs text-hairline/60 font-mono">© 2026 Lacqué. All rights reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- INTERACTION ASSISTS: TOAST NOTIFICATION BAR -->
+    <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-ink text-white px-6 py-3 rounded-full shadow-2xl flex items-center space-x-3 opacity-0 pointer-events-none transform translate-y-4 transition-all duration-300 border border-hairline/20">
+        <span class="w-2 h-2 rounded-full bg-lacquer"></span>
+        <span id="toast-message" class="text-xs font-medium tracking-wide">Added 1 × Nude Petal Lip Tint to your cart</span>
+    </div>
+
+    <!-- CART SLIDING DRAWER -->
+    <div id="cart-drawer-backdrop" onclick="toggleCartDrawer()" class="fixed inset-0 bg-ink/40 z-50 opacity-0 pointer-events-none transition-opacity duration-300 glass-panel"></div>
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-paper z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between border-l border-hairline">
+        
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-hairline flex items-center justify-between">
+            <h3 class="font-serif text-2xl text-ink">Your Cart</h3>
+            <button onclick="toggleCartDrawer()" class="text-ink hover:text-lacquer p-2" aria-label="Close cart">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Drawer Body Items -->
+        <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-6">
+            <div id="empty-cart-msg" class="text-center py-12 text-muted text-sm">
+                Your cart is currently empty.
+            </div>
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="p-6 border-t border-hairline bg-studio space-y-4">
+            <div class="flex items-center justify-between text-sm font-semibold text-ink">
+                <span>Subtotal</span>
+                <span id="cart-subtotal" class="font-serif text-lg">$0.00</span>
+            </div>
+            <p class="text-[11px] text-muted">Taxes and shipping calculated at checkout.</p>
+            <button onclick="alert('Proceeding to checkout preview!')" class="w-full bg-lacquer hover:bg-lacquerHover text-white py-3.5 rounded-full font-medium text-sm pill-btn text-center">
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // SHADE DATA DICTIONARY
+        const shades = {
+            cocoa: {
+                name: "Cocoa Crush",
+                note: "Deep chocolate brown",
+                price: 12,
+                image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=1000&q=80",
+                caption: "Shown in Cocoa Crush."
+            },
+            nude: {
+                name: "Nude Petal",
+                note: "Soft rosy nude",
+                price: 12,
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1000&q=80",
+                caption: "Shown in Nude Petal."
+            },
+            cherry: {
+                name: "Cherry Kiss",
+                note: "Classic glossy red",
+                price: 12,
+                image: "https://images.unsplash.com/photo-1599751449128-ec728823d727?auto=format&fit=crop&w=1000&q=80",
+                caption: "Shown in Cherry Kiss."
+            },
+            frost: {
+                name: "Blue Frost",
+                note: "Icy shimmer top coat · Limited edition",
+                price: 14,
+                image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=1000&q=80",
+                caption: "Shown in Blue Frost."
+            }
+        };
+
+        // GLOBAL STATE
+        let currentShadeKey = 'nude';
+        let currentQty = 1;
+        let cart = [];
+        let isVideoPlaying = true;
+
+        // SELECT SHADE FUNCTION
+        function selectShade(shadeKey) {
+            if (!shades[shadeKey]) return;
+            currentShadeKey = shadeKey;
+            const data = shades[shadeKey];
+
+            // Update DOM text
+            document.getElementById('current-shade-name').textContent = data.name;
+            document.getElementById('current-shade-note').textContent = data.note;
+            document.getElementById('featured-price').textContent = `$${data.price}`;
+            document.getElementById('featured-image-caption').textContent = data.caption;
+            
+            // Dynamic image swap
+            const mainImg = document.getElementById('featured-main-img');
+            mainImg.src = data.image;
+
+            // Swatch UI active state toggle
+            const swatchKeys = ['cocoa', 'nude', 'cherry', 'frost'];
+            swatchKeys.forEach(key => {
+                const btn = document.getElementById(`swatch-${key}`);
+                if (key === shadeKey) {
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-checked', 'true');
+                } else {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-checked', 'false');
+                }
+            });
+        }
+
+        // QUANTITY STEPPER
+        function updateQty(delta) {
+            currentQty = Math.max(1, currentQty + delta);
+            document.getElementById('qty-display').textContent = currentQty;
+        }
+
+        // ADD FEATURED PRODUCT TO CART
+        function addFeaturedToCart() {
+            const data = shades[currentShadeKey];
+            addItemToCart(data.name, data.price, currentQty);
+            showToast(`Added ${currentQty} × ${data.name} Lip Tint to your cart`);
+        }
+
+        // DIRECT ADD TO CART FROM GRID
+        function addToCartDirect(name, price) {
+            addItemToCart(name, price, 1);
+            showToast(`Added 1 × ${name} Lip Tint to your cart`);
+        }
+
+        // CART LOGIC
+        function addItemToCart(name, price, qty) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ name, price, qty });
+            }
+            renderCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const badge = document.getElementById('cart-badge');
+            const subtotalEl = document.getElementById('cart-subtotal');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            // Badge counter update
+            if (totalItems > 0) {
+                badge.textContent = totalItems;
+                badge.classList.remove('opacity-0', 'scale-75');
+                badge.classList.add('opacity-100', 'scale-100');
+            } else {
+                badge.classList.add('opacity-0', 'scale-75');
+                badge.classList.remove('opacity-100', 'scale-100');
+            }
+
+            subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                container.innerHTML = `<div id="empty-cart-msg" class="text-center py-12 text-muted text-sm">Your cart is currently empty.</div>`;
+                return;
+            }
+
+            container.innerHTML = cart.map((item, index) => `
+                <div class="flex items-center justify-between pb-4 border-b border-hairline">
+                    <div class="space-y-1">
+                        <h4 class="font-serif font-medium text-ink">${item.name}</h4>
+                        <p class="text-xs text-muted">Peptide Lip Tint · $${item.price} each</p>
+                        <span class="text-xs font-semibold text-ink">Qty: ${item.qty}</span>
+                    </div>
+                    <div class="text-right space-y-2">
+                        <p class="font-serif text-sm font-semibold text-ink">$${(item.price * item.qty).toFixed(2)}</p>
+                        <button onclick="removeFromCart(${index})" class="text-xs text-lacquer hover:underline">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // TOAST NOTIFICATION
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            const msgEl = document.getElementById('toast-message');
+            msgEl.textContent = message;
+
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 3000);
+        }
+
+        // TOGGLE CART DRAWER
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const backdrop = document.getElementById('cart-drawer-backdrop');
+
+            const isOpen = !drawer.classList.contains('translate-x-full');
+
+            if (isOpen) {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // VIDEO PAUSE/PLAY TOGGLE
+        function toggleHeroVideo() {
+            const videoDesktop = document.getElementById('hero-video-desktop');
+            const videoMobile = document.getElementById('hero-video-mobile');
+            const label = document.getElementById('video-label');
+            const icon = document.getElementById('video-icon');
+
+            if (isVideoPlaying) {
+                videoDesktop.pause();
+                videoMobile.pause();
+                label.textContent = "Play";
+                icon.classList.remove('animate-pulse', 'bg-lacquer');
+                icon.classList.add('bg-muted');
+                isVideoPlaying = false;
+            } else {
+                videoDesktop.play();
+                videoMobile.play();
+                label.textContent = "Pause";
+                icon.classList.add('animate-pulse', 'bg-lacquer');
+                icon.classList.remove('bg-muted');
+                isVideoPlaying = true;
+            }
+        }
+
+        // PREFERS REDUCED MOTION ACCESSIBILITY CHECK
+        window.addEventListener('DOMContentLoaded', () => {
+            const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (mediaQuery.matches) {
+                toggleHeroVideo();
+            }
+        });
+    </script>
+</body>
+</html>

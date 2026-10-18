@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f8fd">
+  <meta name="description" content="Discover people, explore beyond your usual surroundings, and discover businesses with WalkReach. Join the early-access community.">
+  <title>WalkReach — Your next connection is out there</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDhhOGZmIi8+PHN0b3Agb2Zmc2V0PSIuNTUiIHN0b3AtY29sb3I9IiMwODc4ZjkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMDIxM2QiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjQgM0MxMyAzIDUgMTEgNSAyMmMwIDExIDE5IDIzIDE5IDIzczE5LTEyIDE5LTIzQzQzIDExIDM1IDMgMjQgM1oiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjE4IiByPSI1LjEiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMTQuNSAzMmMuOC01IDQuNC04IDkuNS04czguNyAzIDkuNSA4IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=">
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDhhOGZmIi8+PHN0b3Agb2Zmc2V0PSIuNTUiIHN0b3AtY29sb3I9IiMwODc4ZjkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMDIxM2QiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjQgM0MxMyAzIDUgMTEgNSAyMmMwIDExIDE5IDIzIDE5IDIzczE5LTEyIDE5LTIzQzQzIDExIDM1IDMgMjQgM1oiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjE4IiByPSI1LjEiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMTQuNSAzMmMuOC01IDQuNC04IDkuNS04czguNyAzIDkuNSA4IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: {
+          ink: '#17223a', moss: '#0878f9', lime: '#dcecff',
+          paper: '#f4f8fd', muted: '#52617a', line: '#dbe5f1'
+        },
+        fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+        boxShadow: { soft: '0 18px 60px rgba(21,36,31,.08)' }
+      }}
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --paper:#f4f8fd; --ink:#17223a; --muted:#52617a; --line:#dbe5f1; --card:#fff; --moss:#0878f9; --lime:#dcecff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:90px; }
+    body { font-family:'DM Sans',sans-serif; background:var(--paper); color:var(--ink); }
+    h1,h2,h3,h4,.display { font-family:'Manrope',sans-serif; letter-spacing:-.045em; }
+    .dark body { background:#0c1525; color:#edf4ff; }
+    .dark .surface { background:#111e31!important; border-color:#26364d!important; }
+    .dark .soft-surface { background:#111e31!important; }
+    .dark .muted-text { color:#b5c2d7!important; }
+    .dark .line-color { border-color:#26364d!important; }
+    .dark .nav-glass { background:rgba(16,26,22,.9)!important; border-color:#26364d!important; }
+    .dark .text-ink { color:#edf4ff!important; }
+    .dark .bg-paper { background:#0c1525!important; }
+    .dark .bg-white { background:#111e31!important; }
+    .dark .text-muted { color:#b5c2d7!important; }
+    .dark .border-line { border-color:#26364d!important; }
+    .dark input,.dark select,.dark textarea { background:#0c1525!important;color:#edf4ff!important;border-color:#26364d!important; }
+    .nav-glass { background:rgba(246,247,242,.88); backdrop-filter:blur(18px); }
+    .eyebrow { font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; font-weight:700; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; border-radius:999px; padding:.9rem 1.25rem; font-weight:700; transition:transform .2s,background .2s,box-shadow .2s; cursor:pointer; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { background:var(--ink); color:#fff; box-shadow:0 8px 22px rgba(21,36,31,.13); }
+    .btn-primary:hover { background:var(--moss); }
+    .btn-lime { background:var(--lime); color:var(--ink); }
+    .btn-outline { border:1px solid #dbe5f1; background:transparent; }
+    .pill { display:inline-flex; align-items:center; gap:.4rem; padding:.42rem .7rem; border-radius:999px; font-size:.75rem; font-weight:700; }
+    .surface { background:var(--card); border:1px solid var(--line); }
+    .soft-surface { background:#e8f2ff; }
+    .muted-text { color:var(--muted); }
+    .section-pad { padding:6.5rem 0; }
+    .hero-grid { background-image:radial-gradient(#dbe5f1 1px,transparent 1px); background-size:19px 19px; }
+    .hero-orb { background:radial-gradient(circle at 35% 30%,#e8f2ff 0,#dcecff 28%,#5ba8ff 58%,#0878f9 100%); }
+    .floaty { animation:floaty 6s ease-in-out infinite; }
+    .floaty-delay { animation:floaty 7s ease-in-out -2s infinite; }
+    @keyframes floaty { 0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)} }
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity .65s ease,transform .65s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .profile-avatar { display:grid; place-items:center; flex-shrink:0; border-radius:50%; font-weight:800; color:#fff; }
+    .avatar-a { background:linear-gradient(135deg,#d58b68,#6b3e32); }
+    .avatar-b { background:linear-gradient(135deg,#8ba7b8,#344d63); }
+    .avatar-c { background:linear-gradient(135deg,#c1a5d9,#674d7f); }
+    .avatar-d { background:linear-gradient(135deg,#e7bd66,#8d5b2e); }
+    .avatar-e { background:linear-gradient(135deg,#8dbb9c,#0878f9); }
+    .avatar-f { background:linear-gradient(135deg,#dca2a9,#8a4e5c); }
+    .tag { border:1px solid #dce4d8; border-radius:999px; padding:.3rem .58rem; font-size:.7rem; color:#52645a; background:#f8faf6; }
+    .dark .tag { background:#203128;color:#c1d0c6;border-color:#34463b; }
+    .locked { opacity:.82; }
+    .locked::after { content:'🔒'; font-size:.85rem; margin-left:.35rem; }
+    .step-dot { width:2rem;height:2rem;display:grid;place-items:center;border-radius:50%;background:#e8f2ff;color:#47624f;font-size:.8rem;font-weight:800; }
+    .step-dot.active { background:var(--lime);color:var(--ink); }
+    .modal-backdrop { background:rgba(8,18,13,.68); backdrop-filter:blur(7px); }
+    .modal-panel { max-height:calc(100vh - 2rem); overflow:auto; }
+    .field { width:100%; border:1px solid #dce3da; border-radius:14px; padding:.82rem .95rem; outline:none; background:#fff; color:#17223a; }
+    .field:focus { border-color:#60866f; box-shadow:0 0 0 3px rgba(96,134,111,.15); }
+    .field-error { border-color:#dc6565!important; }
+    .check-chip input { position:absolute;opacity:0;pointer-events:none; }
+    .check-chip span { display:inline-flex; padding:.55rem .78rem; border:1px solid #dce3da; border-radius:999px; cursor:pointer; font-size:.83rem; }
+    .check-chip input:checked + span { background:#dcecff;border-color:#87baff;color:#243a27;font-weight:700; }
+    .toast { position:fixed; left:50%; bottom:1.25rem; transform:translate(-50%,20px); opacity:0; pointer-events:none; z-index:100; transition:all .25s; max-width:calc(100vw - 2rem); }
+    .toast.show { opacity:1;transform:translate(-50%,0); }
+    .range-ring { border:1px solid rgba(45,96,75,.25); border-radius:50%; position:absolute; }
+    .range-ring.one { width:185px;height:185px; }
+    .range-ring.two { width:265px;height:265px; }
+    .range-ring.three { width:345px;height:345px; }
+    .demo-map { background-color:#eaf0e5; background-image:linear-gradient(32deg,transparent 46%,rgba(255,255,255,.85) 47%,rgba(255,255,255,.85) 50%,transparent 51%),linear-gradient(118deg,transparent 40%,rgba(255,255,255,.9) 41%,rgba(255,255,255,.9) 44%,transparent 45%),linear-gradient(90deg,rgba(172,194,168,.22) 1px,transparent 1px),linear-gradient(rgba(172,194,168,.22) 1px,transparent 1px);background-size:100% 100%,100% 100%,34px 34px,34px 34px; }
+    .dark .demo-map { background-color:#24372b; }
+    .demo-map-pin { width:38px;height:38px;border:3px solid #fff;box-shadow:0 4px 14px #1a302455; }
+    .pricing-card { transition:transform .25s,box-shadow .25s; }
+    .pricing-card:hover { transform:translateY(-5px); box-shadow:0 18px 45px rgba(21,36,31,.1); }
+    .faq-item[open] summary svg { transform:rotate(45deg); }
+    summary { list-style:none;cursor:pointer; } summary::-webkit-details-marker{display:none}
+    @media(max-width:767px) { .section-pad{padding:4.5rem 0}.range-ring.one{width:125px;height:125px}.range-ring.two{width:185px;height:185px}.range-ring.three{width:245px;height:245px} }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none} }
+  </style>
+</head>
+<body class="antialiased">
+  <header class="nav-glass fixed top-0 inset-x-0 z-40 border-b border-line">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3.5" aria-label="Main navigation">
+      <a href="#home" class="flex items-center gap-2.5" aria-label="WalkReach home">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDhhOGZmIi8+PHN0b3Agb2Zmc2V0PSIuNTUiIHN0b3AtY29sb3I9IiMwODc4ZjkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMDIxM2QiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjQgM0MxMyAzIDUgMTEgNSAyMmMwIDExIDE5IDIzIDE5IDIzczE5LTEyIDE5LTIzQzQzIDExIDM1IDMgMjQgM1oiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjE4IiByPSI1LjEiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMTQuNSAzMmMuOC01IDQuNC04IDkuNS04czguNyAzIDkuNSA4IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=" alt="WalkReach logo" class="h-10 w-10 object-contain" width="40" height="40">
+        <span class="text-xl font-extrabold tracking-tight">walkreach<span class="text-moss">.</span></span>
+      </a>
+      <div class="hidden lg:flex items-center gap-7 text-sm font-semibold muted-text">
+        <a class="hover:text-ink" href="#how">How it works</a>
+        <a class="hover:text-ink" href="#discover">Discover</a>
+        <a class="hover:text-ink" href="#travel">Travel Mode</a>
+        <a class="hover:text-ink" href="#businesses">Businesses</a>
+        <a class="hover:text-ink" href="#pricing">Pricing</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" class="grid h-10 w-10 place-items-center rounded-full border border-line hover:bg-white" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg id="themeIcon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+        </button>
+        <button class="hidden sm:inline-flex btn btn-outline !py-2.5 !px-4 text-sm" data-open-signin>Sign in</button>
+        <button class="btn btn-primary !py-2.5 !px-4 text-sm" data-open-onboard>Join WalkReach <span aria-hidden="true">↗</span></button>
+        <button id="mobileMenuButton" class="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-line" aria-label="Open navigation" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-line px-5 py-4 surface">
+      <div class="mx-auto grid max-w-7xl grid-cols-2 gap-3 text-sm font-semibold">
+        <a href="#how" class="mobile-nav-link py-2">How it works</a><a href="#discover" class="mobile-nav-link py-2">Discover</a>
+        <a href="#features" class="mobile-nav-link py-2">Features</a><a href="#travel" class="mobile-nav-link py-2">Travel Mode</a>
+        <a href="#businesses" class="mobile-nav-link py-2">Business Directory</a><a href="#pricing" class="mobile-nav-link py-2">Pricing</a>
+        <button class="mobile-nav-link py-2 text-left" data-open-signin>Sign in</button><button class="mobile-nav-link py-2 text-left" data-open-onboard>Join WalkReach ↗</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="relative overflow-hidden pt-28 sm:pt-36 pb-16 sm:pb-24">
+      <div class="absolute inset-0 hero-grid opacity-60 pointer-events-none"></div>
+      <div class="absolute -right-40 top-24 h-96 w-96 rounded-full bg-lime/20 blur-3xl pointer-events-none"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.02fr_.98fr] lg:px-8">
+        <div class="reveal">
+          <div class="pill surface mb-6"><span class="h-2 w-2 rounded-full bg-moss"></span> A new way to find your people</div>
+          <h1 class="display max-w-3xl text-5xl font-extrabold leading-[1.04] sm:text-6xl lg:text-[4.5rem]">Your next connection could be <span class="relative inline-block">closer<span class="absolute -bottom-1 left-0 h-3 w-full -rotate-2 rounded-full bg-lime/80 -z-10"></span></span> than you think.</h1>
+          <p class="muted-text mt-6 max-w-xl text-lg leading-8">Discover people around you, connect across distances, explore new places with Travel Mode, and find businesses worth knowing.</p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <button class="btn btn-primary" data-open-onboard>Join the early-access list <span aria-hidden="true">↗</span></button>
+            <a class="btn btn-outline" href="#discover"><span class="grid h-6 w-6 place-items-center rounded-full bg-lime text-ink">▶</span> Explore the demo</a>
+          </div>
+          <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm muted-text">
+            <span class="flex items-center gap-2"><span class="text-moss">✓</span> Choose your discovery radius</span>
+            <span class="flex items-center gap-2"><span class="text-moss">✓</span> Connect on your terms</span>
+          </div>
+          <p class="mt-6 text-xs muted-text">You're viewing a product demo. Profiles and activity shown on this page are illustrative.</p>
+        </div>
+        <div class="relative mx-auto w-full max-w-[580px] reveal">
+          <div class="absolute -left-2 top-16 z-20 hidden rounded-2xl surface p-3 shadow-soft sm:block floaty">
+            <div class="flex items-center gap-3"><div class="profile-avatar avatar-c h-10 w-10">AM</div><div><p class="text-sm font-bold">Shared interests</p><p class="text-xs muted-text">Music · Design · Travel</p></div><span class="ml-1 text-moss">✦</span></div>
+          </div>
+          <div class="absolute -right-1 bottom-20 z-20 hidden rounded-2xl bg-ink p-4 text-white shadow-soft sm:block floaty-delay">
+            <p class="text-xs text-white/60">Your discovery range</p><p class="mt-1 text-2xl font-extrabold">25 km <span class="text-lime text-sm">↗</span></p><p class="text-xs text-white/60">Start close. Go further.</p>
+          </div>
+          <div class="relative mx-auto aspect-[.94] max-w-[490px] overflow-hidden rounded-[2.5rem] border border-white/70 bg-[#eaf0e4] p-5 shadow-[0_30px_90px_rgba(45,96,75,.16)] sm:p-7">
+            <div class="absolute inset-0 opacity-60" style="background-image:radial-gradient(#b7c9b1 1px,transparent 1px);background-size:17px 17px"></div>
+            <div class="relative flex items-center justify-between">
+              <div><p class="text-xs font-bold uppercase tracking-[.16em] text-moss">WalkReach discovery</p><p class="mt-1 text-xl font-extrabold text-ink">People around you</p></div>
+              <span class="rounded-full bg-white/80 px-3 py-1.5 text-xs font-bold text-moss">DEMO</span>
+            </div>
+            <div class="relative mt-5 flex h-[270px] items-center justify-center sm:h-[310px]">
+              <div class="range-ring three"></div><div class="range-ring two"></div><div class="range-ring one"></div>
+              <div class="relative z-10 grid h-14 w-14 place-items-center rounded-2xl bg-ink text-lime shadow-xl">
+                <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              </div>
+              <div class="absolute left-[16%] top-[21%] z-10 profile-avatar avatar-a h-12 w-12 border-4 border-white shadow-lg">ZA</div>
+              <div class="absolute right-[13%] top-[30%] z-10 profile-avatar avatar-b h-12 w-12 border-4 border-white shadow-lg">TO</div>
+              <div class="absolute bottom-[15%] left-[22%] z-10 profile-avatar avatar-e h-12 w-12 border-4 border-white shadow-lg">MI</div>
+              <div class="absolute bottom-[19%] right-[20%] z-10 profile-avatar avatar-f h-12 w-12 border-4 border-white shadow-lg">NE</div>
+              <div class="absolute left-[7%] top-[47%] rounded-xl bg-white/90 px-3 py-2 text-xs font-bold text-ink shadow">Shared interests</div>
+              <div class="absolute right-[4%] bottom-[43%] rounded-xl bg-white/90 px-3 py-2 text-xs font-bold text-ink shadow">Your radius</div>
+            </div>
+            <div class="relative grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white p-3.5 shadow-sm"><div class="flex items-center gap-2"><div class="profile-avatar avatar-a h-9 w-9 text-xs">ZA</div><div><p class="text-sm font-extrabold text-ink">Zara A.</p><p class="text-xs text-muted">Design · Music</p></div></div></div>
+              <div class="rounded-2xl bg-white p-3.5 shadow-sm"><div class="flex items-center gap-2"><div class="profile-avatar avatar-b h-9 w-9 text-xs">TO</div><div><p class="text-sm font-extrabold text-ink">Tobi O.</p><p class="text-xs text-muted">Tech · Travel</p></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="border-y border-line bg-white/60 py-12">
+      <div class="mx-auto grid max-w-7xl gap-7 px-4 sm:px-6 md:grid-cols-3 lg:px-8">
+        <div class="flex gap-4"><span class="step-dot">01</span><div><h3 class="font-extrabold">Set your radius</h3><p class="mt-1 text-sm leading-6 muted-text">Start with nearby discovery or choose a wider range.</p></div></div>
+        <div class="flex gap-4"><span class="step-dot">02</span><div><h3 class="font-extrabold">Find your kind of people</h3><p class="mt-1 text-sm leading-6 muted-text">Explore profiles and interests that spark a conversation.</p></div></div>
+        <div class="flex gap-4"><span class="step-dot">03</span><div><h3 class="font-extrabold">Make a connection</h3><p class="mt-1 text-sm leading-6 muted-text">Discover, connect, and explore at your own pace.</p></div></div>
+      </div>
+    </section>
+
+    <section id="discover" class="section-pad">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end reveal">
+          <div><p class="eyebrow text-moss">Try the experience</p><h2 class="mt-3 max-w-2xl text-4xl font-extrabold sm:text-5xl">A wider world, on <span class="text-moss">your terms.</span></h2></div>
+          <p class="max-w-md muted-text leading-7">Play with the discovery controls below. This sample feed uses fictional profiles and does not show real people or locations.</p>
+        </div>
+        <div class="grid gap-5 lg:grid-cols-[.72fr_1.28fr]">
+          <div class="surface rounded-3xl p-6 shadow-soft reveal">
+            <div class="flex items-center justify-between"><h3 class="text-xl font-extrabold">Discovery settings</h3><span class="pill bg-lime/50 text-ink">DEMO</span></div>
+            <label for="radiusSelect" class="mt-6 block text-sm font-bold">Discovery radius</label>
+            <select id="radiusSelect" class="field mt-2">
+              <optgroup label="Free discovery"><option>25 km</option><option>100 km</option><option>500 km</option></optgroup>
+              <optgroup label="Paid access"><option>50 m</option><option>500 m</option><option>1 km</option><option>1,000 km</option><option>5,000 km</option><option>Worldwide</option></optgroup>
+            </select>
+            <p id="radiusNote" class="mt-2 text-xs muted-text">Included in free discovery.</p>
+            <label for="interestSelect" class="mt-5 block text-sm font-bold">Filter by interest</label>
+            <select id="interestSelect" class="field mt-2"><option value="all">All interests</option><option>Technology</option><option>Business</option><option>Travel</option><option>Music</option><option>Design</option><option>Fitness</option><option>Gaming</option><option>Education</option></select>
+            <label for="sortSelect" class="mt-5 block text-sm font-bold">Sort profiles</label>
+            <select id="sortSelect" class="field mt-2"><option value="distance">Sample distance</option><option value="name">Name A–Z</option></select>
+            <div class="mt-6 rounded-2xl bg-paper p-4 dark:!bg-[#0c1525]"><div class="flex items-start gap-3"><span class="grid h-9 w-9 flex-shrink-0 place-items-center rounded-xl bg-lime text-ink">✦</span><div><p class="text-sm font-extrabold">Want to go further?</p><p class="mt-1 text-xs leading-5 muted-text">Eligible passes and subscriptions unlock wider discovery options. Selecting a radius here does not activate paid access.</p></div></div></div>
+            <button class="btn btn-primary mt-5 w-full" data-open-onboard>Get early access ↗</button>
+          </div>
+          <div class="surface rounded-3xl p-5 sm:p-7 reveal">
+            <div class="flex flex-wrap items-center justify-between gap-3"><div><p class="text-sm muted-text">Your sample feed</p><h3 class="mt-1 text-2xl font-extrabold"><span id="profileCount">6</span> demo profiles</h3></div><span class="pill bg-[#edf5df] text-moss"><span class="h-2 w-2 rounded-full bg-moss"></span> Fictional data</span></div>
+            <div id="profileGrid" class="mt-6 grid gap-3 sm:grid-cols-2">
+              <article class="profile-card rounded-2xl border border-line p-4" data-name="Zara Ade" data-distance="2.4" data-interests="Design Music"><div class="flex items-start gap-3"><div class="profile-avatar avatar-a h-12 w-12">ZA</div><div class="min-w-0 flex-1"><h4 class="font-extrabold">Zara Ade</h4><p class="mt-0.5 text-xs muted-text">Sample distance · 2.4 km</p><p class="mt-2 text-sm muted-text">Creative mind, music lover, always collecting ideas.</p><div class="mt-3 flex flex-wrap gap-1.5"><span class="tag">Design</span><span class="tag">Music</span></div></div></div><button class="connect-btn mt-4 w-full rounded-xl border border-line py-2.5 text-sm font-bold hover:bg-lime/30">Say hello ↗</button></article>
+              <article class="profile-card rounded-2xl border border-line p-4" data-name="Tobi Okafor" data-distance="4.8" data-interests="Technology Travel"><div class="flex items-start gap-3"><div class="profile-avatar avatar-b h-12 w-12">TO</div><div class="min-w-0 flex-1"><h4 class="font-extrabold">Tobi Okafor</h4><p class="mt-0.5 text-xs muted-text">Sample distance · 4.8 km</p><p class="mt-2 text-sm muted-text">Building things, learning daily, planning the next trip.</p><div class="mt-3 flex flex-wrap gap-1.5"><span class="tag">Technology</span><span class="tag">Travel</span></div></div></div><button class="connect-btn mt-4 w-full rounded-xl border border-line py-2.5 text-sm font-bold hover:bg-lime/30">Say hello ↗</button></article>
+              <article class="profile-card rounded-2xl border border-line p-4" data-name="Mina James" data-distance="7.1" data-interests="Business Fitness"><div class="flex items-start gap-3"><div class="profile-avatar avatar-e h-12 w-12">MJ</div><div class="min-w-0 flex-1"><h4 class="font-extrabold">Mina James</h4><p class="mt-0.5 text-xs muted-text">Sample distance · 7.1 km</p><p class="mt-2 text-sm muted-text">Entrepreneurship, wellness, and big conversations.</p><div class="mt-3 flex flex-wrap gap-1.5"><span class="tag">Business</span><span class="tag">Fitness</span></div></div></div><button class="connect-btn mt-4 w-full rounded-xl border border-line py-2.5 text-sm font-bold hover:bg-lime/30">Say hello ↗</button></article>
+              <article class="profile-card rounded-2xl border border-line p-4" data-name="Nneka Eze" data-distance="9.6" data-interests="Music Education"><div class="flex items-start gap-3"><div class="profile-avatar avatar-f h-12 w-12">NE</div><div class="min-w-0 flex-1"><h4 class="font-extrabold">Nneka Eze</h4><p class="mt-0.5 text-xs muted-text">Sample distance · 9.6 km</p><p class="mt-2 text-sm muted-text">Curious about people, stories, and new skills.</p><div class="mt-3 flex flex-wrap gap-1.5"><span class="tag">Music</span><span class="tag">Education</span></div></div></div><button class="connect-btn mt-4 w-full rounded-xl border border-line py-2.5 text-sm font-bold hover:bg-lime/30">Say hello ↗</button></article>
+              <article class="profile-card rounded-2xl border border-line p-4" data-name="Amaka Bello" data-distance="12.2" data-interests="Gaming Technology"><div class="flex items-start gap-3"><div class="profile-avatar avatar-c h-12 w-12">AB</div><div class="min-w-0 flex-1"><h4 class="font-extrabold">Amaka Bello</h4><p class="mt-0.5 text-xs muted-text">Sample distance · 12.2 km</p><p class="mt-2 text-sm muted-text">Game nights, product ideas, and tech chats.</p><div class="mt-3 flex flex-wrap gap-1.5"><span class="tag">Gaming</span><span class="tag">Technology</span></div></div></div><button class="connect-btn mt-4 w-full rounded-xl border border-line py-2.5 text-sm font-bold hover:bg-lime/30">Say hello ↗</button></article>
+              <article class="profile-card rounded-2xl border border-line p-4" data-name="David Musa" data-distance="18.5" data-interests="Business Travel"><div class="flex items-start gap-3"><div class="profile-avatar avatar-d h-12 w-12">DM</div><div class="min-w-0 flex-1"><h4 class="font-extrabold">David Musa</h4><p class="mt-0.5 text-xs muted-text">Sample distance · 18.5 km</p><p class="mt-2 text-sm muted-text">Meeting interesting people and exploring new places.</p><div class="mt-3 flex flex-wrap gap-1.5"><span class="tag">Business</span><span class="tag">Travel</span></div></div></div><button class="connect-btn mt-4 w-full rounded-xl border border-line py-2.5 text-sm font-bold hover:bg-lime/30">Say hello ↗</button></article>
+            </div>
+            <div id="noProfiles" class="hidden py-12 text-center"><div class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-paper text-2xl">⌕</div><h4 class="mt-4 font-extrabold">No matching demo profiles</h4><p class="mt-1 text-sm muted-text">Try another interest filter.</p></div>
+            <p class="mt-5 text-xs muted-text">Sample names, distances, and interests are fictional and do not represent live WalkReach users.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section-pad bg-[#f4f8fd] dark:!bg-[#111e31]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl reveal"><p class="eyebrow text-moss">More than a nearby list</p><h2 class="mt-3 text-4xl font-extrabold sm:text-5xl">A platform built around <span class="text-moss">possibility.</span></h2><p class="mt-5 text-lg leading-8 muted-text">WalkReach brings discovery, conversations, travel-minded connections, and business discovery into one experience.</p></div>
+        <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <article class="surface rounded-3xl p-6 reveal"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-lime text-2xl">⌖</div><h3 class="mt-5 text-xl font-extrabold">People discovery</h3><p class="mt-2 leading-7 muted-text">Explore profiles using radius and interest preferences, from nearby discovery to eligible wider ranges.</p><a href="#discover" class="mt-5 inline-flex font-bold text-moss">Try discovery <span class="ml-2">↗</span></a></article>
+          <article class="surface rounded-3xl p-6 reveal"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-[#dbe8ff] text-2xl">✉</div><h3 class="mt-5 text-xl font-extrabold">Messaging</h3><p class="mt-2 leading-7 muted-text">Picture a focused inbox for starting conversations, managing requests, and keeping connections in one place.</p><button class="mt-5 font-bold text-moss" data-open-messaging>Preview messaging ↗</button></article>
+          <article class="surface rounded-3xl p-6 reveal"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-[#f8dfd8] text-2xl">✈</div><h3 class="mt-5 text-xl font-extrabold">Travel Mode</h3><p class="mt-2 leading-7 muted-text">Preview discovery around a destination you plan to visit or want to explore before you get there.</p><a href="#travel" class="mt-5 inline-flex font-bold text-moss">Explore Travel Mode <span class="ml-2">↗</span></a></article>
+          <article class="surface rounded-3xl p-6 reveal"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-[#e9def8] text-2xl">⌂</div><h3 class="mt-5 text-xl font-extrabold">Business Directory</h3><p class="mt-2 leading-7 muted-text">Explore business profiles and learn how businesses can list, promote, and apply for verification.</p><a href="#businesses" class="mt-5 inline-flex font-bold text-moss">Explore directory <span class="ml-2">↗</span></a></article>
+          <article class="surface rounded-3xl p-6 reveal"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-[#ffe9b9] text-2xl">◎</div><h3 class="mt-5 text-xl font-extrabold">Your privacy choices</h3><p class="mt-2 leading-7 muted-text">Explore sample controls for visibility and location. In the real product, privacy settings must be enforced by the service.</p><button class="mt-5 font-bold text-moss" data-open-privacy>Preview controls ↗</button></article>
+          <article class="rounded-3xl bg-ink p-6 text-white reveal"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-lime text-2xl text-ink">↗</div><h3 class="mt-5 text-xl font-extrabold">Start with curiosity</h3><p class="mt-2 leading-7 text-white/65">Join the early-access list and tell the WalkReach team what you want to explore.</p><button class="btn btn-lime mt-5" data-open-onboard>I'm interested</button></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="messaging" class="section-pad">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div class="reveal">
+          <p class="eyebrow text-moss">From discovery to conversation</p><h2 class="mt-3 text-4xl font-extrabold sm:text-5xl">The best part is what happens <span class="text-moss">next.</span></h2>
+          <p class="mt-5 text-lg leading-8 muted-text">A messaging experience designed to make it easier to pick up a conversation, see message requests, and manage who can contact you.</p>
+          <ul class="mt-7 space-y-3 text-sm"><li class="flex gap-3"><span class="text-moss">✓</span> Inbox and one-to-one conversation previews</li><li class="flex gap-3"><span class="text-moss">✓</span> Message requests and conversation search</li><li class="flex gap-3"><span class="text-moss">✓</span> Block and report interface previews</li></ul>
+          <button class="btn btn-primary mt-8" data-open-messaging>Try the message demo ↗</button>
+          <p class="mt-3 text-xs muted-text">Messages in this demo stay in the current page session and are not sent to real users.</p>
+        </div>
+        <div class="surface mx-auto w-full max-w-lg overflow-hidden rounded-[2rem] shadow-soft reveal">
+          <div class="flex items-center justify-between border-b border-line px-5 py-4"><div><p class="font-extrabold">Your conversations</p><p class="text-xs muted-text">Illustrative inbox</p></div><span class="pill bg-lime/60 text-ink">DEMO</span></div>
+          <div class="grid grid-cols-[.8fr_1.2fr] min-h-[330px]">
+            <div class="border-r border-line p-3">
+              <div class="rounded-xl bg-paper p-2 text-xs muted-text dark:!bg-[#0c1525]">⌕ Search</div>
+              <div class="mt-4 rounded-xl bg-[#eaf2df] p-2.5 dark:!bg-[#14243a]"><div class="flex items-center gap-2"><div class="profile-avatar avatar-a h-8 w-8 text-[10px]">ZA</div><div class="min-w-0"><p class="truncate text-xs font-extrabold">Zara Ade</p><p class="truncate text-[10px] muted-text">That sounds great!</p></div></div></div>
+              <div class="mt-3 p-2.5"><div class="flex items-center gap-2"><div class="profile-avatar avatar-b h-8 w-8 text-[10px]">TO</div><div><p class="text-xs font-bold">Tobi O.</p><p class="text-[10px] muted-text">Let's connect soon</p></div></div></div>
+              <div class="mt-3 p-2.5"><div class="flex items-center gap-2"><div class="profile-avatar avatar-e h-8 w-8 text-[10px]">MJ</div><div><p class="text-xs font-bold">Mina J.</p><p class="text-[10px] muted-text">Thanks for sharing</p></div></div></div>
+            </div>
+            <div class="flex flex-col p-4"><div class="flex items-center gap-2 border-b border-line pb-3"><div class="profile-avatar avatar-a h-8 w-8 text-xs">ZA</div><div><p class="text-sm font-extrabold">Zara Ade</p><p class="text-[10px] text-moss">Demo conversation</p></div></div><div class="flex-1 space-y-3 py-4 text-xs"><p class="w-fit max-w-[90%] rounded-2xl rounded-tl-sm bg-paper p-3 dark:!bg-[#111e31]">Hey! I noticed we both love design.</p><p class="ml-auto w-fit max-w-[90%] rounded-2xl rounded-tr-sm bg-ink p-3 text-white">Definitely! What kind of projects are you into?</p><p class="w-fit max-w-[90%] rounded-2xl rounded-tl-sm bg-paper p-3 dark:!bg-[#111e31]">Mostly digital experiences and community ideas.</p><div id="messageDemoExtra" class="space-y-2"></div></div><form id="messageDemoForm" class="flex gap-2"><input id="messageDemoInput" class="field !rounded-full !py-2 text-xs" placeholder="Write a demo message…" aria-label="Demo message"><button class="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full bg-ink text-white" aria-label="Send demo message">↗</button></form></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-ink text-white">
+      <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:px-8">
+        <div class="reveal"><p class="eyebrow text-lime">Discovery that can grow with you</p><h2 class="mt-3 text-4xl font-extrabold sm:text-5xl">Start local. <span class="text-lime">Think global.</span></h2><p class="mt-5 leading-8 text-white/65">Choose the discovery range that fits your plans. Wider discovery is available through eligible paid access, while Worldwide discovery has specific access rules.</p><button class="btn btn-lime mt-7" data-open-onboard>Join the early-access list ↗</button></div>
+        <div class="grid gap-4 sm:grid-cols-2 reveal">
+          <div class="rounded-3xl border border-white/15 bg-white/5 p-6"><span class="pill bg-white/10 text-lime">FREE DISCOVERY</span><p class="mt-5 text-3xl font-extrabold">25–500 km</p><p class="mt-2 text-sm leading-6 text-white/60">Explore the three included free discovery radius options.</p><div class="mt-5 flex flex-wrap gap-2"><span class="rounded-full bg-white/10 px-3 py-1 text-xs">25 km</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs">100 km</span><span class="rounded-full bg-white/10 px-3 py-1 text-xs">500 km</span></div></div>
+          <div class="rounded-3xl border border-lime/40 bg-lime p-6 text-ink"><span class="pill bg-ink/10">PAID ACCESS</span><p class="mt-5 text-3xl font-extrabold">Go further</p><p class="mt-2 text-sm leading-6 text-ink/70">Unlock eligible wider radius options and Worldwide discovery with the right pass or plan.</p><div class="mt-5 flex flex-wrap gap-2"><span class="rounded-full bg-ink/10 px-3 py-1 text-xs">Up to 5,000 km</span><span class="rounded-full bg-ink/10 px-3 py-1 text-xs">Worldwide*</span></div><p class="mt-4 text-xs text-ink/60">*Worldwide entitlement depends on your access type.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="travel" class="section-pad">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div class="relative reveal">
+          <div class="demo-map relative min-h-[390px] overflow-hidden rounded-[2rem] border border-[#d7e1d2] p-5 sm:min-h-[460px]">
+            <div class="absolute left-[12%] top-[12%] rounded-xl bg-white px-3 py-2 shadow-sm"><p class="text-xs font-bold text-ink">Your next destination</p><p class="text-sm font-extrabold text-moss">Explore somewhere new</p></div>
+            <div class="absolute left-[22%] top-[43%] grid h-12 w-12 place-items-center rounded-full bg-moss text-white shadow-lg demo-map-pin">✈</div>
+            <div class="absolute right-[20%] top-[25%] grid h-10 w-10 place-items-center rounded-full bg-[#dcecff] text-ink shadow-lg demo-map-pin">⌖</div>
+            <div class="absolute bottom-[20%] right-[25%] grid h-10 w-10 place-items-center rounded-full bg-[#e8c6b4] text-ink shadow-lg demo-map-pin">⌂</div>
+            <div class="absolute bottom-[8%] left-[8%] right-[8%] rounded-2xl bg-white/95 p-4 shadow-soft"><div class="flex items-center justify-between gap-3"><div><p class="text-xs text-muted">TRAVEL MODE · DEMO</p><p id="travelPreviewTitle" class="mt-1 font-extrabold text-ink">Your destination, your discovery</p></div><span class="rounded-full bg-lime px-3 py-1.5 text-xs font-bold text-ink">Preview</span></div><p id="travelPreviewText" class="mt-2 text-sm text-muted">Choose a destination to see an illustrative discovery preview.</p></div>
+          </div>
+        </div>
+        <div class="reveal"><p class="eyebrow text-moss">Travel Mode</p><h2 class="mt-3 text-4xl font-extrabold sm:text-5xl">A new place can mean <span class="text-moss">new connections.</span></h2><p class="mt-5 text-lg leading-8 muted-text">Explore the idea of discovering people around a place you plan to visit. Travel Mode is separate from the discontinued Places feature.</p>
+          <div class="surface mt-7 rounded-3xl p-5">
+            <label for="destinationSelect" class="text-sm font-bold">Choose a sample destination</label><select id="destinationSelect" class="field mt-2"><option value="">Select a destination</option><option>Abuja, Nigeria</option><option>Lagos, Nigeria</option><option>Accra, Ghana</option><option>London, United Kingdom</option><option>Nairobi, Kenya</option></select>
+            <div class="mt-4 flex items-center justify-between gap-4"><div><p class="font-bold">Enable Travel Mode</p><p class="text-xs muted-text">Switch the preview on or off.</p></div><button id="travelToggle" role="switch" aria-checked="false" class="relative h-7 w-12 rounded-full bg-gray-300 transition" aria-label="Toggle Travel Mode"><span class="absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition"></span></button></div>
+            <p id="travelStatus" class="mt-4 rounded-xl bg-paper p-3 text-sm muted-text dark:!bg-[#0c1525]" aria-live="polite">Travel Mode is off in this demo.</p>
+          </div><p class="mt-3 text-xs muted-text">Destinations and results are illustrative. No location or real user data is being retrieved.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="businesses" class="section-pad bg-[#f4f8fd] dark:!bg-[#111e31]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-5 md:flex-row md:items-end reveal"><div><p class="eyebrow text-moss">Business Directory</p><h2 class="mt-3 max-w-2xl text-4xl font-extrabold sm:text-5xl">Good businesses deserve to be <span class="text-moss">discovered.</span></h2></div><p class="max-w-md leading-7 muted-text">Browse fictional business profiles and explore the listing options planned for the WalkReach directory.</p></div>
+        <div class="surface mt-9 rounded-3xl p-4 sm:p-5 reveal">
+          <div class="flex flex-col gap-3 sm:flex-row"><div class="relative flex-1"><span class="absolute left-4 top-1/2 -translate-y-1/2 muted-text">⌕</span><input id="businessSearch" class="field !pl-10" placeholder="Search demo businesses…" aria-label="Search demo businesses"></div><select id="businessCategory" class="field sm:max-w-[220px]" aria-label="Filter business category"><option value="all">All categories</option><option>Food & Drink</option><option>Technology</option><option>Fashion</option><option>Wellness</option></select></div>
+          <div id="businessGrid" class="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <article class="business-card overflow-hidden rounded-2xl border border-line" data-category="Food & Drink" data-name="Green Bowl Kitchen"><div class="relative flex h-44 items-end overflow-hidden bg-gradient-to-br from-[#d9e6c8] to-[#90ad80] p-4"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85" alt="Fresh colourful salad bowl at a food business" loading="lazy" class="absolute inset-0 h-full w-full object-cover" /><div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div><span class="relative z-10 grid h-12 w-12 place-items-center rounded-2xl bg-white/90 text-2xl">🥗</span><span class="relative z-10 ml-auto rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink">DEMO BUSINESS</span></div><div class="p-4"><p class="text-xs font-bold uppercase tracking-wider text-moss">Food & Drink</p><h3 class="mt-1 font-extrabold">Green Bowl Kitchen</h3><p class="mt-2 text-sm muted-text">Fresh bowls and quick lunch favourites.</p><button class="business-view mt-4 text-sm font-bold text-moss">View sample profile ↗</button></div></article>
+            <article class="business-card overflow-hidden rounded-2xl border border-line" data-category="Technology" data-name="Northstar Digital"><div class="relative flex h-44 items-end overflow-hidden bg-gradient-to-br from-[#d9e4f5] to-[#819bc4] p-4"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85" alt="Modern digital workspace with laptop and code" loading="lazy" class="absolute inset-0 h-full w-full object-cover" /><div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div><span class="relative z-10 grid h-12 w-12 place-items-center rounded-2xl bg-white/90 text-2xl">⌘</span><span class="relative z-10 ml-auto rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink">DEMO BUSINESS</span></div><div class="p-4"><p class="text-xs font-bold uppercase tracking-wider text-moss">Technology</p><h3 class="mt-1 font-extrabold">Northstar Digital</h3><p class="mt-2 text-sm muted-text">Digital tools and practical tech support.</p><button class="business-view mt-4 text-sm font-bold text-moss">View sample profile ↗</button></div></article>
+            <article class="business-card overflow-hidden rounded-2xl border border-line" data-category="Fashion" data-name="Thread & Form"><div class="relative flex h-44 items-end overflow-hidden bg-gradient-to-br from-[#f2d9d0] to-[#c18d83] p-4"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85" alt="Fashion shopping and clothing boutique" loading="lazy" class="absolute inset-0 h-full w-full object-cover" /><div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div><span class="relative z-10 grid h-12 w-12 place-items-center rounded-2xl bg-white/90 text-2xl">✂</span><span class="relative z-10 ml-auto rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink">DEMO BUSINESS</span></div><div class="p-4"><p class="text-xs font-bold uppercase tracking-wider text-moss">Fashion</p><h3 class="mt-1 font-extrabold">Thread & Form</h3><p class="mt-2 text-sm muted-text">Everyday pieces with a considered finish.</p><button class="business-view mt-4 text-sm font-bold text-moss">View sample profile ↗</button></div></article>
+            <article class="business-card overflow-hidden rounded-2xl border border-line" data-category="Wellness" data-name="Calm Corner Studio"><div class="relative flex h-44 items-end overflow-hidden bg-gradient-to-br from-[#e9ddf2] to-[#ad95c7] p-4"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=85" alt="Calm wellness and yoga studio" loading="lazy" class="absolute inset-0 h-full w-full object-cover" /><div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent"></div><span class="relative z-10 grid h-12 w-12 place-items-center rounded-2xl bg-white/90 text-2xl">✿</span><span class="relative z-10 ml-auto rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold text-ink">DEMO BUSINESS</span></div><div class="p-4"><p class="text-xs font-bold uppercase tracking-wider text-moss">Wellness</p><h3 class="mt-1 font-extrabold">Calm Corner Studio</h3><p class="mt-2 text-sm muted-text">A sample space for movement and wellbeing.</p><button class="business-view mt-4 text-sm font-bold text-moss">View sample profile ↗</button></div></article>
+          </div>
+          <p id="businessEmpty" class="hidden py-10 text-center text-sm muted-text">No demo businesses match that search.</p>
+        </div>
+        <div class="mt-7 grid gap-4 md:grid-cols-3 reveal">
+          <div class="surface rounded-2xl p-5"><p class="text-sm muted-text">Referral reward</p><h3 class="mt-2 text-xl font-extrabold">Basic Listing</h3><p class="mt-2 text-3xl font-extrabold">Free</p><p class="mt-2 text-sm leading-6 muted-text">One listing after five successful user referrals.</p></div>
+          <div class="surface rounded-2xl p-5"><p class="text-sm muted-text">For growing businesses</p><h3 class="mt-2 text-xl font-extrabold">Standard Listing</h3><p class="mt-2 text-3xl font-extrabold">₦2,000<span class="text-sm font-medium muted-text">/mo</span></p><p class="mt-2 text-sm leading-6 muted-text">Up to five business listings.</p></div>
+          <div class="surface rounded-2xl p-5"><p class="text-sm muted-text">For larger portfolios</p><h3 class="mt-2 text-xl font-extrabold">Premium Listing</h3><p class="mt-2 text-3xl font-extrabold">₦20,000<span class="text-sm font-medium muted-text">/mo</span></p><p class="mt-2 text-sm leading-6 muted-text">Unlimited business listings.</p></div>
+        </div>
+        <div class="mt-5 flex flex-col items-start justify-between gap-4 rounded-2xl border border-[#dbe5f1] bg-white/60 p-5 sm:flex-row sm:items-center dark:!bg-[#111e31]"><div><h3 class="font-extrabold">Business verification</h3><p class="mt-1 text-sm muted-text">₦3,000 one-time application fee, refundable if the business is not approved under the verification policy.</p></div><button class="btn btn-outline" data-open-onboard data-business-interest>List my business ↗</button></div>
+        <p class="mt-3 text-xs muted-text">All businesses are fictional examples. Listing submissions and verification are not connected in this demo.</p>
+      </div>
+    </section>
+
+    <section id="pricing" class="section-pad">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center reveal"><p class="eyebrow text-moss">Access options</p><h2 class="mt-3 text-4xl font-extrabold sm:text-5xl">Choose how far you want to <span class="text-moss">reach.</span></h2><p class="mt-4 leading-7 muted-text">Explore the supplied WalkReach access rules. Checkout is not connected in this demonstration.</p></div>
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          <article class="pricing-card surface rounded-3xl p-6 reveal"><span class="pill bg-[#e8f2ff] text-moss">FLEXIBLE ACCESS</span><h3 class="mt-5 text-2xl font-extrabold">Quick Access Passes</h3><p class="mt-2 text-sm leading-6 muted-text">Choose a time period that fits your plans. Passes include Worldwide discovery.</p><div class="mt-5 space-y-3 text-sm">
+            <div class="flex justify-between border-b border-line pb-3"><span>1 day</span><strong>₦200</strong></div><div class="flex justify-between border-b border-line pb-3"><span>3 days</span><strong>₦500</strong></div><div class="flex justify-between border-b border-line pb-3"><span>1 week</span><strong>₦1,000</strong></div><div class="flex justify-between border-b border-line pb-3"><span>1 month</span><strong>₦5,000</strong></div><div class="flex justify-between border-b border-line pb-3"><span>3 months</span><strong>₦15,000</strong></div><div class="flex justify-between border-b border-line pb-3"><span>6 months</span><strong>₦30,000</strong></div><div class="flex justify-between"><span>1 year</span><strong>₦60,000</strong></div></div><button class="btn btn-outline mt-6 w-full" data-plan="Quick Access Pass">Explore passes</button></article>
+          <article class="pricing-card surface rounded-3xl p-6 reveal"><span class="pill bg-[#e8f2ff] text-moss">WIDER DISCOVERY</span><h3 class="mt-5 text-2xl font-extrabold">NearbyConnect Plus</h3><p class="mt-3 text-3xl font-extrabold">₦3,000<span class="text-sm font-medium muted-text"> / month</span></p><p class="mt-3 text-sm leading-6 muted-text">For people who want more range without Worldwide discovery.</p><ul class="mt-6 space-y-3 text-sm"><li>✓ Eligible discovery up to 5,000 km</li><li>✓ Wider-radius options</li><li>— Worldwide discovery not included</li></ul><button class="btn btn-outline mt-8 w-full" data-plan="NearbyConnect Plus">Explore Plus</button></article>
+          <article class="pricing-card relative overflow-hidden rounded-3xl border-2 border-ink bg-ink p-6 text-white reveal"><span class="pill bg-lime text-ink">GLOBAL ACCESS</span><h3 class="mt-5 text-2xl font-extrabold">NearbyConnect Global</h3><p class="mt-3 text-3xl font-extrabold">₦5,000<span class="text-sm font-medium text-white/55"> / month</span></p><p class="mt-3 text-sm leading-6 text-white/65">For people who want to explore beyond borders.</p><ul class="mt-6 space-y-3 text-sm text-white/85"><li>✓ Discovery up to 5,000 km</li><li>✓ Worldwide discovery</li><li>✓ Global connection opportunities</li></ul><button class="btn btn-lime mt-8 w-full" data-plan="NearbyConnect Global">Explore Global ↗</button></article>
+        </div>
+        <p class="mt-5 text-center text-xs muted-text">NearbyConnect Plus and NearbyConnect Global are existing subscription names in the supplied product rules. WalkReach is the primary public-facing brand. No payment is collected on this page.</p>
+      </div>
+    </section>
+
+    <section id="referrals" class="section-pad bg-[#f4f8fd] dark:!bg-[#111e31]">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
+        <div class="reveal"><p class="eyebrow text-moss">Grow together</p><h2 class="mt-3 text-4xl font-extrabold sm:text-5xl">Good connections are worth <span class="text-moss">sharing.</span></h2><p class="mt-5 leading-8 muted-text">WalkReach's referral concept rewards users who bring new people into the community and businesses that join the directory.</p><div class="mt-6 space-y-4"><div class="flex gap-3"><span class="grid h-10 w-10 flex-shrink-0 place-items-center rounded-xl bg-lime text-xl">👥</span><div><h3 class="font-extrabold">Refer 5 users</h3><p class="mt-1 text-sm leading-6 muted-text">Earn one month of ₦5,000 Quick Access paid usage. Repeat with new sets of five within the three-month referral window.</p></div></div><div class="flex gap-3"><span class="grid h-10 w-10 flex-shrink-0 place-items-center rounded-xl bg-white text-xl">⌂</span><div><h3 class="font-extrabold">Refer 5 businesses</h3><p class="mt-1 text-sm leading-6 muted-text">Earn one-time access to one month of restricted/unverified business listing.</p></div></div></div><button class="btn btn-primary mt-7" id="shareReferral">Share WalkReach ↗</button></div>
+        <div class="surface rounded-3xl p-6 shadow-soft reveal"><div class="flex items-center justify-between"><div><p class="text-sm muted-text">Sample referral progress</p><h3 class="mt-1 text-2xl font-extrabold">Your invitation journey</h3></div><span class="pill bg-lime/60 text-ink">DEMO ONLY</span></div><div class="mt-7 flex items-center justify-between gap-2"><span class="text-sm font-bold">User referrals</span><span class="text-sm font-extrabold">2 of 5</span></div><div class="mt-3 flex gap-2" aria-label="Example progress: 2 of 5 referrals"><span class="h-3 flex-1 rounded-full bg-moss"></span><span class="h-3 flex-1 rounded-full bg-moss"></span><span class="h-3 flex-1 rounded-full bg-[#dbe5f1]"></span><span class="h-3 flex-1 rounded-full bg-[#dbe5f1]"></span><span class="h-3 flex-1 rounded-full bg-[#dbe5f1]"></span></div><div class="mt-7 rounded-2xl bg-paper p-4 dark:!bg-[#0c1525]"><p class="text-sm font-extrabold">Invite someone who'd love WalkReach</p><p class="mt-1 text-sm leading-6 muted-text">Copy this sample message and share it with a friend. Referral tracking is not active on this demo.</p><button id="copyReferral" class="btn btn-outline mt-4 w-full">Copy invitation message</button></div><p class="mt-4 text-xs muted-text">The progress above is illustrative only. No referrals or rewards are being tracked or awarded.</p></div>
+      </div>
+    </section>
+
+    <section id="privacy" class="section-pad">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+          <div class="reveal"><p class="eyebrow text-moss">Your choices matter</p><h2 class="mt-3 text-4xl font-extrabold sm:text-5xl">Connect with confidence. <span class="text-moss">Stay in control.</span></h2><p class="mt-5 text-lg leading-8 muted-text">A good discovery experience should be clear about what is shared, how people can contact you, and what controls are available.</p><button class="btn btn-primary mt-7" data-open-privacy>Explore demo privacy controls</button></div>
+          <div class="surface rounded-3xl p-6 reveal">
+            <div class="flex items-center gap-3 border-b border-line pb-5"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-lime text-2xl">◈</div><div><h3 class="text-xl font-extrabold">Privacy controls preview</h3><p class="text-sm muted-text">These controls only affect this page demo.</p></div></div>
+            <div class="space-y-5 pt-5">
+              <div class="flex items-center justify-between gap-4"><div><p class="font-bold">Profile visibility</p><p class="mt-1 text-sm muted-text">Preview being visible in the sample discovery feed.</p></div><button class="privacy-switch relative h-7 w-12 rounded-full bg-moss" data-switch="visibility" role="switch" aria-checked="true" aria-label="Toggle profile visibility"><span class="absolute right-1 top-1 h-5 w-5 rounded-full bg-white"></span></button></div>
+              <div class="flex items-center justify-between gap-4"><div><p class="font-bold">Location sharing</p><p class="mt-1 text-sm muted-text">A local demo setting; no location is shared.</p></div><button class="privacy-switch relative h-7 w-12 rounded-full bg-gray-300" data-switch="location" role="switch" aria-checked="false" aria-label="Toggle location sharing"><span class="absolute left-1 top-1 h-5 w-5 rounded-full bg-white"></span></button></div>
+              <div class="rounded-2xl bg-paper p-4 text-sm leading-6 muted-text dark:!bg-[#0c1525]"><strong class="text-ink dark:!text-white">A safety reminder:</strong> Avoid sharing passwords, verification codes, financial details, or sensitive personal information with strangers. Blocking, reporting, moderation, and account security require a real production service.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section-pad bg-white/60 dark:!bg-[#111e31]">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[.7fr_1.3fr] lg:px-8">
+        <div class="reveal"><p class="eyebrow text-moss">Questions, answered</p><h2 class="mt-3 text-4xl font-extrabold sm:text-5xl">A few things you might be wondering.</h2><p class="mt-4 leading-7 muted-text">Want to know more? Reach out to the WalkReach team through the onboarding flow.</p><button class="btn btn-outline mt-6" data-open-onboard>Ask about early access ↗</button></div>
+        <div class="space-y-3 reveal">
+          <details class="faq-item surface rounded-2xl p-5" open><summary class="flex items-center justify-between gap-4 font-extrabold">What is WalkReach?<svg class="transition" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary><p class="mt-3 pr-8 text-sm leading-7 muted-text">WalkReach is a people-discovery and connection concept designed to help people discover others across different distances, connect through messaging, use Travel Mode, and explore businesses.</p></details>
+          <details class="faq-item surface rounded-2xl p-5"><summary class="flex items-center justify-between gap-4 font-extrabold">Can I discover people outside my immediate area?<svg class="transition" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary><p class="mt-3 pr-8 text-sm leading-7 muted-text">WalkReach offers different radius options. Some wider-radius options require an eligible pass or subscription. The feed on this page is simulated.</p></details>
+          <details class="faq-item surface rounded-2xl p-5"><summary class="flex items-center justify-between gap-4 font-extrabold">Is WalkReach free?<svg class="transition" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary><p class="mt-3 pr-8 text-sm leading-7 muted-text">The supplied product rules include free discovery options alongside paid passes, subscriptions, and business listing packages.</p></details>
+          <details class="faq-item surface rounded-2xl p-5"><summary class="flex items-center justify-between gap-4 font-extrabold">Does this website create a real account?<svg class="transition" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary><p class="mt-3 pr-8 text-sm leading-7 muted-text">No. This is a frontend demonstration. You can use the WhatsApp onboarding flow to express interest in joining, but no account is created on this page.</p></details>
+          <details class="faq-item surface rounded-2xl p-5"><summary class="flex items-center justify-between gap-4 font-extrabold">Are my password or verification codes sent through WhatsApp?<svg class="transition" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary><p class="mt-3 pr-8 text-sm leading-7 muted-text">No. The onboarding flow never asks for or sends passwords, verification codes, or authentication secrets. WhatsApp opens with a message you can review and send yourself.</p></details>
+          <details class="faq-item surface rounded-2xl p-5"><summary class="flex items-center justify-between gap-4 font-extrabold">Does the demo messaging send to real people?<svg class="transition" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></summary><p class="mt-3 pr-8 text-sm leading-7 muted-text">No. Messaging and all profiles shown here are simulated. A production version needs a secure backend and real messaging infrastructure.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-16 sm:px-6 lg:px-8">
+      <div class="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-lime px-6 py-12 sm:px-12 sm:py-16">
+        <div class="absolute -right-10 -top-24 h-72 w-72 rounded-full border-[40px] border-ink/5"></div><div class="absolute -right-20 bottom-[-120px] h-72 w-72 rounded-full border-[40px] border-ink/5"></div>
+        <div class="relative max-w-2xl reveal"><p class="eyebrow text-ink/65">Your next connection starts here</p><h2 class="mt-3 text-4xl font-extrabold sm:text-5xl">Curious about WalkReach? Let's make it real.</h2><p class="mt-4 max-w-xl leading-7 text-ink/70">Join the early-access conversation and tell us what you'd like to discover, connect with, or build on WalkReach.</p><button class="btn btn-primary mt-7" data-open-onboard>Join WalkReach on WhatsApp ↗</button><p class="mt-4 text-xs text-ink/65">You'll review the message before sending. This page does not create an account or send anything automatically.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-line py-10">
+    <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 md:flex-row md:items-start md:justify-between lg:px-8">
+      <div class="max-w-sm"><a href="#home" class="flex items-center gap-2.5"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDhhOGZmIi8+PHN0b3Agb2Zmc2V0PSIuNTUiIHN0b3AtY29sb3I9IiMwODc4ZjkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMDIxM2QiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjQgM0MxMyAzIDUgMTEgNSAyMmMwIDExIDE5IDIzIDE5IDIzczE5LTEyIDE5LTIzQzQzIDExIDM1IDMgMjQgM1oiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjE4IiByPSI1LjEiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMTQuNSAzMmMuOC01IDQuNC04IDkuNS04czguNyAzIDkuNSA4IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=" alt="WalkReach logo" class="h-9 w-9 object-contain" width="36" height="36"><span class="text-lg font-extrabold">walkreach.</span></a><p class="mt-3 text-sm leading-6 muted-text">Discover people, explore places through Travel Mode, and find businesses worth knowing. Built around curiosity and connection.</p><p class="mt-3 text-xs muted-text">This is a product demonstration. Features and data shown here are not live services.</p></div>
+      <div class="grid grid-cols-2 gap-x-12 gap-y-3 text-sm"><div class="space-y-3"><p class="font-extrabold">Explore</p><a class="block muted-text hover:text-ink" href="#discover">People discovery</a><a class="block muted-text hover:text-ink" href="#travel">Travel Mode</a><a class="block muted-text hover:text-ink" href="#businesses">Business Directory</a><a class="block muted-text hover:text-ink" href="#pricing">Pricing</a></div><div class="space-y-3"><p class="font-extrabold">Community</p><button class="block muted-text hover:text-ink" data-open-policy="privacy">Privacy notice</button><button class="block muted-text hover:text-ink" data-open-policy="terms">Terms of use</button><button class="block muted-text hover:text-ink" data-open-policy="community">Community guidelines</button><button class="block muted-text hover:text-ink" data-open-onboard>Contact WalkReach</button></div></div>
+    </div>
+    <div class="mx-auto mt-8 flex max-w-7xl flex-col gap-2 border-t border-line px-4 pt-5 text-xs muted-text sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8"><span>© <span id="year"></span> WalkReach. All rights reserved.</span><span>Designed for discovery. Built for connection.</span></div>
+  </footer>
+
+  <!-- Onboarding modal -->
+  <div id="onboardModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="onboardTitle">
+    <div class="modal-panel surface w-full max-w-xl rounded-[1.75rem] shadow-2xl">
+      <div class="sticky top-0 z-10 flex items-center justify-between border-b border-line bg-white/95 px-5 py-4 dark:!bg-[#111e31] sm:px-7">
+        <a href="#home" class="flex items-center gap-2 font-extrabold"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMDhhOGZmIi8+PHN0b3Agb2Zmc2V0PSIuNTUiIHN0b3AtY29sb3I9IiMwODc4ZjkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMDIxM2QiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNMjQgM0MxMyAzIDUgMTEgNSAyMmMwIDExIDE5IDIzIDE5IDIzczE5LTEyIDE5LTIzQzQzIDExIDM1IDMgMjQgM1oiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjE4IiByPSI1LjEiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMTQuNSAzMmMuOC01IDQuNC04IDkuNS04czguNyAzIDkuNSA4IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMi4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=" alt="WalkReach logo" class="h-8 w-8 object-contain" width="32" height="32"> walkreach.</a>
+        <button class="close-modal grid h-9 w-9 place-items-center rounded-full border border-line" aria-label="Close onboarding">✕</button>
+      </div>
+      <div class="p-5 sm:p-7">
+        <div class="mb-6 flex items-center gap-2" aria-label="Onboarding progress"><span class="step-dot active" data-step-dot="0">1</span><span class="h-px flex-1 bg-line"></span><span class="step-dot" data-step-dot="1">2</span><span class="h-px flex-1 bg-line"></span><span class="step-dot" data-step-dot="2">3</span><span class="h-px flex-1 bg-line"></span><span class="step-dot" data-step-dot="3">4</span></div>
+        <form id="onboardForm" novalidate>
+          <div class="onboard-step" data-step="0"><p class="eyebrow text-moss">Early access</p><h2 id="onboardTitle" class="mt-2 text-3xl font-extrabold">Find your people with WalkReach.</h2><p class="mt-3 leading-7 muted-text">Tell us a little about yourself and we'll open WhatsApp with a message to the WalkReach team. You'll review and send it yourself.</p><div class="mt-6 rounded-2xl bg-paper p-4 dark:!bg-[#0c1525]"><p class="font-bold">What you can explore</p><ul class="mt-3 space-y-2 text-sm muted-text"><li>✓ People discovery and wider-radius access</li><li>✓ Travel Mode and business discovery</li><li>✓ Messaging and privacy interface previews</li></ul></div><button type="button" class="btn btn-primary mt-7 w-full" data-next-step>Get started ↗</button><button type="button" class="mt-4 w-full text-sm font-bold muted-text hover:text-ink" data-open-signin>Already have an account? Sign in demo</button></div>
+          <div class="onboard-step hidden" data-step="1"><p class="eyebrow text-moss">Step 1 of 3</p><h2 class="mt-2 text-3xl font-extrabold">Create your profile</h2><p class="mt-2 text-sm leading-6 muted-text">These details are only used to prepare a message after you choose to continue to WhatsApp.</p>
+            <div class="mt-5 space-y-4"><div><label class="mb-1.5 block text-sm font-bold" for="username">Username <span class="text-red-500">*</span></label><input id="username" name="username" class="field" placeholder="e.g. jaypee_01" autocomplete="nickname" minlength="3" maxlength="24" required><p class="mt-1 text-xs muted-text">3–24 characters; letters, numbers, underscores.</p></div><div><label class="mb-1.5 block text-sm font-bold" for="fullName">Full name <span class="text-red-500">*</span></label><input id="fullName" name="fullName" class="field" placeholder="Your full name" autocomplete="name" maxlength="80" required></div><div><label class="mb-1.5 block text-sm font-bold" for="phone">WhatsApp phone number <span class="text-red-500">*</span></label><input id="phone" name="phone" class="field" type="tel" placeholder="e.g. +234 801 234 5678" autocomplete="tel" required><p class="mt-1 text-xs muted-text">Enter a number you can use to contact the team if needed.</p></div><div><label class="mb-1.5 block text-sm font-bold" for="email">Email address <span class="muted-text font-normal">(optional)</span></label><input id="email" name="email" class="field" type="email" placeholder="you@example.com" autocomplete="email"></div><div><label class="mb-1.5 block text-sm font-bold" for="gender">Gender <span class="muted-text font-normal">(optional)</span></label><select id="gender" name="gender" class="field"><option value="">Prefer not to say</option><option>Woman</option><option>Man</option><option>Other</option></select></div></div>
+            <p id="profileError" class="mt-3 hidden text-sm font-semibold text-red-600" role="alert"></p><div class="mt-6 flex gap-3"><button type="button" class="btn btn-outline flex-1" data-prev-step>Back</button><button type="button" class="btn btn-primary flex-1" data-next-step>Continue ↗</button></div>
+          </div>
+          <div class="onboard-step hidden" data-step="2"><p class="eyebrow text-moss">Step 2 of 3</p><h2 class="mt-2 text-3xl font-extrabold">Make it yours.</h2><p class="mt-2 text-sm leading-6 muted-text">Choose a few interests and your preferred discovery radius.</p><div class="mt-5"><p class="mb-3 text-sm font-bold">Your interests <span class="muted-text font-normal">(optional)</span></p><div class="flex flex-wrap gap-2" id="interestChips">
+              <label class="check-chip relative"><input type="checkbox" name="interests" value="Technology"><span>Technology</span></label><label class="check-chip relative"><input type="checkbox" name="interests" value="Business"><span>Business</span></label><label class="check-chip relative"><input type="checkbox" name="interests" value="Travel"><span>Travel</span></label><label class="check-chip relative"><input type="checkbox" name="interests" value="Fitness"><span>Fitness</span></label><label class="check-chip relative"><input type="checkbox" name="interests" value="Music"><span>Music</span></label><label class="check-chip relative"><input type="checkbox" name="interests" value="Movies"><span>Movies</span></label><label class="check-chip relative"><input type="checkbox" name="interests" value="Gaming"><span>Gaming</span></label><label class="check-chip relative"><input type="checkbox" name="interests" value="Education"><span>Education</span></label><label class="check-chip relative"><input type="checkbox" name="interests" value="Lifestyle"><span>Lifestyle</span></label><label class="check-chip relative"><input type="checkbox" name="interests" value="Networking"><span>Networking</span></label></div></div><div class="mt-6"><label for="onboardRadius" class="mb-2 block text-sm font-bold">Preferred discovery radius</label><select id="onboardRadius" class="field"><optgroup label="Free discovery"><option>25 km</option><option>100 km</option><option>500 km</option></optgroup><optgroup label="Paid access — selection does not activate access"><option>50 m</option><option>500 m</option><option>1 km</option><option>1,000 km</option><option>5,000 km</option><option>Worldwide</option></optgroup></select><p id="onboardRadiusNote" class="mt-2 text-xs muted-text">Included in free discovery.</p></div><div class="mt-6 flex gap-3"><button type="button" class="btn btn-outline flex-1" data-prev-step>Back</button><button type="button" class="btn btn-primary flex-1" data-next-step>Continue ↗</button></div></div>
+          <div class="onboard-step hidden" data-step="3"><p class="eyebrow text-moss">Step 3 of 3</p><h2 class="mt-2 text-3xl font-extrabold">Review before you share.</h2><p class="mt-2 text-sm leading-6 muted-text">Please check the details below. Nothing is sent until you choose the WhatsApp button and send the message yourself.</p><div id="onboardSummary" class="mt-5 space-y-3 rounded-2xl bg-paper p-4 text-sm dark:!bg-[#0c1525]"></div>
+            <div class="mt-5 space-y-3"><label class="flex items-start gap-3 text-sm leading-6"><input id="consentDetails" type="checkbox" class="mt-1 h-4 w-4 accent-[#0878f9]" required><span>I agree to share the details displayed above with the WalkReach team through WhatsApp for the purpose of responding to my enquiry.</span></label><label class="flex items-start gap-3 text-sm leading-6"><input id="consentPolicies" type="checkbox" class="mt-1 h-4 w-4 accent-[#0878f9]" required><span>I have read the <button type="button" class="underline font-bold" data-open-policy="privacy">privacy notice</button> and understand this is a demo, not account registration.</span></label></div>
+            <p id="consentError" class="mt-3 hidden text-sm font-semibold text-red-600" role="alert"></p><div class="mt-6 flex flex-col gap-3 sm:flex-row"><button type="button" class="btn btn-outline flex-1" data-prev-step>Edit details</button><button type="submit" class="btn btn-primary flex-1">Continue to WhatsApp ↗</button></div>
+            <p class="mt-3 text-center text-xs muted-text">Never share your password or verification codes. This form does not ask for them.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign-in demo -->
+  <div id="signinModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="signinTitle">
+    <div class="modal-panel surface w-full max-w-md rounded-[1.75rem] p-6 shadow-2xl sm:p-8"><div class="flex items-start justify-between"><div><p class="eyebrow text-moss">Demo only</p><h2 id="signinTitle" class="mt-2 text-3xl font-extrabold">Welcome back.</h2></div><button class="close-modal grid h-9 w-9 place-items-center rounded-full border border-line" aria-label="Close sign in">✕</button></div><p class="mt-3 text-sm leading-6 muted-text">Real authentication is not enabled. Do not enter a real password here.</p><form id="signinForm" class="mt-6 space-y-4"><div><label for="signinUser" class="mb-1.5 block text-sm font-bold">Username or email</label><input id="signinUser" class="field" autocomplete="off" required></div><div><label for="signinPassword" class="mb-1.5 block text-sm font-bold">Demo password</label><input id="signinPassword" type="password" class="field" autocomplete="new-password" required></div><button class="btn btn-primary w-full" type="submit">Preview sign in</button><p id="signinFeedback" class="hidden rounded-xl bg-paper p-3 text-sm muted-text dark:!bg-[#0c1525]" role="status"></p></form><p class="mt-4 text-xs muted-text">This form does not transmit or save entered values.</p></div>
+  </div>
+
+  <!-- General preview dialog -->
+  <div id="infoModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
+    <div class="modal-panel surface w-full max-w-lg rounded-[1.75rem] p-6 shadow-2xl sm:p-8"><div class="flex items-start justify-between gap-4"><div><p id="infoEyebrow" class="eyebrow text-moss">WalkReach preview</p><h2 id="infoTitle" class="mt-2 text-3xl font-extrabold">Preview</h2></div><button class="close-modal grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-line" aria-label="Close dialog">✕</button></div><div id="infoContent" class="mt-4 text-sm leading-7 muted-text"></div><div class="mt-6 flex flex-col gap-3 sm:flex-row"><button class="btn btn-outline flex-1 close-modal">Close</button><button id="infoPrimary" class="btn btn-primary flex-1">Join WalkReach ↗</button></div></div>
+  </div>
+
+  <div id="toast" class="toast rounded-2xl bg-ink px-5 py-3 text-sm font-semibold text-white shadow-xl" role="status" aria-live="polite"></div>
+
+  <script>
+    // Configure your WhatsApp number in international format, without +, spaces, or dashes.
+    // Example format only: 2348012345678. Replace this placeholder before publishing.
+    const WHATSAPP_NUMBER = 'REPLACE_WITH_YOUR_WHATSAPP_NUMBER';
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+    let currentStep = 0;
+    let lastFocusedElement = null;
+    let toastTimer = null;
+
+    function showToast(message) {
+      const toast = $('#toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+    function openModal(modal) {
+      if (!modal) return;
+      lastFocusedElement = document.activeElement;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      const focusable = $$('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]', modal);
+      if (focusable.length) setTimeout(() => focusable[0].focus(), 30);
+    }
+    function closeModal(modal) {
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus();
+    }
+    function closeAllModals() { $$('.modal-backdrop').forEach(closeModal); }
+    function openInfo(title, content, eyebrow = 'WalkReach preview', primary = 'Join WalkReach ↗', action = 'onboard') {
+      $('#infoTitle').textContent = title;
+      $('#infoEyebrow').textContent = eyebrow;
+      $('#infoContent').innerHTML = content;
+      $('#infoPrimary').textContent = primary;
+      $('#infoPrimary').dataset.action = action;
+      openModal($('#infoModal'));
+    }
+
+    // Navigation and dialogs
+    $('#mobileMenuButton').addEventListener('click', () => {
+      const menu = $('#mobileMenu');
+      const expanded = $('#mobileMenuButton').getAttribute('aria-expanded') === 'true';
+      menu.classList.toggle('hidden', expanded);
+      $('#mobileMenuButton').setAttribute('aria-expanded', String(!expanded));
+      $('#mobileMenuButton').setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+    });
+    $$('.mobile-nav-link').forEach(link => link.addEventListener('click', () => {
+      $('#mobileMenu').classList.add('hidden');
+      $('#mobileMenuButton').setAttribute('aria-expanded', 'false');
+    }));
+    $$('[data-open-onboard]').forEach(button => button.addEventListener('click', () => {
+      closeAllModals(); currentStep = 0; renderStep(); openModal($('#onboardModal'));
+    }));
+    $$('[data-open-signin]').forEach(button => button.addEventListener('click', () => {
+      closeAllModals(); openModal($('#signinModal'));
+    }));
+    $$('.close-modal').forEach(button => button.addEventListener('click', () => closeModal(button.closest('.modal-backdrop'))));
+    $$('.modal-backdrop').forEach(backdrop => backdrop.addEventListener('mousedown', e => {
+      if (e.target === backdrop) closeModal(backdrop);
+    }));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeAllModals();
+      const open = $('.modal-backdrop:not(.hidden)');
+      if (e.key === 'Tab' && open) {
+        const focusable = $$('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]', open).filter(el => el.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    // Theme toggle
+    const savedTheme = localStorage.getItem('walkreach-theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      $('#themeIcon').innerHTML = '<path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"/>';
+    }
+    $('#themeToggle').addEventListener('click', () => {
+      const dark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('walkreach-theme', dark ? 'dark' : 'light');
+      $('#themeIcon').innerHTML = dark
+        ? '<path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"/>'
+        : '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>';
+      showToast(dark ? 'Dark mode enabled' : 'Light mode enabled');
+    });
+
+    // Reveal-on-scroll motion
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      }), { threshold: 0.08 });
+      $$('.reveal').forEach(el => observer.observe(el));
+    } else $$('.reveal').forEach(el => el.classList.add('visible'));
+
+    // Discovery feed controls
+    function filterProfiles() {
+      const interest = $('#interestSelect').value;
+      const sort = $('#sortSelect').value;
+      const cards = $$('.profile-card', $('#profileGrid'));
+      cards.sort((a,b) => sort === 'name'
+        ? a.dataset.name.localeCompare(b.dataset.name)
+        : Number(a.dataset.distance) - Number(b.dataset.distance));
+      cards.forEach(card => {
+        $('#profileGrid').appendChild(card);
+        const interests = card.dataset.interests.split(' ');
+        card.classList.toggle('hidden', interest !== 'all' && !interests.includes(interest));
+      });
+      const visible = cards.filter(card => !card.classList.contains('hidden')).length;
+      $('#profileCount').textContent = visible;
+      $('#noProfiles').classList.toggle('hidden', visible > 0);
+    }
+    $('#interestSelect').addEventListener('change', filterProfiles);
+    $('#sortSelect').addEventListener('change', filterProfiles);
+    const paidRadii = ['50 m','500 m','1 km','1,000 km','5,000 km','Worldwide'];
+    function updateRadiusNote(select, target) {
+      const value = select.value;
+      target.textContent = paidRadii.includes(value)
+        ? (value === 'Worldwide' ? 'Worldwide discovery requires a Quick Access pass or the Global monthly subscription.' : 'This radius requires eligible paid access. Selecting it does not unlock the feature.')
+        : 'Included in free discovery.';
+    }
+    $('#radiusSelect').addEventListener('change', () => updateRadiusNote($('#radiusSelect'), $('#radiusNote')));
+    $('#onboardRadius').addEventListener('change', () => updateRadiusNote($('#onboardRadius'), $('#onboardRadiusNote')));
+    $$('.connect-btn').forEach(button => button.addEventListener('click', () => {
+      openInfo('Start a new connection', '<p>This is a fictional profile in the WalkReach demo. A real connection request is not sent.</p><p class="mt-3">Join the early-access list to tell the team you are interested in trying WalkReach.</p>', 'People discovery', 'Join WalkReach ↗', 'onboard');
+    }));
+
+    // Onboarding steps and validation
+    function renderStep() {
+      $$('.onboard-step').forEach(step => step.classList.toggle('hidden', Number(step.dataset.step) !== currentStep));
+      $$('[data-step-dot]').forEach(dot => {
+        const active = Number(dot.dataset.stepDot) <= currentStep;
+        dot.classList.toggle('active', active);
+        dot.textContent = Number(dot.dataset.stepDot) + 1;
+      });
+      if (currentStep === 3) renderSummary();
+      const panel = $(`.onboard-step[data-step="${currentStep}"]`);
+      const heading = $('h2', panel);
+      if (heading) $('#onboardTitle').textContent = heading.textContent;
+      $('.modal-panel', $('#onboardModal')).scrollTop = 0;
+    }
+    function validateProfile() {
+      const username = $('#username');
+      const fullName = $('#fullName');
+      const phone = $('#phone');
+      const email = $('#email');
+      const error = $('#profileError');
+      [username,fullName,phone,email].forEach(el => el.classList.remove('field-error'));
+      let message = '';
+      if (!/^[a-zA-Z0-9_]{3,24}$/.test(username.value.trim())) { message = 'Username must be 3–24 characters using letters, numbers, or underscores.'; username.classList.add('field-error'); }
+      else if (fullName.value.trim().length < 2) { message = 'Please enter your full name.'; fullName.classList.add('field-error'); }
+      else if (phone.value.replace(/\D/g,'').length < 7 || phone.value.replace(/\D/g,'').length > 15) { message = 'Please enter a valid phone number.'; phone.classList.add('field-error'); }
+      else if (email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { message = 'Please enter a valid email address or leave it blank.'; email.classList.add('field-error'); }
+      error.textContent = message;
+      error.classList.toggle('hidden', !message);
+      return !message;
+    }
+    function getOnboardingData() {
+      return {
+        username: $('#username').value.trim(),
+        fullName: $('#fullName').value.trim(),
+        phone: $('#phone').value.trim(),
+        email: $('#email').value.trim(),
+        gender: $('#gender').value || 'Prefer not to say',
+        interests: $$('input[name="interests"]:checked').map(input => input.value),
+        radius: $('#onboardRadius').value
+      };
+    }
+    function renderSummary() {
+      const d = getOnboardingData();
+      const rows = [
+        ['Username', d.username], ['Full name', d.fullName], ['WhatsApp number', d.phone],
+        ['Email', d.email || 'Not provided'], ['Gender', d.gender],
+        ['Interests', d.interests.length ? d.interests.join(', ') : 'Not selected'],
+        ['Preferred radius', d.radius]
+      ];
+      $('#onboardSummary').replaceChildren();
+      rows.forEach(([label,value]) => {
+        const row = document.createElement('div');
+        row.className = 'flex items-start justify-between gap-4 border-b border-line pb-2 last:border-0 last:pb-0';
+        const key = document.createElement('span'); key.className = 'muted-text'; key.textContent = label;
+        const val = document.createElement('strong'); val.className = 'max-w-[65%] break-words text-right'; val.textContent = value;
+        row.append(key,val); $('#onboardSummary').appendChild(row);
+      });
+    }
+    $$('[data-next-step]').forEach(button => button.addEventListener('click', () => {
+      if (currentStep === 1 && !validateProfile()) return;
+      if (currentStep < 3) { currentStep++; renderStep(); }
+    }));
+    $$('[data-prev-step]').forEach(button => button.addEventListener('click', () => { if (currentStep > 0) { currentStep--; renderStep(); } }));
+    $('#onboardForm').addEventListener('submit', event => {
+      event.preventDefault();
+      if (currentStep !== 3) return;
+      const err = $('#consentError');
+      if (!$('#consentDetails').checked || !$('#consentPolicies').checked) {
+        err.textContent = 'Please confirm both consent statements before continuing.';
+        err.classList.remove('hidden');
+        return;
+      }
+      err.classList.add('hidden');
+      const d = getOnboardingData();
+      if (!WHATSAPP_NUMBER || WHATSAPP_NUMBER.includes('REPLACE')) {
+        openInfo('One quick setup step', '<p>The WhatsApp contact number has not been configured yet.</p><p class="mt-3">The website is ready to use once you replace <code>WHATSAPP_NUMBER</code> near the top of the JavaScript with your WhatsApp number in international format, without spaces or a plus sign.</p>', 'Setup required', 'Back to form', 'close');
+        return;
+      }
+      const message = [
+        'Hello WalkReach team! I am interested in joining WalkReach.',
+        `Username: ${d.username}`,
+        `Full name: ${d.fullName}`,
+        `Phone: ${d.phone}`,
+        ...(d.email ? [`Email: ${d.email}`] : []),
+        `Gender: ${d.gender}`,
+        `Preferred discovery radius: ${d.radius}`,
+        `Interests: ${d.interests.length ? d.interests.join(', ') : 'Not selected'}`,
+        'Please guide me through the next steps.'
+      ].join('\n');
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      // Open only after the visitor has explicitly reviewed and consented.
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+      if (!newWindow) window.location.href = url;
+      showToast('WhatsApp opened. Review and send your message there.');
+      closeModal($('#onboardModal'));
+    });
+
+    // Demo sign-in: never transmit or persist values.
+    $('#signinForm').addEventListener('submit', event => {
+      event.preventDefault();
+      $('#signinPassword').value = '';
+      $('#signinUser').value = '';
+      $('#signinFeedback').textContent = 'Demo only: no account was authenticated. Your entered values have been cleared and were not sent or saved.';
+      $('#signinFeedback').classList.remove('hidden');
+    });
+
+    // Messaging preview
+    $('#messageDemoForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const input = $('#messageDemoInput');
+      const value = input.value.trim();
+      if (!value) { showToast('Type a demo message first.'); return; }
+      const p = document.createElement('p');
+      p.className = 'ml-auto w-fit max-w-[90%] rounded-2xl rounded-tr-sm bg-ink p-3 text-white break-words';
+      p.textContent = value;
+      $('#messageDemoExtra').appendChild(p);
+      input.value = '';
+      showToast('Added to the local demo only.');
+    });
+    $$('[data-open-messaging]').forEach(button => button.addEventListener('click', () => openInfo('Messaging preview', '<p>The messaging interface is illustrative. Messages you type in the preview stay in this page session and are not sent to real people.</p><p class="mt-3">A production messaging service would require authentication, secure storage, delivery infrastructure, and abuse-reporting controls.</p>', 'Feature preview', 'Join WalkReach ↗', 'onboard')));
+
+    // Travel Mode demo
+    let travelOn = false;
+    function updateTravel() {
+      const destination = $('#destinationSelect').value;
+      $('#travelToggle').setAttribute('aria-checked', String(travelOn));
+      $('#travelToggle').classList.toggle('bg-moss', travelOn);
+      $('#travelToggle').classList.toggle('bg-gray-300', !travelOn);
+      $('span', $('#travelToggle')).className = `absolute top-1 h-5 w-5 rounded-full bg-white transition ${travelOn ? 'right-1' : 'left-1'}`;
+      $('#travelStatus').textContent = travelOn
+        ? (destination ? `Travel Mode demo is on for ${destination}. Sample destination discovery is illustrative only.` : 'Choose a sample destination to preview Travel Mode.')
+        : 'Travel Mode is off in this demo.';
+      $('#travelPreviewTitle').textContent = destination && travelOn ? destination : 'Your destination, your discovery';
+      $('#travelPreviewText').textContent = destination && travelOn ? `Illustrative discovery preview for ${destination}. No real people or location data are retrieved.` : 'Choose a destination to see an illustrative discovery preview.';
+    }
+    $('#travelToggle').addEventListener('click', () => { travelOn = !travelOn; updateTravel(); });
+    $('#destinationSelect').addEventListener('change', updateTravel);
+
+    // Business directory filters and profile preview
+    function filterBusinesses() {
+      const query = $('#businessSearch').value.trim().toLowerCase();
+      const category = $('#businessCategory').value;
+      const cards = $$('.business-card');
+      let count = 0;
+      cards.forEach(card => {
+        const matches = card.dataset.name.toLowerCase().includes(query) && (category === 'all' || card.dataset.category === category);
+        card.classList.toggle('hidden', !matches);
+        if (matches) count++;
+      });
+      $('#businessEmpty').classList.toggle('hidden', count > 0);
+    }
+    $('#businessSearch').addEventListener('input', filterBusinesses);
+    $('#businessCategory').addEventListener('change', filterBusinesses);
+    $$('.business-view').forEach(button => button.addEventListener('click', () => {
+      const card = button.closest('.business-card');
+      const name = card.dataset.name, category = card.dataset.category;
+      openInfo(name, `<p><strong>Category:</strong> ${category}</p><p class="mt-2">This is a fictional business profile shown to demonstrate the WalkReach Business Directory.</p><p class="mt-2">No business listing, booking, contact, or verification action is connected in this demo.</p>`, 'Demo business profile', 'Ask about business listings ↗', 'onboard');
+    }));
+
+    // Pricing actions
+    $$('[data-plan]').forEach(button => button.addEventListener('click', () => {
+      const plan = button.dataset.plan;
+      openInfo(`Explore ${plan}`, `<p>You selected <strong>${plan}</strong>. This is a product preview only; checkout and payment processing are not connected.</p><p class="mt-3">You can contact the WalkReach team through WhatsApp to express interest or ask questions about early access.</p>`, 'Access options', 'Continue to onboarding ↗', 'onboard');
+    }));
+
+    // Privacy preview toggles
+    $$('[data-switch]').forEach(button => button.addEventListener('click', () => {
+      const on = button.getAttribute('aria-checked') !== 'true';
+      button.setAttribute('aria-checked', String(on));
+      button.classList.toggle('bg-moss', on);
+      button.classList.toggle('bg-gray-300', !on);
+      $('span', button).className = `absolute top-1 h-5 w-5 rounded-full bg-white ${on ? 'right-1' : 'left-1'}`;
+      showToast(`${button.dataset.switch === 'visibility' ? 'Profile visibility' : 'Location sharing'} demo set to ${on ? 'on' : 'off'}.`);
+    }));
+    $$('[data-open-privacy]').forEach(button => button.addEventListener('click', () => openInfo('Privacy controls preview', '<p>Explore local interface settings for profile visibility and location sharing. These settings only affect the demonstration and do not change a real account.</p><p class="mt-3">A production service should explain its data practices clearly, minimize collection, secure account data, and let users control visibility.</p>', 'Privacy & safety', 'Join WalkReach ↗', 'onboard')));
+
+    // Policy previews
+    const policies = {
+      privacy: ['Privacy notice (demo)', '<p>This demonstration does not create an account or send data to a server. If you choose to continue to WhatsApp, the details shown in the onboarding summary are placed into a prefilled message for you to review and send.</p><p class="mt-3">Do not enter passwords, verification codes, or sensitive personal information. Replace this demonstration notice with a reviewed, accurate privacy policy before public launch.</p>'],
+      terms: ['Terms of use (demo)', '<p>This site is an interactive product demonstration. Sample profiles, businesses, messages, distances, and referral progress are fictional. No real account, subscription, listing, or referral reward is created here.</p><p class="mt-3">Replace this sample text with official terms reviewed for your service before launch.</p>'],
+      community: ['Community guidelines (demo)', '<p>Be respectful, do not harass or impersonate others, and avoid sharing sensitive personal information. Use blocking and reporting tools when available in a production service.</p><p class="mt-3">The moderation and reporting mechanisms described in the demo are not live services.</p>']
+    };
+    $$('[data-open-policy]').forEach(button => button.addEventListener('click', () => {
+      const [title, body] = policies[button.dataset.openPolicy] || policies.privacy;
+      openInfo(title, body, 'Demonstration policy', 'Close', 'close');
+    }));
+
+    // Referral sharing
+    const referralMessage = 'I am exploring WalkReach — a people-discovery platform with Travel Mode and a Business Directory. Take a look and join the early-access conversation!';
+    $('#copyReferral').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(referralMessage); showToast('Invitation message copied.'); }
+      catch { openInfo('Copy this invitation', `<p>${referralMessage}</p><p class="mt-3">Select and copy the message above to share it.</p>`, 'Referral demo', 'Close', 'close'); }
+    });
+    $('#shareReferral').addEventListener('click', async () => {
+      if (navigator.share) {
+        try { await navigator.share({ title: 'WalkReach', text: referralMessage, url: location.href }); }
+        catch (error) { if (error.name !== 'AbortError') showToast('Sharing was not available.'); }
+      } else {
+        try { await navigator.clipboard.writeText(`${referralMessage} ${location.href}`); showToast('WalkReach invitation copied.'); }
+        catch { openInfo('Share WalkReach', `<p>${referralMessage}</p><p class="mt-3 break-all">${location.href}</p>`, 'Referral demo', 'Close', 'close'); }
+      }
+    });
+
+    // One shared primary action in the general preview dialog.
+    $('#infoPrimary').addEventListener('click', () => {
+      const action = $('#infoPrimary').dataset.action;
+      closeModal($('#infoModal'));
+      if (action === 'onboard') { currentStep = 0; renderStep(); openModal($('#onboardModal')); }
+    });
+    $('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

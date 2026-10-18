@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIPE — 100% Cold-Pressed Nigerian Mango Juice</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Bricolage Grotesque & Figtree -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mango: '#FFB81C',
+                        coral: '#FF6242',
+                        lime: '#B8E04A',
+                        lilac: '#CDB9FF',
+                        sky: '#8ED8F8',
+                        paper: '#FFF7E8',
+                        ink: '#000000',
+                    },
+                    fontFamily: {
+                        heading: ['"Bricolage Grotesque"', 'sans-serif'],
+                        body: ['Figtree', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neo': '6px 6px 0 #000000',
+                        'neo-lg': '8px 8px 0 #000000',
+                        'neo-sm': '3px 3px 0 #000000',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base styles & Neobrutalism outlines */
+        body {
+            font-family: 'Figtree', sans-serif;
+            background-color: #FFF7E8;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .neo-border {
+            border: 3px solid #000000;
+        }
+
+        .neo-shadow {
+            box-shadow: 6px 6px 0 #000000;
+        }
+
+        .neo-shadow-sm {
+            box-shadow: 3px 3px 0 #000000;
+        }
+
+        .neo-shadow-lg {
+            box-shadow: 10px 10px 0 #000000;
+        }
+
+        .neo-button {
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0 #000000;
+            transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .neo-button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #000000;
+        }
+
+        .neo-button:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000000;
+        }
+
+        /* Scalloped divider styles */
+        .scallop-top {
+            mask-image: radial-gradient(circle 12px at 16px 0, #000 99%, transparent 100%);
+            mask-size: 32px 100%;
+            mask-repeat: repeat-x;
+        }
+
+        /* Continuous marquee animation */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 18s linear infinite;
+        }
+
+        /* Bobbing floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(4deg); }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float 5s ease-in-out 1.5s infinite;
+        }
+
+        /* Letter bounce animation */
+        @keyframes letterBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .bounce-letter {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .bounce-letter:hover {
+            animation: letterBounce 0.5s ease;
+        }
+
+        /* Scroll Observer initial state */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-on-scroll {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .animate-marquee {
+                animation: none !important;
+            }
+            .animate-float, .animate-float-delayed {
+                animation: none !important;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF7E8;
+            border-left: 3px solid #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFB81C;
+            border: 3px solid #000;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen selection:bg-mango selection:text-black">
+
+    <!-- FLOATING PILL NAV -->
+    <header class="fixed top-4 inset-x-0 z-40 flex justify-center px-4 pointer-events-none">
+        <nav class="pointer-events-auto bg-white neo-border neo-shadow rounded-full px-4 py-2.5 flex items-center justify-between w-full max-w-4xl gap-3">
+            <!-- Brand Logo Badge -->
+            <a href="#" class="flex items-center gap-2 bg-mango px-3.5 py-1 rounded-full neo-border font-heading font-black text-xl tracking-wider text-black hover:rotate-2 transition-transform">
+                <svg class="w-6 h-6 inline-block" viewBox="0 0 100 100" fill="none">
+                    <path d="M50 10C30 10 15 30 15 60C15 80 30 90 50 90C70 90 85 75 85 50C85 25 70 10 50 10Z" fill="#FFB81C" stroke="#000" stroke-width="8"/>
+                    <path d="M50 10C55 25 70 30 80 25" stroke="#B8E04A" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+                RIPE
+            </a>
+
+            <!-- Nav Links (Hidden on small mobile) -->
+            <div class="hidden md:flex items-center gap-6 font-bold text-sm tracking-wide">
+                <a href="#about" class="hover:text-coral transition-colors">Our Story</a>
+                <a href="#flavours" class="hover:text-coral transition-colors">Flavours</a>
+                <a href="#process" class="hover:text-coral transition-colors">How It's Made</a>
+                <a href="#ugc" class="hover:text-coral transition-colors">Community</a>
+            </div>
+
+            <!-- Bag Button with Dynamic Counter -->
+            <button id="cart-toggle-btn" class="neo-button bg-lime text-black font-heading font-extrabold px-4 py-1.5 rounded-full flex items-center gap-2 text-sm">
+                <span>🛍️ BAG</span>
+                <span id="cart-count" class="bg-black text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold transition-transform">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- SHOPPING BAG DRAWER / MODAL -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex justify-end transition-opacity duration-300">
+        <div class="bg-paper neo-border border-r-0 h-full w-full max-w-md p-6 flex flex-col justify-between shadow-2xl relative overflow-y-auto">
+            <div>
+                <div class="flex justify-between items-center pb-4 mb-4 border-b-2 border-black">
+                    <h3 class="font-heading text-2xl font-black">Your RIPE Bag 🥭</h3>
+                    <button id="cart-close-btn" class="w-10 h-10 bg-coral text-white neo-border font-black text-xl rounded-full flex items-center justify-center hover:bg-black transition-colors">✕</button>
+                </div>
+
+                <div id="cart-items-container" class="space-y-4">
+                    <!-- Dynamic cart items rendered via JS -->
+                    <p id="empty-cart-msg" class="text-gray-600 font-medium text-center py-12">Your bag is empty! Pick your cold-pressed sips below. 👇</p>
+                </div>
+            </div>
+
+            <div class="mt-8 border-t-2 border-black pt-4 bg-white p-4 rounded-2xl neo-border neo-shadow-sm">
+                <div class="flex justify-between items-center font-heading text-xl font-bold mb-4">
+                    <span>Total:</span>
+                    <span id="cart-total-price">₦0</span>
+                </div>
+                <button id="checkout-btn" class="w-full py-3.5 bg-mango font-heading font-black text-lg rounded-xl neo-button text-center block">
+                    CHECKOUT NOW 🚀
+                </button>
+                <p class="text-xs text-center text-gray-500 mt-2">Free cold-chain delivery in Lagos & Abuja on 6+ packs!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN WRAPPER -->
+    <main>
+        <!-- 2. HERO SECTION (Sticky Scroll Stage) -->
+        <section class="relative h-[340vh]" id="hero-trigger">
+            <div class="sticky top-0 h-screen w-full overflow-hidden bg-paper flex flex-col justify-between p-4 md:p-8"
+                 style="background-image: radial-gradient(#000000 1.5px, transparent 1.5px); background-size: 24px 24px;">
+                
+                <!-- Hero Content Stage -->
+                <div class="relative w-full h-full max-w-6xl mx-auto flex flex-col justify-center items-center">
+                    
+                    <!-- Stacked Big Headlines -->
+                    <div id="hero-headline" class="text-center z-10 space-y-2 transition-transform duration-100">
+                        <div class="text-5xl sm:text-7xl md:text-8xl font-heading font-black tracking-tight leading-none uppercase">
+                            The real
+                        </div>
+                        <div class="text-5xl sm:text-7xl md:text-8xl font-heading font-black tracking-tight leading-none text-coral neo-border bg-white px-4 py-1 rounded-2xl neo-shadow inline-block uppercase my-1">
+                            source of
+                        </div>
+                        <div class="text-5xl sm:text-7xl md:text-8xl font-heading font-black tracking-tight leading-none bg-lime neo-border px-6 py-2 rounded-2xl neo-shadow inline-block transform -rotate-3 uppercase">
+                            every sip.
+                        </div>
+                    </div>
+
+                    <!-- Scroll Interactive Visuals Container -->
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        
+                        <!-- 1. Whole Mango Graphic -->
+                        <div id="hero-mango" class="absolute transition-transform duration-75 w-64 md:w-80 h-64 md:h-80 flex items-center justify-center">
+                            <svg class="w-full h-full drop-shadow-[6px_6px_0px_rgba(0,0,0,1)]" viewBox="0 0 200 200" fill="none">
+                                <defs>
+                                    <linearGradient id="mangoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#FF6242" />
+                                        <stop offset="50%" stop-color="#FFB81C" />
+                                        <stop offset="100%" stop-color="#FCD34D" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M100 25 C50 25 25 65 25 115 C25 160 60 180 100 180 C145 180 175 145 175 95 C175 45 145 25 100 25 Z" fill="url(#mangoGrad)" stroke="#000" stroke-width="6"/>
+                                <path d="M100 25 C110 5 130 0 145 10 C135 25 120 30 100 25 Z" fill="#B8E04A" stroke="#000" stroke-width="5"/>
+                                <path d="M60 70 C70 65 85 70 80 85" stroke="#FFF" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+                            </svg>
+                        </div>
+
+                        <!-- 2. Split Mango Left & Right (Initially hidden scale 0) -->
+                        <div id="hero-mango-left" class="absolute w-40 md:w-52 h-64 transition-transform duration-75 opacity-0 -translate-x-32">
+                            <svg class="w-full h-full drop-shadow-[5px_5px_0px_rgba(0,0,0,1)]" viewBox="0 0 100 200" fill="none">
+                                <path d="M95 25 C50 25 25 65 25 115 C25 160 60 180 95 180 Z" fill="#FFB81C" stroke="#000" stroke-width="6"/>
+                                <ellipse cx="95" cy="102" rx="20" ry="50" fill="#F59E0B" stroke="#000" stroke-width="4"/>
+                            </svg>
+                        </div>
+                        <div id="hero-mango-right" class="absolute w-40 md:w-52 h-64 transition-transform duration-75 opacity-0 translate-x-32">
+                            <svg class="w-full h-full drop-shadow-[5px_5px_0px_rgba(0,0,0,1)]" viewBox="0 0 100 200" fill="none">
+                                <path d="M5 25 C50 25 75 65 75 115 C75 160 40 180 5 180 Z" fill="#FFB81C" stroke="#000" stroke-width="6"/>
+                                <ellipse cx="5" cy="102" rx="20" ry="50" fill="#FCD34D" stroke="#000" stroke-width="4"/>
+                            </svg>
+                        </div>
+
+                        <!-- 3. RIPE Can Springing Up -->
+                        <div id="hero-can" class="absolute w-44 sm:w-52 md:w-64 h-80 sm:h-96 transition-transform duration-75 translate-y-[120%] opacity-0 z-20">
+                            <svg class="w-full h-full drop-shadow-[8px_8px_0px_rgba(0,0,0,1)]" viewBox="0 0 160 280" fill="none">
+                                <!-- Can Body -->
+                                <rect x="20" y="25" width="120" height="230" rx="28" fill="#FFB81C" stroke="#000" stroke-width="6"/>
+                                <!-- Top Rim -->
+                                <ellipse cx="80" cy="25" rx="58" ry="12" fill="#E5E7EB" stroke="#000" stroke-width="5"/>
+                                <ellipse cx="80" cy="23" rx="42" ry="6" fill="#9CA3AF" stroke="#000" stroke-width="3"/>
+                                <!-- Label Graphics -->
+                                <rect x="20" y="70" width="120" height="130" fill="#FF6242" stroke="#000" stroke-width="5"/>
+                                <text x="80" y="145" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="900" font-size="38" fill="#FFF" stroke="#000" stroke-width="2.5" letter-spacing="1">RIPE</text>
+                                <text x="80" y="175" text-anchor="middle" font-family="Figtree" font-weight="800" font-size="12" fill="#000">100% PURE MANGO</text>
+                                <!-- Bottom Rim -->
+                                <path d="M20 230 C20 250 140 250 140 230" stroke="#000" stroke-width="6" fill="none"/>
+                            </svg>
+                        </div>
+
+                        <!-- 4. Floating Badge Stickers -->
+                        <div id="hero-badge-1" class="absolute top-1/4 left-4 sm:left-12 bg-coral text-white font-heading font-extrabold text-sm sm:text-base px-4 py-3 rounded-full neo-border neo-shadow -rotate-12 transition-transform duration-100 opacity-0 scale-50 z-30">
+                            ⚡ 0g Added Sugar!
+                        </div>
+                        <div id="hero-badge-2" class="absolute bottom-1/4 right-4 sm:right-12 bg-lime text-black font-heading font-extrabold text-sm sm:text-base px-4 py-3 rounded-full neo-border neo-shadow rotate-12 transition-transform duration-100 opacity-0 scale-50 z-30">
+                            🥭 1 Whole Mango Per Can
+                        </div>
+                    </div>
+
+                    <!-- Bottom Right Note Card -->
+                    <div class="absolute bottom-6 right-0 sm:right-6 z-30 max-w-xs bg-white neo-border neo-shadow p-4 rounded-2xl rotate-2">
+                        <p class="font-bold text-sm text-gray-800 mb-2">Cold-pressed in Sunshine State, Nigeria 🇳🇬</p>
+                        <a href="#flavours" class="inline-block bg-mango neo-button px-4 py-1.5 rounded-xl text-xs font-heading font-black uppercase text-black">
+                            See the flavours 👇
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CORAL MARQUEE BAND -->
+        <section class="relative bg-coral text-white py-4 border-y-4 border-black overflow-hidden z-20">
+            <!-- Scalloped SVG Top Overlay -->
+            <div class="absolute -top-3 left-0 right-0 h-4 bg-paper scallop-top"></div>
+            
+            <div class="animate-marquee whitespace-nowrap flex items-center gap-6 font-heading font-black text-2xl sm:text-3xl tracking-wider uppercase">
+                <span>• Pure Mango</span>
+                <span>• No Added Sugar</span>
+                <span>• Cold Pressed Daily</span>
+                <span>• 100% Sunshine in a Can</span>
+                <span>• Made in Nigeria</span>
+                <span>• Zero Preservatives</span>
+                <span>• Pure Mango</span>
+                <span>• No Added Sugar</span>
+                <span>• Cold Pressed Daily</span>
+                <span>• 100% Sunshine in a Can</span>
+                <span>• Made in Nigeria</span>
+                <span>• Zero Preservatives</span>
+            </div>
+        </section>
+
+        <!-- 4. BRAND STORY SECTION -->
+        <section id="about" class="py-20 px-4 sm:px-8 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Story Copy -->
+                <div class="lg:col-span-7 space-y-6 reveal-on-scroll">
+                    <div class="inline-block bg-lilac px-4 py-1 rounded-full neo-border font-heading font-extrabold text-sm shadow-sm">
+                        THE TRUTH ABOUT JUICE 🧃
+                    </div>
+                    <h2 class="text-4xl sm:text-6xl font-black leading-none">
+                        Most mango drinks <span class="bg-mango px-2 py-0.5 rounded-lg neo-border inline-block rotate-1">barely know</span> a mango.
+                    </h2>
+                    <p class="text-lg sm:text-xl font-medium leading-relaxed text-gray-900">
+                        They load cans with concentrates, artificial flavours, and 30 grams of refined sugar. We got tired of drinking fake fruit punch and calling it juice.
+                    </p>
+                    <p class="text-lg sm:text-xl font-medium leading-relaxed text-gray-800">
+                        RIPE is different. We harvest farm-fresh Nigerian Alphonso & Ogbomoso mangoes, cold-press them within 24 hours, and seal them with carbonated chill. No water dilution. No sugar trickery. Just pure liquid sunshine.
+                    </p>
+
+                    <!-- Proof Stickers Counter Bar -->
+                    <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-4">
+                        <div class="bg-white p-3 sm:p-4 rounded-2xl neo-border neo-shadow text-center">
+                            <span class="block font-heading font-black text-2xl sm:text-4xl text-coral counter-val" data-target="100">0</span>
+                            <span class="font-bold text-xs sm:text-sm text-gray-700">% Pressed Fruit</span>
+                        </div>
+                        <div class="bg-lime p-3 sm:p-4 rounded-2xl neo-border neo-shadow text-center">
+                            <span class="block font-heading font-black text-2xl sm:text-4xl text-black counter-val" data-target="24">0</span>
+                            <span class="font-bold text-xs sm:text-sm text-black">Hrs Tree to Press</span>
+                        </div>
+                        <div class="bg-sky p-3 sm:p-4 rounded-2xl neo-border neo-shadow text-center">
+                            <span class="block font-heading font-black text-2xl sm:text-4xl text-black counter-val" data-target="0">0</span>
+                            <span class="font-bold text-xs sm:text-sm text-black">g Added Sugar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Tilted Splash Artwork Card -->
+                <div class="lg:col-span-5 reveal-on-scroll">
+                    <div class="bg-coral p-6 rounded-3xl neo-border neo-shadow-lg transform rotate-2 relative overflow-hidden group">
+                        <div class="bg-white rounded-2xl p-6 neo-border flex flex-col items-center justify-center min-h-[360px] relative">
+                            <!-- SVG Splash Artwork -->
+                            <svg class="w-full h-64 drop-shadow-[5px_5px_0px_rgba(0,0,0,1)]" viewBox="0 0 200 200" fill="none">
+                                <!-- Splash Liquid Drops -->
+                                <path d="M20 100 C10 60 40 20 80 40 C120 10 180 50 170 100 C190 140 140 190 90 170 C40 190 10 140 20 100 Z" fill="#FFB81C" stroke="#000" stroke-width="4"/>
+                                <circle cx="40" cy="30" r="8" fill="#FF6242" stroke="#000" stroke-width="3"/>
+                                <circle cx="160" cy="40" r="12" fill="#B8E04A" stroke="#000" stroke-width="3"/>
+                                <circle cx="170" cy="150" r="10" fill="#FFB81C" stroke="#000" stroke-width="3"/>
+                                
+                                <!-- Floating Mango Cubes -->
+                                <rect x="30" y="130" width="22" height="22" rx="4" fill="#FCD34D" stroke="#000" stroke-width="3" transform="rotate(15 30 130)"/>
+                                <rect x="135" y="60" width="20" height="20" rx="4" fill="#FCD34D" stroke="#000" stroke-width="3" transform="rotate(-20 135 60)"/>
+
+                                <!-- Center Can -->
+                                <rect x="70" y="45" width="60" height="110" rx="14" fill="#FFB81C" stroke="#000" stroke-width="4"/>
+                                <ellipse cx="100" cy="45" rx="30" ry="6" fill="#E5E7EB" stroke="#000" stroke-width="3"/>
+                                <rect x="70" y="70" width="60" height="60" fill="#FF6242" stroke="#000" stroke-width="3"/>
+                                <text x="100" y="107" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="900" font-size="18" fill="#FFF" stroke="#000" stroke-width="1.5">RIPE</text>
+                            </svg>
+                            <span class="font-heading font-black text-xl mt-2 tracking-wide uppercase text-black">EXPLOSIVE FRESHNESS 🔥</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. FLAVOURS SECTION -->
+        <section id="flavours" class="py-20 bg-paper border-t-4 border-black relative">
+            <div class="max-w-6xl mx-auto px-4 sm:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-14 space-y-3 reveal-on-scroll">
+                    <span class="bg-lime px-4 py-1 rounded-full neo-border font-heading font-extrabold text-sm uppercase">100% Real Ingredients</span>
+                    <h2 class="text-4xl sm:text-6xl font-black">PICK YOUR SUNSHINE ☀️</h2>
+                    <p class="text-lg font-medium text-gray-700">Four crisp cold-pressed blends made to reset your palate.</p>
+                </div>
+
+                <!-- Swipeable / Responsive Grid Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto pb-4 snap-x">
+                    
+                    <!-- Card 1: Original Mango -->
+                    <div class="bg-mango p-6 rounded-3xl neo-border neo-shadow flex flex-col justify-between hover:-translate-y-2 transition-transform duration-200 group snap-center min-w-[260px]">
+                        <div class="bg-white rounded-2xl p-6 neo-border flex items-center justify-center mb-6 relative overflow-hidden">
+                            <div class="w-32 h-44 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-105">
+                                <svg class="w-full h-full drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]" viewBox="0 0 120 180" fill="none">
+                                    <rect x="15" y="15" width="90" height="150" rx="18" fill="#FFB81C" stroke="#000" stroke-width="4"/>
+                                    <ellipse cx="60" cy="15" rx="45" ry="8" fill="#D1D5DB" stroke="#000" stroke-width="3"/>
+                                    <rect x="15" y="50" width="90" height="80" fill="#FF6242" stroke="#000" stroke-width="3"/>
+                                    <text x="60" y="100" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="900" font-size="26" fill="#FFF" stroke="#000" stroke-width="2">RIPE</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-heading font-black text-2xl">Original</h3>
+                                <span class="bg-white px-2.5 py-0.5 rounded-lg neo-border font-bold text-sm">₦1,500</span>
+                            </div>
+                            <p class="text-sm font-medium text-black/80">Pure Ogbomoso mango goodness. Thick, velvety, and crisp.</p>
+                            <button onclick="addToBag('Original Mango', 1500)" class="w-full mt-4 bg-white hover:bg-black hover:text-white py-2.5 rounded-xl neo-button font-heading font-black text-base uppercase transition-colors">
+                                Add to Bag +
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Mango Passion -->
+                    <div class="bg-coral p-6 rounded-3xl neo-border neo-shadow flex flex-col justify-between hover:-translate-y-2 transition-transform duration-200 group snap-center min-w-[260px]">
+                        <div class="bg-white rounded-2xl p-6 neo-border flex items-center justify-center mb-6 relative overflow-hidden">
+                            <div class="w-32 h-44 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
+                                <svg class="w-full h-full drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]" viewBox="0 0 120 180" fill="none">
+                                    <rect x="15" y="15" width="90" height="150" rx="18" fill="#FF6242" stroke="#000" stroke-width="4"/>
+                                    <ellipse cx="60" cy="15" rx="45" ry="8" fill="#D1D5DB" stroke="#000" stroke-width="3"/>
+                                    <rect x="15" y="50" width="90" height="80" fill="#FFB81C" stroke="#000" stroke-width="3"/>
+                                    <text x="60" y="100" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="900" font-size="24" fill="#FFF" stroke="#000" stroke-width="2">PASSION</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-white">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-heading font-black text-2xl text-black">Passion</h3>
+                                <span class="bg-white text-black px-2.5 py-0.5 rounded-lg neo-border font-bold text-sm">₦1,500</span>
+                            </div>
+                            <p class="text-sm font-medium text-black">Tangy tropical passionfruit kick blended with sweet mango nectar.</p>
+                            <button onclick="addToBag('Mango Passion', 1500)" class="w-full mt-4 bg-white text-black hover:bg-black hover:text-white py-2.5 rounded-xl neo-button font-heading font-black text-base uppercase transition-colors">
+                                Add to Bag +
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Mango Chili Lime -->
+                    <div class="bg-lime p-6 rounded-3xl neo-border neo-shadow flex flex-col justify-between hover:-translate-y-2 transition-transform duration-200 group snap-center min-w-[260px]">
+                        <div class="bg-white rounded-2xl p-6 neo-border flex items-center justify-center mb-6 relative overflow-hidden">
+                            <div class="w-32 h-44 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-105">
+                                <svg class="w-full h-full drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]" viewBox="0 0 120 180" fill="none">
+                                    <rect x="15" y="15" width="90" height="150" rx="18" fill="#B8E04A" stroke="#000" stroke-width="4"/>
+                                    <ellipse cx="60" cy="15" rx="45" ry="8" fill="#D1D5DB" stroke="#000" stroke-width="3"/>
+                                    <rect x="15" y="50" width="90" height="80" fill="#FFB81C" stroke="#000" stroke-width="3"/>
+                                    <text x="60" y="100" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="900" font-size="22" fill="#000" stroke="#000" stroke-width="1">CHILI LIME</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-heading font-black text-2xl">Chili Lime</h3>
+                                <span class="bg-white px-2.5 py-0.5 rounded-lg neo-border font-bold text-sm">₦1,500</span>
+                            </div>
+                            <p class="text-sm font-medium text-black/80">Sweet mango infused with zest of key lime & a fiery habanero pinch.</p>
+                            <button onclick="addToBag('Mango Chili Lime', 1500)" class="w-full mt-4 bg-white hover:bg-black hover:text-white py-2.5 rounded-xl neo-button font-heading font-black text-base uppercase transition-colors">
+                                Add to Bag +
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Mango Coconut -->
+                    <div class="bg-lilac p-6 rounded-3xl neo-border neo-shadow flex flex-col justify-between hover:-translate-y-2 transition-transform duration-200 group snap-center min-w-[260px]">
+                        <div class="bg-white rounded-2xl p-6 neo-border flex items-center justify-center mb-6 relative overflow-hidden">
+                            <div class="w-32 h-44 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
+                                <svg class="w-full h-full drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]" viewBox="0 0 120 180" fill="none">
+                                    <rect x="15" y="15" width="90" height="150" rx="18" fill="#CDB9FF" stroke="#000" stroke-width="4"/>
+                                    <ellipse cx="60" cy="15" rx="45" ry="8" fill="#D1D5DB" stroke="#000" stroke-width="3"/>
+                                    <rect x="15" y="50" width="90" height="80" fill="#FFB81C" stroke="#000" stroke-width="3"/>
+                                    <text x="60" y="100" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="900" font-size="22" fill="#000" stroke="#000" stroke-width="1">COCONUT</text>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="font-heading font-black text-2xl">Coconut</h3>
+                                <span class="bg-white px-2.5 py-0.5 rounded-lg neo-border font-bold text-sm">₦1,500</span>
+                            </div>
+                            <p class="text-sm font-medium text-black/80">Smooth coconut water creaminess blended with gold mango puree.</p>
+                            <button onclick="addToBag('Mango Coconut', 1500)" class="w-full mt-4 bg-white hover:bg-black hover:text-white py-2.5 rounded-xl neo-button font-heading font-black text-base uppercase transition-colors">
+                                Add to Bag +
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. LIME HOW IT'S MADE SECTION -->
+        <section id="process" class="py-20 bg-lime border-t-4 border-black relative">
+            <!-- Scalloped SVG Top Overlay -->
+            <div class="absolute -top-3 left-0 right-0 h-4 bg-paper scallop-top"></div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-8">
+                
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-16 reveal-on-scroll">
+                    <div>
+                        <span class="bg-white px-4 py-1 rounded-full neo-border font-heading font-extrabold text-sm uppercase">FROM TREE TO CAN 🌿</span>
+                        <h2 class="text-4xl sm:text-6xl font-black mt-2">HOW IT’S MADE</h2>
+                    </div>
+
+                    <!-- Hedgehog Cut Mango Vector -->
+                    <div class="w-48 h-36 bg-white p-3 rounded-2xl neo-border neo-shadow flex items-center justify-center transform -rotate-3">
+                        <svg class="w-full h-full" viewBox="0 0 160 120" fill="none">
+                            <path d="M20 90 C20 30 140 30 140 90 Z" fill="#FFB81C" stroke="#000" stroke-width="4"/>
+                            <!-- Hedgehog Grid Cubes -->
+                            <rect x="40" y="45" width="20" height="20" rx="3" fill="#FCD34D" stroke="#000" stroke-width="2.5"/>
+                            <rect x="70" y="40" width="20" height="20" rx="3" fill="#FCD34D" stroke="#000" stroke-width="2.5"/>
+                            <rect x="100" y="45" width="20" height="20" rx="3" fill="#FCD34D" stroke="#000" stroke-width="2.5"/>
+                            <rect x="50" y="70" width="20" height="20" rx="3" fill="#FCD34D" stroke="#000" stroke-width="2.5"/>
+                            <rect x="80" y="68" width="20" height="20" rx="3" fill="#FCD34D" stroke="#000" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 4 Staggered Steps Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <div class="bg-white p-6 rounded-3xl neo-border neo-shadow reveal-on-scroll" style="transition-delay: 0ms;">
+                        <span class="w-10 h-10 bg-mango text-black neo-border rounded-full flex items-center justify-center font-heading font-black text-xl mb-4">1</span>
+                        <h3 class="font-heading font-black text-2xl mb-2">Picked Ripe</h3>
+                        <p class="text-sm font-medium text-gray-800">Hand-harvested at peak sweetness from sunshine orchards in Oyo and Benue state.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl neo-border neo-shadow reveal-on-scroll transform md:translate-y-4" style="transition-delay: 150ms;">
+                        <span class="w-10 h-10 bg-coral text-white neo-border rounded-full flex items-center justify-center font-heading font-heading font-black text-xl mb-4">2</span>
+                        <h3 class="font-heading font-black text-2xl mb-2">Pressed Same Day</h3>
+                        <p class="text-sm font-medium text-gray-800">Hydraulically cold-pressed within hours to preserve vital enzymes and raw antioxidants.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl neo-border neo-shadow reveal-on-scroll transform md:translate-y-8" style="transition-delay: 300ms;">
+                        <span class="w-10 h-10 bg-sky text-black neo-border rounded-full flex items-center justify-center font-heading font-black text-xl mb-4">3</span>
+                        <h3 class="font-heading font-black text-2xl mb-2">Chilled Fast</h3>
+                        <p class="text-sm font-medium text-gray-800">Flash-chilled in zero-heat stainless tanks so flavor stays vibrant without heat degradation.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl neo-border neo-shadow reveal-on-scroll transform md:translate-y-12" style="transition-delay: 450ms;">
+                        <span class="w-10 h-10 bg-lilac text-black neo-border rounded-full flex items-center justify-center font-heading font-black text-xl mb-4">4</span>
+                        <h3 class="font-heading font-black text-2xl mb-2">Canned Cold</h3>
+                        <p class="text-sm font-medium text-gray-800">Sealed in recyclable 330ml slim cans with zero preservatives added. Pure refresh!</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. UGC SOCIAL FEED SECTION -->
+        <section id="ugc" class="py-24 bg-sky border-t-4 border-black relative"
+                 style="background-image: radial-gradient(#ffffff 2px, transparent 2px); background-size: 28px 28px;">
+            <div class="max-w-6xl mx-auto px-4 sm:px-8">
+                
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12 reveal-on-scroll">
+                    <div>
+                        <h2 class="text-4xl sm:text-6xl font-black">SEEN ON YOUR FEED 📲</h2>
+                        <p class="text-lg font-medium text-black/80">Real reactions from sips across Lagos, Abuja & PH.</p>
+                    </div>
+                    <div class="bg-mango font-heading font-extrabold px-5 py-2.5 rounded-2xl neo-border neo-shadow rotate-3 text-sm">
+                        Post yours with #RipeSips 📸
+                    </div>
+                </div>
+
+                <!-- 5 Vertical UGC Story Cards Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 mb-12">
+                    
+                    <!-- UGC 1 -->
+                    <div onclick="openStoryModal(0)" class="cursor-pointer bg-white p-3 rounded-2xl neo-border neo-shadow hover:-translate-y-2 transition-transform duration-200 group transform -rotate-2">
+                        <div class="relative aspect-[9/16] rounded-xl overflow-hidden neo-border bg-mango flex flex-col justify-between p-3 text-white">
+                            <!-- Vector Stylized Customer Image -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-6xl">🤳</span>
+                            </div>
+                            
+                            <!-- Top handle -->
+                            <div class="z-20 flex justify-between items-center text-xs font-bold">
+                                <span class="bg-black/60 px-2 py-0.5 rounded-full">@chioma_sips</span>
+                                <span class="bg-lime text-black px-1.5 py-0.5 rounded">ORIGINAL</span>
+                            </div>
+
+                            <!-- Play Button -->
+                            <div class="z-20 self-center bg-mango w-12 h-12 rounded-full neo-border flex items-center justify-center text-black font-bold pl-1 group-hover:scale-110 transition-transform">
+                                ▶
+                            </div>
+
+                            <!-- Bottom Caption -->
+                            <div class="z-20 text-xs font-semibold">
+                                "Lagos heat met its match today 🥵🥭"
+                                <div class="text-[10px] text-gray-300 mt-1">12.4k views • 0:15</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UGC 2 -->
+                    <div onclick="openStoryModal(1)" class="cursor-pointer bg-white p-3 rounded-2xl neo-border neo-shadow hover:-translate-y-2 transition-transform duration-200 group transform rotate-3">
+                        <div class="relative aspect-[9/16] rounded-xl overflow-hidden neo-border bg-coral flex flex-col justify-between p-3 text-white">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-6xl">🏋️‍♂️</span>
+                            </div>
+                            
+                            <div class="z-20 flex justify-between items-center text-xs font-bold">
+                                <span class="bg-black/60 px-2 py-0.5 rounded-full">@tunde.fits</span>
+                                <span class="bg-mango text-black px-1.5 py-0.5 rounded">PASSION</span>
+                            </div>
+
+                            <div class="z-20 self-center bg-mango w-12 h-12 rounded-full neo-border flex items-center justify-center text-black font-bold pl-1 group-hover:scale-110 transition-transform">
+                                ▶
+                            </div>
+
+                            <div class="z-20 text-xs font-semibold">
+                                "Post-gym recovery sip! No sugar crash!"
+                                <div class="text-[10px] text-gray-300 mt-1">8.9k views • 0:22</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UGC 3 -->
+                    <div onclick="openStoryModal(2)" class="cursor-pointer bg-white p-3 rounded-2xl neo-border neo-shadow hover:-translate-y-2 transition-transform duration-200 group transform -rotate-1">
+                        <div class="relative aspect-[9/16] rounded-xl overflow-hidden neo-border bg-lime flex flex-col justify-between p-3 text-black">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-6xl">📦</span>
+                            </div>
+                            
+                            <div class="z-20 flex justify-between items-center text-xs font-bold text-white">
+                                <span class="bg-black/60 px-2 py-0.5 rounded-full">@amarachi_vibe</span>
+                                <span class="bg-coral text-white px-1.5 py-0.5 rounded">CHILI LIME</span>
+                            </div>
+
+                            <div class="z-20 self-center bg-mango w-12 h-12 rounded-full neo-border flex items-center justify-center text-black font-bold pl-1 group-hover:scale-110 transition-transform">
+                                ▶
+                            </div>
+
+                            <div class="z-20 text-xs font-semibold text-white">
+                                "Unboxing 24 cans. Chili Lime is insane 🔥"
+                                <div class="text-[10px] text-gray-300 mt-1">24.1k views • 0:30</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UGC 4 -->
+                    <div onclick="openStoryModal(3)" class="cursor-pointer bg-white p-3 rounded-2xl neo-border neo-shadow hover:-translate-y-2 transition-transform duration-200 group transform rotate-2">
+                        <div class="relative aspect-[9/16] rounded-xl overflow-hidden neo-border bg-lilac flex flex-col justify-between p-3 text-black">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-6xl">🌇</span>
+                            </div>
+                            
+                            <div class="z-20 flex justify-between items-center text-xs font-bold text-white">
+                                <span class="bg-black/60 px-2 py-0.5 rounded-full">@dapo_lounge</span>
+                                <span class="bg-lime text-black px-1.5 py-0.5 rounded">COCONUT</span>
+                            </div>
+
+                            <div class="z-20 self-center bg-mango w-12 h-12 rounded-full neo-border flex items-center justify-center text-black font-bold pl-1 group-hover:scale-110 transition-transform">
+                                ▶
+                            </div>
+
+                            <div class="z-20 text-xs font-semibold text-white">
+                                "Rooftop sunset chill with the squad 🍹"
+                                <div class="text-[10px] text-gray-300 mt-1">15.7k views • 0:18</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UGC 5 -->
+                    <div onclick="openStoryModal(4)" class="cursor-pointer bg-white p-3 rounded-2xl neo-border neo-shadow hover:-translate-y-2 transition-transform duration-200 group transform -rotate-3">
+                        <div class="relative aspect-[9/16] rounded-xl overflow-hidden neo-border bg-mango flex flex-col justify-between p-3 text-white">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="text-6xl">💻</span>
+                            </div>
+                            
+                            <div class="z-20 flex justify-between items-center text-xs font-bold">
+                                <span class="bg-black/60 px-2 py-0.5 rounded-full">@kemi_codes</span>
+                                <span class="bg-coral text-white px-1.5 py-0.5 rounded">ORIGINAL</span>
+                            </div>
+
+                            <div class="z-20 self-center bg-mango w-12 h-12 rounded-full neo-border flex items-center justify-center text-black font-bold pl-1 group-hover:scale-110 transition-transform">
+                                ▶
+                            </div>
+
+                            <div class="z-20 text-xs font-semibold">
+                                "Home office fuel! Zero afternoon slumps."
+                                <div class="text-[10px] text-gray-300 mt-1">19.3k views • 0:25</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Sliding Hashtag Pills Band -->
+                <div class="overflow-hidden whitespace-nowrap py-2 border-y-2 border-black bg-white rounded-2xl neo-border">
+                    <div class="animate-marquee flex items-center gap-4 font-heading font-extrabold text-sm">
+                        <span class="bg-mango px-3 py-1 rounded-full neo-border">#RipeSips</span>
+                        <span class="bg-coral text-white px-3 py-1 rounded-full neo-border">#ColdPressedNaija</span>
+                        <span class="bg-lime px-3 py-1 rounded-full neo-border">#NoAddedSugar</span>
+                        <span class="bg-lilac px-3 py-1 rounded-full neo-border">#RealMangoJuice</span>
+                        <span class="bg-mango px-3 py-1 rounded-full neo-border">#RipeSips</span>
+                        <span class="bg-coral text-white px-3 py-1 rounded-full neo-border">#ColdPressedNaija</span>
+                        <span class="bg-lime px-3 py-1 rounded-full neo-border">#NoAddedSugar</span>
+                        <span class="bg-lilac px-3 py-1 rounded-full neo-border">#RealMangoJuice</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- INSTAGRAM-STORY-STYLE MODAL PLAYER -->
+        <div id="story-modal" class="fixed inset-0 z-50 bg-black/90 hidden flex items-center justify-center p-4">
+            <div class="relative w-full max-w-sm aspect-[9/16] bg-paper neo-border rounded-3xl overflow-hidden flex flex-col justify-between p-4 shadow-2xl">
+                
+                <!-- Story Top Progress Bar -->
+                <div class="w-full bg-gray-300 h-1.5 rounded-full overflow-hidden mb-2 relative z-30">
+                    <div id="story-progress" class="bg-mango h-full w-0 transition-all duration-100 ease-linear"></div>
+                </div>
+
+                <!-- Close Button -->
+                <button onclick="closeStoryModal()" class="absolute top-4 right-4 z-40 bg-black text-white w-8 h-8 rounded-full font-bold flex items-center justify-center neo-border">✕</button>
+
+                <!-- Story Center Visual Content -->
+                <div id="story-content" class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 bg-coral text-white">
+                    <div id="story-emoji" class="text-8xl mb-4 animate-bounce">🤳</div>
+                    <h3 id="story-handle" class="font-heading font-black text-2xl mb-1">@chioma_sips</h3>
+                    <span id="story-tag" class="bg-mango text-black px-3 py-0.5 rounded-full neo-border text-xs font-bold mb-4">Original Mango</span>
+                    <p id="story-caption" class="text-base font-semibold px-4">"Lagos heat met its match today 🥵🥭 Cold-pressed bliss!"</p>
+                </div>
+
+                <!-- Navigation Tap Overlay Zones -->
+                <div class="absolute inset-0 flex z-20">
+                    <div onclick="prevStory()" class="w-1/2 h-full"></div>
+                    <div onclick="nextStory()" class="w-1/2 h-full"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. REVIEWS CAROUSEL ("Sippers say!") -->
+        <section class="py-20 bg-paper border-t-4 border-black overflow-hidden">
+            <div class="max-w-5xl mx-auto px-4 sm:px-8">
+                
+                <div class="flex items-center justify-between mb-12 reveal-on-scroll">
+                    <div>
+                        <span class="bg-coral text-white px-4 py-1 rounded-full neo-border font-heading font-extrabold text-sm uppercase">LOVE FROM NIGERIA 🇳🇬</span>
+                        <h2 class="text-4xl sm:text-6xl font-black mt-2">SIPPERS SAY!</h2>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <div class="flex gap-3">
+                        <button onclick="slideReview(-1)" class="w-12 h-12 bg-white neo-button rounded-full font-black text-xl flex items-center justify-center">👈</button>
+                        <button onclick="slideReview(1)" class="w-12 h-12 bg-mango neo-button rounded-full font-black text-xl flex items-center justify-center">👉</button>
+                    </div>
+                </div>
+
+                <!-- Carousel Cards Wrapper -->
+                <div id="reviews-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 transition-transform duration-300">
+                    
+                    <!-- Review 1 -->
+                    <div class="bg-mango p-6 rounded-3xl neo-border neo-shadow transform -rotate-1">
+                        <div class="flex items-center gap-1 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
+                        <p class="font-bold text-lg text-black mb-4">"I’m addicted to Chili Lime! Finally a juice in Nigeria that isn’t just sugar syrup. Tastes like real ripe mangoes from my mom's garden."</p>
+                        <div class="flex items-center justify-between border-t-2 border-black pt-3 font-heading font-extrabold text-sm">
+                            <span>Tolu A.</span>
+                            <span class="bg-white px-2 py-0.5 rounded neo-border">Lagos 📍</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="bg-lime p-6 rounded-3xl neo-border neo-shadow transform rotate-2">
+                        <div class="flex items-center gap-1 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
+                        <p class="font-bold text-lg text-black mb-4">"Restocked my fridge with 12 cans for my office. The Mango Coconut flavor is elite after long coding sessions in Wuse."</p>
+                        <div class="flex items-center justify-between border-t-2 border-black pt-3 font-heading font-extrabold text-sm">
+                            <span>Amina K.</span>
+                            <span class="bg-white px-2 py-0.5 rounded neo-border">Abuja 📍</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. FOOTER SECTION -->
+        <footer class="bg-mango border-t-4 border-black relative pt-20 pb-12 overflow-hidden">
+            <!-- Scalloped SVG Top Overlay -->
+            <div class="absolute -top-3 left-0 right-0 h-4 bg-paper scallop-top"></div>
+
+            <!-- Floating Bobbing Mango Pieces Artwork -->
+            <div class="absolute top-10 left-8 animate-float pointer-events-none opacity-80 hidden sm:block">
+                <span class="text-5xl">🥭</span>
+            </div>
+            <div class="absolute top-20 right-12 animate-float-delayed pointer-events-none opacity-80 hidden sm:block">
+                <span class="text-6xl">🍹</span>
+            </div>
+
+            <div class="max-w-4xl mx-auto px-4 text-center space-y-12 relative z-10">
+                
+                <!-- Email Newsletter Signup -->
+                <div class="bg-white p-8 rounded-3xl neo-border neo-shadow max-w-xl mx-auto">
+                    <h3 class="font-heading font-black text-3xl mb-2">JOIN THE RIPE CLUB 🥭</h3>
+                    <p class="text-sm font-semibold text-gray-700 mb-6">Get 10% off your first order & secret drop alerts in Lagos!</p>
+                    
+                    <form id="newsletter-form" onsubmit="handleNewsletter(event)" class="flex flex-col sm:flex-row gap-3">
+                        <input type="email" required placeholder="Enter your email address..." class="flex-1 px-4 py-3 rounded-xl neo-border font-bold text-sm focus:outline-none focus:ring-2 focus:ring-black">
+                        <button type="submit" class="bg-coral text-white px-6 py-3 rounded-xl neo-button font-heading font-black text-sm uppercase">
+                            SUBSCRIBE 🚀
+                        </button>
+                    </form>
+                    <p id="newsletter-success" class="hidden text-green-600 font-bold text-sm mt-3">Welcome to the RIPE Club! Check your inbox for your 10% code 🥭</p>
+                </div>
+
+                <!-- Giant Bouncing Outlined RIPE Wordmark -->
+                <div class="py-8 select-none">
+                    <div class="font-heading font-black text-7xl sm:text-9xl tracking-tighter text-white drop-shadow-[8px_8px_0px_rgba(0,0,0,1)] flex justify-center gap-2">
+                        <span class="bounce-letter" style="text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;">R</span>
+                        <span class="bounce-letter" style="text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;">I</span>
+                        <span class="bounce-letter" style="text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;">P</span>
+                        <span class="bounce-letter" style="text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;">E</span>
+                    </div>
+                </div>
+
+                <!-- Footer Nav & Copyright -->
+                <div class="flex flex-col sm:flex-row items-center justify-between border-t-2 border-black pt-6 text-sm font-bold gap-4">
+                    <p>© 2026 RIPE Cold-Pressed Drinks Ltd. All rights reserved.</p>
+                    <div class="flex gap-6">
+                        <a href="#" class="hover:underline">Privacy Policy</a>
+                        <a href="#" class="hover:underline">Terms of Sip</a>
+                        <a href="#" class="hover:underline">Instagram</a>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+    </main>
+
+    <!-- VANILLA JAVASCRIPT LOGIC -->
+    <script>
+        // -------------------------------------------------------------
+        // 1. SHOPPING BAG STATE & LOGIC
+        // -------------------------------------------------------------
+        let cart = [];
+        const cartToggleBtn = document.getElementById('cart-toggle-btn');
+        const cartDrawer = document.getElementById('cart-drawer');
+        const cartCloseBtn = document.getElementById('cart-close-btn');
+        const cartCountEl = document.getElementById('cart-count');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const emptyCartMsg = document.getElementById('empty-cart-msg');
+        const cartTotalPriceEl = document.getElementById('cart-total-price');
+
+        cartToggleBtn.addEventListener('click', () => {
+            cartDrawer.classList.remove('hidden');
+        });
+
+        cartCloseBtn.addEventListener('click', () => {
+            cartDrawer.classList.add('hidden');
+        });
+
+        function addToBag(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCartUI();
+            
+            // Bump counter animation
+            cartCountEl.classList.add('scale-150', 'bg-coral');
+            setTimeout(() => cartCountEl.classList.remove('scale-150', 'bg-coral'), 200);
+
+            // Auto open cart
+            cartDrawer.classList.remove('hidden');
+        }
+
+        function updateCartQty(name, delta) {
+            const item = cart.find(i => i.name === name);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.name !== name);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+            cartCountEl.textContent = totalItems;
+            cartTotalPriceEl.textContent = `₦${totalPrice.toLocaleString()}`;
+
+            if (cart.length === 0) {
+                emptyCartMsg.classList.remove('hidden');
+                cartItemsContainer.innerHTML = '';
+                cartItemsContainer.appendChild(emptyCartMsg);
+            } else {
+                emptyCartMsg.classList.add('hidden');
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between bg-white p-3 rounded-xl neo-border neo-shadow-sm">
+                        <div>
+                            <h4 class="font-heading font-black text-base">${item.name}</h4>
+                            <span class="text-xs font-bold text-gray-600">₦${item.price.toLocaleString()} each</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="updateCartQty('${item.name}', -1)" class="w-7 h-7 bg-coral text-white neo-border rounded-lg font-bold flex items-center justify-center">-</button>
+                            <span class="font-heading font-extrabold text-sm w-4 text-center">${item.qty}</span>
+                            <button onclick="updateCartQty('${item.name}', 1)" class="w-7 h-7 bg-lime text-black neo-border rounded-lg font-bold flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // -------------------------------------------------------------
+        // 2. STICKY HERO SCROLL SEQUENCE (Driven by scroll position)
+        // -------------------------------------------------------------
+        const heroTrigger = document.getElementById('hero-trigger');
+        const heroHeadline = document.getElementById('hero-headline');
+        const heroMango = document.getElementById('hero-mango');
+        const heroMangoLeft = document.getElementById('hero-mango-left');
+        const heroMangoRight = document.getElementById('hero-mango-right');
+        const heroCan = document.getElementById('hero-can');
+        const heroBadge1 = document.getElementById('hero-badge-1');
+        const heroBadge2 = document.getElementById('hero-badge-2');
+
+        window.addEventListener('scroll', () => {
+            if (!heroTrigger) return;
+            const rect = heroTrigger.getBoundingClientRect();
+            const totalHeight = heroTrigger.offsetHeight - window.innerHeight;
+            const scrollProgress = Math.max(0, Math.min(1, -rect.top / totalHeight));
+
+            // Sequence 1: Headline text slides away
+            if (scrollProgress < 0.3) {
+                const headlineProgress = scrollProgress / 0.3;
+                heroHeadline.style.transform = `scale(${1 - headlineProgress * 0.3}) translateY(${-headlineProgress * 80}px)`;
+                heroHeadline.style.opacity = 1 - headlineProgress;
+            } else {
+                heroHeadline.style.opacity = 0;
+            }
+
+            // Sequence 2: Whole mango spins and shrinks -> splits into halves
+            if (scrollProgress < 0.25) {
+                const mangoRot = scrollProgress * 720;
+                heroMango.style.transform = `rotate(${mangoRot}deg) scale(${1 - scrollProgress * 2})`;
+                heroMango.style.opacity = 1 - scrollProgress * 3;
+                heroMangoLeft.style.opacity = 0;
+                heroMangoRight.style.opacity = 0;
+            } else if (scrollProgress >= 0.25 && scrollProgress < 0.6) {
+                heroMango.style.opacity = 0;
+                const splitProgress = (scrollProgress - 0.25) / 0.35;
+                heroMangoLeft.style.opacity = 1;
+                heroMangoRight.style.opacity = 1;
+                heroMangoLeft.style.transform = `translateX(${-32 - splitProgress * 120}px) rotate(${-splitProgress * 20}deg)`;
+                heroMangoRight.style.transform = `translateX(${32 + splitProgress * 120}px) rotate(${splitProgress * 20}deg)`;
+            }
+
+            // Sequence 3: Can springs up into center
+            if (scrollProgress >= 0.4) {
+                const canProgress = Math.min(1, (scrollProgress - 0.4) / 0.4);
+                const translateY = (1 - canProgress) * 120;
+                heroCan.style.opacity = canProgress;
+                heroCan.style.transform = `translateY(${translateY}%) scale(${0.8 + canProgress * 0.2})`;
+            } else {
+                heroCan.style.opacity = 0;
+            }
+
+            // Sequence 4: Round badges pop in
+            if (scrollProgress >= 0.65) {
+                const badgeProgress = Math.min(1, (scrollProgress - 0.65) / 0.25);
+                heroBadge1.style.opacity = badgeProgress;
+                heroBadge1.style.transform = `rotate(-12deg) scale(${badgeProgress})`;
+                heroBadge2.style.opacity = badgeProgress;
+                heroBadge2.style.transform = `rotate(12deg) scale(${badgeProgress})`;
+            } else {
+                heroBadge1.style.opacity = 0;
+                heroBadge2.style.opacity = 0;
+            }
+        });
+
+        // -------------------------------------------------------------
+        // 3. INTERSECTION OBSERVER FOR SCROLL-REVEALS & COUNTERS
+        // -------------------------------------------------------------
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+        const counterElements = document.querySelectorAll('.counter-val');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Animated Number Counters
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-target'));
+                    let current = 0;
+                    const step = Math.max(1, Math.ceil(target / 30));
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            entry.target.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            entry.target.textContent = current;
+                        }
+                    }, 40);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counterElements.forEach(el => counterObserver.observe(el));
+
+        // -------------------------------------------------------------
+        // 4. UGC STORY MODAL PLAYER
+        // -------------------------------------------------------------
+        const storyData = [
+            { emoji: '🤳', handle: '@chioma_sips', tag: 'Original Mango', caption: 'Lagos heat met its match today 🥵🥭 Cold-pressed bliss!', bg: 'bg-mango' },
+            { emoji: '🏋️‍♂️', handle: '@tunde.fits', tag: 'Mango Passion', caption: 'Post-gym recovery sip! No sugar crash or heavy gut!', bg: 'bg-coral' },
+            { emoji: '📦', handle: '@amarachi_vibe', tag: 'Chili Lime', caption: 'Unboxing 24 cans. Chili Lime flavor is absolutely insane 🔥', bg: 'bg-lime' },
+            { emoji: '🌇', handle: '@dapo_lounge', tag: 'Mango Coconut', caption: 'Rooftop sunset chill in Lekki with the squad 🍹', bg: 'bg-lilac' },
+            { emoji: '💻', handle: '@kemi_codes', tag: 'Original Mango', caption: 'Home office fuel! Zero afternoon slumps guaranteed.', bg: 'bg-mango' }
+        ];
+
+        let currentStoryIndex = 0;
+        let storyTimer = null;
+        let storyProgressVal = 0;
+
+        function openStoryModal(index) {
+            currentStoryIndex = index;
+            document.getElementById('story-modal').classList.remove('hidden');
+            renderStory();
+        }
+
+        function closeStoryModal() {
+            document.getElementById('story-modal').classList.add('hidden');
+            clearInterval(storyTimer);
+        }
+
+        function renderStory() {
+            clearInterval(storyTimer);
+            const story = storyData[currentStoryIndex];
+            const content = document.getElementById('story-content');
+            
+            content.className = `absolute inset-0 flex flex-col items-center justify-center p-6 text-center z-10 ${story.bg} text-black`;
+            document.getElementById('story-emoji').textContent = story.emoji;
+            document.getElementById('story-handle').textContent = story.handle;
+            document.getElementById('story-tag').textContent = story.tag;
+            document.getElementById('story-caption').textContent = story.caption;
+
+            // Progress bar timer
+            storyProgressVal = 0;
+            const progressBar = document.getElementById('story-progress');
+            progressBar.style.width = '0%';
+
+            storyTimer = setInterval(() => {
+                storyProgressVal += 2;
+                progressBar.style.width = `${storyProgressVal}%`;
+                if (storyProgressVal >= 100) {
+                    nextStory();
+                }
+            }, 100);
+        }
+
+        function nextStory() {
+            if (currentStoryIndex < storyData.length - 1) {
+                currentStoryIndex++;
+                renderStory();
+            } else {
+                closeStoryModal();
+            }
+        }
+
+        function prevStory() {
+            if (currentStoryIndex > 0) {
+                currentStoryIndex--;
+                renderStory();
+            }
+        }
+
+        // Close modal on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeStoryModal();
+        });
+
+        // -------------------------------------------------------------
+        // 5. REVIEWS CAROUSEL SLIDER
+        // -------------------------------------------------------------
+        const reviewsData = [
+            { stars: '⭐⭐⭐⭐⭐', text: '"I’m addicted to Chili Lime! Finally a juice in Nigeria that isn’t just sugar syrup. Tastes like real ripe mangoes from my mom\'s garden."', name: 'Tolu A.', location: 'Lagos 📍', bg: 'bg-mango' },
+            { stars: '⭐⭐⭐⭐⭐', text: '"Restocked my fridge with 12 cans for my office. The Mango Coconut flavor is elite after long coding sessions in Wuse."', name: 'Amina K.', location: 'Abuja 📍', bg: 'bg-lime' },
+            { stars: '⭐⭐⭐⭐⭐', text: '"Fast cold delivery in Port Harcourt. You can actually taste the raw pressed fruit quality. 10/10!"', name: 'Emeka O.', location: 'Port Harcourt 📍', bg: 'bg-coral' },
+            { stars: '⭐⭐⭐⭐⭐', text: '"No added sugar is a gamechanger for my wellness journey. RIPE is officially my daily sip."', name: 'Chidinma P.', location: 'Ibadan 📍', bg: 'bg-lilac' }
+        ];
+
+        let reviewIndex = 0;
+
+        function slideReview(dir) {
+            reviewIndex = (reviewIndex + dir + (reviewsData.length - 1)) % (reviewsData.length - 1);
+            const container = document.getElementById('reviews-container');
+            
+            const item1 = reviewsData[reviewIndex];
+            const item2 = reviewsData[reviewIndex + 1];
+
+            container.innerHTML = `
+                <div class="${item1.bg} p-6 rounded-3xl neo-border neo-shadow transform -rotate-1 transition-all">
+                    <div class="flex items-center gap-1 text-2xl mb-3">${item1.stars}</div>
+                    <p class="font-bold text-lg text-black mb-4">${item1.text}</p>
+                    <div class="flex items-center justify-between border-t-2 border-black pt-3 font-heading font-extrabold text-sm">
+                        <span>${item1.name}</span>
+                        <span class="bg-white px-2 py-0.5 rounded neo-border">${item1.location}</span>
+                    </div>
+                </div>
+                <div class="${item2.bg} p-6 rounded-3xl neo-border neo-shadow transform rotate-2 transition-all">
+                    <div class="flex items-center gap-1 text-2xl mb-3">${item2.stars}</div>
+                    <p class="font-bold text-lg text-black mb-4">${item2.text}</p>
+                    <div class="flex items-center justify-between border-t-2 border-black pt-3 font-heading font-extrabold text-sm">
+                        <span>${item2.name}</span>
+                        <span class="bg-white px-2 py-0.5 rounded neo-border">${item2.location}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // -------------------------------------------------------------
+        // 6. NEWSLETTER FORM HANDLER
+        // -------------------------------------------------------------
+        function handleNewsletter(e) {
+            e.preventDefault();
+            document.getElementById('newsletter-form').reset();
+            const successMsg = document.getElementById('newsletter-success');
+            successMsg.classList.remove('hidden');
+            setTimeout(() => successMsg.classList.add('hidden'), 4000);
+        }
+    </script>
+</body>
+</html>

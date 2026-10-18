@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celtiallo | Luxury Housing Developments & Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0B132B',
+                            900: '#060B1E',
+                            950: '#030611',
+                        },
+                        emerald: {
+                            800: '#064E3B',
+                            900: '#022C22',
+                        },
+                        gold: {
+                            400: '#F3E5AB',
+                            500: '#D4AF37',
+                            600: '#B89628',
+                            700: '#917319',
+                        },
+                        cream: '#FDFBF7',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF7;
+            color: #1A1A1A;
+        }
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #B89628 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-bg-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #B89628 100%);
+        }
+        .navy-glass {
+            background: rgba(11, 19, 43, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #060B1E;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 navy-glass border-b border-gold-500/20 text-white transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 border-2 border-gold-500 flex items-center justify-center rounded-sm transform group-hover:rotate-45 transition-transform duration-300">
+                        <span class="text-gold-500 font-serif font-bold text-xl group-hover:-rotate-45 transition-transform duration-300">C</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-serif font-bold tracking-wider gold-gradient-text">CELTIALLO</span>
+                        <span class="text-[9px] uppercase tracking-[0.25em] text-gray-300">Housing Developments</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                    <a href="#developments" class="hover:text-gold-500 transition-colors">Developments</a>
+                    <a href="#why-celtiallo" class="hover:text-gold-500 transition-colors">Why Choose Us</a>
+                    <a href="#calculator" class="hover:text-gold-500 transition-colors">ROI Calculator</a>
+                    <a href="#testimonials" class="hover:text-gold-500 transition-colors">Testimonials</a>
+                    <a href="#contact" class="hover:text-gold-500 transition-colors">Contact</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://wa.me/2348032360595?text=Hello%20Celtiallo,%20I%20would%20like%20to%20inquire%20about%20your%20housing%20developments." target="_blank" class="flex items-center gap-2 border border-gold-500 text-gold-500 px-4 py-2.5 rounded-sm hover:bg-gold-500 hover:text-navy-950 transition-all text-sm font-semibold tracking-wide">
+                        <i class="fab fa-whatsapp text-base"></i>
+                        <span>0803 236 0595</span>
+                    </a>
+                    <button onclick="openModal('Book a Private Tour')" class="gold-bg-gradient text-navy-950 px-5 py-2.5 rounded-sm font-semibold text-sm hover:brightness-110 transition-all shadow-md">
+                        Book Inspection
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-gold-500 focus:outline-none">
+                        <i class="fas fa-bars text-2xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-navy-900 border-b border-gold-500/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#developments" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-gold-500 py-2 text-base border-b border-gray-800">Developments</a>
+            <a href="#why-celtiallo" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-gold-500 py-2 text-base border-b border-gray-800">Why Choose Us</a>
+            <a href="#calculator" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-gold-500 py-2 text-base border-b border-gray-800">ROI Calculator</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-gold-500 py-2 text-base border-b border-gray-800">Testimonials</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-gray-200 hover:text-gold-500 py-2 text-base border-b border-gray-800">Contact</a>
+            <div class="pt-2 flex flex-col gap-3">
+                <a href="https://wa.me/2348032360595?text=Hello%20Celtiallo,%20I%20would%20like%20to%20inquire%20about%20your%20housing%20developments." target="_blank" class="w-full flex items-center justify-center gap-2 border border-gold-500 text-gold-500 py-3 rounded-sm font-semibold">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <button onclick="toggleMobileMenu(); openModal('Book a Private Tour')" class="w-full gold-bg-gradient text-navy-950 py-3 rounded-sm font-semibold">
+                    Book Private Tour
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 bg-navy-900 text-white overflow-hidden">
+        <!-- Background Overlay & Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80" alt="Luxury Villa Architecture" class="w-full h-full object-cover object-center opacity-30 transform scale-105 hover:scale-100 transition-transform duration-10000">
+            <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-900/90 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-500 text-xs sm:text-sm font-medium tracking-wide">
+                        <i class="fas fa-crown"></i> Premier Luxury Real Estate in Nigeria
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-tight">
+                        Building Timeless Homes & <span class="gold-gradient-text block sm:inline">Premium Living Spaces</span>
+                    </h1>
+
+                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Discover master-planned residential estates, bespoke architectural design, verified land titles, and high-yield property investments in prime Nigerian urban centers.
+                    </p>
+
+                    <!-- Dual CTAs -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                        <a href="#developments" class="w-full sm:w-auto px-8 py-4 gold-bg-gradient text-navy-950 rounded-sm font-semibold text-base hover:brightness-110 transition-all shadow-lg text-center flex items-center justify-center gap-2 group">
+                            <span>Explore Developments</span>
+                            <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="https://wa.me/2348032360595?text=Hello%20Celtiallo,%20I%20want%20to%20schedule%20a%20consultation." target="_blank" class="w-full sm:w-auto px-8 py-4 border border-gold-500/50 hover:border-gold-500 text-white hover:bg-gold-500/10 rounded-sm font-semibold text-base transition-all text-center flex items-center justify-center gap-3">
+                            <i class="fab fa-whatsapp text-emerald-400 text-lg"></i>
+                            <span>Schedule Consultation</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Trust Badges -->
+                    <div class="pt-6 border-t border-gray-800 grid grid-cols-3 gap-4 text-center lg:text-left max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div class="text-gold-500 font-semibold text-sm sm:text-base">Governor's Consent</div>
+                            <div class="text-xs text-gray-400">100% Verified Titles</div>
+                        </div>
+                        <div>
+                            <div class="text-gold-500 font-semibold text-sm sm:text-base">Guaranteed ROI</div>
+                            <div class="text-xs text-gray-400">High Rental Yields</div>
+                        </div>
+                        <div>
+                            <div class="text-gold-500 font-semibold text-sm sm:text-base">Smart Infrastructure</div>
+                            <div class="text-xs text-gray-400">Eco & Security Systems</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fast Lead Form Card -->
+                <div class="lg:col-span-5">
+                    <div class="navy-glass border border-gold-500/30 rounded-xl p-6 sm:p-8 shadow-2xl relative">
+                        <div class="absolute -top-3 right-6 bg-gold-500 text-navy-950 font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                            VIP Request
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-2">Request Exclusive Brochure</h3>
+                        <p class="text-gray-400 text-sm mb-6">Get instant access to pricing, floor plans, and investment options for current estates.</p>
+
+                        <form id="heroForm" onsubmit="handleBrochureSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-gray-300 mb-1">Full Name *</label>
+                                <input type="text" required placeholder="e.g. Chief Adebayo Johnson" class="w-full bg-navy-950 border border-gray-700 focus:border-gold-500 rounded-sm px-4 py-3 text-white text-sm outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-gray-300 mb-1">Phone / WhatsApp Number *</label>
+                                <input type="tel" required placeholder="+234 800 000 0000" class="w-full bg-navy-950 border border-gray-700 focus:border-gold-500 rounded-sm px-4 py-3 text-white text-sm outline-none transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-gray-300 mb-1">Property Type Interest</label>
+                                <select class="w-full bg-navy-950 border border-gray-700 focus:border-gold-500 rounded-sm px-4 py-3 text-white text-sm outline-none transition-colors">
+                                    <option>Luxury Fully Detached Duplex</option>
+                                    <option>Executive Semi-Detached Villa</option>
+                                    <option>Modern Smart Apartment</option>
+                                    <option>Residential Plot (Land Estate)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full gold-bg-gradient text-navy-950 py-3.5 rounded-sm font-bold text-sm tracking-wide uppercase hover:brightness-110 transition-all shadow-md mt-2">
+                                Instant Brochure & Floor Plans <i class="fas fa-download ml-2"></i>
+                            </button>
+                            <p class="text-[11px] text-gray-400 text-center flex items-center justify-center gap-1">
+                                <i class="fas fa-lock text-gold-500"></i> Your privacy is strictly protected.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section class="bg-navy-950 border-y border-gold-500/20 py-12 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-gold-500">12+</div>
+                    <div class="text-xs sm:text-sm uppercase tracking-widest text-gray-400">Prime Housing Developments</div>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-gold-500">350+</div>
+                    <div class="text-xs sm:text-sm uppercase tracking-widest text-gray-400">Satisfied Homeowners</div>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-gold-500">99.4%</div>
+                    <div class="text-xs sm:text-sm uppercase tracking-widest text-gray-400">On-Time Delivery Rate</div>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-gold-500">28%</div>
+                    <div class="text-xs sm:text-sm uppercase tracking-widest text-gray-400">Average Annual Capital Gain</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Developments Section -->
+    <section id="developments" class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-gold-600 font-semibold text-sm uppercase tracking-widest block mb-2">Our Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-navy-900 mb-4">Featured Housing Developments</h2>
+                <p class="text-gray-600 text-base">Explore master-planned communities crafted for sophistication, tranquility, and maximum investment appreciation.</p>
+                
+                <!-- Category Filter -->
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-8" id="filterBtns">
+                    <button onclick="filterProperties('all')" class="filter-btn active bg-navy-900 text-gold-500 border border-navy-900 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all">All Properties</button>
+                    <button onclick="filterProperties('villa')" class="filter-btn bg-white text-gray-700 hover:text-navy-900 border border-gray-300 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all">Luxury Villas</button>
+                    <button onclick="filterProperties('duplex')" class="filter-btn bg-white text-gray-700 hover:text-navy-900 border border-gray-300 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all">Executive Duplexes</button>
+                    <button onclick="filterProperties('apartment')" class="filter-btn bg-white text-gray-700 hover:text-navy-900 border border-gray-300 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all">Modern Apartments</button>
+                    <button onclick="filterProperties('land')" class="filter-btn bg-white text-gray-700 hover:text-navy-900 border border-gray-300 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all">Land Estates</button>
+                </div>
+            </div>
+
+            <!-- Property Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="propertyGrid">
+                
+                <!-- Property 1 -->
+                <div class="property-card villa bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80" alt="Celtiallo Royal Palms Villa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-navy-900/90 backdrop-blur-md text-gold-500 text-xs uppercase tracking-wider font-bold px-3 py-1 rounded-sm">
+                            Selling Fast
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-emerald-800 text-white text-xs font-semibold px-3 py-1 rounded-sm">
+                            C of O Title
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <i class="fas fa-location-dot text-gold-600"></i>
+                                <span>Maitama Extension, Abuja</span>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold text-navy-900 mb-2">The Royal Palms Residences</h3>
+                            <p class="text-xs text-gray-600 mb-4 line-clamp-2">5-Bedroom Fully Detached Smart Villa with private swimming pool, home automation, and pent terrace.</p>
+                            
+                            <!-- Key Specs -->
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-gray-100 text-center mb-4">
+                                <div>
+                                    <span class="block text-xs text-gray-400">Beds</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-bed text-gold-600 mr-1"></i> 5</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Baths</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-bath text-gold-600 mr-1"></i> 6</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Area</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-ruler-combined text-gold-600 mr-1"></i> 650 sqm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-baseline justify-between mb-4">
+                                <span class="text-xs text-gray-500 uppercase tracking-wider">Starting From</span>
+                                <span class="text-xl font-bold text-navy-900">₦280,000,000</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="openModal('The Royal Palms Residences')" class="w-full bg-navy-900 text-white py-2.5 rounded-sm text-xs font-semibold hover:bg-gold-600 hover:text-navy-950 transition-colors">
+                                    Book Inspection
+                                </button>
+                                <a href="https://wa.me/2348032360595?text=Hello%20Celtiallo,%20I'm%20interested%20in%20The%20Royal%20Palms%20Residences." target="_blank" class="w-full border border-emerald-800 text-emerald-800 text-center py-2.5 rounded-sm text-xs font-semibold hover:bg-emerald-800 hover:text-white transition-colors flex items-center justify-center gap-1">
+                                    <i class="fab fa-whatsapp"></i> Inquiry
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="property-card duplex bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Celtiallo Grand Horizon Duplex" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-gold-600 text-navy-950 text-xs uppercase tracking-wider font-bold px-3 py-1 rounded-sm">
+                            Off-Plan Offer
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-emerald-800 text-white text-xs font-semibold px-3 py-1 rounded-sm">
+                            Governor's Consent
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <i class="fas fa-location-dot text-gold-600"></i>
+                                <span>Ikat/Lekki Phase 1, Lagos</span>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold text-navy-900 mb-2">Grand Horizon Terraces</h3>
+                            <p class="text-xs text-gray-600 mb-4 line-clamp-2">4-Bedroom Semi-Detached Smart Duplex with BQ, fitted European kitchens, and 24/7 uninterrupted power.</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-gray-100 text-center mb-4">
+                                <div>
+                                    <span class="block text-xs text-gray-400">Beds</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-bed text-gold-600 mr-1"></i> 4</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Baths</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-bath text-gold-600 mr-1"></i> 5</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Area</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-ruler-combined text-gold-600 mr-1"></i> 420 sqm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-baseline justify-between mb-4">
+                                <span class="text-xs text-gray-500 uppercase tracking-wider">Starting From</span>
+                                <span class="text-xl font-bold text-navy-900">₦165,000,000</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="openModal('Grand Horizon Terraces')" class="w-full bg-navy-900 text-white py-2.5 rounded-sm text-xs font-semibold hover:bg-gold-600 hover:text-navy-950 transition-colors">
+                                    Book Inspection
+                                </button>
+                                <a href="https://wa.me/2348032360595?text=Hello%20Celtiallo,%20I'm%20interested%20in%20Grand%20Horizon%20Terraces." target="_blank" class="w-full border border-emerald-800 text-emerald-800 text-center py-2.5 rounded-sm text-xs font-semibold hover:bg-emerald-800 hover:text-white transition-colors flex items-center justify-center gap-1">
+                                    <i class="fab fa-whatsapp"></i> Inquiry
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 3 -->
+                <div class="property-card apartment bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Celtiallo Celestial Heights Apartment" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-navy-900/90 backdrop-blur-md text-gold-500 text-xs uppercase tracking-wider font-bold px-3 py-1 rounded-sm">
+                            High Rental Yield
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-emerald-800 text-white text-xs font-semibold px-3 py-1 rounded-sm">
+                            Certificate of Occupancy
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <i class="fas fa-location-dot text-gold-600"></i>
+                                <span>Wuye District, Abuja</span>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold text-navy-900 mb-2">Celestial Heights Apartments</h3>
+                            <p class="text-xs text-gray-600 mb-4 line-clamp-2">3-Bedroom Luxury Apartment with elevator access, gym, underground parking, and smart access controls.</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-gray-100 text-center mb-4">
+                                <div>
+                                    <span class="block text-xs text-gray-400">Beds</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-bed text-gold-600 mr-1"></i> 3</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Baths</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-bath text-gold-600 mr-1"></i> 3</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Area</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-ruler-combined text-gold-600 mr-1"></i> 210 sqm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-baseline justify-between mb-4">
+                                <span class="text-xs text-gray-500 uppercase tracking-wider">Starting From</span>
+                                <span class="text-xl font-bold text-navy-900">₦85,000,000</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="openModal('Celestial Heights Apartments')" class="w-full bg-navy-900 text-white py-2.5 rounded-sm text-xs font-semibold hover:bg-gold-600 hover:text-navy-950 transition-colors">
+                                    Book Inspection
+                                </button>
+                                <a href="https://wa.me/2348032360595?text=Hello%20Celtiallo,%20I'm%20interested%20in%20Celestial%20Heights%20Apartments." target="_blank" class="w-full border border-emerald-800 text-emerald-800 text-center py-2.5 rounded-sm text-xs font-semibold hover:bg-emerald-800 hover:text-white transition-colors flex items-center justify-center gap-1">
+                                    <i class="fab fa-whatsapp"></i> Inquiry
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 4 -->
+                <div class="property-card land bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="Celtiallo Sanctuary Park Estate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-navy-900/90 backdrop-blur-md text-gold-500 text-xs uppercase tracking-wider font-bold px-3 py-1 rounded-sm">
+                            Instant Allocation
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-emerald-800 text-white text-xs font-semibold px-3 py-1 rounded-sm">
+                            C of O In Process
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <i class="fas fa-location-dot text-gold-600"></i>
+                                <span>Ibeju-Lekki / Epe Corridor, Lagos</span>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold text-navy-900 mb-2">Sanctuary Park & Gardens</h3>
+                            <p class="text-xs text-gray-600 mb-4 line-clamp-2">Prime residential plots in a fully serviced estate with paved roads, perimeter fencing, and solar streetlights.</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-gray-100 text-center mb-4">
+                                <div>
+                                    <span class="block text-xs text-gray-400">Plot Size</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-vector-square text-gold-600 mr-1"></i> 500 sqm</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Drainage</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-check text-gold-600 mr-1"></i> Paved</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Topography</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-mountain text-gold-600 mr-1"></i> 100% Dry</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-baseline justify-between mb-4">
+                                <span class="text-xs text-gray-500 uppercase tracking-wider">Per Plot Price</span>
+                                <span class="text-xl font-bold text-navy-900">₦25,000,000</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="openModal('Sanctuary Park Land Plots')" class="w-full bg-navy-900 text-white py-2.5 rounded-sm text-xs font-semibold hover:bg-gold-600 hover:text-navy-950 transition-colors">
+                                    Book Inspection
+                                </button>
+                                <a href="https://wa.me/2348032360595?text=Hello%20Celtiallo,%20I'm%20interested%20in%20Sanctuary%20Park%20Land." target="_blank" class="w-full border border-emerald-800 text-emerald-800 text-center py-2.5 rounded-sm text-xs font-semibold hover:bg-emerald-800 hover:text-white transition-colors flex items-center justify-center gap-1">
+                                    <i class="fab fa-whatsapp"></i> Inquiry
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 5 -->
+                <div class="property-card villa bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Celtiallo Emperor Heights Villa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-navy-900/90 backdrop-blur-md text-gold-500 text-xs uppercase tracking-wider font-bold px-3 py-1 rounded-sm">
+                            Ultra Luxury
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-emerald-800 text-white text-xs font-semibold px-3 py-1 rounded-sm">
+                            Federal C of O
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <i class="fas fa-location-dot text-gold-600"></i>
+                                <span>Asokoro, Abuja</span>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold text-navy-900 mb-2">Emperor's Crest Mansion</h3>
+                            <p class="text-xs text-gray-600 mb-4 line-clamp-2">6-Bedroom Waterfront Smart Mansion featuring infinity edge pool, 8-car basement garage, private cinema, and elevator.</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-gray-100 text-center mb-4">
+                                <div>
+                                    <span class="block text-xs text-gray-400">Beds</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-bed text-gold-600 mr-1"></i> 6</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Baths</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-bath text-gold-600 mr-1"></i> 8</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Area</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-ruler-combined text-gold-600 mr-1"></i> 950 sqm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-baseline justify-between mb-4">
+                                <span class="text-xs text-gray-500 uppercase tracking-wider">Price On Request</span>
+                                <span class="text-xl font-bold text-navy-900">₦450,000,000</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="openModal('Emperors Crest Mansion')" class="w-full bg-navy-900 text-white py-2.5 rounded-sm text-xs font-semibold hover:bg-gold-600 hover:text-navy-950 transition-colors">
+                                    Book Inspection
+                                </button>
+                                <a href="https://wa.me/2348032360595?text=Hello%20Celtiallo,%20I'm%20interested%20in%20Emperors%20Crest%20Mansion." target="_blank" class="w-full border border-emerald-800 text-emerald-800 text-center py-2.5 rounded-sm text-xs font-semibold hover:bg-emerald-800 hover:text-white transition-colors flex items-center justify-center gap-1">
+                                    <i class="fab fa-whatsapp"></i> Inquiry
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 6 -->
+                <div class="property-card duplex bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col">
+                    <div class="relative h-64 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Celtiallo Emerald Terraces" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-navy-900/90 backdrop-blur-md text-gold-500 text-xs uppercase tracking-wider font-bold px-3 py-1 rounded-sm">
+                            Flexible Plan
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-emerald-800 text-white text-xs font-semibold px-3 py-1 rounded-sm">
+                            Governor's Consent
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <i class="fas fa-location-dot text-gold-600"></i>
+                                <span>Katampe Extension, Abuja</span>
+                            </div>
+                            <h3 class="text-xl font-serif font-bold text-navy-900 mb-2">Emerald Grove Terraces</h3>
+                            <p class="text-xs text-gray-600 mb-4 line-clamp-2">4-Bedroom Executive Terrace with attached BQ, solar energy backup package, and fiber optic connectivity.</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-gray-100 text-center mb-4">
+                                <div>
+                                    <span class="block text-xs text-gray-400">Beds</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-bed text-gold-600 mr-1"></i> 4</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Baths</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-bath text-gold-600 mr-1"></i> 5</span>
+                                </div>
+                                <div>
+                                    <span class="block text-xs text-gray-400">Area</span>
+                                    <span class="font-bold text-navy-900 text-sm"><i class="fas fa-ruler-combined text-gold-600 mr-1"></i> 380 sqm</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex items-baseline justify-between mb-4">
+                                <span class="text-xs text-gray-500 uppercase tracking-wider">Starting From</span>
+                                <span class="text-xl font-bold text-navy-900">₦140,000,000</span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="openModal('Emerald Grove Terraces')" class="w-full bg-navy-900 text-white py-2.5 rounded-sm text-xs font-semibold hover:bg-gold-600 hover:text-navy-950 transition-colors">
+                                    Book Inspection
+                                </button>
+                                <a href="https://wa.me/2348032360595?text=Hello%20Celtiallo,%20I'm%20interested%20in%20Emerald%20Grove%20Terraces." target="_blank" class="w-full border border-emerald-800 text-emerald-800 text-center py-2.5 rounded-sm text-xs font-semibold hover:bg-emerald-800 hover:text-white transition-colors flex items-center justify-center gap-1">
+                                    <i class="fab fa-whatsapp"></i> Inquiry
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- High-Converting Payment & ROI Calculator Section -->
+    <section id="calculator" class="py-20 bg-navy-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-gold-500 font-semibold text-sm uppercase tracking-widest block">Financial Planning Tool</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold">Interactive Payment & Investment ROI Estimator</h2>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        We offer tailored flexible payment plans spread up to 18 months. Estimate your initial deposit, monthly installment, and projected 3-year property appreciation.
+                    </p>
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-500 flex-shrink-0 mt-1">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">0% Hidden Fees</h4>
+                                <p class="text-xs text-gray-400">Transparent pricing detailing survey, legal, and infrastructure development fees upfront.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-500 flex-shrink-0 mt-1">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-white">Guaranteed Property Capital Appreciation</h4>
+                                <p class="text-xs text-gray-400">Strategic location choices guarantee rapid land and structural value appreciation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Interactive Box -->
+                <div class="lg:col-span-7">
+                    <div class="bg-navy-950 border border-gold-500/30 rounded-2xl p-6 sm:p-10 shadow-2xl">
+                        
+                        <div class="grid sm:grid-cols-2 gap-6 mb-6">
+                            <!-- Property Value Input -->
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-gold-500 mb-2 font-semibold">
+                                    Target Property Price (₦)
+                                </label>
+                                <select id="calcPropPrice" onchange="calculatePlan()" class="w-full bg-navy-900 border border-gray-700 text-white rounded-md px-4 py-3 font-semibold text-sm focus:border-gold-500 outline-none">
+                                    <option value="85000000">₦85,000,000 (3-Bed Apartment)</option>
+                                    <option value="140000000">₦140,000,000 (4-Bed Terrace)</option>
+                                    <option value="165000000" selected>₦165,000,000 (Semi-Detached Duplex)</option>
+                                    <option value="280000000">₦280,000,000 (Luxury Fully Detached Villa)</option>
+                                    <option value="450000000">₦450,000,000 (Ultra Smart Mansion)</option>
+                                </select>
+                            </div>
+
+                            <!-- Payment Tenure -->
+                            <div>
+                                <label class="block text-xs uppercase tracking-wider text-gold-500 mb-2 font-semibold">
+                                    Payment Duration
+                                </label>
+                                <select id="calcTenure" onchange="calculatePlan()" class="w-full bg-navy-900 border border-gray-700 text-white rounded-md px-4 py-3 font-semibold text-sm focus:border-gold-500 outline-none">
+                                    <option value="1">Outright Purchase (30 Days)</option>
+                                    <option value="6">6 Months Structured Plan</option>
+                                    <option value="12" selected>12 Months Structured Plan</option>
+                                    <option value="18">18 Months Flexible Plan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Initial Deposit Slider -->
+                        <div class="mb-8">
+                            <div class="flex justify-between text-xs font-semibold mb-2">
+                                <span class="text-gray-300">Initial Deposit Percentage</span>
+                                <span class="text-gold-500" id="depositPctText">30% Deposit</span>
+                            </div>
+                            <input type="range" id="calcDepositPct" min="20" max="70" step="5" value="30" oninput="calculatePlan()" class="w-full h-2 bg-navy-900 rounded-lg appearance-none cursor-pointer accent-gold-500">
+                        </div>
+
+                        <!-- Results Card Output -->
+                        <div class="bg-navy-900 border border-gold-500/20 rounded-xl p-6 grid sm:grid-cols-3 gap-4 text-center mb-8">
+                            <div class="p-2 border-b sm:border-b-0 sm:border-r border-gray-800">
+                                <span class="text-xs text-gray-400 block mb-1">Initial Deposit Required</span>
+                                <span class="text-lg sm:text-xl font-bold text-gold-500" id="resInitial">₦49,500,000</span>
+                            </div>
+                            <div class="p-2 border-b sm:border-b-0 sm:border-r border-gray-800">
+                                <span class="text-xs text-gray-400 block mb-1">Monthly Installment</span>
+                                <span class="text-lg sm:text-xl font-bold text-white" id="resMonthly">₦9,625,000</span>
+                            </div>
+                            <div class="p-2">
+                                <span class="text-xs text-gray-400 block mb-1">Estimated 3-Yr ROI Value</span>
+                                <span class="text-lg sm:text-xl font-bold text-emerald-400" id="resRoi">₦247,500,000</span>
+                            </div>
+                        </div>
+
+                        <!-- Call to Action -->
+                        <div class="flex flex-col sm:flex-row gap-4 items-center">
+                            <button onclick="openModal('Custom Payment Plan Inquiry')" class="w-full sm:w-auto flex-1 gold-bg-gradient text-navy-950 font-bold py-3.5 px-6 rounded-sm text-sm uppercase tracking-wider hover:brightness-110 transition-all text-center">
+                                Lock-In Plan / Lock Discount
+                            </button>
+                            <a id="calcWhatsappLink" href="https://wa.me/2348032360595" target="_blank" class="w-full sm:w-auto border border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 font-semibold py-3.5 px-6 rounded-sm text-sm transition-all text-center flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-lg"></i>
+                                <span>Discuss Plan On WhatsApp</span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Celtiallo -->
+    <section id="why-celtiallo" class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-600 font-semibold text-sm uppercase tracking-widest block mb-2">The Celtiallo Advantage</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-navy-900">Engineered For Luxury, Built For Security</h2>
+                <p class="text-gray-600 mt-4 text-base">We bridge the gap between world-class architectural engineering and secure real estate investments in West Africa.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Advantage 1 -->
+                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:border-gold-500/40 hover:shadow-xl transition-all group">
+                    <div class="w-14 h-14 bg-navy-900 text-gold-500 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3">100% Verifiable Titles</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Every Celtiallo housing development carries unencumbered legal documentation—including Governor's Consent and C of O titles verified by state ministry registries.
+                    </p>
+                </div>
+
+                <!-- Advantage 2 -->
+                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:border-gold-500/40 hover:shadow-xl transition-all group">
+                    <div class="w-14 h-14 bg-navy-900 text-gold-500 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3">Smart Home Automation</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Integrated biometric access control, automated lighting, climate regulation, and smart security systems manageable right from your smartphone.
+                    </p>
+                </div>
+
+                <!-- Advantage 3 -->
+                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:border-gold-500/40 hover:shadow-xl transition-all group">
+                    <div class="w-14 h-14 bg-navy-900 text-gold-500 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3">Uninterrupted Power & Utilities</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Eco-friendly industrial hybrid solar power grids paired with high-capacity central backup generators, industrial water treatment, and central sewage networks.
+                    </p>
+                </div>
+
+                <!-- Advantage 4 -->
+                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:border-gold-500/40 hover:shadow-xl transition-all group">
+                    <div class="w-14 h-14 bg-navy-900 text-gold-500 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-building-columns"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3">Architectural Precision</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Designed by top-tier award-winning architectural masters using contemporary floor plans, double-volume spaces, and premium imported finishing materials.
+                    </p>
+                </div>
+
+                <!-- Advantage 5 -->
+                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:border-gold-500/40 hover:shadow-xl transition-all group">
+                    <div class="w-14 h-14 bg-navy-900 text-gold-500 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3">Flexible Payment Structures</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Convenient spread-payment milestones tailored to your cash flow with initial deposit options starting at 20% to lock down off-plan prices.
+                    </p>
+                </div>
+
+                <!-- Advantage 6 -->
+                <div class="bg-white p-8 rounded-xl border border-gray-100 hover:border-gold-500/40 hover:shadow-xl transition-all group">
+                    <div class="w-14 h-14 bg-navy-900 text-gold-500 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-navy-900 mb-3">Gated Security Infrastructure</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        24/7 armed security personnel, AI-powered CCTV surveillance perimeter monitoring, visitor QR code validation, and electric fencing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-navy-950 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-500 font-semibold text-sm uppercase tracking-widest block mb-2">Client Testimonials</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold">Trusted By Discerning Investors</h2>
+                <p class="text-gray-400 mt-3 text-sm sm:text-base">Read why business executives, diaspora buyers, and modern families choose Celtiallo Housing Developments.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-navy-900 border border-gold-500/20 p-8 rounded-xl relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-gold-500 text-sm gap-1 mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm italic mb-6 leading-relaxed">
+                            "Buying property in Nigeria while residing in the UK used to give me anxiety. Celtiallo delivered my 5-bedroom villa in Maitama on schedule with regular video updates. Absolute class!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-gray-800">
+                        <div class="w-12 h-12 rounded-full bg-gold-500/20 border border-gold-500 flex items-center justify-center font-bold text-gold-500">
+                            DR
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Dr. Raymond Okonkwo</h4>
+                            <p class="text-xs text-gray-400">Diaspora Investor (London, UK)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-navy-900 border border-gold-500/20 p-8 rounded-xl relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-gold-500 text-sm gap-1 mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm italic mb-6 leading-relaxed">
+                            "The capital appreciation on my Grand Horizon terrace was phenomenal. Within 14 months of off-plan purchase, the valuation jumped by over 32%. Truly reliable real estate partners."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-gray-800">
+                        <div class="w-12 h-12 rounded-full bg-gold-500/20 border border-gold-500 flex items-center justify-center font-bold text-gold-500">
+                            FA
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Mrs. Folashade Adebayo</h4>
+                            <p class="text-xs text-gray-400">Property Portfolio Manager, Lagos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-navy-900 border border-gold-500/20 p-8 rounded-xl relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-gold-500 text-sm gap-1 mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-sm italic mb-6 leading-relaxed">
+                            "From verified land title verification to the finishing detailing inside the apartment, Celtiallo sets standard luxury. Their payment plan allowed us to plan our finances seamlessly."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-gray-800">
+                        <div class="w-12 h-12 rounded-full bg-gold-500/20 border border-gold-500 flex items-center justify-center font-bold text-gold-500">
+                            EB
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">Engr. Bawa Bello</h4>
+                            <p class="text-xs text-gray-400">Homeowner, Abuja</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Booking Section -->
+    <section id="contact" class="py-20 bg-cream relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+                <div class="grid lg:grid-cols-12">
+                    
+                    <!-- Left Details Column -->
+                    <div class="lg:col-span-5 bg-navy-900 p-8 sm:p-12 text-white flex flex-col justify-between">
+                        <div>
+                            <span class="text-gold-500 font-semibold text-xs uppercase tracking-widest block mb-2">Get In Touch</span>
+                            <h2 class="text-3xl font-serif font-bold mb-6">Let's Discuss Your Dream Property</h2>
+                            <p class="text-gray-300 text-sm mb-8 leading-relaxed">
+                                Schedule a private physical site tour or request a virtual video walkthrough with our advisory team.
+                            </p>
+
+                            <div class="space-y-6 text-sm">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-500 flex-shrink-0">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs text-gray-400 uppercase">Call / Direct Inquiry</span>
+                                        <a href="tel:08032360595" class="font-semibold text-white hover:text-gold-500 text-base">0803 236 0595</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-500 flex-shrink-0">
+                                        <i class="fab fa-whatsapp text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs text-gray-400 uppercase">Official WhatsApp</span>
+                                        <a href="https://wa.me/2348032360595" target="_blank" class="font-semibold text-emerald-400 hover:underline text-base">+234 803 236 0595</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-500 flex-shrink-0">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs text-gray-400 uppercase">Official Website</span>
+                                        <a href="https://celtiallo.com" target="_blank" class="font-semibold text-white hover:text-gold-500">celtiallo.com</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-500 flex-shrink-0">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs text-gray-400 uppercase">Office Hours</span>
+                                        <span class="font-semibold text-white">Open 24 Hours / 7 Days</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Links Quick Hub -->
+                        <div class="pt-8 border-t border-gray-800 mt-8">
+                            <span class="text-xs uppercase text-gray-400 block mb-3">Connect With Us</span>
+                            <div class="flex gap-3">
+                                <a href="https://celtiallo.com" target="_blank" class="w-9 h-9 rounded-full bg-navy-800 flex items-center justify-center text-gray-300 hover:bg-gold-500 hover:text-navy-950 transition-colors">
+                                    <i class="fas fa-globe"></i>
+                                </a>
+                                <a href="https://wa.me/2348032360595" target="_blank" class="w-9 h-9 rounded-full bg-navy-800 flex items-center justify-center text-gray-300 hover:bg-emerald-500 hover:text-white transition-colors">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-navy-800 flex items-center justify-center text-gray-300 hover:bg-pink-600 hover:text-white transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-full bg-navy-800 flex items-center justify-center text-gray-300 hover:bg-blue-600 hover:text-white transition-colors">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Form Column -->
+                    <div class="lg:col-span-7 p-8 sm:p-12">
+                        <h3 class="text-2xl font-serif font-bold text-navy-900 mb-2">Book A Private Inspection Tour</h3>
+                        <p class="text-gray-600 text-sm mb-6">Select your preferred date for a guided site walkthrough with our senior development consultant.</p>
+
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs uppercase font-semibold text-gray-700 mb-1">Your Full Name *</label>
+                                    <input type="text" required placeholder="Chief / Dr. / Mr. / Mrs." class="w-full bg-gray-50 border border-gray-300 rounded-sm px-4 py-3 text-sm focus:border-navy-900 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase font-semibold text-gray-700 mb-1">Phone / WhatsApp Number *</label>
+                                    <input type="tel" required placeholder="0803 000 0000" class="w-full bg-gray-50 border border-gray-300 rounded-sm px-4 py-3 text-sm focus:border-navy-900 outline-none">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs uppercase font-semibold text-gray-700 mb-1">Email Address *</label>
+                                    <input type="email" required placeholder="name@domain.com" class="w-full bg-gray-50 border border-gray-300 rounded-sm px-4 py-3 text-sm focus:border-navy-900 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase font-semibold text-gray-700 mb-1">Tour Type</label>
+                                    <select class="w-full bg-gray-50 border border-gray-300 rounded-sm px-4 py-3 text-sm focus:border-navy-900 outline-none">
+                                        <option>Physical On-Site Tour</option>
+                                        <option>Live HD Video Walkthrough</option>
+                                        <option>Private Office Consultation</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs uppercase font-semibold text-gray-700 mb-1">Preferred Inspection Date</label>
+                                <input type="date" required class="w-full bg-gray-50 border border-gray-300 rounded-sm px-4 py-3 text-sm focus:border-navy-900 outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs uppercase font-semibold text-gray-700 mb-1">Special Requirements or Questions</label>
+                                <textarea rows="3" placeholder="Tell us about your specific property preferences, timeline, or payment requirements..." class="w-full bg-gray-50 border border-gray-300 rounded-sm px-4 py-3 text-sm focus:border-navy-900 outline-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-navy-900 hover:bg-gold-600 hover:text-navy-950 text-white font-bold py-4 rounded-sm text-sm uppercase tracking-wider transition-colors shadow-lg">
+                                Confirm Inspection Booking
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 text-white border-t border-gold-500/20 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 border-2 border-gold-500 flex items-center justify-center rounded-sm">
+                            <span class="text-gold-500 font-serif font-bold">C</span>
+                        </div>
+                        <span class="text-xl font-serif font-bold tracking-wider text-white">CELTIALLO</span>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Celtiallo is Nigeria's premier housing development firm dedicated to designing and building ultra-modern, secure, and sustainable residential estates.
+                    </p>
+                    <div class="text-xs text-gray-400">
+                        <i class="fas fa-phone text-gold-500 mr-2"></i> 0803 236 0595
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-serif font-bold text-gold-500 text-sm uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#developments" class="hover:text-gold-500 transition-colors">Featured Developments</a></li>
+                        <li><a href="#why-celtiallo" class="hover:text-gold-500 transition-colors">Why Choose Celtiallo</a></li>
+                        <li><a href="#calculator" class="hover:text-gold-500 transition-colors">Payment & ROI Calculator</a></li>
+                        <li><a href="#contact" class="hover:text-gold-500 transition-colors">Book Inspection Tour</a></li>
+                        <li><a href="https://celtiallo.com" target="_blank" class="hover:text-gold-500 transition-colors">Official Portal (celtiallo.com)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-serif font-bold text-gold-500 text-sm uppercase tracking-wider mb-4">Development Locations</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><i class="fas fa-check text-gold-500 text-[10px] mr-2"></i> Maitama Extension, Abuja</li>
+                        <li><i class="fas fa-check text-gold-500 text-[10px] mr-2"></i> Asokoro Luxury District, Abuja</li>
+                        <li><i class="fas fa-check text-gold-500 text-[10px] mr-2"></i> Wuye & Katampe, Abuja</li>
+                        <li><i class="fas fa-check text-gold-500 text-[10px] mr-2"></i> Lekki Phase 1 & Ikate, Lagos</li>
+                        <li><i class="fas fa-check text-gold-500 text-[10px] mr-2"></i> Ibeju-Lekki Growth Corridor</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-serif font-bold text-gold-500 text-sm uppercase tracking-wider mb-4">Newsletter & Updates</h4>
+                    <p class="text-xs text-gray-400 mb-3">Subscribe to receive exclusive off-plan pre-launch discounts and property investment insights.</p>
+                    <form onsubmit="handleNewsletterSubmit(event)" class="space-y-2">
+                        <input type="email" required placeholder="Enter your email address" class="w-full bg-navy-900 border border-gray-800 text-xs px-3 py-2.5 text-white rounded-sm focus:border-gold-500 outline-none">
+                        <button type="submit" class="w-full gold-bg-gradient text-navy-950 text-xs font-bold py-2.5 rounded-sm uppercase tracking-wider hover:brightness-110">
+                            Subscribe Now
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400 gap-4">
+                <p>&copy; 2026 Celtiallo Housing Developments. All Rights Reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-gold-500">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold-500">Terms of Investment</a>
+                    <a href="#" class="hover:text-gold-500">Estate Guidelines</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Action Button -->
+    <a href="https://wa.me/2348032360595?text=Hello%20Celtiallo,%20I'm%20visiting%20your%20website%20and%20would%20like%20to%20inquire%20about%20your%20housing%20developments." 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-4 shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 gold-glow group"
+       title="Direct WhatsApp Consultation">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out text-sm font-semibold ml-0 group-hover:ml-2">
+            Chat 0803 236 0595
+        </span>
+    </a>
+
+    <!-- Universal Property Inspection Modal -->
+    <div id="inspectionModal" class="fixed inset-0 z-50 hidden bg-navy-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full overflow-hidden transform transition-all">
+            <div class="bg-navy-900 text-white p-6 relative">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                    <i class="fas fa-times"></i>
+                </button>
+                <span class="text-gold-500 text-xs uppercase font-semibold tracking-wider block mb-1" id="modalSubTitle">Private Inspection</span>
+                <h3 class="text-xl font-serif font-bold" id="modalTitle">Book Property Inspection</h3>
+            </div>
+            <form onsubmit="handleModalSubmit(event)" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Your Full Name *</label>
+                    <input type="text" required placeholder="Chief / Dr. / Mr. / Mrs." class="w-full bg-gray-50 border border-gray-300 rounded-sm px-3 py-2.5 text-sm focus:border-navy-900 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">WhatsApp / Call Number *</label>
+                    <input type="tel" required placeholder="0803 000 0000" class="w-full bg-gray-50 border border-gray-300 rounded-sm px-3 py-2.5 text-sm focus:border-navy-900 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Preferred Date</label>
+                    <input type="date" required class="w-full bg-gray-50 border border-gray-300 rounded-sm px-3 py-2.5 text-sm focus:border-navy-900 outline-none">
+                </div>
+                <button type="submit" class="w-full gold-bg-gradient text-navy-950 font-bold py-3 rounded-sm text-sm uppercase tracking-wider hover:brightness-110 transition-all shadow-md">
+                    Submit Inspection Booking
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast Element -->
+    <div id="toast" class="fixed top-24 right-6 z-50 hidden bg-navy-900 text-white border-l-4 border-gold-500 px-6 py-4 rounded shadow-2xl transition-all duration-300 flex items-center gap-3">
+        <i class="fas fa-check-circle text-gold-500 text-xl"></i>
+        <div>
+            <h4 class="font-bold text-sm" id="toastHeading">Request Submitted</h4>
+            <p class="text-xs text-gray-300" id="toastMessage">Our development team will contact you shortly.</p>
+        </div>
+    </div>
+
+    <!-- Application Logic Scripts -->
+    <script>
+        // Mobile Navigation Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = 'fas fa-bars text-2xl';
+            } else {
+                icon.className = 'fas fa-times text-2xl';
+            }
+        }
+
+        // Property Filtering Logic
+        function filterProperties(category) {
+            const cards = document.querySelectorAll('.property-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'bg-navy-900', 'text-gold-500');
+                btn.classList.add('bg-white', 'text-gray-700');
+            });
+
+            event.target.classList.add('active', 'bg-navy-900', 'text-gold-500');
+            event.target.classList.remove('bg-white', 'text-gray-700');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // ROI & Payment Plan Calculator Function
+        function calculatePlan() {
+            const propPrice = parseFloat(document.getElementById('calcPropPrice').value) || 165000000;
+            const tenure = parseInt(document.getElementById('calcTenure').value) || 12;
+            const depositPct = parseInt(document.getElementById('calcDepositPct').value) || 30;
+
+            document.getElementById('depositPctText').innerText = depositPct + '% Deposit';
+
+            const initialDeposit = propPrice * (depositPct / 100);
+            const remainingBalance = propPrice - initialDeposit;
+            const monthlyInstallment = tenure > 1 ? (remainingBalance / tenure) : 0;
+            
+            // Estimated 3-Year ROI (30% estimated total capital growth)
+            const estimatedRoi = propPrice * 1.5;
+
+            // Update UI formatted numbers in Naira
+            document.getElementById('resInitial').innerText = '₦' + initialDeposit.toLocaleString('en-NG');
+            document.getElementById('resMonthly').innerText = tenure === 1 ? 'N/A (Outright)' : '₦' + Math.round(monthlyInstallment).toLocaleString('en-NG');
+            document.getElementById('resRoi').innerText = '₦' + Math.round(estimatedRoi).toLocaleString('en-NG');
+
+            // Update direct WhatsApp Link with pre-filled calculated message
+            const waText = encodeURIComponent(`Hello Celtiallo, I used your website calculator. I am interested in a property valued at ₦${propPrice.toLocaleString('en-NG')} with a ${depositPct}% initial deposit (₦${initialDeposit.toLocaleString('en-NG')}) over ${tenure} months.`);
+            document.getElementById('calcWhatsappLink').href = `https://wa.me/2348032360595?text=${waText}`;
+        }
+
+        // Modal Controls
+        function openModal(propertyName) {
+            document.getElementById('modalTitle').innerText = propertyName || 'Book Property Inspection';
+            document.getElementById('modalSubTitle').innerText = propertyName ? 'Property Inquiry' : 'Private Inspection';
+            document.getElementById('inspectionModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('inspectionModal').classList.add('hidden');
+        }
+
+        // Custom Toast Helper
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastHeading').innerText = title;
+            document.getElementById('toastMessage').innerText = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Form Submission Handler Functions
+        function handleBrochureSubmit(e) {
+            e.preventDefault();
+            showToast('Brochure Request Sent!', 'Check your email/WhatsApp for full floor plans and pricing.');
+            e.target.reset();
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Inspection Scheduled!', 'Our relationship consultant will call you within 2 hours.');
+            e.target.reset();
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            closeModal();
+            showToast('Inspection Confirmed!', 'Thank you! We have logged your request.');
+            e.target.reset();
+        }
+
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            showToast('Subscribed!', 'You are now registered for off-plan pre-launch deals.');
+            e.target.reset();
+        }
+
+        // Initialize Calculator on Page Load
+        window.onload = function() {
+            calculatePlan();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saint Anthony's Nursery &amp; Primary School | Kabusa Village, Abuja, Nigeria</title>
+    <meta name="description" content="Premier Nursery and Primary school in Kabusa Village, Along Sheretti Road, Kabusa, Abuja, Nigeria. Empowering young minds with academic excellence, faith, discipline, and holistic growth.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0f2b5c',
+                            blue: '#1d4ed8',
+                            lightBlue: '#eff6ff',
+                            gold: '#f59e0b',
+                            goldHover: '#d97706',
+                            green: '#10b981',
+                            accent: '#38bdf8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(15, 43, 92, 0.95) 0%, rgba(29, 78, 216, 0.85) 100%);
+        }
+        .pattern-bg {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .modal-blur {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-slate-800 bg-slate-50 selection:bg-brand-gold selection:text-brand-navy">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-brand-navy text-white text-xs sm:text-sm py-2 px-4 border-b border-slate-700/50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4 text-slate-300">
+                <span><i class="fa-solid fa-location-dot text-brand-gold mr-1.5"></i> Kabusa Village, Along Sheretti Road, Kabusa, Abuja, Nigeria</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-clock text-brand-gold mr-1.5"></i> Mon - Fri: 7:30 AM - 6:00 PM</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:08055306577" class="hover:text-brand-gold transition-colors"><i class="fa-solid fa-phone text-brand-gold mr-1"></i> 0805 530 6577</a>
+                <a href="https://wa.me/2348055306577?text=Hello%20Saint%20Anthony%27s%20School,%20I%20would%20like%20to%20inquire%20about%20admissions." target="_blank" class="bg-brand-green/20 hover:bg-brand-green/30 text-emerald-300 px-2.5 py-0.5 rounded-full text-xs font-medium border border-emerald-500/30 transition-all flex items-center gap-1">
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-navy to-brand-blue flex items-center justify-center text-white font-black text-2xl shadow-md group-hover:scale-105 transition-transform">
+                        SA
+                    </div>
+                    <div>
+                        <span class="block text-lg sm:text-xl font-extrabold text-brand-navy tracking-tight group-hover:text-brand-blue transition-colors">
+                            Saint Anthony's
+                        </span>
+                        <span class="block text-xs font-semibold text-brand-gold tracking-widest uppercase">
+                            Nursery/Primary &amp; Day Secondary School
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-slate-700">
+                    <a href="#about" class="hover:text-brand-blue transition-colors">About Us</a>
+                    <a href="#academics" class="hover:text-brand-blue transition-colors">Academics</a>
+                    <a href="#calculator" class="hover:text-brand-blue transition-colors">Admissions & Fees</a>
+                    <a href="#facilities" class="hover:text-brand-blue transition-colors">Facilities & Gallery</a>
+                    <a href="#testimonials" class="hover:text-brand-blue transition-colors">Parents' Voice</a>
+                    <a href="#contact" class="hover:text-brand-blue transition-colors">Contact</a>
+                </div>
+
+                <!-- Desktop CTA Buttons -->
+                <div class="hidden md:flex items-center gap-3">
+                    <button onclick="openTourModal()" class="px-4 py-2.5 text-sm font-semibold text-brand-navy hover:text-brand-blue border border-slate-200 hover:border-brand-blue/30 rounded-xl transition-all hover:bg-slate-50">
+                        <i class="fa-regular fa-calendar-check mr-1.5 text-brand-gold"></i> Book Tour
+                    </button>
+                    <button onclick="openApplyModal()" class="px-5 py-2.5 text-sm font-bold text-slate-900 bg-brand-gold hover:bg-brand-goldHover rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                        Apply Now
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg text-slate-600 hover:text-brand-navy hover:bg-slate-100 focus:outline-none" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars text-2xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-blue">About Us</a>
+            <a href="#academics" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-blue">Academics</a>
+            <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-blue">Admissions & Fees Calculator</a>
+            <a href="#facilities" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-blue">Facilities & Gallery</a>
+            <a href="#testimonials" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-blue">Testimonials</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium hover:text-brand-blue">Contact Us</a>
+            <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+                <button onclick="toggleMobileMenu(); openTourModal()" class="w-full py-2.5 text-center text-sm font-semibold text-brand-navy border border-slate-300 rounded-xl">
+                    <i class="fa-regular fa-calendar-check mr-1 text-brand-gold"></i> Book Campus Tour
+                </button>
+                <button onclick="toggleMobileMenu(); openApplyModal()" class="w-full py-2.5 text-center text-sm font-bold text-slate-900 bg-brand-gold rounded-xl shadow-md">
+                    Apply for Admission
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-brand-navy text-white py-16 lg:py-24">
+        <!-- Background Decorative Elements -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1600&q=80" alt="School classroom background" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 hero-gradient"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 text-xs sm:text-sm font-medium text-brand-gold">
+                        <span class="w-2 h-2 rounded-full bg-brand-green animate-pulse"></span>
+                        Admissions Open for 2026 / 2027 Academic Session
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        Empowering Young Minds for a <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-brand-gold to-yellow-200">Brighter Tomorrow</span>
+                    </h1>
+                    
+                    <p class="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Welcome to Saint Anthony's Nursery/Primary &amp; Day Secondary School in Kabusa Village, Along Sheretti Road, Kabusa, Abuja, Nigeria. We foster holistic early education, moral discipline, and intellectual excellence in a safe, nurturing environment.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <button onclick="openApplyModal()" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-slate-900 bg-brand-gold hover:bg-brand-goldHover rounded-xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <span>Apply for Admission</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                        <button onclick="openTourModal()" class="w-full sm:w-auto px-8 py-4 text-base font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/30 rounded-xl backdrop-blur-md transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-compass text-brand-gold"></i>
+                            <span>Schedule Campus Tour</span>
+                        </button>
+                    </div>
+
+                    <!-- Trust Stats Bar -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-white/10 text-center lg:text-left">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-gold">100%</div>
+                            <div class="text-xs sm:text-sm text-slate-300">Dedicated Educators</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-gold">15:1</div>
+                            <div class="text-xs sm:text-sm text-slate-300">Student-Teacher Ratio</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-brand-gold">10+</div>
+                            <div class="text-xs sm:text-sm text-slate-300">Extra Activities</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Image Stack / Card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-gold to-brand-green rounded-3xl blur-xl opacity-30"></div>
+                        <div class="relative bg-white text-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100">
+                            <div class="relative h-64 sm:h-72 rounded-2xl overflow-hidden mb-6">
+                                <img src="https://www.stanthonydayschool.com/images/uploads/1.jpg" alt="Students in classroom" class="w-full h-full object-cover">
+                                <div class="absolute top-3 right-3 bg-brand-navy/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-full border border-white/20">
+                                    <i class="fa-solid fa-shield-halved text-brand-gold mr-1"></i> Safe & Secure Campus
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="text-xl font-extrabold text-brand-navy">Why Parents Trust St. Anthony's</h3>
+                                <ul class="space-y-2 text-sm text-slate-600">
+                                    <li class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-circle-check text-brand-green text-base"></i>
+                                        <span>Blended Nigerian & International Early Years Curriculum</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-circle-check text-brand-green text-base"></i>
+                                        <span>Practical ICT & Digital Literacy Skills</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <i class="fa-solid fa-circle-check text-brand-green text-base"></i>
+                                        <span>Moral Ethics & Christian Religious Knowledge</span>
+                                    </li>
+                                </ul>
+                                <a href="#calculator" class="mt-4 w-full py-3 bg-slate-100 hover:bg-slate-200 text-brand-navy font-bold rounded-xl text-center text-sm transition-colors block">
+                                    Calculate School Fees & Apply <i class="fa-solid fa-calculator ml-1 text-brand-gold"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-blue/30 transition-all hover:shadow-md">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-brand-blue flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-lg mb-1">Critical Thinking</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Encouraging curiosity, problem-solving, and independent reasoning from early childhood.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-gold/30 transition-all hover:shadow-md">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-brand-goldHover flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-lg mb-1">Nurturing Care</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Dedicated staff prioritizing child safety, emotional well-being, and individual attention.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-brand-green/30 transition-all hover:shadow-md">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-lg mb-1">Modern ICT Lab</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Hands-on computer training to prepare students early for a tech-driven world.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-purple-500/30 transition-all hover:shadow-md">
+                    <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-hands-praying"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-900 text-lg mb-1">Moral Values</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Grounded in faith, integrity, respect, and civic responsibility for lifelong discipline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About School Section -->
+    <section id="about" class="py-20 pattern-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- About Left Visual -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://www.stanthonydayschool.com/images/uploads/2.jpg" alt="Headmaster with students" class="w-full h-[400px] object-cover">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                            <p class="font-bold text-lg">"Every child is a unique gift capable of extraordinary achievements."</p>
+                            <p class="text-xs text-brand-gold mt-1 font-semibold">— School Leadership Team</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Right Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-block px-3 py-1 bg-blue-100 text-brand-blue rounded-full text-xs font-bold uppercase tracking-wider">
+                        Welcome to Saint Anthony's
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy leading-tight">
+                        Building Strong Foundations for Academic & Moral Excellence
+                    </h2>
+                    <p class="text-slate-600 text-base leading-relaxed">
+                        Located in Kabusa Village, Along Sheretti Road, Kabusa, Abuja, Nigeria, <strong>Saint Anthony's Nursery/Primary &amp; Day Secondary School</strong> has earned a reputation for nurturing well-rounded pupils equipped for future academic challenges.
+                    </p>
+                    <p class="text-slate-600 text-base leading-relaxed">
+                        Our holistic educational approach seamlessly merges rigorous academics with extracurricular enrichment, sound moral instruction, and modern computer literacy. We provide a safe haven where young minds explore, discover, and build confidence daily.
+                    </p>
+
+                    <!-- Core Values Grid -->
+                    <div class="pt-4">
+                        <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Our Core Values</h4>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center gap-3">
+                                <i class="fa-solid fa-star text-brand-gold"></i>
+                                <span class="text-xs font-bold text-slate-800">Academic Excellence</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center gap-3">
+                                <i class="fa-solid fa-shield-heart text-brand-blue"></i>
+                                <span class="text-xs font-bold text-slate-800">Faith & Integrity</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center gap-3">
+                                <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                                <span class="text-xs font-bold text-slate-800">Creativity</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center gap-3">
+                                <i class="fa-solid fa-scale-balanced text-emerald-600"></i>
+                                <span class="text-xs font-bold text-slate-800">Discipline</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center gap-3">
+                                <i class="fa-solid fa-people-group text-purple-600"></i>
+                                <span class="text-xs font-bold text-slate-800">Community Care</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center gap-3">
+                                <i class="fa-solid fa-trophy text-brand-gold"></i>
+                                <span class="text-xs font-bold text-slate-800">Leadership</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button onclick="openApplyModal()" class="px-6 py-3 bg-brand-navy hover:bg-brand-blue text-white font-bold text-sm rounded-xl transition-all shadow-md">
+                            Join Saint Anthony's Family <i class="fa-solid fa-chevron-right ml-2 text-xs text-brand-gold"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Programs -->
+    <section id="academics" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3 py-1 bg-amber-100 text-brand-goldHover rounded-full text-xs font-bold uppercase tracking-wider">
+                    Educational Pathways
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-3">
+                    Tailored Curricula for Every Stage of Development
+                </h2>
+                <p class="text-slate-600 mt-2 text-base">
+                    From early sensory play to structured primary learning, our curriculum builds lifelong curiosity and academic strength.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Program 1: Nursery / Early Years -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 hover:border-brand-blue transition-all hover:shadow-xl relative flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-blue-100 text-brand-blue rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-shapes"></i>
+                        </div>
+                        <span class="text-xs font-extrabold text-brand-gold tracking-widest uppercase">Ages 2 - 5 Years</span>
+                        <h3 class="text-2xl font-extrabold text-brand-navy mt-1 mb-3">Nursery &amp; Early Years</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Focusing on play-based learning, phonics, number awareness, fine motor skill development, and social emotional growth in a warm atmosphere.
+                        </p>
+                        <ul class="space-y-2.5 text-xs text-slate-700 font-medium mb-6">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-green"></i> Early Literacy &amp; Phonics
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-green"></i> Sensory &amp; Creative Arts
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-green"></i> Basic Numeracy &amp; Patterns
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-green"></i> Physical Play &amp; Motor Coordination
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="openApplyModal('Nursery')" class="w-full py-3 bg-white hover:bg-brand-blue hover:text-white text-brand-navy border border-slate-300 font-bold text-sm rounded-xl transition-all">
+                        Enroll for Nursery <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- Program 2: Primary School -->
+                <div class="bg-gradient-to-b from-brand-navy to-slate-900 text-white rounded-3xl p-8 border border-slate-700 shadow-xl relative flex flex-col justify-between transform lg:-translate-y-2">
+                    <div class="absolute top-4 right-4 bg-brand-gold text-slate-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
+                        Most Popular
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 bg-white/10 text-brand-gold rounded-2xl flex items-center justify-center text-2xl font-bold mb-6">
+                            <i class="fa-solid fa-book-open-reader"></i>
+                        </div>
+                        <span class="text-xs font-extrabold text-brand-gold tracking-widest uppercase">Ages 6 - 11 Years</span>
+                        <h3 class="text-2xl font-extrabold text-white mt-1 mb-3">Primary Education</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Comprehensive national curriculum enriched with computer skills, critical reasoning, public speaking, and moral instruction.
+                        </p>
+                        <ul class="space-y-2.5 text-xs text-slate-200 font-medium mb-6">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-gold"></i> Mathematics & Basic Science
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-gold"></i> English Diction & Literature
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-gold"></i> Computer / ICT Lab Classes
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-gold"></i> Social Studies & CRK Moral Ethics
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="openApplyModal('Primary')" class="w-full py-3 bg-brand-gold hover:bg-brand-goldHover text-slate-900 font-extrabold text-sm rounded-xl transition-all shadow-md">
+                        Enroll for Primary <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+                <!-- Program 3: Extracurricular & Clubs -->
+                <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 hover:border-brand-blue transition-all hover:shadow-xl relative flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-icons"></i>
+                        </div>
+                        <span class="text-xs font-extrabold text-emerald-600 tracking-widest uppercase">All Students</span>
+                        <h3 class="text-2xl font-extrabold text-brand-navy mt-1 mb-3">Extra-Curricular Clubs</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Discovering talents beyond the classroom through sports, creative arts, music, public speaking, and digital skills.
+                        </p>
+                        <ul class="space-y-2.5 text-xs text-slate-700 font-medium mb-6">
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-green"></i> Quiz & Debate Society
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-green"></i> Sports & Athletics Club
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-green"></i> Music & Drama Troupe
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-brand-green"></i> Junior Coding & IT Explorers
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="openTourModal()" class="w-full py-3 bg-white hover:bg-brand-blue hover:text-white text-brand-navy border border-slate-300 font-bold text-sm rounded-xl transition-all">
+                        Explore Student Life <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Tuition & Admissions Estimator Section -->
+    <section id="calculator" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-blue opacity-20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-brand-gold opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Details -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="px-3 py-1 bg-brand-gold/20 text-brand-gold border border-brand-gold/30 rounded-full text-xs font-bold uppercase tracking-wider">
+                        Transparent Admissions & Fee Calculator
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+                        Estimate Tuition & Start Your Child's Application
+                    </h2>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        We believe quality education should be accessible and transparent. Use our instant estimator to select options for tuition, learning materials, and extracurriculars, then complete your application in one seamless step.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-brand-blue/30 text-brand-gold flex items-center justify-center font-bold text-sm mt-0.5">1</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Select Grade Level</h4>
+                                <p class="text-xs text-slate-400">Choose Nursery or Primary grade class.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-brand-blue/30 text-brand-gold flex items-center justify-center font-bold text-sm mt-0.5">2</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Customize Optional Services</h4>
+                                <p class="text-xs text-slate-400">Include computer literacy, books kit, or extra sports club.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-brand-blue/30 text-brand-gold flex items-center justify-center font-bold text-sm mt-0.5">3</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Instant Fee Breakdown & Submission</h4>
+                                <p class="text-xs text-slate-400">Submit student details directly to our admissions board.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Calculator Card -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white text-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100">
+                        <form id="feeCalcForm" onsubmit="handleCalculatorSubmit(event)" class="space-y-6">
+                            
+                            <div class="border-b border-slate-200 pb-4">
+                                <h3 class="text-xl font-extrabold text-brand-navy">Admissions & Term Fee Estimator</h3>
+                                <p class="text-xs text-slate-500">Instant estimation for term academic fees</p>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Target Academic Class</label>
+                                    <select id="calcGrade" onchange="calculateTuition()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                                        <option value="25000">Creche / Playgroup (₦25,000 / Term)</option>
+                                        <option value="30000">Nursery 1 - 2 (₦30,000 / Term)</option>
+                                        <option value="35000" selected>Primary 1 - 3 (₦35,000 / Term)</option>
+                                        <option value="40000">Primary 4 - 6 (₦40,000 / Term)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Session / Term</label>
+                                    <select id="calcTerm" onchange="calculateTuition()" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                                        <option value="1">1 Term (First Term)</option>
+                                        <option value="2">2 Terms</option>
+                                        <option value="3">Full Session (3 Terms - 5% Discount)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Optional Addons -->
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Optional Services & Add-ons</label>
+                                <div class="grid sm:grid-cols-2 gap-3 text-xs">
+                                    <label class="flex items-center gap-2 p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100">
+                                        <input type="checkbox" id="addICT" onchange="calculateTuition()" value="5000" class="w-4 h-4 text-brand-blue rounded border-slate-300 focus:ring-brand-blue">
+                                        <div>
+                                            <span class="font-bold text-slate-800">ICT Lab & Coding</span>
+                                            <span class="block text-[10px] text-slate-500">+₦5,000 / term</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100">
+                                        <input type="checkbox" id="addBooks" onchange="calculateTuition()" value="12000" class="w-4 h-4 text-brand-blue rounded border-slate-300 focus:ring-brand-blue" checked>
+                                        <div>
+                                            <span class="font-bold text-slate-800">Textbooks & Workbooks</span>
+                                            <span class="block text-[10px] text-slate-500">+₦12,000 / year</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100">
+                                        <input type="checkbox" id="addUniform" onchange="calculateTuition()" value="8000" class="w-4 h-4 text-brand-blue rounded border-slate-300 focus:ring-brand-blue" checked>
+                                        <div>
+                                            <span class="font-bold text-slate-800">Complete Uniform Set</span>
+                                            <span class="block text-[10px] text-slate-500">+₦8,000 (One-time)</span>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-3 bg-slate-50 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-100">
+                                        <input type="checkbox" id="addClubs" onchange="calculateTuition()" value="3000" class="w-4 h-4 text-brand-blue rounded border-slate-300 focus:ring-brand-blue">
+                                        <div>
+                                            <span class="font-bold text-slate-800">Extracurricular Club</span>
+                                            <span class="block text-[10px] text-slate-500">+₦3,000 / term</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Live Price Summary Box -->
+                            <div class="p-4 bg-brand-lightBlue border border-blue-200 rounded-2xl flex items-center justify-between">
+                                <div>
+                                    <span class="text-xs text-slate-600 font-medium">Estimated Investment:</span>
+                                    <div id="totalFeeDisplay" class="text-2xl sm:text-3xl font-black text-brand-navy">₦55,000</div>
+                                </div>
+                                <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-bold">
+                                    Affordable Quality
+                                </span>
+                            </div>
+
+                            <!-- Parent Info Input -->
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Parent's Full Name *</label>
+                                    <input type="text" id="parentName" required placeholder="e.g. Mr. Chidiebere Okafor" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number *</label>
+                                    <input type="tel" id="parentPhone" required placeholder="0801 234 5678" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full py-4 bg-brand-gold hover:bg-brand-goldHover text-slate-900 font-black text-base rounded-xl transition-all shadow-lg hover:shadow-xl">
+                                Lock In Fees & Submit Application <i class="fa-solid fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities & Interactive Gallery -->
+    <section id="facilities" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold uppercase tracking-wider">
+                    School Facilities
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-3">
+                    Modern Infrastructure for Safe & Effective Learning
+                </h2>
+                <p class="text-slate-600 mt-2 text-base">
+                    Take a look inside our well-equipped school environment designed for safety, comfort, and interactive engagement.
+                </p>
+
+                <!-- Filter Controls -->
+                <div class="flex flex-wrap justify-center gap-2 mt-8">
+                    <button onclick="filterGallery('all')" class="gallery-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-navy text-white transition-all" data-filter="all">All Facilities</button>
+                    <button onclick="filterGallery('classrooms')" class="gallery-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition-all" data-filter="classrooms">Classrooms</button>
+                    <button onclick="filterGallery('ict')" class="gallery-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition-all" data-filter="ict">Computer Lab</button>
+                    <button onclick="filterGallery('play')" class="gallery-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition-all" data-filter="play">Playground & Sports</button>
+                    <button onclick="filterGallery('library')" class="gallery-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition-all" data-filter="library">Library & Reading</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryContainer">
+                
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item classrooms bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&q=80" alt="Spacious Classroom" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-3 py-1.5 bg-white text-brand-navy text-xs font-bold rounded-lg shadow">Spacious Classroom</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-base">Ventilated Classrooms</h4>
+                        <p class="text-xs text-slate-500 mt-1">Comfortable ergonomic desks, whiteboards, and vibrant educational charts.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item ict bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Computer Lab" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-3 py-1.5 bg-white text-brand-navy text-xs font-bold rounded-lg shadow">Modern Computer Suite</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-base">ICT & Computer Lab</h4>
+                        <p class="text-xs text-slate-500 mt-1">Hands-on computer workstation practice from elementary grades.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item play bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1566140967404-b8b3932483f5?auto=format&fit=crop&w=600&q=80" alt="Playground" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-3 py-1.5 bg-white text-brand-navy text-xs font-bold rounded-lg shadow">Secure Outdoor Playground</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-base">Outdoor Play Area</h4>
+                        <p class="text-xs text-slate-500 mt-1">Safe recreational swings, slides, and grassy open play field.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item library bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80" alt="School Library" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-3 py-1.5 bg-white text-brand-navy text-xs font-bold rounded-lg shadow">Well-stocked Library</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-base">Children's Library</h4>
+                        <p class="text-xs text-slate-500 mt-1">Rich collection of storybooks, reference materials, and reading nooks.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item play bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80" alt="Sports Activities" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-3 py-1.5 bg-white text-brand-navy text-xs font-bold rounded-lg shadow">Sports Field</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-base">Sports & Athletics</h4>
+                        <p class="text-xs text-slate-500 mt-1">Inter-house sports, football, physical exercise, and team building.</p>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item classrooms bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 group">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80" alt="Creative Arts Studio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-brand-navy/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-3 py-1.5 bg-white text-brand-navy text-xs font-bold rounded-lg shadow">Arts & Crafts Studio</span>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-slate-900 text-base">Art & Craft Nook</h4>
+                        <p class="text-xs text-slate-500 mt-1">Encouraging artistic expression, drawing, painting, and handcrafts.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Parent Testimonials -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold uppercase tracking-wider">
+                    Parent Reviews
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-3">
+                    What Our School Community Says
+                </h2>
+                <p class="text-slate-600 mt-2 text-base">
+                    Read genuine testimonials from parents who entrusted their children to St. Anthony's Nursery & Primary School.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-200 relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                            "Enrolling my two children at Saint Anthony's was the best decision for our family in Tafa. My daughter's reading fluency improved remarkably within just one term!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center text-sm">
+                            MO
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Mrs. Mary Okon</h5>
+                            <span class="text-xs text-slate-500">Parent of Primary 2 & 4 Pupils</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-200 relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                            "The moral discipline and Christian values taught here give me absolute peace of mind. The teachers are polite, approachable, and truly care about every child."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-brand-gold text-slate-900 font-bold flex items-center justify-center text-sm">
+                            EI
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Mr. Emmanuel Ibrahim</h5>
+                            <span class="text-xs text-slate-500">Nursery Parent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 bg-slate-50 rounded-3xl border border-slate-200 relative flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed italic mb-6">
+                            "I love their computer lab program! My son can operate basic educational software easily now. Very reasonable tuition fee for the high standard provided."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm">
+                            GB
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-slate-900 text-sm">Dr. (Mrs) Grace Bello</h5>
+                            <span class="text-xs text-slate-500">Parent of Primary 5 Pupil</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Info -->
+    <section id="contact" class="py-20 pattern-bg border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Details -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="px-3 py-1 bg-brand-navy/10 text-brand-navy rounded-full text-xs font-bold uppercase tracking-wider">
+                            Get In Touch
+                        </span>
+                        <h2 class="text-3xl font-extrabold text-brand-navy mt-3">
+                            Visit Us or Contact Our Admissions Office
+                        </h2>
+                        <p class="text-slate-600 text-sm mt-2">
+                            We invite parents to visit our campus, meet our educators, and explore our learning facilities.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        
+                        <!-- Address -->
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-blue-100 text-brand-blue flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">School Address</h4>
+                                <p class="text-xs text-slate-600 mt-1">Kabusa Village, Along Sheretti Road, Kabusa, Abuja, Nigeria</p>
+                                <span class="inline-block mt-1 text-[11px] font-semibold text-brand-navy bg-slate-100 px-2 py-0.5 rounded">
+                                    Plus Code: 67VQ+V8 Ija
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Phone & WhatsApp -->
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-brand-goldHover flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Phone Lines / WhatsApp</h4>
+                                <p class="text-xs text-slate-600 mt-1">Direct Line: <a href="tel:08055306577" class="font-bold text-brand-navy hover:underline">0805 530 6577</a></p>
+                                <a href="https://wa.me/2348055306577?text=Hello%20Saint%20Anthony%27s%20School,%20I%20would%20like%20to%20inquire%20about%20admissions." target="_blank" class="inline-flex items-center gap-1.5 mt-2 text-xs font-bold text-emerald-600 hover:text-emerald-700">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i> Chat on WhatsApp Now &rarr;
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Hours -->
+                        <div class="p-5 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                                <i class="fa-regular fa-clock text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">School & Administrative Hours</h4>
+                                <p class="text-xs text-slate-600 mt-1">Monday – Friday: 7:30 AM – 6:00 PM</p>
+                                <p class="text-[11px] text-slate-500">Closed on Weekends and Public Holidays</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Interactive Direct Contact Form Card -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200">
+                        <h3 class="text-2xl font-extrabold text-brand-navy mb-1">Send Us a Direct Message</h3>
+                        <p class="text-xs text-slate-500 mb-6">Have a question? Leave a message and our team will get back to you promptly.</p>
+
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name *</label>
+                                    <input type="text" required placeholder="John Doe" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number *</label>
+                                    <input type="tel" required placeholder="0805 000 0000" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address (Optional)</label>
+                                <input type="email" placeholder="parent@example.com" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Subject</label>
+                                <select class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                                    <option>General Inquiry</option>
+                                    <option>Nursery Admission Inquiry</option>
+                                    <option>Primary Admission Inquiry</option>
+                                    <option>Campus Tour Request</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Message *</label>
+                                <textarea rows="4" required placeholder="Tell us how we can help you..." class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 bg-brand-navy hover:bg-brand-blue text-white font-bold text-sm rounded-xl transition-all shadow-md">
+                                Send Message <i class="fa-solid fa-paper-plane ml-2 text-brand-gold"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Map Location Guidance Visual -->
+            <div class="mt-12 bg-brand-navy text-white rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <h4 class="text-xl font-bold text-white">Finding Saint Anthony's Nursery/Primary &amp; Day Secondary School</h4>
+                    <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl">
+                        Located conveniently in Kabusa Village, Along Sheretti Road, Kabusa, Abuja, Nigeria. You can click below for direct directions via Google Maps.
+                    </p>
+                </div>
+                <a href="https://www.google.com/maps/place/St+Anthony+Catholic+Church+Kabusa+Abuja/@8.8950118,7.3922643,17z/data=!3m1!4b1!4m6!3m5!1s0x104e6d005866a231:0x87c803416d647850!8m2!3d8.8950065!4d7.3948392!16s%2Fg%2F11vk7dzwv5?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="shrink-0 px-6 py-3 bg-brand-gold hover:bg-brand-goldHover text-slate-900 font-extrabold text-sm rounded-xl transition-all shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-map-location-dot"></i> Get Directions on Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
+                
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white font-black text-xl">
+                            SA
+                        </div>
+                        <span class="text-lg font-extrabold text-white">Saint Anthony's</span>
+                        <span class="block text-xs font-semibold text-brand-gold tracking-widest uppercase">
+                            Nursery/Primary &amp; Day Secondary School
+                        </span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400">
+                        Nurturing well-rounded, disciplined, and academically stellar leaders of tomorrow in Tafa, Niger State.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#about" class="hover:text-brand-gold transition-colors">About St. Anthony's</a></li>
+                        <li><a href="#academics" class="hover:text-brand-gold transition-colors">Academic Programs</a></li>
+                        <li><a href="#calculator" class="hover:text-brand-gold transition-colors">Admissions & Fee Estimator</a></li>
+                        <li><a href="#facilities" class="hover:text-brand-gold transition-colors">Facilities Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-brand-gold transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Academic Levels</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><span class="text-slate-400">Creche & Playgroup</span></li>
+                        <li><span class="text-slate-400">Nursery 1 & 2</span></li>
+                        <li><span class="text-slate-400">Lower Primary (Grades 1-3)</span></li>
+                        <li><span class="text-slate-400">Upper Primary (Grades 4-6)</span></li>
+                        <li><span class="text-slate-400">Computer & Coding Club</span></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h5 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Reach Admissions</h5>
+                    <div class="space-y-2 text-xs text-slate-400">
+                        <p><i class="fa-solid fa-phone text-brand-gold mr-1.5"></i> 0805 530 6577</p>
+                        <p><i class="fa-solid fa-location-dot text-brand-gold mr-1.5"></i> Kabusa Village, Along Sheretti Road, Kabusa, Abuja, Nigeria</p>
+                        <p><i class="fa-regular fa-clock text-brand-gold mr-1.5"></i> Mon - Fri (7:30 AM - 6:00 PM)</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+                <p>&copy; <span id="currentYear"></span> Saint Anthony's Nursery/Primary &amp; Day Secondary School. All rights reserved.</p>
+                <p class="text-slate-500"> Kabusa Village, Along Sheretti Road, Kabusa, Abuja, Nigeria</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal 1: Apply Now Modal -->
+    <div id="applyModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 modal-blur flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative my-8">
+            <button onclick="closeApplyModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-brand-gold/20 text-brand-goldHover flex items-center justify-center text-xl font-bold mx-auto mb-2">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h3 class="text-xl font-extrabold text-brand-navy">Apply for Admission</h3>
+                <p class="text-xs text-slate-500 mt-1">Saint Anthony's Nursery & Primary School</p>
+            </div>
+
+            <form id="applyForm" onsubmit="handleApplySubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Child's Full Name *</label>
+                    <input type="text" required placeholder="Child's Name" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Date of Birth</label>
+                        <input type="date" required class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Grade Level *</label>
+                        <select id="modalGradeSelect" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                            <option value="Creche">Creche / Playgroup</option>
+                            <option value="Nursery">Nursery School</option>
+                            <option value="Primary">Primary School</option>
+                            <option value="Junior">Junior Secondary School</option>
+                            <option value="Senior">Senior Secondary School</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Parent/Guardian Name *</label>
+                    <input type="text" required placeholder="Parent Name" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Active Phone / WhatsApp *</label>
+                    <input type="tel" required placeholder="0801 234 5678" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-brand-gold hover:bg-brand-goldHover text-slate-900 font-extrabold text-sm rounded-xl transition-all shadow-md">
+                    Submit Enrollment Application <i class="fa-solid fa-paper-plane ml-1"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2: Book Tour Modal -->
+    <div id="tourModal" class="fixed inset-0 z-50 hidden bg-slate-950/70 modal-blur flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative my-8">
+            <button onclick="closeTourModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-blue-100 text-brand-blue flex items-center justify-center text-xl font-bold mx-auto mb-2">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <h3 class="text-xl font-extrabold text-brand-navy">Schedule Campus Tour</h3>
+                <p class="text-xs text-slate-500 mt-1">Visit Angwau Barau, Tafa Campus</p>
+            </div>
+
+            <form id="tourForm" onsubmit="handleTourSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Full Name *</label>
+                    <input type="text" required placeholder="Parent Name" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number *</label>
+                    <input type="tel" required placeholder="0805 530 6577" class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Preferred Date</label>
+                        <input type="date" required class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Preferred Time</label>
+                        <select class="w-full px-3.5 py-2.5 border border-slate-300 rounded-xl text-sm focus:ring-2 focus:ring-brand-blue focus:outline-none">
+                            <option>9:00 AM</option>
+                            <option>11:00 AM</option>
+                            <option>2:00 PM</option>
+                            <option>4:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-brand-navy hover:bg-brand-blue text-white font-bold text-sm rounded-xl transition-all shadow-md">
+                    Confirm Tour Reservation <i class="fa-solid fa-calendar-check ml-1 text-brand-gold"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Confirmation Banner -->
+    <div id="toastNotification" class="fixed bottom-5 right-5 z-50 hidden bg-slate-900 text-white px-5 py-4 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 max-w-sm">
+        <div class="w-8 h-8 rounded-full bg-emerald-500 text-slate-900 font-bold flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <h5 class="font-bold text-sm text-white" id="toastTitle">Submitted Successfully!</h5>
+            <p class="text-xs text-slate-300" id="toastBody">We will reach out to you shortly.</p>
+        </div>
+    </div>
+
+    <!-- Application JavaScript Logic -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+        // Calculate Tuition dynamic logic
+        function calculateTuition() {
+            const gradeBase = parseInt(document.getElementById('calcGrade').value) || 0;
+            const terms = parseInt(document.getElementById('calcTerm').value) || 1;
+            
+            let total = gradeBase * terms;
+
+            // Apply 5% discount for full session
+            if (terms === 3) {
+                total = total * 0.95;
+            }
+
+            // Check optional checkboxes
+            if (document.getElementById('addICT').checked) {
+                total += (5000 * terms);
+            }
+            if (document.getElementById('addBooks').checked) {
+                total += 12000;
+            }
+            if (document.getElementById('addUniform').checked) {
+                total += 8000;
+            }
+            if (document.getElementById('addClubs').checked) {
+                total += (3000 * terms);
+            }
+
+            // Format to Nigerian Naira
+            const formatted = new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(total);
+            document.getElementById('totalFeeDisplay').textContent = formatted;
+        }
+
+        // Initialize calculation on load
+        calculateTuition();
+
+        // Gallery Filter Logic
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.gallery-btn');
+
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+                    btn.classList.add('bg-brand-navy', 'text-white');
+                } else {
+                    btn.classList.remove('bg-brand-navy', 'text-white');
+                    btn.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+                }
+            });
+
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Open / Close Handlers
+        function openApplyModal(gradeCategory) {
+            const modal = document.getElementById('applyModal');
+            modal.classList.remove('hidden');
+            if (gradeCategory) {
+                const select = document.getElementById('modalGradeSelect');
+                if (select) select.value = gradeCategory;
+            }
+        }
+
+        function closeApplyModal() {
+            document.getElementById('applyModal').classList.add('hidden');
+        }
+
+        function openTourModal() {
+            document.getElementById('tourModal').classList.remove('hidden');
+        }
+
+        function closeTourModal() {
+            document.getElementById('tourModal').classList.add('hidden');
+        }
+
+        // Show Toast Notification helper
+        function showToast(title, body) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastBody').textContent = body;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Handle Calculator Application Submission
+        function handleCalculatorSubmit(e) {
+            e.preventDefault();
+            const parentName = document.getElementById('parentName').value;
+            const parentPhone = document.getElementById('parentPhone').value;
+
+            showToast(`Thank You, ${parentName}!`, `Application received! We will call you at ${parentPhone}.`);
+            document.getElementById('feeCalcForm').reset();
+            calculateTuition();
+        }
+
+        // Handle Apply Modal Submission
+        function handleApplySubmit(e) {
+            e.preventDefault();
+            closeApplyModal();
+            showToast('Application Submitted!', 'Our admissions officer will contact you within 24 hours.');
+            document.getElementById('applyForm').reset();
+        }
+
+        // Handle Campus Tour Modal Submission
+        function handleTourSubmit(e) {
+            e.preventDefault();
+            closeTourModal();
+            showToast('Tour Reserved!', 'We look forward to welcoming you to Saint Anthony\'s campus.');
+            document.getElementById('tourForm').reset();
+        }
+
+        // Handle Contact Form Submission
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast('Message Sent!', 'Thank you for contacting Saint Anthony\'s School.');
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QueenTee Fashion & Beauty Empire | Luxury Couture & Spa Abuja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldRoyal: '#0A3B2C',
+                        emeraldDark: '#052219',
+                        emeraldLight: '#145A45',
+                        goldAccent: '#D4AF37',
+                        goldHover: '#B89628',
+                        goldSoft: '#F9F3DF',
+                        maroonRoyal: '#58111A',
+                        creamBg: '#FAF8F5',
+                        charcoalText: '#1C1917'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+        }
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFE58F 50%, #AA771C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-dark {
+            background: rgba(10, 59, 44, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .glass-light {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-creamBg text-charcoalText font-sans custom-scrollbar antialiased selection:bg-goldAccent selection:text-emeraldDark">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-emeraldDark text-goldSoft text-xs md:text-sm py-2 px-4 border-b border-goldAccent/30 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2 overflow-hidden whitespace-nowrap">
+                <span class="bg-goldAccent text-emeraldDark px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Special Offer</span>
+                <span class="truncate">✨ Book a Bespoke Consultation Today & Get 10% Off Spa Pampering | Garki 2, Abuja</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6 text-xs font-medium">
+                <a href="tel:+2349027683339" class="hover:text-goldAccent transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-phone text-goldAccent"></i> 0902 768 3339
+                </a>
+                <span class="text-goldAccent/40">|</span>
+                <a href="https://wa.me/2349027683339?text=Hello%20QueenTee%20Empire,%20I%20would%20like%20to%20make%20an%20enquiry." target="_blank" class="hover:text-goldAccent transition-colors flex items-center gap-1 text-emerald-400">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Direct
+                </a>
+                <span class="text-goldAccent/40">|</span>
+                <span class="text-xs flex items-center gap-1"><i class="fa-regular fa-clock text-goldAccent"></i> Open Daily: 8am - 8pm</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <nav class="sticky top-[33px] z-40 bg-emeraldRoyal text-white shadow-xl border-b border-goldAccent/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-full border-2 border-goldAccent flex items-center justify-center bg-emeraldDark group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-crown text-goldAccent text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-cinzel text-xl md:text-2xl font-bold tracking-wider gold-text-gradient">QUEENTEE</span>
+                        <span class="text-[9px] uppercase tracking-[0.25em] text-goldSoft/80 font-medium">Fashion & Beauty Empire</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden lg:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#home" class="hover:text-goldAccent transition-colors py-2 border-b-2 border-transparent hover:border-goldAccent">Home</a>
+                    <a href="#collections" class="hover:text-goldAccent transition-colors py-2 border-b-2 border-transparent hover:border-goldAccent">Collections</a>
+                    <a href="#estimator" class="hover:text-goldAccent transition-colors py-2 border-b-2 border-transparent hover:border-goldAccent">Bespoke Fitting Generator</a>
+                    <a href="#spa" class="hover:text-goldAccent transition-colors py-2 border-b-2 border-transparent hover:border-goldAccent">Spa & Pampering</a>
+                    <a href="#reviews" class="hover:text-goldAccent transition-colors py-2 border-b-2 border-transparent hover:border-goldAccent">Reviews (4.7★)</a>
+                    <a href="#location" class="hover:text-goldAccent transition-colors py-2 border-b-2 border-transparent hover:border-goldAccent">Visit Us</a>
+                </div>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full bg-emeraldDark border border-goldAccent/30 hover:border-goldAccent text-goldAccent transition-all hover:scale-105" aria-label="Shopping Cart">
+                        <i class="fa-solid fa-bag-shopping text-lg"></i>
+                        <span id="cartBadge" class="absolute -top-1 -right-1 bg-maroonRoyal text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border border-goldAccent">0</span>
+                    </button>
+                    
+                    <a href="#estimator" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-goldAccent to-goldHover text-emeraldDark font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-full hover:shadow-lg hover:shadow-goldAccent/20 transition-all hover:-translate-y-0.5">
+                        <i class="fa-solid fa-scissors"></i> Book Fitting
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-white hover:text-goldAccent focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-emeraldDark border-t border-goldAccent/20 px-4 pt-4 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-goldAccent font-medium border-b border-white/5">Home</a>
+            <a href="#collections" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-goldAccent font-medium border-b border-white/5">Collections</a>
+            <a href="#estimator" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-goldAccent font-medium border-b border-white/5">Bespoke Fitting Generator</a>
+            <a href="#spa" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-goldAccent font-medium border-b border-white/5">Spa & Pampering Services</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-goldAccent font-medium border-b border-white/5">Customer Reviews (4.7★)</a>
+            <a href="#location" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-goldAccent font-medium">Visit Store in Garki 2</a>
+            <div class="pt-4 flex flex-col gap-2">
+                <a href="https://wa.me/2349027683339?text=Hello%20QueenTee%20Empire,%20I%20want%20to%20book%20an%20appointment." target="_blank" class="w-full text-center py-3 bg-emerald-600 text-white rounded-lg font-bold flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-emeraldDark text-white overflow-hidden py-16 md:py-24 border-b border-goldAccent/30">
+        <!-- Background Pattern Overlay -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emeraldRoyal/80 border border-goldAccent/40 text-goldSoft text-xs md:text-sm font-medium">
+                        <span class="flex h-2 w-2 rounded-full bg-goldAccent animate-ping"></span>
+                        Abuja’s Premier Couture & Luxury Spa House
+                    </div>
+                    
+                    <h1 class="font-cinzel text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-wide">
+                        Elegance Redefined. <br>
+                        <span class="gold-text-gradient">Tailored to Perfection.</span>
+                    </h1>
+                    
+                    <p class="text-gray-300 text-base md:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Step into Royalty at QueenTee Empire, Garki 2. From show-stopping custom Ankara & Asoebi designs to luxury spa treats, we craft bespoke luxury designed uniquely for you.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#collections" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-goldAccent to-goldHover text-emeraldDark font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-xl hover:shadow-goldAccent/30 hover:scale-[1.02] transition-all text-center">
+                            Explore Collections <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#estimator" class="w-full sm:w-auto px-8 py-4 bg-emeraldRoyal/80 hover:bg-emeraldRoyal text-goldSoft border border-goldAccent/50 font-bold text-sm uppercase tracking-wider rounded-xl hover:border-goldAccent transition-all text-center">
+                            Custom Fitting & Quote <i class="fa-solid fa-scissors ml-2"></i>
+                        </a>
+                        <a href="#spa" class="w-full sm:w-auto px-8 py-4 bg-maroonRoyal/90 hover:bg-maroonRoyal text-white font-bold text-sm uppercase tracking-wider rounded-xl border border-pink-400/30 transition-all text-center">
+                            Book Spa Session <i class="fa-solid fa-spa ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust Badge Bar -->
+                    <div class="pt-8 grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-white/10 text-left">
+                        <div class="p-3 rounded-lg bg-emeraldRoyal/40 border border-goldAccent/20">
+                            <div class="flex items-center gap-1 text-goldAccent font-bold text-lg">
+                                <span>4.7</span>
+                                <div class="flex text-xs">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-300">151+ Google Verified Reviews</p>
+                        </div>
+
+                        <div class="p-3 rounded-lg bg-emeraldRoyal/40 border border-goldAccent/20">
+                            <div class="flex items-center gap-1 text-goldAccent font-bold text-sm">
+                                <i class="fa-solid fa-award text-lg"></i>
+                                <span>Women-Owned</span>
+                            </div>
+                            <p class="text-xs text-gray-300">Empowering Elegance</p>
+                        </div>
+
+                        <div class="col-span-2 sm:col-span-1 p-3 rounded-lg bg-emeraldRoyal/40 border border-goldAccent/20">
+                            <div class="flex items-center gap-1 text-goldAccent font-bold text-sm">
+                                <i class="fa-solid fa-ruler-combined text-lg"></i>
+                                <span>100% Custom Fit</span>
+                            </div>
+                            <p class="text-xs text-gray-300">Guaranteed Flawless Tailoring</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Interactive Visual Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md">
+                        <!-- Frame Decor -->
+                        <div class="absolute -inset-2 rounded-2xl gold-gradient opacity-30 blur-sm"></div>
+                        <div class="relative bg-emeraldRoyal rounded-2xl p-3 border border-goldAccent/40 shadow-2xl">
+                            <div class="relative rounded-xl overflow-hidden aspect-[4/5]">
+                                <img id="heroImage" src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=800&q=80" alt="QueenTee Couture Abuja" class="w-full h-full object-cover transition-all duration-700">
+                                
+                                <div class="absolute inset-0 bg-gradient-to-t from-emeraldDark/90 via-transparent to-transparent flex flex-col justify-end p-6">
+                                    <span class="bg-goldAccent text-emeraldDark text-[10px] font-extrabold uppercase px-2 py-1 rounded w-max mb-2">Featured Couture</span>
+                                    <h3 id="heroCaptionTitle" class="font-cinzel text-xl font-bold text-white">Royal Velvet & Asoebi Blend</h3>
+                                    <p id="heroCaptionSub" class="text-xs text-gray-300">Hand-embellished bridal & ceremonial attire created in Garki 2</p>
+                                </div>
+                            </div>
+
+                            <!-- Carousel Controls -->
+                            <div class="flex justify-between items-center mt-3 px-2">
+                                <button onclick="prevHeroSlide()" class="p-2 rounded-full bg-emeraldDark border border-goldAccent/30 text-goldAccent hover:bg-goldAccent hover:text-emeraldDark transition-all">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <div class="flex gap-2" id="heroDots">
+                                    <!-- Dots generated dynamically -->
+                                </div>
+                                <button onclick="nextHeroSlide()" class="p-2 rounded-full bg-emeraldDark border border-goldAccent/30 text-goldAccent hover:bg-goldAccent hover:text-emeraldDark transition-all">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="collections" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-xs font-bold uppercase tracking-widest text-emeraldLight bg-goldSoft px-3 py-1 rounded-full border border-goldAccent/30">Curated Offerings</span>
+            <h2 class="font-cinzel text-3xl md:text-4xl font-extrabold text-emeraldDark mt-3">Signature Fashion & Pampering</h2>
+            <p class="text-gray-600 mt-2 text-sm md:text-base">Explore our ready-to-wear pieces, bespoke fabrics, and relaxing spa sessions designed for the modern queen.</p>
+            
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mt-8" id="categoryFilters">
+                <button onclick="filterCatalog('all')" class="cat-btn active px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-emeraldRoyal text-goldAccent border border-goldAccent">All Showcase</button>
+                <button onclick="filterCatalog('bespoke')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white text-gray-700 border border-gray-200 hover:border-goldAccent">Bespoke Couture</button>
+                <button onclick="filterCatalog('ready')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white text-gray-700 border border-gray-200 hover:border-goldAccent">Ready-To-Wear</button>
+                <button onclick="filterCatalog('fabrics')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white text-gray-700 border border-gray-200 hover:border-goldAccent">Luxury Fabrics</button>
+                <button onclick="filterCatalog('spa')" class="cat-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white text-gray-700 border border-gray-200 hover:border-goldAccent">Spa & Beauty Treats</button>
+            </div>
+        </div>
+
+        <!-- Dynamic Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="productGrid">
+            <!-- Products injected by JS -->
+        </div>
+    </section>
+
+    <!-- Bespoke Tailoring & Fitting Builder -->
+    <section id="estimator" class="py-20 bg-emeraldDark text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-goldAccent bg-emeraldRoyal px-3 py-1 rounded-full border border-goldAccent/30">Custom Fitting Studio</span>
+                    <h2 class="font-cinzel text-3xl md:text-4xl font-extrabold leading-snug">
+                        Design Your <span class="gold-text-gradient">Bespoke Outfit</span> & Get an Instant Quote
+                    </h2>
+                    <p class="text-gray-300 text-sm leading-relaxed font-light">
+                        Select your preferred style, fabric choice, and provide approximate measurements. Our master tailors in Garki 2 will review and schedule your private fitting session.
+                    </p>
+                    
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 p-3 rounded-xl bg-emeraldRoyal/50 border border-goldAccent/20">
+                            <div class="w-10 h-10 rounded-full bg-goldAccent/20 text-goldAccent flex items-center justify-center shrink-0 font-bold">1</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-goldSoft">Select Outfit Category</h4>
+                                <p class="text-xs text-gray-300">Choose from Bridal, Asoebi, Corporate, or Kaftans.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-xl bg-emeraldRoyal/50 border border-goldAccent/20">
+                            <div class="w-10 h-10 rounded-full bg-goldAccent/20 text-goldAccent flex items-center justify-center shrink-0 font-bold">2</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-goldSoft">Customize Details & Sizing</h4>
+                                <p class="text-xs text-gray-300">Enter bust, waist, hips, or select standard size.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-3 rounded-xl bg-emeraldRoyal/50 border border-goldAccent/20">
+                            <div class="w-10 h-10 rounded-full bg-goldAccent/20 text-goldAccent flex items-center justify-center shrink-0 font-bold">3</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-goldSoft">Direct WhatsApp Fitting Confirmation</h4>
+                                <p class="text-xs text-gray-300">Instant price estimate and direct link to QueenTee designers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Builder Card -->
+                <div class="lg:col-span-7 bg-emeraldRoyal p-6 md:p-8 rounded-2xl border border-goldAccent/40 shadow-2xl">
+                    <form id="bespokeForm" onsubmit="handleBespokeSubmit(event)" class="space-y-6">
+                        
+                        <!-- Outfit Type -->
+                        <div>
+                            <label class="block text-xs font-bold text-goldAccent uppercase tracking-wider mb-2">1. Select Outfit Style *</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="outfitType" value="Bespoke Asoebi Glam" class="peer hidden" checked onchange="updateEstimator()">
+                                    <div class="p-3 text-center rounded-xl bg-emeraldDark border border-white/10 peer-checked:border-goldAccent peer-checked:bg-goldAccent/20 transition-all">
+                                        <i class="fa-solid fa-gem text-goldAccent mb-1 text-lg block"></i>
+                                        <span class="text-xs font-medium">Asoebi Glam</span>
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="outfitType" value="Luxury Bridal Gown" class="peer hidden" onchange="updateEstimator()">
+                                    <div class="p-3 text-center rounded-xl bg-emeraldDark border border-white/10 peer-checked:border-goldAccent peer-checked:bg-goldAccent/20 transition-all">
+                                        <i class="fa-solid fa-crown text-goldAccent mb-1 text-lg block"></i>
+                                        <span class="text-xs font-medium">Bridal Couture</span>
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="outfitType" value="Senegalese & Silk Kaftan" class="peer hidden" onchange="updateEstimator()">
+                                    <div class="p-3 text-center rounded-xl bg-emeraldDark border border-white/10 peer-checked:border-goldAccent peer-checked:bg-goldAccent/20 transition-all">
+                                        <i class="fa-solid fa-vest-patches text-goldAccent mb-1 text-lg block"></i>
+                                        <span class="text-xs font-medium">Kaftan / Boubou</span>
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="outfitType" value="Corporate Chic Ensemble" class="peer hidden" onchange="updateEstimator()">
+                                    <div class="p-3 text-center rounded-xl bg-emeraldDark border border-white/10 peer-checked:border-goldAccent peer-checked:bg-goldAccent/20 transition-all">
+                                        <i class="fa-solid fa-briefcase text-goldAccent mb-1 text-lg block"></i>
+                                        <span class="text-xs font-medium">Corporate Chic</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Fabric Selection & Options -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-goldAccent uppercase tracking-wider mb-2">2. Fabric Source *</label>
+                                <select id="fabricOption" class="w-full bg-emeraldDark border border-white/20 rounded-lg p-3 text-xs text-white focus:border-goldAccent focus:outline-none" onchange="updateEstimator()">
+                                    <option value="Client Providing Fabric">I will bring my own fabric to Garki 2</option>
+                                    <option value="QueenTee Premium Swiss Lace">QueenTee Swiss Lace (+₦45,000)</option>
+                                    <option value="QueenTee Luxury Velvet/Silk">QueenTee Luxury Silk/Velvet (+₦35,000)</option>
+                                    <option value="QueenTee Hand-Woven Aso-Oke">QueenTee Hand-Woven Aso-Oke (+₦60,000)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-goldAccent uppercase tracking-wider mb-2">3. Rush Order Status *</label>
+                                <select id="timelineOption" class="w-full bg-emeraldDark border border-white/20 rounded-lg p-3 text-xs text-white focus:border-goldAccent focus:outline-none" onchange="updateEstimator()">
+                                    <option value="Standard (7-10 Days)">Standard Timeline (7 - 10 Days)</option>
+                                    <option value="Express Fitting (3-5 Days)">Express Priority (3 - 5 Days) [+₦20,000]</option>
+                                    <option value="Emergency VIP (48 Hours)">Emergency VIP Fitting (48 Hours) [+₦40,000]</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Measurements Input -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-bold text-goldAccent uppercase tracking-wider">4. Key Measurements (Inches / Optional)</label>
+                                <span class="text-[10px] text-gray-400">Can be taken in-store during fitting</span>
+                            </div>
+                            <div class="grid grid-cols-3 gap-3">
+                                <input type="number" id="measBust" placeholder="Bust (in)" class="bg-emeraldDark border border-white/20 rounded-lg p-2.5 text-xs text-white focus:border-goldAccent focus:outline-none">
+                                <input type="number" id="measWaist" placeholder="Waist (in)" class="bg-emeraldDark border border-white/20 rounded-lg p-2.5 text-xs text-white focus:border-goldAccent focus:outline-none">
+                                <input type="number" id="measHips" placeholder="Hips (in)" class="bg-emeraldDark border border-white/20 rounded-lg p-2.5 text-xs text-white focus:border-goldAccent focus:outline-none">
+                            </div>
+                        </div>
+
+                        <!-- Client Details -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <input type="text" id="clientName" placeholder="Your Full Name *" required class="bg-emeraldDark border border-white/20 rounded-lg p-3 text-xs text-white focus:border-goldAccent focus:outline-none">
+                            <input type="tel" id="clientPhone" placeholder="WhatsApp Phone Number *" required class="bg-emeraldDark border border-white/20 rounded-lg p-3 text-xs text-white focus:border-goldAccent focus:outline-none">
+                        </div>
+
+                        <!-- Estimated Total Banner -->
+                        <div class="p-4 rounded-xl bg-emeraldDark border border-goldAccent/40 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-wider text-gray-400 block">Estimated Tailoring Price</span>
+                                <span id="estimatedPrice" class="text-xl md:text-2xl font-extrabold text-goldAccent font-cinzel">₦65,000</span>
+                            </div>
+                            <button type="submit" class="px-6 py-3 bg-gradient-to-r from-goldAccent to-goldHover text-emeraldDark font-extrabold text-xs uppercase tracking-wider rounded-lg shadow-lg hover:scale-105 transition-all flex items-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Send To WhatsApp
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Spa & Beauty Menu Section -->
+    <section id="spa" class="py-20 bg-creamBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold uppercase tracking-widest text-maroonRoyal bg-red-50 px-3 py-1 rounded-full border border-maroonRoyal/20">The Royalty Treatment</span>
+                <h2 class="font-cinzel text-3xl md:text-4xl font-extrabold text-emeraldDark mt-3">QueenTee Luxury Spa & Skin Sanctuary</h2>
+                <p class="text-gray-600 mt-2 text-sm md:text-base">Rejuvenate your mind and glow effortlessly with our tailored pampering treatments in Garki 2, Abuja.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Spa Card 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 relative flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-pink-100 text-maroonRoyal flex items-center justify-center text-xl mb-4 font-bold">
+                            <i class="fa-solid fa-hot-tub-person"></i>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold text-emeraldLight tracking-wider bg-emerald-50 px-2 py-1 rounded">Customer Favorite</span>
+                        <h3 class="font-cinzel text-xl font-bold text-emeraldDark mt-2">Bridal Glow & Skin Polish</h3>
+                        <p class="text-gray-600 text-xs mt-2 leading-relaxed">Full body exfoliation using organic herbal polishes, steam session, and deep hydration glow treatment.</p>
+                        
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-xs text-gray-500"><i class="fa-regular fa-clock text-goldAccent"></i> 90 Minutes</span>
+                            <span class="font-cinzel font-bold text-emeraldDark text-lg">₦35,000</span>
+                        </div>
+                    </div>
+                    <button onclick="bookSpaService('Bridal Glow & Skin Polish', '₦35,000')" class="w-full mt-6 py-3 bg-emeraldRoyal hover:bg-emeraldDark text-goldAccent text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-calendar-check"></i> Book Treatment
+                    </button>
+                </div>
+
+                <!-- Spa Card 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-goldAccent/40 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 relative flex flex-col justify-between ring-2 ring-goldAccent/20">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl mb-4 font-bold">
+                            <i class="fa-solid fa-spa"></i>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold text-goldAccent tracking-wider bg-goldSoft px-2 py-1 rounded">Ultimate Pampering</span>
+                        <h3 class="font-cinzel text-xl font-bold text-emeraldDark mt-2">Deep Tissue Swedish Massage</h3>
+                        <p class="text-gray-600 text-xs mt-2 leading-relaxed">Targeted stress relief using warm luxury aromatherapy oils to relax deep muscle tensions.</p>
+                        
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-xs text-gray-500"><i class="fa-regular fa-clock text-goldAccent"></i> 60 Minutes</span>
+                            <span class="font-cinzel font-bold text-emeraldDark text-lg">₦28,000</span>
+                        </div>
+                    </div>
+                    <button onclick="bookSpaService('Deep Tissue Swedish Massage', '₦28,000')" class="w-full mt-6 py-3 bg-gradient-to-r from-goldAccent to-goldHover text-emeraldDark text-xs font-extrabold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-calendar-check"></i> Book Treatment
+                    </button>
+                </div>
+
+                <!-- Spa Card 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 relative flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emeraldRoyal flex items-center justify-center text-xl mb-4 font-bold">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold text-maroonRoyal tracking-wider bg-red-50 px-2 py-1 rounded">Glow Signature</span>
+                        <h3 class="font-cinzel text-xl font-bold text-emeraldDark mt-2">Royal Facial & Pedicure Spa</h3>
+                        <p class="text-gray-600 text-xs mt-2 leading-relaxed">Deep pore cleansing facial treatment accompanied by a therapeutic pedicure bath & nail care.</p>
+                        
+                        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-xs text-gray-500"><i class="fa-regular fa-clock text-goldAccent"></i> 75 Minutes</span>
+                            <span class="font-cinzel font-bold text-emeraldDark text-lg">₦25,000</span>
+                        </div>
+                    </div>
+                    <button onclick="bookSpaService('Royal Facial & Pedicure Spa', '₦25,000')" class="w-full mt-6 py-3 bg-emeraldRoyal hover:bg-emeraldDark text-goldAccent text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-calendar-check"></i> Book Treatment
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Authentic Customer Reviews Section -->
+    <section id="reviews" class="py-20 bg-emeraldDark text-white border-t border-b border-goldAccent/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-goldAccent bg-emeraldRoyal px-3 py-1 rounded-full border border-goldAccent/30">Verified Google Feedback</span>
+                    <h2 class="font-cinzel text-3xl md:text-4xl font-extrabold mt-3">What Abuja Queens Say</h2>
+                    <p class="text-gray-300 text-sm mt-1">Rated 4.7 Stars out of 151+ Authentic Reviews</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center gap-3">
+                    <button onclick="openReviewModal()" class="px-5 py-2.5 bg-emeraldRoyal hover:bg-emeraldLight text-goldAccent border border-goldAccent/40 rounded-xl text-xs font-bold uppercase tracking-wider transition-all">
+                        <i class="fa-solid fa-pen-to-square mr-1"></i> Write a Review
+                    </button>
+                </div>
+            </div>
+
+            <!-- Reviews Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Review 1 -->
+                <div class="bg-emeraldRoyal p-6 rounded-2xl border border-goldAccent/20 flex flex-col justify-between shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-goldAccent text-xs">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[10px] text-gray-400">Google Review</span>
+                        </div>
+                        <p class="text-xs text-gray-200 leading-relaxed italic">
+                            "When it comes to fashion and all that's related to it, no other comes close to QueenTee fashions. Not only are they professional with their service deliveries, the customer relationship is something to really commend. They remain the best!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-goldAccent text-emeraldDark font-bold flex items-center justify-center text-xs">
+                            TA
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Tochukwu Aghaedah</h4>
+                            <span class="text-[10px] text-gray-400">Local Guide · Abuja</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-emeraldRoyal p-6 rounded-2xl border border-goldAccent/20 flex flex-col justify-between shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-goldAccent text-xs">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[10px] text-gray-400">Google Review</span>
+                        </div>
+                        <p class="text-xs text-gray-200 leading-relaxed italic">
+                            "The Fashion Design Store is a haven for those who appreciate unique and exceptional fashion. The store offers a carefully curated collection of clothing and accessories from established and up-and-coming designs."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-maroonRoyal text-goldSoft font-bold flex items-center justify-center text-xs border border-goldAccent">
+                            LT
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Logical T.V</h4>
+                            <span class="text-[10px] text-gray-400">Verified Client</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-emeraldRoyal p-6 rounded-2xl border border-goldAccent/20 flex flex-col justify-between shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex text-goldAccent text-xs">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-[10px] text-gray-400">Google Review</span>
+                        </div>
+                        <p class="text-xs text-gray-200 leading-relaxed italic">
+                            "With the best material and stylist QueenTee gives customers their desired choice of style. They have the best spa space and treats in Garki. You need to try them!"
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-white/10 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-goldHover text-emeraldDark font-bold flex items-center justify-center text-xs">
+                            SI
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">Sele Ipiri</h4>
+                            <span class="text-[10px] text-gray-400">Spa & Tailoring Client</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Store Details Section -->
+    <section id="location" class="py-20 bg-creamBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-emeraldLight bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Garki 2 Showroom</span>
+                    <h2 class="font-cinzel text-3xl md:text-4xl font-extrabold text-emeraldDark">Visit QueenTee Empire</h2>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Experience luxury fashion fitting sessions and serene spa pampering in person. Conveniently located in the heart of Garki 2, Abuja.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-emeraldRoyal text-goldAccent flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-emeraldDark">Address</h4>
+                                <p class="text-xs text-gray-600">7B Oka - Akoko St, Garki 2, Abuja 900242, Federal Capital Territory</p>
+                                <span class="text-[11px] text-emeraldLight font-medium">Plus Code: 2FFP+56 Abuja</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-emeraldRoyal text-goldAccent flex items-center justify-center shrink-0">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-emeraldDark">Business Hours</h4>
+                                <p class="text-xs text-gray-600">Open Daily: 8:00 AM – 8:00 PM</p>
+                                <span class="inline-block mt-1 px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded">Currently Open</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-emeraldRoyal text-goldAccent flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-emeraldDark">Direct Phone & WhatsApp</h4>
+                                <p class="text-xs text-gray-600">+234 9002 768 3339 / 0902 768 3339</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 pt-4">
+                        <a href="https://maps.google.com/?q=7B+Oka+-+Akoko+St,+Garki+2,+Abuja" target="_blank" class="px-6 py-3 bg-emeraldRoyal hover:bg-emeraldDark text-goldAccent text-xs font-bold uppercase tracking-wider rounded-xl transition-all inline-flex items-center gap-2">
+                            <i class="fa-solid fa-diamond-turn-right"></i> Get Directions
+                        </a>
+                        <a href="https://wa.me/2349027683339?text=Hello%20QueenTee%20Empire,%20I%20am%20heading%20to%20your%20Garki%202%20showroom." target="_blank" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all inline-flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-base"></i> Confirm Visit
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Map Placeholder Card -->
+                <div class="lg:col-span-7 bg-white rounded-2xl p-4 border border-gray-200 shadow-xl">
+                    <div class="relative w-full h-80 md:h-96 rounded-xl overflow-hidden bg-gray-100 flex items-center justify-center border border-gray-200">
+                        <!-- Embedded Interactive Map Mockup -->
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1000&q=80');"></div>
+                        <div class="absolute inset-0 bg-emeraldDark/60 backdrop-blur-[2px] flex flex-col items-center justify-center p-6 text-center text-white">
+                            <div class="w-16 h-16 rounded-full bg-goldAccent text-emeraldDark flex items-center justify-center text-2xl font-bold mb-3 shadow-lg animate-bounce">
+                                <i class="fa-solid fa-crown"></i>
+                            </div>
+                            <h3 class="font-cinzel text-xl font-bold text-goldSoft">QueenTee Fashion & Beauty Empire</h3>
+                            <p class="text-xs text-gray-200 mt-1 max-w-sm">7B Oka - Akoko St, Garki 2, Abuja 900242</p>
+                            <span class="mt-2 text-goldAccent text-xs font-bold">4.7 ★★★★★ (151 Google Reviews)</span>
+                            
+                            <a href="https://maps.google.com/?q=7B+Oka+-+Akoko+St,+Garki+2,+Abuja" target="_blank" class="mt-4 px-5 py-2.5 bg-goldAccent text-emeraldDark text-xs font-bold rounded-lg hover:bg-goldHover transition-all">
+                                Open in Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide-Out Shopping Cart & Order Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleCartDrawer()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-emeraldDark text-white shadow-2xl flex flex-col border-l border-goldAccent/30">
+                
+                <!-- Drawer Header -->
+                <div class="p-6 border-b border-white/10 flex items-center justify-between bg-emeraldRoyal">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-goldAccent text-xl"></i>
+                        <h3 class="font-cinzel text-lg font-bold text-goldSoft">Your QueenTee Selection</h3>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-gray-400 hover:text-white text-xl">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items Container -->
+                <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cartItemsList">
+                    <!-- Items inserted by JS -->
+                </div>
+
+                <!-- Drawer Footer & Checkout -->
+                <div class="p-6 border-t border-white/10 bg-emeraldRoyal space-y-4">
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-gray-300">Total Order Value:</span>
+                        <span id="cartTotal" class="font-cinzel text-xl font-bold text-goldAccent">₦0</span>
+                    </div>
+
+                    <button onclick="checkoutToWhatsApp()" class="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Complete Order via WhatsApp
+                    </button>
+                    <p class="text-[10px] text-center text-gray-400">Direct instant connection with QueenTee Fashion Representatives in Abuja.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Product Modal -->
+    <div id="quickModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+        <div class="bg-emeraldDark border border-goldAccent/40 rounded-2xl max-w-lg w-full p-6 text-white relative shadow-2xl">
+            <button onclick="closeQuickModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="reviewModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+        <div class="bg-emeraldDark border border-goldAccent/40 rounded-2xl max-w-md w-full p-6 text-white relative shadow-2xl">
+            <button onclick="closeReviewModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-cinzel text-xl font-bold text-goldAccent mb-4">Share Your QueenTee Experience</h3>
+            <form onsubmit="handleReviewSubmit(event)" class="space-y-4">
+                <input type="text" id="revName" placeholder="Your Name" required class="w-full bg-emeraldRoyal border border-white/20 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-goldAccent">
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Rating</label>
+                    <select id="revRating" class="w-full bg-emeraldRoyal border border-white/20 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-goldAccent">
+                        <option value="5">★★★★★ (5 Stars - Exceptional)</option>
+                        <option value="4">★★★★☆ (4 Stars - Great)</option>
+                    </select>
+                </div>
+                <textarea id="revComment" rows="4" placeholder="Tell us about your dress fitting or spa session..." required class="w-full bg-emeraldRoyal border border-white/20 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-goldAccent"></textarea>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-goldAccent to-goldHover text-emeraldDark font-bold text-xs uppercase tracking-wider rounded-xl">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-emeraldDark text-white pt-16 pb-8 border-t border-goldAccent/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-white/10">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-crown text-goldAccent text-2xl"></i>
+                        <span class="font-cinzel text-xl font-bold gold-text-gradient">QUEENTEE</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        QueenTee Fashion & Beauty Empire - Abuja’s top destination for bespoke African couture, bridal masterpieces, and restorative spa experiences.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-goldAccent mb-4 uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#collections" class="hover:text-goldAccent transition-colors">Bespoke Catalog</a></li>
+                        <li><a href="#estimator" class="hover:text-goldAccent transition-colors">Fitting Price Estimator</a></li>
+                        <li><a href="#spa" class="hover:text-goldAccent transition-colors">Spa Pampering Menu</a></li>
+                        <li><a href="#reviews" class="hover:text-goldAccent transition-colors">Verified Reviews</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-goldAccent mb-4 uppercase tracking-wider">Showroom Hours</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li>Monday – Sunday: 8:00 AM – 8:00 PM</li>
+                        <li class="text-goldAccent font-medium">Bespoke Consultations by Appointment</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-goldAccent mb-4 uppercase tracking-wider">Connect With Us</h4>
+                    <p class="text-xs text-gray-400 mb-3">7B Oka - Akoko St, Garki 2, Abuja</p>
+                    <div class="flex space-x-3">
+                        <a href="https://wa.me/2349027683339" target="_blank" class="w-9 h-9 rounded-full bg-emeraldRoyal text-goldAccent flex items-center justify-center hover:bg-goldAccent hover:text-emeraldDark transition-all">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a href="tel:09027683339" class="w-9 h-9 rounded-full bg-emeraldRoyal text-goldAccent flex items-center justify-center hover:bg-goldAccent hover:text-emeraldDark transition-all">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                        <a href="https://maps.google.com/?q=7B+Oka+-+Akoko+St,+Garki+2,+Abuja" target="_blank" class="w-9 h-9 rounded-full bg-emeraldRoyal text-goldAccent flex items-center justify-center hover:bg-goldAccent hover:text-emeraldDark transition-all">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 text-center text-xs text-gray-500">
+                <p>&copy; 2026 QueenTee Fashion & Beauty Empire. All Rights Reserved. Garki 2, Abuja, Nigeria.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Hero Carousel Data
+        const heroSlides = [
+            {
+                image: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=800&q=80",
+                title: "Royal Velvet & Asoebi Blend",
+                sub: "Hand-embellished bridal & ceremonial attire created in Garki 2"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80",
+                title: "Bespoke Silk Boubou Couture",
+                sub: "Fluid silhouettes designed for elegance and ultimate comfort"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+                title: "Luxury Skin & Spa Sanctuary",
+                sub: "Rejuvenate with organic polish treatments & warm oil massages"
+            }
+        ];
+        let currentHeroIdx = 0;
+
+        // Products & Services Data
+        const catalogProducts = [
+            {
+                id: 1,
+                name: "Embellished Bridal Corset Gown",
+                category: "bespoke",
+                price: 185000,
+                priceStr: "₦185,000",
+                image: "https://images.unsplash.com/photo-1594552072238-b8a33785b261?auto=format&fit=crop&w=600&q=80",
+                desc: "Custom fitted corsetry gown with hand-stitched crystal details and detachable train."
+            },
+            {
+                id: 2,
+                name: "Royal Ankara Midi Dress",
+                category: "ready",
+                price: 45000,
+                priceStr: "₦45,000",
+                image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80",
+                desc: "Vibrant high-grade wax print dress with puffed sleeves, ready for immediate pickup."
+            },
+            {
+                id: 3,
+                name: "Hand-Woven Aso-Oke Fabric Set",
+                category: "fabrics",
+                price: 65000,
+                priceStr: "₦65,000",
+                image: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=600&q=80",
+                desc: "Premium metallic thread Aso-Oke complete set for Gele and Iborun."
+            },
+            {
+                id: 4,
+                name: "Bridal Glow & Skin Exfoliation",
+                category: "spa",
+                price: 35000,
+                priceStr: "₦35,000",
+                image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80",
+                desc: "Full body herbal scrub, steam bath, and hydrating oil treatment."
+            },
+            {
+                id: 5,
+                name: "Senegalese Silk Boubou Kaftan",
+                category: "bespoke",
+                price: 95000,
+                priceStr: "₦95,000",
+                image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80",
+                desc: "Flowing luxury silk boubou with stone embroideries."
+            },
+            {
+                id: 6,
+                name: "Corporate Chic Blazer Suit",
+                category: "ready",
+                price: 68000,
+                priceStr: "₦68,000",
+                image: "https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&w=600&q=80",
+                desc: "Sharp structured tailored blazer and trouser pair for executive elegance."
+            },
+            {
+                id: 7,
+                name: "Swiss Voile & Organza Fabric (5 Yds)",
+                category: "fabrics",
+                price: 55000,
+                priceStr: "₦55,000",
+                image: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=600&q=80",
+                desc: "Intricately embroidered luxury Swiss lace imported for special occasions."
+            },
+            {
+                id: 8,
+                name: "Deep Tissue Swedish Massage",
+                category: "spa",
+                price: 28000,
+                priceStr: "₦28,000",
+                image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=600&q=80",
+                desc: "Therapeutic massage targeting deep tension in back, neck, and shoulders."
+            }
+        ];
+
+        // Shopping Cart State
+        let cart = [];
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            renderHeroCarousel();
+            renderCatalog('all');
+            updateCartUI();
+        });
+
+        // Hero Carousel Functions
+        function renderHeroCarousel() {
+            const slide = heroSlides[currentHeroIdx];
+            document.getElementById('heroImage').src = slide.image;
+            document.getElementById('heroCaptionTitle').textContent = slide.title;
+            document.getElementById('heroCaptionSub').textContent = slide.sub;
+
+            const dotsContainer = document.getElementById('heroDots');
+            dotsContainer.innerHTML = heroSlides.map((_, idx) => `
+                <button onclick="goToHeroSlide(${idx})" class="w-2.5 h-2.5 rounded-full transition-all ${idx === currentHeroIdx ? 'bg-goldAccent w-6' : 'bg-white/30'}"></button>
+            `).join('');
+        }
+
+        function nextHeroSlide() {
+            currentHeroIdx = (currentHeroIdx + 1) % heroSlides.length;
+            renderHeroCarousel();
+        }
+
+        function prevHeroSlide() {
+            currentHeroIdx = (currentHeroIdx - 1 + heroSlides.length) % heroSlides.length;
+            renderHeroCarousel();
+        }
+
+        function goToHeroSlide(idx) {
+            currentHeroIdx = idx;
+            renderHeroCarousel();
+        }
+
+        // Render Product Catalog
+        function renderCatalog(filter) {
+            const grid = document.getElementById('productGrid');
+            const items = filter === 'all' ? catalogProducts : catalogProducts.filter(p => p.category === filter);
+
+            grid.innerHTML = items.map(p => `
+                <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md hover:shadow-xl transition-all hover:-translate-y-1 group flex flex-col justify-between">
+                    <div>
+                        <div class="relative overflow-hidden aspect-square bg-gray-100">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-emeraldDark/80 backdrop-blur-md text-goldAccent text-[10px] font-bold uppercase px-2.5 py-1 rounded border border-goldAccent/30">
+                                ${p.category}
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-cinzel text-base font-bold text-emeraldDark leading-snug group-hover:text-goldHover transition-colors">${p.name}</h3>
+                            <p class="text-gray-500 text-xs mt-1 line-clamp-2">${p.desc}</p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t border-gray-50 flex items-center justify-between">
+                        <span class="font-cinzel text-lg font-bold text-emeraldDark">${p.priceStr}</span>
+                        <div class="flex gap-2">
+                            <button onclick="openQuickModal(${p.id})" class="p-2.5 rounded-lg bg-gray-100 text-gray-700 hover:bg-goldSoft hover:text-emeraldDark transition-all" title="Quick View">
+                                <i class="fa-regular fa-eye text-xs"></i>
+                            </button>
+                            <button onclick="addToCart(${p.id})" class="px-3 py-2.5 bg-emeraldRoyal hover:bg-emeraldDark text-goldAccent text-xs font-bold rounded-lg transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-plus text-xs"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCatalog(category) {
+            // Active button styles
+            document.querySelectorAll('#categoryFilters button').forEach(btn => {
+                btn.className = "cat-btn px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-white text-gray-700 border border-gray-200 hover:border-goldAccent";
+            });
+            event.target.className = "cat-btn active px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all bg-emeraldRoyal text-goldAccent border border-goldAccent";
+            renderCatalog(category);
+        }
+
+        // Cart Management
+        function addToCart(productId) {
+            const product = catalogProducts.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            toggleCartDrawer(true);
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const list = document.getElementById('cartItemsList');
+            const totalEl = document.getElementById('cartTotal');
+
+            const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+            badge.textContent = totalItems;
+            totalEl.textContent = `₦${totalPrice.toLocaleString()}`;
+
+            if (cart.length === 0) {
+                list.innerHTML = `
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fa-solid fa-bag-shopping text-4xl mb-3 text-goldAccent/40 block"></i>
+                        <p class="text-xs">Your bag is currently empty.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = cart.map(item => `
+                <div class="bg-emeraldRoyal p-3 rounded-xl border border-goldAccent/20 flex gap-3 items-center">
+                    <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-lg">
+                    <div class="flex-1">
+                        <h4 class="font-cinzel text-xs font-bold text-white leading-tight">${item.name}</h4>
+                        <span class="text-xs font-bold text-goldAccent block mt-1">${item.priceStr}</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-emeraldDark px-2 py-1 rounded border border-white/10">
+                        <button onclick="changeQty(${item.id}, -1)" class="text-xs text-gray-400 hover:text-white">-</button>
+                        <span class="text-xs font-bold text-white">${item.qty}</span>
+                        <button onclick="changeQty(${item.id}, 1)" class="text-xs text-gray-400 hover:text-white">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== id);
+            }
+            updateCartUI();
+        }
+
+        function toggleCartDrawer(open = null) {
+            const drawer = document.getElementById('cartDrawer');
+            if (open === true) {
+                drawer.classList.remove('hidden');
+            } else if (open === false) {
+                drawer.classList.add('hidden');
+            } else {
+                drawer.classList.toggle('hidden');
+            }
+        }
+
+        // WhatsApp Checkout
+        function checkoutToWhatsApp() {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Please add items or services first.");
+                return;
+            }
+
+            let text = "Hello QueenTee Fashion & Beauty Empire! 👋%0A%0AI would like to order the following items from your store:%0A";
+            cart.forEach(item => {
+                text += `• ${item.name} (x${item.qty}) - ${item.priceStr}%0A`;
+            });
+
+            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            text += `%0ATotal Estimated Amount: ₦${totalPrice.toLocaleString()}%0A%0APlease confirm availability and fitting/pickup details at Garki 2, Abuja.`;
+
+            window.open(`https://wa.me/2349027683339?text=${text}`, '_blank');
+        }
+
+        // Tailoring Price Estimator Logic
+        function updateEstimator() {
+            const outfit = document.querySelector('input[name="outfitType"]:checked').value;
+            const fabric = document.getElementById('fabricOption').value;
+            const timeline = document.getElementById('timelineOption').value;
+
+            let base = 45000;
+            if (outfit.includes("Bridal")) base = 120000;
+            if (outfit.includes("Asoebi")) base = 55000;
+            if (outfit.includes("Kaftan")) base = 40000;
+            if (outfit.includes("Corporate")) base = 50000;
+
+            if (fabric.includes("Swiss Lace")) base += 45000;
+            if (fabric.includes("Silk")) base += 35000;
+            if (fabric.includes("Aso-Oke")) base += 60000;
+
+            if (timeline.includes("Express")) base += 20000;
+            if (timeline.includes("Emergency VIP")) base += 40000;
+
+            document.getElementById('estimatedPrice').textContent = `₦${base.toLocaleString()}`;
+        }
+
+        function handleBespokeSubmit(e) {
+            e.preventDefault();
+            const outfit = document.querySelector('input[name="outfitType"]:checked').value;
+            const fabric = document.getElementById('fabricOption').value;
+            const timeline = document.getElementById('timelineOption').value;
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const price = document.getElementById('estimatedPrice').textContent;
+
+            const bust = document.getElementById('measBust').value;
+            const waist = document.getElementById('measWaist').value;
+            const hips = document.getElementById('measHips').value;
+
+            let text = `Hello QueenTee Empire! ✨%0A%0AI would like to book a Bespoke Tailoring Consultation.%0A%0A*Client Details:*%0A• Name: ${name}%0A• Phone: ${phone}%0A%0A*Fitting Details:*%0A• Outfit Style: ${outfit}%0A• Fabric Source: ${fabric}%0A• Desired Timeline: ${timeline}%0A• Price Estimate: ${price}%0A`;
+
+            if (bust || waist || hips) {
+                text += `%0A*Measurements Provided:*%0A• Bust: ${bust || 'N/A'} in%0A• Waist: ${waist || 'N/A'} in%0A• Hips: ${hips || 'N/A'} in%0A`;
+            }
+
+            text += `%0APlease confirm my appointment slot at 7B Oka - Akoko St, Garki 2, Abuja.`;
+
+            window.open(`https://wa.me/2349027683339?text=${text}`, '_blank');
+        }
+
+        // Direct Spa Booking Trigger
+        function bookSpaService(title, price) {
+            const text = `Hello QueenTee Empire Spa! 🌸%0A%0AI would like to book the *${title}* treatment (${price}).%0A%0APlease let me know available slots for today/this week at your Garki 2 sanctuary.`;
+            window.open(`https://wa.me/2349027683339?text=${text}`, '_blank');
+        }
+
+        // Quick View Modal
+        function openQuickModal(id) {
+            const p = catalogProducts.find(item => item.id === id);
+            const content = document.getElementById('modalContent');
+
+            content.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <img src="${p.image}" alt="${p.name}" class="w-full h-64 object-cover rounded-xl border border-goldAccent/30">
+                    <div>
+                        <span class="text-[10px] uppercase font-bold text-goldAccent bg-emeraldRoyal px-2.5 py-1 rounded border border-goldAccent/30">${p.category}</span>
+                        <h3 class="font-cinzel text-xl font-bold text-white mt-2">${p.name}</h3>
+                        <p class="text-xs text-gray-300 mt-2 leading-relaxed">${p.desc}</p>
+                        <div class="mt-4 font-cinzel text-2xl font-bold text-goldAccent">${p.priceStr}</div>
+                        <button onclick="addToCart(${p.id}); closeQuickModal();" class="mt-6 w-full py-3 bg-gradient-to-r from-goldAccent to-goldHover text-emeraldDark font-extrabold text-xs uppercase tracking-wider rounded-xl">
+                            Add To Bag
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('quickModal').classList.remove('hidden');
+            document.getElementById('quickModal').classList.add('flex');
+        }
+
+        function closeQuickModal() {
+            document.getElementById('quickModal').classList.add('hidden');
+            document.getElementById('quickModal').classList.remove('flex');
+        }
+
+        // Review Modal
+        function openReviewModal() {
+            document.getElementById('reviewModal').classList.remove('hidden');
+            document.getElementById('reviewModal').classList.add('flex');
+        }
+
+        function closeReviewModal() {
+            document.getElementById('reviewModal').classList.add('hidden');
+            document.getElementById('reviewModal').classList.remove('flex');
+        }
+
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            alert("Thank you for your feedback! Your review has been submitted for verification on our Google page.");
+            closeReviewModal();
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

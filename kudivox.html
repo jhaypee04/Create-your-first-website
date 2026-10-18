@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f8f4" />
+  <title>Kudivox — Run your business. Keep customers coming back.</title>
+  <meta name="description" content="Kudivox helps service businesses manage customers, bookings, payments and follow-ups in one simple workspace." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { ink: '#17211c', muted: '#65716a', paper: '#f7f8f4', green: '#236b4b', lime: '#d7f36a', line: '#e5e9e2' },
+        boxShadow: { soft: '0 18px 55px rgba(23,33,28,.08)' }
+      }}
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .grain { background-image: radial-gradient(rgba(35,107,75,.11) .7px, transparent .7px); background-size: 9px 9px; }
+    .nav-link { transition: color .2s ease; }
+    .nav-link:hover { color: #236b4b; }
+    .fade-up { animation: fadeUp .65s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    .toast { transition: opacity .25s ease, transform .25s ease; }
+    .toast.hidden-toast { opacity: 0; transform: translateY(10px); pointer-events: none; }
+    .mock-scroll::-webkit-scrollbar { width: 4px; }
+    .mock-scroll::-webkit-scrollbar-thumb { background: #d8dfd7; border-radius: 99px; }
+  </style>
+</head>
+<body class="bg-paper text-ink antialiased">
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 border-b border-line/80 bg-paper/90 backdrop-blur-xl">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8" aria-label="Main navigation">
+      <a href="#home" class="flex items-center gap-2.5" aria-label="Kudivox home">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-green text-lime">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 5v14M5 12l9-7M8 14l7 5M15 5h4v4M15 15h4v4"/></svg>
+        </span>
+        <span class="text-xl font-black tracking-tight">kudivox<span class="text-green">.</span></span>
+      </a>
+      <div class="hidden items-center gap-8 md:flex">
+        <a class="nav-link text-sm font-medium text-muted" href="#features">Features</a>
+        <a class="nav-link text-sm font-medium text-muted" href="#how-it-works">How it works</a>
+        <a class="nav-link text-sm font-medium text-muted" href="#pricing">Pricing</a>
+      </div>
+      <div class="hidden items-center gap-3 md:flex">
+        <button data-toast="Login is a demo in this preview." class="rounded-full px-4 py-2.5 text-sm font-semibold hover:bg-white">Log in</button>
+        <a href="#pricing" class="rounded-full bg-green px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#19573c]">Get started <span aria-hidden="true">↗</span></a>
+      </div>
+      <button id="menuBtn" class="grid h-10 w-10 place-items-center rounded-xl border border-line md:hidden" aria-label="Toggle navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden border-t border-line bg-paper px-5 py-4 md:hidden">
+      <div class="flex flex-col gap-4 text-sm font-semibold">
+        <a href="#features" class="mobile-link">Features</a><a href="#how-it-works" class="mobile-link">How it works</a><a href="#pricing" class="mobile-link">Pricing</a>
+        <button data-toast="Login is a demo in this preview." class="rounded-full bg-green px-4 py-3 text-white">Log in to demo</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="pointer-events-none absolute -right-32 -top-24 h-96 w-96 rounded-full bg-lime/30 blur-3xl"></div>
+      <div class="pointer-events-none absolute -left-36 top-72 h-80 w-80 rounded-full bg-green/10 blur-3xl"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-5 pb-20 pt-16 md:pb-28 md:pt-24 lg:grid-cols-[1fr_1.03fr] lg:gap-12 lg:px-8">
+        <div class="fade-up max-w-2xl">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-green/15 bg-white/80 px-3.5 py-2 text-xs font-bold text-green">
+            <span class="h-2 w-2 rounded-full bg-green"></span> Your business, finally in one place
+          </div>
+          <h1 class="text-5xl font-black leading-[1.02] tracking-[-.055em] sm:text-6xl lg:text-[4.5rem]">Run your business.<br/><span class="text-green">Keep customers</span><br/>coming back.</h1>
+          <p class="mt-6 max-w-lg text-base leading-7 text-muted sm:text-lg">Kudivox brings your customers, bookings, payments and follow-ups together — so you can spend less time chasing details and more time growing.</p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#pricing" class="inline-flex items-center justify-center gap-3 rounded-full bg-green px-6 py-4 text-sm font-bold text-white shadow-lg shadow-green/15 transition hover:-translate-y-0.5 hover:bg-[#19573c]">Start growing <span class="text-lg">↗</span></a>
+            <a href="#dashboard" class="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-6 py-4 text-sm font-bold transition hover:border-green/40"><span class="grid h-6 w-6 place-items-center rounded-full bg-lime text-xs">▶</span> Explore the demo</a>
+          </div>
+          <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-semibold text-muted">
+            <span class="flex items-center gap-2"><span class="text-green">✓</span> Easy to set up</span>
+            <span class="flex items-center gap-2"><span class="text-green">✓</span> Built for growing teams</span>
+            <span class="flex items-center gap-2"><span class="text-green">✓</span> One simple workspace</span>
+          </div>
+        </div>
+        <!-- Dashboard preview -->
+        <div id="dashboard" class="relative fade-up [animation-delay:120ms]">
+          <div class="absolute -right-3 -top-6 z-10 hidden rounded-2xl border border-line bg-white p-4 shadow-soft sm:block">
+            <div class="flex items-center gap-3">
+              <div class="grid h-10 w-10 place-items-center rounded-xl bg-lime text-lg">↗</div>
+              <div><p class="text-xs text-muted">Revenue this month</p><p class="text-lg font-black">₦842,500 <span class="text-xs font-bold text-green">+18.4%</span></p></div>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-[1.8rem] border border-[#e2e7df] bg-white shadow-soft">
+            <div class="flex items-center justify-between border-b border-line px-5 py-4 sm:px-6">
+              <div class="flex items-center gap-3"><div class="grid h-9 w-9 place-items-center rounded-xl bg-green text-sm font-black text-lime">K</div><div><p class="text-sm font-extrabold">Good morning, Ada</p><p class="text-xs text-muted">Here’s your business at a glance.</p></div></div>
+              <button data-toast="Notifications are simulated in this demo." aria-label="Notifications" class="relative grid h-9 w-9 place-items-center rounded-full bg-paper">♧<span class="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-orange-500"></span></button>
+            </div>
+            <div class="grid grid-cols-3 gap-2.5 px-4 pt-4 sm:gap-3 sm:px-6">
+              <div class="rounded-2xl bg-paper p-3 sm:p-4"><p class="text-[10px] font-bold uppercase tracking-wider text-muted sm:text-xs">Bookings</p><p class="mt-2 text-xl font-black sm:text-2xl">24</p><p class="mt-1 text-[10px] font-semibold text-green sm:text-xs">↑ 12% this week</p></div>
+              <div class="rounded-2xl bg-paper p-3 sm:p-4"><p class="text-[10px] font-bold uppercase tracking-wider text-muted sm:text-xs">Customers</p><p class="mt-2 text-xl font-black sm:text-2xl">186</p><p class="mt-1 text-[10px] font-semibold text-green sm:text-xs">↑ 8 new</p></div>
+              <div class="rounded-2xl bg-paper p-3 sm:p-4"><p class="text-[10px] font-bold uppercase tracking-wider text-muted sm:text-xs">Outstanding</p><p class="mt-2 text-xl font-black sm:text-2xl">₦42k</p><p class="mt-1 text-[10px] font-semibold text-orange-600 sm:text-xs">5 payments</p></div>
+            </div>
+            <div class="px-4 pb-5 pt-5 sm:px-6">
+              <div class="mb-3 flex items-center justify-between"><h3 class="text-sm font-extrabold">Upcoming bookings</h3><button data-toast="Showing all bookings is a demo interaction." class="text-xs font-bold text-green">View all ↗</button></div>
+              <div class="overflow-hidden rounded-2xl border border-line">
+                <div class="grid grid-cols-[1fr_auto] items-center gap-3 border-b border-line p-3.5">
+                  <div class="flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-xl bg-[#f9eadc] text-sm font-black text-[#98643e]">TO</div><div><p class="text-xs font-bold sm:text-sm">Tomi Okafor</p><p class="mt-1 text-[11px] text-muted">Hair appointment · 10:30 AM</p></div></div><span class="rounded-full bg-[#e6f5e9] px-2.5 py-1 text-[10px] font-bold text-green">Confirmed</span>
+                </div>
+                <div class="grid grid-cols-[1fr_auto] items-center gap-3 border-b border-line p-3.5">
+                  <div class="flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-xl bg-[#e9e9fb] text-sm font-black text-[#5b5ba7]">CE</div><div><p class="text-xs font-bold sm:text-sm">Chika Eze</p><p class="mt-1 text-[11px] text-muted">Consultation · 12:00 PM</p></div></div><span class="rounded-full bg-[#fff2d8] px-2.5 py-1 text-[10px] font-bold text-[#9a6a0b]">Awaiting</span>
+                </div>
+                <div class="grid grid-cols-[1fr_auto] items-center gap-3 p-3.5">
+                  <div class="flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-xl bg-[#dff2ed] text-sm font-black text-[#287562]">AM</div><div><p class="text-xs font-bold sm:text-sm">Amaka Musa</p><p class="mt-1 text-[11px] text-muted">Spa session · 2:15 PM</p></div></div><span class="rounded-full bg-[#e6f5e9] px-2.5 py-1 text-[10px] font-bold text-green">Confirmed</span>
+                </div>
+              </div>
+              <div class="mt-4 flex items-center justify-between rounded-2xl bg-green p-4 text-white"><div><p class="text-xs text-white/70">Your next step</p><p class="mt-1 text-sm font-bold">Follow up with 5 customers</p></div><button id="followBtn" class="rounded-full bg-lime px-4 py-2.5 text-xs font-black text-ink transition hover:scale-105">View list →</button></div>
+            </div>
+          </div>
+          <div class="absolute -bottom-5 -left-4 hidden rounded-2xl border border-line bg-white px-4 py-3 shadow-soft sm:flex sm:items-center sm:gap-3">
+            <span class="grid h-9 w-9 place-items-center rounded-full bg-[#e6f5e9] text-green">✓</span><div><p class="text-xs font-extrabold">Payment received</p><p class="text-[11px] text-muted">₦25,000 · just now</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audience strip -->
+    <section class="border-y border-line bg-white/65">
+      <div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-5 px-5 py-7 sm:flex-row sm:items-center lg:px-8">
+        <p class="max-w-xs text-sm font-bold leading-6">Made for people who run the show — not spreadsheets.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="rounded-full border border-line bg-paper px-4 py-2 text-xs font-semibold text-muted">Beauty & wellness</span>
+          <span class="rounded-full border border-line bg-paper px-4 py-2 text-xs font-semibold text-muted">Consultants</span>
+          <span class="rounded-full border border-line bg-paper px-4 py-2 text-xs font-semibold text-muted">Repair services</span>
+          <span class="rounded-full border border-line bg-paper px-4 py-2 text-xs font-semibold text-muted">Fitness & coaching</span>
+          <span class="rounded-full border border-line bg-paper px-4 py-2 text-xs font-semibold text-muted">Creative studios</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problems -->
+    <section class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+      <div class="max-w-2xl"><p class="text-xs font-black uppercase tracking-[.18em] text-green">Sound familiar?</p><h2 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Running a business is hard enough.</h2><p class="mt-4 text-base leading-7 text-muted">The admin shouldn’t be the thing slowing you down.</p></div>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-3xl border border-line bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-[#fff0e5] text-xl">◷</span><h3 class="mt-5 font-extrabold">Missed appointments</h3><p class="mt-2 text-sm leading-6 text-muted">Bookings get buried in chats, and your day becomes a guessing game.</p></article>
+        <article class="rounded-3xl border border-line bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-[#e8edff] text-xl">▤</span><h3 class="mt-5 font-extrabold">Scattered customer info</h3><p class="mt-2 text-sm leading-6 text-muted">Names, numbers and preferences are spread across too many places.</p></article>
+        <article class="rounded-3xl border border-line bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-[#fff5d9] text-xl">₦</span><h3 class="mt-5 font-extrabold">Unclear payments</h3><p class="mt-2 text-sm leading-6 text-muted">It’s too easy to lose track of deposits, balances and overdue invoices.</p></article>
+        <article class="rounded-3xl border border-line bg-white p-6 transition hover:-translate-y-1 hover:shadow-soft"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-[#e1f5e9] text-xl">↻</span><h3 class="mt-5 font-extrabold">Customers disappear</h3><p class="mt-2 text-sm leading-6 text-muted">Without a simple follow-up system, good customers can forget to return.</p></article>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="bg-[#edf1e9]">
+      <div class="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:px-8 lg:py-28">
+        <div><p class="text-xs font-black uppercase tracking-[.18em] text-green">One calm workspace</p><h2 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Everything you need. Nothing you don’t.</h2><p class="mt-5 max-w-lg leading-7 text-muted">Keep the everyday essentials connected, with a clear view of what needs your attention next.</p>
+          <div class="mt-8 space-y-5">
+            <div class="flex gap-4"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white font-black text-green">01</span><div><h3 class="font-extrabold">Customer book</h3><p class="mt-1 text-sm leading-6 text-muted">Keep contact details, service history and notes together.</p></div></div>
+            <div class="flex gap-4"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white font-black text-green">02</span><div><h3 class="font-extrabold">Bookings that make sense</h3><p class="mt-1 text-sm leading-6 text-muted">See upcoming appointments and know what’s confirmed.</p></div></div>
+            <div class="flex gap-4"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white font-black text-green">03</span><div><h3 class="font-extrabold">Payments without the guesswork</h3><p class="mt-1 text-sm leading-6 text-muted">Track paid, pending and outstanding amounts in one place.</p></div></div>
+            <div class="flex gap-4"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white font-black text-green">04</span><div><h3 class="font-extrabold">Thoughtful follow-ups</h3><p class="mt-1 text-sm leading-6 text-muted">Find customers due for a check-in and bring them back.</p></div></div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute -inset-5 rounded-[2rem] bg-lime/35 blur-2xl"></div>
+          <div class="relative overflow-hidden rounded-[1.75rem] border border-white bg-white p-5 shadow-soft sm:p-7">
+            <div class="flex items-center justify-between"><div><p class="text-xs font-semibold text-muted">CUSTOMER RETENTION</p><h3 class="mt-1 text-xl font-black">Make the next visit happen.</h3></div><span class="rounded-full bg-[#e7f5e9] px-3 py-1.5 text-xs font-bold text-green">This week</span></div>
+            <div class="mt-6 grid grid-cols-2 gap-3"><div class="rounded-2xl bg-paper p-4"><p class="text-xs text-muted">Customers to follow up</p><p class="mt-2 text-3xl font-black">05</p><p class="mt-1 text-xs font-semibold text-green">Ready for a check-in</p></div><div class="rounded-2xl bg-paper p-4"><p class="text-xs text-muted">Repeat customers</p><p class="mt-2 text-3xl font-black">68%</p><p class="mt-1 text-xs font-semibold text-green">↑ 6% this month</p></div></div>
+            <div class="mt-5 space-y-3">
+              <div class="flex items-center gap-3 rounded-2xl border border-line p-3"><div class="grid h-10 w-10 place-items-center rounded-xl bg-[#f8e5d8] text-xs font-black">TO</div><div class="min-w-0 flex-1"><p class="truncate text-sm font-bold">Tomi Okafor</p><p class="text-xs text-muted">Last visit · 4 weeks ago</p></div><button class="follow-message rounded-full bg-green px-3 py-2 text-xs font-bold text-white" data-customer="Tomi">Message</button></div>
+              <div class="flex items-center gap-3 rounded-2xl border border-line p-3"><div class="grid h-10 w-10 place-items-center rounded-xl bg-[#e5e6fa] text-xs font-black">CE</div><div class="min-w-0 flex-1"><p class="truncate text-sm font-bold">Chika Eze</p><p class="text-xs text-muted">Last visit · 3 weeks ago</p></div><button class="follow-message rounded-full bg-green px-3 py-2 text-xs font-bold text-white" data-customer="Chika">Message</button></div>
+              <div class="flex items-center gap-3 rounded-2xl border border-line p-3"><div class="grid h-10 w-10 place-items-center rounded-xl bg-[#dff1e8] text-xs font-black">AM</div><div class="min-w-0 flex-1"><p class="truncate text-sm font-bold">Amaka Musa</p><p class="text-xs text-muted">Last visit · 2 weeks ago</p></div><button class="follow-message rounded-full bg-green px-3 py-2 text-xs font-bold text-white" data-customer="Amaka">Message</button></div>
+            </div>
+            <p class="mt-4 text-center text-[11px] text-muted">Sample customer data for demonstration purposes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how-it-works" class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+      <div class="mx-auto max-w-2xl text-center"><p class="text-xs font-black uppercase tracking-[.18em] text-green">Simple from day one</p><h2 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">Less admin. More momentum.</h2><p class="mt-4 leading-7 text-muted">Get your everyday operations into a rhythm that works for you.</p></div>
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        <div class="relative rounded-3xl border border-line bg-white p-7"><p class="text-sm font-black text-green">STEP 01</p><div class="my-6 grid h-14 w-14 place-items-center rounded-2xl bg-[#e4f2e7] text-2xl">＋</div><h3 class="text-xl font-extrabold">Set up your space</h3><p class="mt-3 text-sm leading-6 text-muted">Add your business details, services, team and existing customers.</p></div>
+        <div class="relative rounded-3xl border border-line bg-white p-7"><p class="text-sm font-black text-green">STEP 02</p><div class="my-6 grid h-14 w-14 place-items-center rounded-2xl bg-[#f9edce] text-2xl">▦</div><h3 class="text-xl font-extrabold">Manage the day</h3><p class="mt-3 text-sm leading-6 text-muted">Keep bookings, customer details and payment statuses organised.</p></div>
+        <div class="relative rounded-3xl border border-line bg-white p-7"><p class="text-sm font-black text-green">STEP 03</p><div class="my-6 grid h-14 w-14 place-items-center rounded-2xl bg-[#e9e7fa] text-2xl">↗</div><h3 class="text-xl font-extrabold">Build lasting loyalty</h3><p class="mt-3 text-sm leading-6 text-muted">Follow up at the right time and create more reasons to return.</p></div>
+      </div>
+    </section>
+
+    <!-- Testimonial / quote -->
+    <section class="px-5 pb-20 lg:px-8 lg:pb-28">
+      <div class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-green px-6 py-12 text-white sm:px-12 sm:py-16 lg:px-16">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div class="max-w-3xl"><div class="text-4xl text-lime">“</div><blockquote class="mt-2 text-2xl font-bold leading-snug tracking-tight sm:text-4xl">Your customers remember how you make them feel. Kudivox helps you remember the details that make them come back.</blockquote><p class="mt-6 text-sm text-white/65">A simpler way to build a business people love returning to.</p></div>
+          <a href="#pricing" class="inline-flex w-fit items-center gap-3 rounded-full bg-lime px-6 py-4 text-sm font-black text-ink transition hover:scale-[1.02]">Make it simpler <span class="text-lg">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="border-y border-line bg-white">
+      <div class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p class="text-xs font-black uppercase tracking-[.18em] text-green">Straightforward plans</p><h2 class="mt-4 text-3xl font-black tracking-tight sm:text-5xl">A better way to run things.</h2><p class="mt-4 max-w-xl leading-7 text-muted">Choose a starting point for your business. These demo prices can be adjusted to your final offer.</p></div><div class="inline-flex w-fit rounded-full bg-paper p-1"><button id="monthlyBtn" class="rounded-full bg-green px-4 py-2.5 text-xs font-bold text-white">Monthly</button><button id="yearlyBtn" class="rounded-full px-4 py-2.5 text-xs font-bold text-muted">Yearly <span class="text-green">−10%</span></button></div></div>
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          <article class="flex flex-col rounded-3xl border border-line p-7"><p class="text-sm font-extrabold">Starter</p><p class="mt-2 text-sm text-muted">For getting organised.</p><div class="mt-6 flex items-end gap-1"><span class="text-4xl font-black" data-month="₦5,000" data-year="₦54,000">₦5,000</span><span class="pb-1 text-sm text-muted">/ month</span></div><p class="mt-2 text-xs text-muted">Simple essentials to get started.</p><a href="#get-started" data-plan="Starter" class="plan-btn mt-7 rounded-full border border-line px-5 py-3.5 text-center text-sm font-bold transition hover:border-green hover:bg-paper">Choose Starter</a><div class="my-6 h-px bg-line"></div><ul class="space-y-3 text-sm text-muted"><li>✓ Customer records</li><li>✓ Booking overview</li><li>✓ Basic payment tracking</li><li>✓ Single business workspace</li></ul></article>
+          <article class="relative flex flex-col rounded-3xl border-2 border-green bg-[#f8faf5] p-7 shadow-soft"><span class="absolute right-6 top-6 rounded-full bg-lime px-3 py-1.5 text-[10px] font-black uppercase tracking-wider">Popular</span><p class="text-sm font-extrabold">Growth</p><p class="mt-2 text-sm text-muted">For busy businesses ready to grow.</p><div class="mt-6 flex items-end gap-1"><span class="text-4xl font-black" data-month="₦10,000" data-year="₦108,000">₦10,000</span><span class="pb-1 text-sm text-muted">/ month</span></div><p class="mt-2 text-xs text-muted">More visibility and better follow-through.</p><a href="#get-started" data-plan="Growth" class="plan-btn mt-7 rounded-full bg-green px-5 py-3.5 text-center text-sm font-bold text-white transition hover:bg-[#19573c]">Choose Growth ↗</a><div class="my-6 h-px bg-line"></div><ul class="space-y-3 text-sm text-muted"><li>✓ Everything in Starter</li><li>✓ Customer follow-up list</li><li>✓ Revenue and payment summaries</li><li>✓ Booking status management</li></ul></article>
+          <article class="flex flex-col rounded-3xl border border-line p-7"><p class="text-sm font-extrabold">Business+</p><p class="mt-2 text-sm text-muted">For teams and bigger workflows.</p><div class="mt-6 flex items-end gap-1"><span class="text-4xl font-black" data-month="₦20,000" data-year="₦216,000">₦20,000</span><span class="pb-1 text-sm text-muted">/ month</span></div><p class="mt-2 text-xs text-muted">Room to manage more moving parts.</p><a href="#get-started" data-plan="Business+" class="plan-btn mt-7 rounded-full border border-line px-5 py-3.5 text-center text-sm font-bold transition hover:border-green hover:bg-paper">Choose Business+</a><div class="my-6 h-px bg-line"></div><ul class="space-y-3 text-sm text-muted"><li>✓ Everything in Growth</li><li>✓ Team-ready workspace</li><li>✓ More detailed business insights</li><li>✓ Priority support (proposed)</li></ul></article>
+        </div>
+        <p class="mt-5 text-xs leading-5 text-muted">Demo only: plans, prices and features are illustrative. No payment will be collected.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="get-started" class="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+      <div class="grid gap-8 rounded-[2rem] border border-line bg-[#edf1e9] p-6 sm:p-10 lg:grid-cols-[1fr_.8fr] lg:items-center lg:p-14">
+        <div><p class="text-xs font-black uppercase tracking-[.18em] text-green">Your next chapter starts here</p><h2 class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Ready to make business feel simpler?</h2><p class="mt-4 max-w-lg leading-7 text-muted">Tell us a little about your business and see how Kudivox could fit your workflow.</p></div>
+        <form id="demoForm" class="rounded-3xl border border-line bg-white p-5 sm:p-6">
+          <label for="businessName" class="mb-2 block text-xs font-bold text-muted">Business name</label><input id="businessName" required placeholder="e.g. Ada's Beauty Studio" class="mb-4 w-full rounded-xl border border-line bg-paper px-4 py-3.5 text-sm outline-none transition focus:border-green focus:ring-2 focus:ring-green/10" />
+          <label for="businessType" class="mb-2 block text-xs font-bold text-muted">What kind of business do you run?</label><select id="businessType" required class="mb-4 w-full rounded-xl border border-line bg-paper px-4 py-3.5 text-sm outline-none focus:border-green"><option value="">Choose a business type</option><option>Beauty & wellness</option><option>Consulting</option><option>Repairs & maintenance</option><option>Fitness & coaching</option><option>Creative services</option><option>Other service business</option></select>
+          <button class="w-full rounded-full bg-green px-5 py-4 text-sm font-bold text-white transition hover:bg-[#19573c]" type="submit">Request a demo ↗</button>
+          <p class="mt-3 text-center text-[11px] text-muted">Demo form only. Your details stay in this browser session.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-line bg-white">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-8 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <a href="#home" class="flex items-center gap-2.5"><span class="grid h-8 w-8 place-items-center rounded-lg bg-green text-lime"><span class="font-black">K</span></span><span class="font-black tracking-tight">kudivox<span class="text-green">.</span></span></a>
+      <p class="text-xs text-muted">A calmer way to run your business. © <span id="year"></span> Kudivox demo.</p>
+      <div class="flex gap-5 text-xs font-semibold text-muted"><a href="#features" class="hover:text-green">Features</a><a href="#pricing" class="hover:text-green">Pricing</a><a href="#home" class="hover:text-green">Back to top ↑</a></div>
+    </div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite" class="toast hidden-toast fixed bottom-5 left-1/2 z-50 w-[calc(100%-2rem)] max-w-sm -translate-x-1/2 rounded-2xl bg-ink px-5 py-4 text-sm font-semibold text-white shadow-2xl"></div>
+
+  <script>
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove('hidden-toast');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.add('hidden-toast'), 3200);
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    document.querySelectorAll('[data-toast]').forEach(button => {
+      button.addEventListener('click', () => showToast(button.dataset.toast));
+    });
+
+    document.getElementById('followBtn').addEventListener('click', () => {
+      document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+      showToast('Here’s your sample follow-up list. Try a Message button below.');
+    });
+
+    document.querySelectorAll('.follow-message').forEach(button => {
+      button.addEventListener('click', () => {
+        showToast(`Demo message prepared for ${button.dataset.customer}. Messaging is not connected yet.`);
+      });
+    });
+
+    document.querySelectorAll('.plan-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const plan = button.dataset.plan;
+        document.getElementById('businessName').focus({ preventScroll: true });
+        document.getElementById('get-started').scrollIntoView({ behavior: 'smooth' });
+        showToast(`${plan} selected. Fill in the demo form to continue.`);
+      });
+    });
+
+    const monthlyBtn = document.getElementById('monthlyBtn');
+    const yearlyBtn = document.getElementById('yearlyBtn');
+    function setBilling(yearly) {
+      document.querySelectorAll('[data-month]').forEach(price => {
+        price.textContent = yearly ? price.dataset.year : price.dataset.month;
+      });
+      monthlyBtn.className = yearly ? 'rounded-full px-4 py-2.5 text-xs font-bold text-muted' : 'rounded-full bg-green px-4 py-2.5 text-xs font-bold text-white';
+      yearlyBtn.className = yearly ? 'rounded-full bg-green px-4 py-2.5 text-xs font-bold text-white' : 'rounded-full px-4 py-2.5 text-xs font-bold text-muted';
+      document.querySelectorAll('#pricing article .flex.items-end span:last-child').forEach(label => label.textContent = yearly ? '/ year' : '/ month');
+      document.querySelectorAll('#pricing article [data-month]').forEach(price => {
+        if (yearly) price.textContent = price.dataset.year;
+        else price.textContent = price.dataset.month;
+      });
+      if (yearly) showToast('Yearly billing selected — demo pricing includes a 10% discount.');
+    }
+    monthlyBtn.addEventListener('click', () => setBilling(false));
+    yearlyBtn.addEventListener('click', () => setBilling(true));
+
+    document.getElementById('demoForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('businessName').value.trim();
+      const type = document.getElementById('businessType').value;
+      if (!name || !type) return;
+      showToast(`Thanks! Your demo request for ${name} (${type}) is ready. This preview does not send data to a server.`);
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTO | Turn the World Down</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tomato: '#E23A22',
+                        espresso: '#1E0F0B',
+                        cobalt: '#1D4ED8',
+                        olive: '#3F6212',
+                        plum: '#7E22CE',
+                    },
+                    fontFamily: {
+                        headline: ['Anton', 'sans-serif'],
+                        body: ['Inter Tight', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS & Keyframes -->
+    <style>
+        /* Base typography & Reset */
+        body {
+            font-family: 'Inter Tight', sans-serif;
+            background-color: #FFFFFF;
+            color: #1E0F0B;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-headline {
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E23A22;
+            border-radius: 3px;
+        }
+
+        /* Pulse Animations */
+        @keyframes ringPulse {
+            0% { transform: scale(0.85); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 0.3; }
+            100% { transform: scale(0.85); opacity: 0.8; }
+        }
+        .animate-ring-pulse {
+            animation: ringPulse 4s infinite ease-in-out;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: heroFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(226, 58, 34, 0.6); }
+            50% { box-shadow: 0 0 0 16px rgba(226, 58, 34, 0); }
+        }
+        .cta-pulse-ring {
+            animation: ctaPulse 2s infinite;
+        }
+
+        /* Circular Wipe Background Transition */
+        .color-wipe-bg {
+            transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Ticket Notch styling for 30 Nights CTA */
+        .ticket-btn {
+            position: relative;
+            background-color: #E23A22;
+            mask-image: radial-gradient(circle at 0% 50%, transparent 8px, black 9px),
+                        radial-gradient(circle at 100% 50%, transparent 8px, black 9px);
+            mask-composite: intersect;
+            -webkit-mask-image: radial-gradient(circle at 0% 50%, transparent 8px, black 9px),
+                                radial-gradient(circle at 100% 50%, transparent 8px, black 9px);
+            -webkit-mask-composite: source-in;
+        }
+
+        /* Hide scrollbars for smooth horizontal carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body class="relative min-h-screen selection:bg-tomato selection:text-white">
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div id="announcement-bar" class="bg-espresso text-white text-xs md:text-sm font-medium py-2.5 px-4 flex justify-between items-center relative z-50 border-b border-white/10 transition-all duration-300">
+        <div class="flex-1 text-center font-body tracking-wider">
+            <span>FREE EXPRESS UK SHIPPING ON ALL ORDERS</span>
+            <span class="mx-2 hidden sm:inline">•</span>
+            <span class="hidden sm:inline text-tomato font-semibold">30 NIGHT RISK-FREE TRIAL</span>
+        </div>
+        <button onclick="dismissAnnouncement()" class="text-white/60 hover:text-white p-1 rounded-full transition-colors" aria-label="Close Announcement">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+    </div>
+
+    <!-- STICKY NAV -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-neutral-100 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            
+            <!-- Left: Links & Mobile Toggle -->
+            <div class="flex items-center space-x-6">
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-espresso focus:outline-none" aria-label="Toggle Navigation Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+                <nav class="hidden lg:flex items-center space-x-8 text-xs font-bold tracking-widest uppercase text-espresso">
+                    <a href="#trending" class="hover:text-tomato transition-colors">Headphones</a>
+                    <a href="#trending" class="hover:text-tomato transition-colors">Earbuds</a>
+                    <a href="#trending" class="hover:text-tomato transition-colors">Speakers</a>
+                    <a href="#how-it-works" class="hover:text-tomato transition-colors">Engineering</a>
+                </nav>
+            </div>
+
+            <!-- Center: Logo -->
+            <div class="text-center flex-1 lg:flex-none">
+                <a href="#" class="font-headline text-3xl sm:text-4xl text-espresso tracking-tight inline-block hover:scale-105 transition-transform">
+                    [ O T O ]
+                </a>
+            </div>
+
+            <!-- Right: Icons with counters -->
+            <div class="flex items-center space-x-3 sm:space-x-5">
+                <button onclick="openSearchModal()" class="p-2 text-espresso hover:text-tomato transition-colors" aria-label="Search">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </button>
+                
+                <!-- Wishlist -->
+                <button onclick="openWishlistDrawer()" class="p-2 text-espresso hover:text-tomato transition-colors relative" aria-label="Wishlist">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    <span id="wishlist-badge" class="absolute top-1 right-1 bg-tomato text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transform scale-0 transition-transform">0</span>
+                </button>
+
+                <!-- Bag -->
+                <button onclick="openBagDrawer()" class="p-2 text-espresso hover:text-tomato transition-colors relative" aria-label="Shopping Bag">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                    <span id="bag-badge" class="absolute top-1 right-1 bg-espresso text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-transform">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 bg-espresso/95 z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between p-8 text-white lg:hidden">
+        <div>
+            <div class="flex justify-between items-center mb-12">
+                <span class="font-headline text-3xl text-tomato">[ O T O ]</span>
+                <button onclick="toggleMobileMenu()" class="p-2 text-white/70 hover:text-white" aria-label="Close menu">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6 font-headline text-3xl sm:text-4xl tracking-wider uppercase">
+                <a href="#trending" onclick="toggleMobileMenu()" class="hover:text-tomato transition-colors">OTO ONE (£249)</a>
+                <a href="#trending" onclick="toggleMobileMenu()" class="hover:text-tomato transition-colors">OTO SPORT (£179)</a>
+                <a href="#trending" onclick="toggleMobileMenu()" class="hover:text-tomato transition-colors">OTO BUDS (£149)</a>
+                <a href="#trending" onclick="toggleMobileMenu()" class="hover:text-tomato transition-colors">OTO ROAM (£119)</a>
+                <a href="#how-it-works" onclick="toggleMobileMenu()" class="hover:text-tomato transition-colors text-white/50">ENGINEERING</a>
+            </nav>
+        </div>
+        <div class="border-t border-white/10 pt-6 text-sm text-white/60">
+            <p>Designed in London, UK.</p>
+            <p class="mt-1">Experience pure acoustic precision.</p>
+        </div>
+    </div>
+
+    <!-- HERO SLIDESHOW SECTION -->
+    <section class="relative w-full min-h-[85vh] lg:min-h-[90vh] bg-espresso overflow-hidden flex flex-col justify-between" id="hero">
+        
+        <!-- SLIDE 1: Interactive Product Canvas & Sound Waves -->
+        <div id="slide-1" class="absolute inset-0 transition-opacity duration-1000 opacity-100 z-10 flex flex-col justify-between p-6 sm:p-12 lg:p-16">
+            <!-- Dynamic Background Container -->
+            <div id="hero-bg-swatch" class="absolute inset-0 color-wipe-bg bg-tomato opacity-90 transition-all duration-700"></div>
+
+            <!-- Sound Waves Animation Overlay -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
+                <div class="w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] border-2 border-white rounded-full animate-ring-pulse"></div>
+                <div class="absolute w-[200px] h-[200px] sm:w-[450px] sm:h-[450px] border border-white rounded-full animate-ring-pulse" style="animation-delay: 1s;"></div>
+                <div class="absolute w-[100px] h-[100px] sm:w-[250px] sm:h-[250px] border border-white rounded-full animate-ring-pulse" style="animation-delay: 2s;"></div>
+            </div>
+
+            <!-- Interactive 3D Spinning & Tilt Product Area -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-auto z-20" id="hero-3d-wrapper">
+                <div id="hero-product-container" class="relative w-[280px] h-[280px] sm:w-[440px] sm:h-[440px] lg:w-[520px] lg:h-[520px] transition-transform duration-200 ease-out animate-float">
+                    <!-- Detailed High-Quality SVG Render of OTO One Headphones (Recolored Live) -->
+                    <svg id="hero-svg-headphones" class="w-full h-full filter drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)] transition-all duration-500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="headbandGrad" x1="100" y1="100" x2="400" y2="100" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#111827"/>
+                                <stop offset="50%" stop-color="#374151"/>
+                                <stop offset="100%" stop-color="#111827"/>
+                            </linearGradient>
+                            <radialGradient id="cupShine" cx="50%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#000000" stop-opacity="0.4"/>
+                            </radialGradient>
+                        </defs>
+                        <!-- Main Headband Arc -->
+                        <path d="M100 280 C100 100, 400 100, 400 280" stroke="url(#headbandGrad)" stroke-width="38" stroke-linecap="round"/>
+                        <path d="M120 260 C120 125, 380 125, 380 260" stroke="#4B5563" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 6"/>
+                        <!-- Headband Cushion Padding -->
+                        <path d="M150 220 C150 150, 350 150, 350 220" stroke="#1E0F0B" stroke-width="16" stroke-linecap="round"/>
+                        
+                        <!-- Yoke Arms Left & Right -->
+                        <path d="M108 270 L95 320" stroke="#9CA3AF" stroke-width="12" stroke-linecap="round"/>
+                        <path d="M392 270 L405 320" stroke="#9CA3AF" stroke-width="12" stroke-linecap="round"/>
+
+                        <!-- Left Earcup Assembly -->
+                        <g>
+                            <!-- Earcup Outer Shell -->
+                            <rect id="headphone-accent-1" x="65" y="270" width="75" height="125" rx="38" fill="#1E0F0B" class="transition-colors duration-500"/>
+                            <!-- Metallic Accent Ring -->
+                            <rect x="65" y="270" width="75" height="125" rx="38" fill="url(#cupShine)"/>
+                            <rect x="70" y="275" width="65" height="115" rx="33" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="3" fill="none"/>
+                            <!-- Deep Cushion -->
+                            <rect x="85" y="280" width="48" height="105" rx="24" fill="#0A0504"/>
+                            <rect x="90" y="285" width="38" height="95" rx="19" fill="#1E0F0B"/>
+                            <!-- Acoustic Mesh Inner -->
+                            <circle cx="102" cy="332" r="14" fill="#E23A22" opacity="0.8"/>
+                            <text x="102" y="337" text-anchor="middle" fill="#FFFFFF" font-family="Anton" font-size="14" font-weight="bold">L</text>
+                        </g>
+
+                        <!-- Right Earcup Assembly -->
+                        <g>
+                            <rect id="headphone-accent-2" x="360" y="270" width="75" height="125" rx="38" fill="#1E0F0B" class="transition-colors duration-500"/>
+                            <rect x="360" y="270" width="75" height="125" rx="38" fill="url(#cupShine)"/>
+                            <rect x="365" y="275" width="65" height="115" rx="33" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="3" fill="none"/>
+                            <rect x="367" y="280" width="48" height="105" rx="24" fill="#0A0504"/>
+                            <rect x="372" y="285" width="38" height="95" rx="19" fill="#1E0F0B"/>
+                            <circle cx="398" cy="332" r="14" fill="#E23A22" opacity="0.8"/>
+                            <text x="398" y="337" text-anchor="middle" fill="#FFFFFF" font-family="Anton" font-size="14" font-weight="bold">R</text>
+                        </g>
+
+                        <!-- Subtle Brand Engraving -->
+                        <text x="250" y="145" text-anchor="middle" fill="#9CA3AF" font-family="Anton" font-size="16" letter-spacing="4">[ O T O ]</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Headline Content -->
+            <div class="relative z-30 max-w-xl">
+                <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-white text-xs font-bold tracking-widest uppercase mb-3">London Studio Edition</span>
+                <h1 class="font-headline text-5xl sm:text-7xl lg:text-9xl text-white leading-none tracking-tight drop-shadow-md">
+                    TURN THE WORLD DOWN.
+                </h1>
+            </div>
+
+            <!-- Bottom Colorway Swatches Switcher -->
+            <div class="relative z-30 flex items-center justify-between pt-6">
+                <div class="flex items-center space-x-3 bg-white/20 backdrop-blur-md p-2 rounded-full border border-white/20">
+                    <button onclick="setHeroColor('tomato', '#E23A22')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-tomato border-2 border-white shadow-md transform hover:scale-110 transition-transform" aria-label="Tomato Colorway"></button>
+                    <button onclick="setHeroColor('cobalt', '#1D4ED8')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-cobalt border-2 border-white shadow-md transform hover:scale-110 transition-transform" aria-label="Cobalt Colorway"></button>
+                    <button onclick="setHeroColor('olive', '#3F6212')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-olive border-2 border-white shadow-md transform hover:scale-110 transition-transform" aria-label="Olive Colorway"></button>
+                    <button onclick="setHeroColor('plum', '#7E22CE')" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-plum border-2 border-white shadow-md transform hover:scale-110 transition-transform" aria-label="Plum Colorway"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: Interactive Color-Reveal Lens Editorial Photography -->
+        <div id="slide-2" class="absolute inset-0 transition-opacity duration-1000 opacity-0 pointer-events-none z-10 flex flex-col justify-between p-6 sm:p-12 lg:p-16">
+            <!-- Background Editorial Photo Reveal Canvas -->
+            <canvas id="editorial-canvas" class="absolute inset-0 w-full h-full object-cover"></canvas>
+
+            <!-- Headline Content -->
+            <div class="relative z-30 max-w-xl">
+                <span class="inline-block px-3 py-1 bg-black/40 backdrop-blur-md rounded-full text-white text-xs font-bold tracking-widest uppercase mb-3 border border-white/20">Acoustic Ergonomics</span>
+                <h1 class="font-headline text-5xl sm:text-7xl lg:text-9xl text-white leading-none tracking-tight drop-shadow-lg">
+                    LIE BACK. TUNE IN.
+                </h1>
+            </div>
+        </div>
+
+        <!-- HERO CTA (Shared, Anchored Bottom Right/Center) -->
+        <div class="absolute bottom-8 right-6 sm:right-12 z-30">
+            <button onclick="openQuickShopModal()" class="cta-pulse-ring group bg-white text-espresso hover:bg-tomato hover:text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-sm sm:text-base tracking-wider uppercase transition-all duration-300 flex items-center space-x-4 shadow-2xl transform hover:scale-105">
+                <span>SHOP OTO ONE · £249</span>
+                <span class="w-8 h-8 rounded-full bg-tomato text-white group-hover:bg-white group-hover:text-tomato flex items-center justify-center transition-colors">
+                    <svg class="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </span>
+            </button>
+        </div>
+
+        <!-- SLIDESHOW PROGRESS & CONTROLS -->
+        <div class="absolute top-6 right-6 sm:right-12 z-30 flex items-center space-x-4 bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+            <div class="w-16 sm:w-24 bg-white/20 h-1.5 rounded-full overflow-hidden">
+                <div id="slide-progress" class="bg-white h-full w-0 transition-all duration-100 ease-linear"></div>
+            </div>
+            <div class="text-white text-xs font-mono font-bold tracking-widest">
+                <span id="current-slide-num">01</span> / 02
+            </div>
+            <button onclick="prevSlide()" class="text-white/70 hover:text-white p-1" aria-label="Previous Slide">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button onclick="nextSlide()" class="text-white/70 hover:text-white p-1" aria-label="Next Slide">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- TRENDING NOW PRODUCT CAROUSEL -->
+    <section class="py-20 sm:py-28 bg-white" id="trending">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="flex items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-bold tracking-widest uppercase text-tomato">2026 Collection</span>
+                    <h2 class="font-headline text-4xl sm:text-6xl text-espresso mt-1">TRENDING NOW</h2>
+                </div>
+                <!-- Carousel Arrow Controls -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="scrollCarousel(-320)" class="w-12 h-12 rounded-full border border-espresso/20 flex items-center justify-center hover:bg-espresso hover:text-white transition-colors" aria-label="Scroll left">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button onclick="scrollCarousel(320)" class="w-12 h-12 rounded-full border border-espresso/20 flex items-center justify-center hover:bg-espresso hover:text-white transition-colors" aria-label="Scroll right">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Track -->
+            <div id="product-carousel" class="flex space-x-6 overflow-x-auto no-scrollbar scroll-smooth pb-8 pt-4">
+                
+                <!-- PRODUCT CARD 1: OTO ONE HEADPHONES -->
+                <div class="min-w-[280px] sm:min-w-[340px] max-w-[340px] bg-neutral-50 rounded-3xl p-6 relative group transition-all duration-300 hover:shadow-2xl border border-neutral-100 flex flex-col justify-between" style="perspective: 1000px;">
+                    <button onclick="toggleWishlist(this)" class="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-md flex items-center justify-center text-espresso hover:text-tomato transition-colors" aria-label="Add to Wishlist">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </button>
+
+                    <!-- Product Image Container -->
+                    <div class="relative w-full h-64 flex items-center justify-center my-4 overflow-hidden rounded-2xl bg-neutral-100/50">
+                        <div id="blob-1" class="absolute w-44 h-44 bg-tomato/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+                        
+                        <!-- High-Detail Detailed Headphone SVG -->
+                        <svg id="p1-svg" class="w-48 h-48 relative z-10 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 filter drop-shadow-xl" viewBox="0 0 300 300" fill="none">
+                            <!-- Headband -->
+                            <path d="M70 180 C70 70, 230 70, 230 180" stroke="#1E0F0B" stroke-width="22" stroke-linecap="round"/>
+                            <path d="M85 160 C85 85, 215 85, 215 160" stroke="#9CA3AF" stroke-width="4" stroke-linecap="round"/>
+                            <!-- Left/Right Earcups (Dynamically Recolored) -->
+                            <rect id="p1-cup-1" x="50" y="155" width="46" height="76" rx="23" fill="#E23A22" class="transition-colors duration-300"/>
+                            <rect id="p1-cup-2" x="204" y="155" width="46" height="76" rx="23" fill="#E23A22" class="transition-colors duration-300"/>
+                            <!-- Inner Pads -->
+                            <rect x="62" y="165" width="30" height="56" rx="15" fill="#1E0F0B"/>
+                            <rect x="208" y="165" width="30" height="56" rx="15" fill="#1E0F0B"/>
+                            <!-- Metallic Hinge Trim -->
+                            <circle cx="73" cy="148" r="8" fill="#D1D5DB"/>
+                            <circle cx="227" cy="148" r="8" fill="#D1D5DB"/>
+                        </svg>
+                    </div>
+
+                    <!-- Card Info -->
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-headline text-2xl text-espresso">OTO ONE</h3>
+                            <span class="font-bold text-lg text-espresso">£249</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4 line-clamp-1">Flagship Over-Ear Active Noise Cancelling</p>
+                        
+                        <!-- Swatches & Add Button -->
+                        <div class="flex items-center justify-between border-t border-neutral-200/80 pt-4">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="recolorProduct('p1', '#E23A22', 'blob-1', 'rgba(226, 58, 34, 0.2)')" class="w-5 h-5 rounded-full bg-tomato border border-white ring-2 ring-tomato" aria-label="Tomato color"></button>
+                                <button onclick="recolorProduct('p1', '#1D4ED8', 'blob-1', 'rgba(29, 78, 216, 0.2)')" class="w-5 h-5 rounded-full bg-cobalt border border-white hover:ring-2 hover:ring-cobalt" aria-label="Cobalt color"></button>
+                                <button onclick="recolorProduct('p1', '#1E0F0B', 'blob-1', 'rgba(30, 15, 11, 0.2)')" class="w-5 h-5 rounded-full bg-espresso border border-white hover:ring-2 hover:ring-espresso" aria-label="Espresso color"></button>
+                            </div>
+                            <button onclick="addToBag('OTO One Headphones', '£249')" class="w-10 h-10 rounded-full bg-espresso text-white hover:bg-tomato flex items-center justify-center transform active:scale-95 transition-all shadow-md" aria-label="Add OTO One to Bag">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v12m6-6H6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT CARD 2: OTO SPORT EARBUDS -->
+                <div class="min-w-[280px] sm:min-w-[340px] max-w-[340px] bg-neutral-50 rounded-3xl p-6 relative group transition-all duration-300 hover:shadow-2xl border border-neutral-100 flex flex-col justify-between">
+                    <button onclick="toggleWishlist(this)" class="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-md flex items-center justify-center text-espresso hover:text-tomato transition-colors" aria-label="Add to Wishlist">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </button>
+
+                    <div class="relative w-full h-64 flex items-center justify-center my-4 overflow-hidden rounded-2xl bg-neutral-100/50">
+                        <div id="blob-2" class="absolute w-44 h-44 bg-cobalt/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+                        
+                        <!-- Open Ear SVG -->
+                        <svg id="p2-svg" class="w-48 h-48 relative z-10 transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 filter drop-shadow-xl" viewBox="0 0 300 300" fill="none">
+                            <path d="M80 150 C80 90, 220 90, 220 150" stroke="#9CA3AF" stroke-width="8" stroke-linecap="round" stroke-dasharray="6 6"/>
+                            <!-- Left Earhook & Driver -->
+                            <path d="M75 160 C60 130, 80 100, 105 110" stroke="#1D4ED8" stroke-width="12" stroke-linecap="round"/>
+                            <circle id="p2-cup-1" cx="80" cy="165" r="28" fill="#1D4ED8" class="transition-colors duration-300"/>
+                            <circle cx="80" cy="165" r="16" fill="#1E0F0B"/>
+                            <!-- Right Earhook & Driver -->
+                            <path d="M225 160 C240 130, 220 100, 195 110" stroke="#1D4ED8" stroke-width="12" stroke-linecap="round"/>
+                            <circle id="p2-cup-2" cx="220" cy="165" r="28" fill="#1D4ED8" class="transition-colors duration-300"/>
+                            <circle cx="220" cy="165" r="16" fill="#1E0F0B"/>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-headline text-2xl text-espresso">OTO SPORT</h3>
+                            <span class="font-bold text-lg text-espresso">£179</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4 line-clamp-1">Open-Ear Audio for Intense Training</p>
+                        
+                        <div class="flex items-center justify-between border-t border-neutral-200/80 pt-4">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="recolorProduct('p2', '#1D4ED8', 'blob-2', 'rgba(29, 78, 216, 0.2)')" class="w-5 h-5 rounded-full bg-cobalt border border-white ring-2 ring-cobalt" aria-label="Cobalt color"></button>
+                                <button onclick="recolorProduct('p2', '#3F6212', 'blob-2', 'rgba(63, 98, 18, 0.2)')" class="w-5 h-5 rounded-full bg-olive border border-white hover:ring-2 hover:ring-olive" aria-label="Olive color"></button>
+                                <button onclick="recolorProduct('p2', '#E23A22', 'blob-2', 'rgba(226, 58, 34, 0.2)')" class="w-5 h-5 rounded-full bg-tomato border border-white hover:ring-2 hover:ring-tomato" aria-label="Tomato color"></button>
+                            </div>
+                            <button onclick="addToBag('OTO Sport Earbuds', '£179')" class="w-10 h-10 rounded-full bg-espresso text-white hover:bg-tomato flex items-center justify-center transform active:scale-95 transition-all shadow-md" aria-label="Add OTO Sport to Bag">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v12m6-6H6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT CARD 3: OTO BUDS -->
+                <div class="min-w-[280px] sm:min-w-[340px] max-w-[340px] bg-neutral-50 rounded-3xl p-6 relative group transition-all duration-300 hover:shadow-2xl border border-neutral-100 flex flex-col justify-between">
+                    <button onclick="toggleWishlist(this)" class="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-md flex items-center justify-center text-espresso hover:text-tomato transition-colors" aria-label="Add to Wishlist">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </button>
+
+                    <div class="relative w-full h-64 flex items-center justify-center my-4 overflow-hidden rounded-2xl bg-neutral-100/50">
+                        <div id="blob-3" class="absolute w-44 h-44 bg-plum/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+                        
+                        <svg id="p3-svg" class="w-48 h-48 relative z-10 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 filter drop-shadow-xl" viewBox="0 0 300 300" fill="none">
+                            <!-- Charging Case Background -->
+                            <rect x="75" y="110" width="150" height="110" rx="35" fill="#1E0F0B"/>
+                            <rect x="85" y="120" width="130" height="90" rx="25" fill="#374151" fill-opacity="0.5"/>
+                            <!-- Buds Inside Case -->
+                            <rect id="p3-cup-1" x="100" y="135" width="40" height="60" rx="20" fill="#7E22CE" class="transition-colors duration-300"/>
+                            <rect id="p3-cup-2" x="160" y="135" width="40" height="60" rx="20" fill="#7E22CE" class="transition-colors duration-300"/>
+                            <!-- LED Indicator -->
+                            <circle cx="150" cy="195" r="4" fill="#10B981"/>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-headline text-2xl text-espresso">OTO BUDS</h3>
+                            <span class="font-bold text-lg text-espresso">£149</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4 line-clamp-1">Ultra-Compact Wireless In-Ear Sound</p>
+                        
+                        <div class="flex items-center justify-between border-t border-neutral-200/80 pt-4">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="recolorProduct('p3', '#7E22CE', 'blob-3', 'rgba(126, 34, 206, 0.2)')" class="w-5 h-5 rounded-full bg-plum border border-white ring-2 ring-plum" aria-label="Plum color"></button>
+                                <button onclick="recolorProduct('p3', '#1E0F0B', 'blob-3', 'rgba(30, 15, 11, 0.2)')" class="w-5 h-5 rounded-full bg-espresso border border-white hover:ring-2 hover:ring-espresso" aria-label="Espresso color"></button>
+                                <button onclick="recolorProduct('p3', '#E23A22', 'blob-3', 'rgba(226, 58, 34, 0.2)')" class="w-5 h-5 rounded-full bg-tomato border border-white hover:ring-2 hover:ring-tomato" aria-label="Tomato color"></button>
+                            </div>
+                            <button onclick="addToBag('OTO Buds', '£149')" class="w-10 h-10 rounded-full bg-espresso text-white hover:bg-tomato flex items-center justify-center transform active:scale-95 transition-all shadow-md" aria-label="Add OTO Buds to Bag">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v12m6-6H6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT CARD 4: OTO ROAM SPEAKER -->
+                <div class="min-w-[280px] sm:min-w-[340px] max-w-[340px] bg-neutral-50 rounded-3xl p-6 relative group transition-all duration-300 hover:shadow-2xl border border-neutral-100 flex flex-col justify-between">
+                    <button onclick="toggleWishlist(this)" class="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md shadow-md flex items-center justify-center text-espresso hover:text-tomato transition-colors" aria-label="Add to Wishlist">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </button>
+
+                    <div class="relative w-full h-64 flex items-center justify-center my-4 overflow-hidden rounded-2xl bg-neutral-100/50">
+                        <div id="blob-4" class="absolute w-44 h-44 bg-olive/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+                        
+                        <svg id="p4-svg" class="w-48 h-48 relative z-10 transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 filter drop-shadow-xl" viewBox="0 0 300 300" fill="none">
+                            <!-- Speaker Body -->
+                            <rect id="p4-cup-1" x="90" y="70" width="120" height="170" rx="40" fill="#3F6212" class="transition-colors duration-300"/>
+                            <!-- Perforated Grille -->
+                            <rect x="105" y="85" width="90" height="140" rx="30" fill="#1E0F0B" opacity="0.8"/>
+                            <circle cx="150" cy="120" r="28" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="3"/>
+                            <circle cx="150" cy="180" r="18" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="3"/>
+                            <!-- Carry Strap -->
+                            <path d="M150 70 C150 40, 180 40, 180 70" stroke="#1E0F0B" stroke-width="10" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-headline text-2xl text-espresso">OTO ROAM</h3>
+                            <span class="font-bold text-lg text-espresso">£119</span>
+                        </div>
+                        <p class="text-xs text-neutral-500 mb-4 line-clamp-1">Waterproof Portable Studio Speaker</p>
+                        
+                        <div class="flex items-center justify-between border-t border-neutral-200/80 pt-4">
+                            <div class="flex items-center space-x-2">
+                                <button onclick="recolorProduct('p4', '#3F6212', 'blob-4', 'rgba(63, 98, 18, 0.2)')" class="w-5 h-5 rounded-full bg-olive border border-white ring-2 ring-olive" aria-label="Olive color"></button>
+                                <button onclick="recolorProduct('p4', '#E23A22', 'blob-4', 'rgba(226, 58, 34, 0.2)')" class="w-5 h-5 rounded-full bg-tomato border border-white hover:ring-2 hover:ring-tomato" aria-label="Tomato color"></button>
+                                <button onclick="recolorProduct('p4', '#1E0F0B', 'blob-4', 'rgba(30, 15, 11, 0.2)')" class="w-5 h-5 rounded-full bg-espresso border border-white hover:ring-2 hover:ring-espresso" aria-label="Espresso color"></button>
+                            </div>
+                            <button onclick="addToBag('OTO Roam Speaker', '£119')" class="w-10 h-10 rounded-full bg-espresso text-white hover:bg-tomato flex items-center justify-center transform active:scale-95 transition-all shadow-md" aria-label="Add OTO Roam to Bag">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v12m6-6H6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT'S MADE (TOMATO RED SCROLL SECTION WITH STACKING CARDS) -->
+    <section class="bg-tomato py-24 sm:py-32 text-white relative overflow-hidden" id="how-it-works">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Expanding Heading Effect -->
+            <div class="text-center mb-16 sm:mb-24">
+                <span class="text-xs font-bold tracking-widest uppercase text-white/80">London Sound Architecture</span>
+                <h2 id="expanding-headline" class="font-headline text-5xl sm:text-8xl lg:text-9xl tracking-tight transition-all duration-300">
+                    HOW IT'S MADE
+                </h2>
+            </div>
+
+            <!-- Sticky Stacking Cards Container -->
+            <div class="space-y-8 relative">
+                
+                <!-- STACK CARD 1 -->
+                <div class="sticky top-28 bg-espresso text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/10 transform transition-transform duration-500 hover:scale-[1.01]">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                        <div>
+                            <span class="font-headline text-6xl sm:text-7xl text-tomato block mb-2">01</span>
+                            <h3 class="font-headline text-3xl sm:text-4xl mb-3">CUSTOM ACOUSTIC DRIVERS</h3>
+                            <p class="text-neutral-300 text-sm sm:text-base max-w-md">Engineered with custom 40mm titanium diaphragms tuned in London for deep bass and absolute acoustic clarity.</p>
+                        </div>
+                        <div class="w-full md:w-64 h-48 rounded-2xl overflow-hidden border border-white/10 relative group">
+                            <!-- Unsplash High-Quality Engineering Detail Photo -->
+                            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=800&auto=format&fit=crop" alt="Titanium Audio Driver Detail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-[10px] font-mono tracking-widest text-tomato">40MM TITANIUM COIL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STACK CARD 2 -->
+                <div class="sticky top-32 bg-espresso text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/10 transform transition-transform duration-500 hover:scale-[1.01]">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                        <div>
+                            <span class="font-headline text-6xl sm:text-7xl text-tomato block mb-2">02</span>
+                            <h3 class="font-headline text-3xl sm:text-4xl mb-3">RECYCLED ALUMINUM FRAME</h3>
+                            <p class="text-neutral-300 text-sm sm:text-base max-w-md">Precision CNC-machined recycled aerospace aluminum providing featherweight durability and timeless texture.</p>
+                        </div>
+                        <div class="w-full md:w-64 h-48 rounded-2xl overflow-hidden border border-white/10 relative group">
+                            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=800&auto=format&fit=crop" alt="CNC Machined Aluminum Frame" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-[10px] font-mono tracking-widest text-tomato">AEROSPACE GRADE CNC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STACK CARD 3 -->
+                <div class="sticky top-36 bg-espresso text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/10 transform transition-transform duration-500 hover:scale-[1.01]">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                        <div>
+                            <span class="font-headline text-6xl sm:text-7xl text-tomato block mb-2">03</span>
+                            <h3 class="font-headline text-3xl sm:text-4xl mb-3">ALL-DAY MEMORY ERGONOMICS</h3>
+                            <p class="text-neutral-300 text-sm sm:text-base max-w-md">Breathable vegan protein leather cushions filled with heat-dissipating memory foam for zero ear fatigue.</p>
+                        </div>
+                        <div class="w-full md:w-64 h-48 rounded-2xl overflow-hidden border border-white/10 relative group">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Memory Foam Ear Cushion" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <span class="absolute bottom-3 left-3 text-[10px] font-mono tracking-widest text-tomato">VEGAN PROTEIN LEATHER</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOUND IS EVERYTHING (UGC VERTICAL REELS) -->
+    <section class="py-20 sm:py-28 bg-white" id="ugc">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <span class="text-xs font-bold tracking-widest uppercase text-tomato">Community Vibes</span>
+                <h2 class="font-headline text-4xl sm:text-6xl text-espresso mt-1">SOUND IS EVERYTHING</h2>
+            </div>
+
+            <!-- UGC Reel Cards Horizontal Track -->
+            <div class="flex space-x-6 overflow-x-auto no-scrollbar scroll-smooth pb-6">
+                
+                <!-- REEL CARD 1 -->
+                <div class="min-w-[240px] sm:min-w-[280px] h-[440px] bg-espresso rounded-3xl relative overflow-hidden flex flex-col justify-between p-6 group cursor-pointer shadow-lg transform hover:-translate-y-2 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="Model wearing OTO headphones" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center z-20">
+                        <div class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="relative z-20 flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-tomato flex items-center justify-center text-white font-bold text-xs">M</div>
+                        <span class="text-white text-xs font-bold tracking-wide drop-shadow-md">@maya_beats</span>
+                    </div>
+
+                    <div class="relative z-20 space-y-3">
+                        <p class="text-white text-xs sm:text-sm font-medium line-clamp-2 drop-shadow-md">"The noise cancellation on OTO ONE while commuting through London is surreal 🎧✨"</p>
+                        <div class="w-full bg-white/30 h-1 rounded-full overflow-hidden">
+                            <div class="bg-tomato h-full w-2/3"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REEL CARD 2 -->
+                <div class="min-w-[240px] sm:min-w-[280px] h-[440px] bg-espresso rounded-3xl relative overflow-hidden flex flex-col justify-between p-6 group cursor-pointer shadow-lg transform hover:-translate-y-2 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop" alt="Runner with OTO Sport Earbuds" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center z-20">
+                        <div class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="relative z-20 flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-cobalt flex items-center justify-center text-white font-bold text-xs">L</div>
+                        <span class="text-white text-xs font-bold tracking-wide drop-shadow-md">@london_audio</span>
+                    </div>
+
+                    <div class="relative z-20 space-y-3">
+                        <p class="text-white text-xs sm:text-sm font-medium line-clamp-2 drop-shadow-md">"Unboxing the OTO Sport earbuds in Cobalt. That matte finish is insane 🔥"</p>
+                        <div class="w-full bg-white/30 h-1 rounded-full overflow-hidden">
+                            <div class="bg-cobalt h-full w-4/5"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REEL CARD 3 -->
+                <div class="min-w-[240px] sm:min-w-[280px] h-[440px] bg-espresso rounded-3xl relative overflow-hidden flex flex-col justify-between p-6 group cursor-pointer shadow-lg transform hover:-translate-y-2 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" alt="Producer in studio with OTO Buds" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center z-20">
+                        <div class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="relative z-20 flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-plum flex items-center justify-center text-white font-bold text-xs">S</div>
+                        <span class="text-white text-xs font-bold tracking-wide drop-shadow-md">@sam_sound</span>
+                    </div>
+
+                    <div class="relative z-20 space-y-3">
+                        <p class="text-white text-xs sm:text-sm font-medium line-clamp-2 drop-shadow-md">"Studio acoustic test on the OTO Buds. Crisp highs and sub-bass performance."</p>
+                        <div class="w-full bg-white/30 h-1 rounded-full overflow-hidden">
+                            <div class="bg-plum h-full w-1/2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REEL CARD 4 -->
+                <div class="min-w-[240px] sm:min-w-[280px] h-[440px] bg-espresso rounded-3xl relative overflow-hidden flex flex-col justify-between p-6 group cursor-pointer shadow-lg transform hover:-translate-y-2 transition-transform">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" alt="Outdoor speaker session" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent z-10"></div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center z-20">
+                        <div class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="relative z-20 flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-olive flex items-center justify-center text-white font-bold text-xs">E</div>
+                        <span class="text-white text-xs font-bold tracking-wide drop-shadow-md">@emma_hifi</span>
+                    </div>
+
+                    <div class="relative z-20 space-y-3">
+                        <p class="text-white text-xs sm:text-sm font-medium line-clamp-2 drop-shadow-md">"Took the OTO Roam speaker to Hyde Park. Sound stage blew everyone away."</p>
+                        <div class="w-full bg-white/30 h-1 rounded-full overflow-hidden">
+                            <div class="bg-olive h-full w-3/4"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TRY THEM FOR 30 NIGHTS (DARK SECTION WITH REAL MODEL PHOTO) -->
+    <section class="bg-espresso text-white py-24 sm:py-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Column: Copy & Ticket CTA -->
+                <div class="space-y-6">
+                    <span class="text-xs font-bold tracking-widest uppercase text-tomato">Risk-Free Guarantee</span>
+                    <h2 class="font-headline text-5xl sm:text-7xl lg:text-8xl leading-tight">
+                        TRY THEM FOR 30 NIGHTS.
+                    </h2>
+                    <p class="text-neutral-300 text-lg sm:text-xl max-w-lg">
+                        Fall back in love with your music. If you aren't completely obsessed, return them for a 100% full refund.
+                    </p>
+
+                    <!-- Ticket-Shaped Red CTA -->
+                    <div class="pt-4">
+                        <button onclick="openQuickShopModal()" class="ticket-btn text-white px-8 py-5 text-lg font-bold tracking-wider uppercase hover:opacity-90 transition-opacity flex items-center space-x-4">
+                            <span>CLAIM YOUR 30-NIGHT TRIAL</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Tilted Photo Card & Floating Chips -->
+                <div class="relative flex justify-center">
+                    <div id="tilted-photo-card" class="relative w-full max-w-md h-[440px] bg-neutral-900 rounded-3xl overflow-hidden border border-white/10 shadow-2xl transform rotate-6 hover:rotate-0 transition-transform duration-700 group">
+                        <!-- Unsplash High-Fashion Model Photography -->
+                        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=1000&auto=format&fit=crop" alt="Fashion model relaxing with headphones" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-espresso via-transparent to-black/30"></div>
+                        
+                        <!-- Floating Glassmorphism Chips -->
+                        <div class="absolute top-6 left-6 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-white text-xs font-bold shadow-lg">
+                            FREE UK RETURNS & EXPRESS DELIVERY
+                        </div>
+                        <div class="absolute bottom-6 right-6 bg-tomato text-white px-5 py-2.5 rounded-full font-headline text-2xl shadow-xl">
+                            FROM £119
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY BUY FROM US (PERKS GRID) -->
+    <section class="py-20 sm:py-28 bg-white border-b border-neutral-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                
+                <!-- PERK 1 -->
+                <div class="group p-6 rounded-2xl transition-all duration-300 hover:bg-neutral-50 flex flex-col items-start">
+                    <div class="w-16 h-16 rounded-full bg-neutral-100 text-espresso group-hover:bg-tomato group-hover:text-white flex items-center justify-center transition-all duration-300 transform group-hover:rotate-12 mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v1a2 2 0 01-2 2M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+                    </div>
+                    <h3 class="font-headline text-2xl text-espresso mb-2">FREE UK SHIPPING</h3>
+                    <p class="text-neutral-500 text-sm">Next-day tracked courier dispatch on all orders across the UK.</p>
+                </div>
+
+                <!-- PERK 2 -->
+                <div class="group p-6 rounded-2xl transition-all duration-300 hover:bg-neutral-50 flex flex-col items-start">
+                    <div class="w-16 h-16 rounded-full bg-neutral-100 text-espresso group-hover:bg-tomato group-hover:text-white flex items-center justify-center transition-all duration-300 transform group-hover:rotate-12 mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="font-headline text-2xl text-espresso mb-2">2-YEAR WARRANTY</h3>
+                    <p class="text-neutral-500 text-sm">Full hardware coverage and London studio customer care.</p>
+                </div>
+
+                <!-- PERK 3 -->
+                <div class="group p-6 rounded-2xl transition-all duration-300 hover:bg-neutral-50 flex flex-col items-start">
+                    <div class="w-16 h-16 rounded-full bg-neutral-100 text-espresso group-hover:bg-tomato group-hover:text-white flex items-center justify-center transition-all duration-300 transform group-hover:rotate-12 mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    </div>
+                    <h3 class="font-headline text-2xl text-espresso mb-2">30-NIGHT TRIAL</h3>
+                    <p class="text-neutral-500 text-sm">Test in your home, on your commute, or on stage risk-free.</p>
+                </div>
+
+                <!-- PERK 4 -->
+                <div class="group p-6 rounded-2xl transition-all duration-300 hover:bg-neutral-50 flex flex-col items-start">
+                    <div class="w-16 h-16 rounded-full bg-neutral-100 text-espresso group-hover:bg-tomato group-hover:text-white flex items-center justify-center transition-all duration-300 transform group-hover:rotate-12 mb-6">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                    </div>
+                    <h3 class="font-headline text-2xl text-espresso mb-2">SUSTAINED AUDIO</h3>
+                    <p class="text-neutral-500 text-sm">Built with recycled metals and 100% plastic-free packaging.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-espresso text-white pt-20 pb-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            
+            <!-- Newsletter Block -->
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-12 border-b border-white/10">
+                <div>
+                    <h3 class="font-headline text-3xl sm:text-5xl text-white mb-2">JOIN THE CLUB</h3>
+                    <p class="text-neutral-400 text-sm max-w-md">Get exclusive London drops, studio session invites, and £20 off your first order.</p>
+                </div>
+                <!-- Signup Form -->
+                <form onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+                    <input id="newsletter-email" type="email" required placeholder="Enter your email" class="bg-white/10 border border-white/20 rounded-full px-6 py-4 text-white placeholder-neutral-400 focus:outline-none focus:border-tomato min-w-[280px] text-sm"/>
+                    <button type="submit" class="bg-tomato hover:bg-red-600 text-white font-bold px-8 py-4 rounded-full tracking-wider uppercase text-sm transition-colors">
+                        SUBSCRIBE
+                    </button>
+                </form>
+            </div>
+
+            <!-- Footer Links Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+                <div>
+                    <h4 class="font-bold uppercase tracking-wider text-xs text-tomato mb-4">Hardware</h4>
+                    <ul class="space-y-3 text-neutral-400">
+                        <li><a href="#trending" class="hover:text-white transition-colors">OTO ONE (£249)</a></li>
+                        <li><a href="#trending" class="hover:text-white transition-colors">OTO SPORT (£179)</a></li>
+                        <li><a href="#trending" class="hover:text-white transition-colors">OTO BUDS (£149)</a></li>
+                        <li><a href="#trending" class="hover:text-white transition-colors">OTO ROAM (£119)</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold uppercase tracking-wider text-xs text-tomato mb-4">Brand</h4>
+                    <ul class="space-y-3 text-neutral-400">
+                        <li><a href="#" class="hover:text-white transition-colors">London Studio</a></li>
+                        <li><a href="#how-it-works" class="hover:text-white transition-colors">Engineering</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Sustainability</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold uppercase tracking-wider text-xs text-tomato mb-4">Support</h4>
+                    <ul class="space-y-3 text-neutral-400">
+                        <li><a href="#" class="hover:text-white transition-colors">30-Night Trial</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Warranty & Care</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold uppercase tracking-wider text-xs text-tomato mb-4">Social</h4>
+                    <ul class="space-y-3 text-neutral-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Instagram</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">TikTok</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Spotify Sessions</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Giant Dynamic Logo Wordmark -->
+            <div class="text-center pt-8 border-t border-white/5">
+                <span class="font-headline text-[18vw] leading-none text-white/10 select-none block tracking-tighter">
+                    [ O T O ]
+                </span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-500 pt-4">
+                <p>© 2026 [OTO] Audio Ltd. London, United Kingdom. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- WISHLIST DRAWER MODAL -->
+    <div id="wishlist-drawer" class="fixed inset-0 bg-black/60 z-50 transform translate-x-full transition-transform duration-300 flex justify-end">
+        <div class="w-full max-w-md bg-white h-full p-8 flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center pb-6 border-b border-neutral-200">
+                    <h3 class="font-headline text-3xl text-espresso">YOUR WISHLIST</h3>
+                    <button onclick="closeWishlistDrawer()" class="p-2 text-neutral-500 hover:text-espresso" aria-label="Close wishlist">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <div id="wishlist-items-container" class="py-8 text-center text-neutral-500 text-sm">
+                    Your saved hardware items will appear here.
+                </div>
+            </div>
+            <button onclick="closeWishlistDrawer()" class="w-full py-4 bg-espresso text-white font-bold rounded-full uppercase tracking-wider text-sm hover:bg-tomato transition-colors">
+                CONTINUE BROWSING
+            </button>
+        </div>
+    </div>
+
+    <!-- BAG DRAWER MODAL -->
+    <div id="bag-drawer" class="fixed inset-0 bg-black/60 z-50 transform translate-x-full transition-transform duration-300 flex justify-end">
+        <div class="w-full max-w-md bg-white h-full p-8 flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center pb-6 border-b border-neutral-200">
+                    <h3 class="font-headline text-3xl text-espresso">YOUR BAG</h3>
+                    <button onclick="closeBagDrawer()" class="p-2 text-neutral-500 hover:text-espresso" aria-label="Close bag">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <div id="bag-items-list" class="py-6 space-y-4 max-h-[60vh] overflow-y-auto">
+                    <p id="empty-bag-text" class="text-center text-neutral-500 text-sm py-12">Your shopping bag is empty.</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-neutral-200 pt-6 space-y-4">
+                <div class="flex justify-between text-lg font-bold text-espresso">
+                    <span>TOTAL</span>
+                    <span id="bag-total-price">£0</span>
+                </div>
+                <button onclick="alert('Proceeding to Secure Checkout (£0)')" class="w-full py-4 bg-tomato text-white font-bold rounded-full uppercase tracking-wider text-sm hover:bg-red-600 transition-colors shadow-lg">
+                    CHECKOUT NOW
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed bottom-6 left-6 z-50 flex flex-col space-y-3 pointer-events-none"></div>
+
+    <!-- JAVASCRIPT CONTROLLERS -->
+    <script>
+        let currentSlide = 1;
+        let slideTimer = null;
+        let wishlistCount = 0;
+        let bagItems = [];
+        let heroColor = '#E23A22';
+
+        window.onload = function() {
+            startSlideProgress();
+            initEditorialCanvas();
+            init3DCursorTracking();
+        };
+
+        function dismissAnnouncement() {
+            const bar = document.getElementById('announcement-bar');
+            bar.style.marginTop = '-50px';
+            setTimeout(() => bar.style.display = 'none', 300);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('-translate-x-full');
+        }
+
+        function startSlideProgress() {
+            clearInterval(slideTimer);
+            const progressBar = document.getElementById('slide-progress');
+            progressBar.style.width = '0%';
+            
+            let width = 0;
+            slideTimer = setInterval(() => {
+                width += 1;
+                progressBar.style.width = width + '%';
+                if (width >= 100) {
+                    nextSlide();
+                }
+            }, 90);
+        }
+
+        function setSlide(slideNum) {
+            currentSlide = slideNum;
+            const slide1 = document.getElementById('slide-1');
+            const slide2 = document.getElementById('slide-2');
+            const slideNumLabel = document.getElementById('current-slide-num');
+
+            if (currentSlide === 1) {
+                slide1.classList.remove('opacity-0', 'pointer-events-none');
+                slide1.classList.add('opacity-100');
+                slide2.classList.remove('opacity-100');
+                slide2.classList.add('opacity-0', 'pointer-events-none');
+                slideNumLabel.textContent = '01';
+            } else {
+                slide2.classList.remove('opacity-0', 'pointer-events-none');
+                slide2.classList.add('opacity-100');
+                slide1.classList.remove('opacity-100');
+                slide1.classList.add('opacity-0', 'pointer-events-none');
+                slideNumLabel.textContent = '02';
+            }
+            startSlideProgress();
+        }
+
+        function nextSlide() {
+            setSlide(currentSlide === 1 ? 2 : 1);
+        }
+
+        function prevSlide() {
+            setSlide(currentSlide === 1 ? 2 : 1);
+        }
+
+        function setHeroColor(name, hex) {
+            heroColor = hex;
+            const bgSwatch = document.getElementById('hero-bg-swatch');
+            const accent1 = document.getElementById('headphone-accent-1');
+            const accent2 = document.getElementById('headphone-accent-2');
+            
+            bgSwatch.style.backgroundColor = hex;
+            accent1.style.fill = hex;
+            accent2.style.fill = hex;
+        }
+
+        function init3DCursorTracking() {
+            const wrapper = document.getElementById('hero');
+            const container = document.getElementById('hero-product-container');
+
+            wrapper.addEventListener('mousemove', (e) => {
+                if (currentSlide !== 1) return;
+                const rect = wrapper.getBoundingClientRect();
+                const x = e.clientX - rect.left - (rect.width / 2);
+                const y = e.clientY - rect.top - (rect.height / 2);
+                
+                const rotateX = (-y / rect.height) * 30;
+                const rotateY = (x / rect.width) * 30;
+
+                container.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`;
+            });
+
+            wrapper.addEventListener('mouseleave', () => {
+                container.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            });
+        }
+
+        function initEditorialCanvas() {
+            const canvas = document.getElementById('editorial-canvas');
+            const ctx = canvas.getContext('2d');
+            let mouseX = 0, mouseY = 0;
+            let autoAngle = 0;
+
+            const img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.src = "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1600&auto=format&fit=crop";
+
+            function resize() {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                if (img.complete && img.naturalWidth !== 0) {
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    
+                    // Apply Grayscale overlay over whole image
+                    ctx.fillStyle = "rgba(10, 5, 4, 0.75)";
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    // Reveal Original Color in Spotlight Lens
+                    let spotX = mouseX || (canvas.width / 2 + Math.cos(autoAngle) * 150);
+                    let spotY = mouseY || (canvas.height / 2 + Math.sin(autoAngle) * 100);
+                    autoAngle += 0.02;
+
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.arc(spotX, spotY, 150, 0, Math.PI * 2);
+                    ctx.clip();
+
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    
+                    // Add subtle warmth in spotlight
+                    const grad = ctx.createRadialGradient(spotX, spotY, 10, spotX, spotY, 160);
+                    grad.addColorStop(0, "rgba(226, 58, 34, 0.2)");
+                    grad.addColorStop(1, "transparent");
+                    ctx.fillStyle = grad;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    ctx.restore();
+                } else {
+                    ctx.fillStyle = '#111827';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                }
+
+                requestAnimationFrame(draw);
+            }
+            draw();
+
+            canvas.parentElement.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouseX = e.clientX - rect.left;
+                mouseY = e.clientY - rect.top;
+            });
+        }
+
+        function scrollCarousel(distance) {
+            const carousel = document.getElementById('product-carousel');
+            carousel.scrollBy({ left: distance, behavior: 'smooth' });
+        }
+
+        function recolorProduct(productId, colorHex, blobId, blobColor) {
+            document.getElementById(`${productId}-cup-1`).style.fill = colorHex;
+            document.getElementById(`${productId}-cup-2`).style.fill = colorHex;
+            document.getElementById(blobId).style.backgroundColor = blobColor;
+        }
+
+        function toggleWishlist(btn) {
+            const svg = btn.querySelector('svg');
+            const badge = document.getElementById('wishlist-badge');
+
+            if (svg.getAttribute('fill') === 'currentColor') {
+                svg.setAttribute('fill', 'none');
+                svg.classList.remove('text-tomato');
+                wishlistCount = Math.max(0, wishlistCount - 1);
+            } else {
+                svg.setAttribute('fill', 'currentColor');
+                svg.classList.add('text-tomato');
+                wishlistCount++;
+                showToast("Added to Wishlist ❤️");
+            }
+
+            badge.textContent = wishlistCount;
+            if (wishlistCount > 0) {
+                badge.classList.remove('scale-0');
+            } else {
+                badge.classList.add('scale-0');
+            }
+        }
+
+        function addToBag(title, price) {
+            bagItems.push({ title, price });
+            updateBagUI();
+            showToast(`Added ${title} to Bag! 🎧`);
+        }
+
+        function updateBagUI() {
+            const badge = document.getElementById('bag-badge');
+            const container = document.getElementById('bag-items-list');
+            const totalPriceEl = document.getElementById('bag-total-price');
+            const emptyText = document.getElementById('empty-bag-text');
+
+            badge.textContent = bagItems.length;
+
+            if (bagItems.length === 0) {
+                emptyText.style.display = 'block';
+                container.innerHTML = '';
+                totalPriceEl.textContent = '£0';
+                return;
+            }
+
+            emptyText.style.display = 'none';
+            container.innerHTML = '';
+
+            let total = 0;
+            bagItems.forEach((item, index) => {
+                const numericPrice = parseInt(item.price.replace('£', ''));
+                total += numericPrice;
+
+                const div = document.createElement('div');
+                div.className = 'flex justify-between items-center p-4 bg-neutral-50 rounded-2xl border border-neutral-100';
+                div.innerHTML = `
+                    <div>
+                        <h4 class="font-bold text-espresso">${item.title}</h4>
+                        <span class="text-sm font-semibold text-tomato">${item.price}</span>
+                    </div>
+                    <button onclick="removeFromBag(${index})" class="text-neutral-400 hover:text-red-500 p-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+
+            totalPriceEl.textContent = `£${total}`;
+        }
+
+        function removeFromBag(index) {
+            bagItems.splice(index, 1);
+            updateBagUI();
+        }
+
+        function openWishlistDrawer() {
+            document.getElementById('wishlist-drawer').classList.remove('translate-x-full');
+        }
+        function closeWishlistDrawer() {
+            document.getElementById('wishlist-drawer').classList.add('translate-x-full');
+        }
+        function openBagDrawer() {
+            document.getElementById('bag-drawer').classList.remove('translate-x-full');
+        }
+        function closeBagDrawer() {
+            document.getElementById('bag-drawer').classList.add('translate-x-full');
+        }
+        function openQuickShopModal() {
+            addToBag('OTO One Headphones', '£249');
+            openBagDrawer();
+        }
+        function openSearchModal() {
+            showToast("Search active: type anywhere to filter audio gear.");
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-espresso text-white text-sm font-bold px-5 py-3 rounded-2xl shadow-2xl border border-white/20 transform translate-y-10 opacity-0 transition-all duration-300 flex items-center space-x-3 pointer-events-auto';
+            toast.innerHTML = `
+                <span class="w-2 h-2 rounded-full bg-tomato"></span>
+                <span>${message}</span>
+            `;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const input = document.getElementById('newsletter-email');
+            showToast(`Subscribed ${input.value} to OTO London Drops! 🎉`);
+            input.value = '';
+        }
+
+        window.addEventListener('scroll', () => {
+            const headline = document.getElementById('expanding-headline');
+            if (headline) {
+                const scrollPos = window.scrollY;
+                const letterSpacing = Math.min(24, Math.max(0, (scrollPos - 1200) * 0.02));
+                headline.style.letterSpacing = `${letterSpacing}px`;
+            }
+        });
+    </script>
+</body>
+</html>

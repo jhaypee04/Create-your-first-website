@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA ATELIER | High Fashion & Haute Couture</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FAF4E5',
+                            300: '#E5C983',
+                            400: '#D4AF37',
+                            500: '#C59B27',
+                            600: '#A37C1E'
+                        },
+                        charcoal: {
+                            800: '#18181A',
+                            900: '#0F0F10',
+                            950: '#09090A'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar & glassmorphism styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0f10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a2e;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+        .glass-panel {
+            background: rgba(24, 24, 26, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0CA 0%, #D4AF37 50%, #997519 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-charcoal-950 text-stone-200 font-sans antialiased selection:bg-gold-400 selection:text-charcoal-950">
+
+    <!-- Top Announcement Bar -->
+    <div id="announcement-bar" class="bg-gradient-to-r from-charcoal-900 via-gold-600 to-charcoal-900 text-stone-100 text-xs py-2 px-4 text-center font-medium tracking-widest uppercase flex justify-between items-center z-50 relative border-b border-gold-500/20">
+        <div class="hidden sm:block text-xs opacity-75">EXCLUSIVITY REFINED</div>
+        <div class="mx-auto sm:mx-0">
+            <span>COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $500</span>
+            <span class="mx-2 text-gold-300">•</span>
+            <button onclick="openModal('promo-modal')" class="underline hover:text-gold-300 transition-colors">USE CODE: <span class="font-bold">LUXURY15</span></button>
+        </div>
+        <div class="hidden md:flex items-center space-x-4 text-xs">
+            <select id="currency-select" onchange="changeCurrency(this.value)" class="bg-transparent border-none text-xs text-stone-300 focus:outline-none cursor-pointer">
+                <option value="USD" class="bg-charcoal-900 text-white">$ USD</option>
+                <option value="EUR" class="bg-charcoal-900 text-white">€ EUR</option>
+                <option value="GBP" class="bg-charcoal-900 text-white">£ GBP</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-stone-800 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Mobile Menu Toggle Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden text-stone-300 hover:text-gold-400 p-2" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+
+                <!-- Navigation Links Left -->
+                <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest font-medium">
+                    <a href="#collections" class="text-stone-300 hover:text-gold-400 transition-colors">Collections</a>
+                    <a href="#best-sellers" class="text-stone-300 hover:text-gold-400 transition-colors">Haute Couture</a>
+                    <a href="#style-quiz" class="text-stone-300 hover:text-gold-400 transition-colors flex items-center">
+                        <span>Style Finder</span>
+                        <span class="ml-1 px-1.5 py-0.5 text-[9px] bg-gold-500/20 text-gold-300 border border-gold-400/30 rounded">NEW</span>
+                    </a>
+                    <a href="#concierge" class="text-stone-300 hover:text-gold-400 transition-colors">Atelier Services</a>
+                </nav>
+
+                <!-- Brand Logo -->
+                <div class="text-center">
+                    <a href="#" class="block group">
+                        <span class="font-serif text-2xl sm:text-3xl tracking-[0.25em] font-bold gold-gradient-text uppercase block">AURA</span>
+                        <span class="text-[9px] tracking-[0.4em] text-stone-400 uppercase font-light block -mt-1 group-hover:text-gold-300 transition-colors">A T E L I E R</span>
+                    </a>
+                </div>
+
+                <!-- Icons Right -->
+                <div class="flex items-center space-x-5">
+                    <button onclick="openSearchModal()" class="text-stone-300 hover:text-gold-400 p-1.5 transition-colors" title="Search">
+                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                    </button>
+                    
+                    <button onclick="toggleWishlistDrawer()" class="text-stone-300 hover:text-gold-400 p-1.5 transition-colors relative" title="Wishlist">
+                        <i class="fa-regular fa-heart text-lg"></i>
+                        <span id="wishlist-badge" class="hidden absolute -top-1 -right-1 bg-gold-500 text-charcoal-950 font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                    </button>
+
+                    <button onclick="toggleCartDrawer()" class="text-stone-300 hover:text-gold-400 p-1.5 transition-colors relative" title="Shopping Bag">
+                        <i class="fa-solid fa-bag-shopping text-lg"></i>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-gold-400 text-charcoal-950 font-bold text-[10px] w-4.5 h-4.5 rounded-full flex items-center justify-center px-1">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="fixed inset-0 bg-charcoal-950/95 z-50 backdrop-blur-xl transform -translate-x-full transition-transform duration-300 flex flex-col justify-between p-6 lg:hidden">
+        <div>
+            <div class="flex justify-between items-center mb-8 pb-4 border-b border-stone-800">
+                <span class="font-serif text-2xl gold-gradient-text tracking-widest">AURA</span>
+                <button onclick="toggleMobileMenu()" class="text-stone-400 hover:text-white p-2">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col space-y-6 text-sm uppercase tracking-widest font-medium">
+                <a href="#collections" onclick="toggleMobileMenu()" class="text-stone-200 hover:text-gold-400">Collections</a>
+                <a href="#best-sellers" onclick="toggleMobileMenu()" class="text-stone-200 hover:text-gold-400">Haute Couture</a>
+                <a href="#style-quiz" onclick="toggleMobileMenu()" class="text-stone-200 hover:text-gold-400 text-gold-300">Personal Style Quiz</a>
+                <a href="#testimonials" onclick="toggleMobileMenu()" class="text-stone-200 hover:text-gold-400">Press & Reviews</a>
+                <a href="#concierge" onclick="toggleMobileMenu()" class="text-stone-200 hover:text-gold-400">Atelier Concierge</a>
+            </nav>
+        </div>
+        <div class="border-t border-stone-800 pt-6">
+            <p class="text-xs text-stone-500 uppercase tracking-widest mb-3">VIP Styling Hotline</p>
+            <a href="tel:+18005550199" class="text-gold-400 font-serif text-lg flex items-center gap-2"><i class="fa-solid fa-phone"></i> +1 (800) 555-AURA</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Imagery with Dark Gradient Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop" 
+                 alt="High Fashion Model" 
+                 class="w-full h-full object-cover object-center scale-105 transform animate-pulse duration-[10000ms]">
+            <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/60 to-charcoal-950/40"></div>
+            <div class="absolute inset-0 bg-radial-gradient from-transparent via-charcoal-950/30 to-charcoal-950"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-12 pb-20">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-gold-400/30 bg-charcoal-900/80 mb-6 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
+                <span class="text-xs font-medium tracking-widest uppercase text-gold-300">Autumn / Winter 2026 Couture Drop</span>
+            </div>
+            
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-tight mb-6 font-normal">
+                ELEGANCE IN <br><span class="italic font-light gold-gradient-text">ITS PUREST FORM</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-stone-300 text-base sm:text-lg mb-10 font-light leading-relaxed">
+                Handcrafted garments engineered with rare silks, Italian wools, and tailored precision for those who demand nothing less than perfection.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+                <a href="#best-sellers" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-gold-400 to-gold-500 text-charcoal-950 text-xs font-bold uppercase tracking-[0.2em] rounded hover:from-gold-300 hover:to-gold-400 transition-all duration-300 shadow-lg shadow-gold-500/10 gold-border-glow">
+                    Explore New Collection
+                </a>
+                <a href="#style-quiz" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-stone-600 text-stone-200 text-xs font-bold uppercase tracking-[0.2em] rounded hover:border-gold-400 hover:text-gold-300 transition-all duration-300 backdrop-blur-sm">
+                    Take Style Quiz
+                </a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pt-10 border-t border-stone-800/80 max-w-4xl mx-auto">
+                <div>
+                    <p class="font-serif text-2xl sm:text-3xl font-bold text-white">100%</p>
+                    <p class="text-[11px] uppercase tracking-wider text-stone-400 mt-1">Ethical Italian Silk</p>
+                </div>
+                <div>
+                    <p class="font-serif text-2xl sm:text-3xl font-bold text-white">4.9 / 5</p>
+                    <p class="text-[11px] uppercase tracking-wider text-stone-400 mt-1">Client Satisfaction</p>
+                </div>
+                <div>
+                    <p class="font-serif text-2xl sm:text-3xl font-bold text-white">48hr</p>
+                    <p class="text-[11px] uppercase tracking-wider text-stone-400 mt-1">Bespoke Fitting Service</p>
+                </div>
+                <div>
+                    <p class="font-serif text-2xl sm:text-3xl font-bold text-white">50k+</p>
+                    <p class="text-[11px] uppercase tracking-wider text-stone-400 mt-1">Global High-Fashion Clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collections Section -->
+    <section id="collections" class="py-24 bg-charcoal-900 border-t border-b border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.3em] text-gold-400 block mb-2 font-medium">Curated Pillars</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-normal text-stone-100">Browse by Collection</h2>
+                </div>
+                <p class="text-stone-400 text-sm max-w-md mt-4 md:mt-0 font-light">
+                    From bespoke red-carpet gala gowns to refined everyday cashmere tailored for modern icons.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Collection Card 1 -->
+                <div class="group relative h-[480px] rounded-lg overflow-hidden cursor-pointer border border-stone-800 hover:border-gold-500/50 transition-all duration-500">
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1000&auto=format&fit=crop" 
+                         alt="Haute Couture" 
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8">
+                        <span class="text-[10px] tracking-widest text-gold-300 uppercase font-semibold">Flagship Range</span>
+                        <h3 class="font-serif text-2xl font-normal text-white mt-1 mb-2">Haute Couture</h3>
+                        <p class="text-xs text-stone-300 font-light mb-4 line-clamp-2">Hand-embroidered silks and archival cuts crafted for extraordinary moments.</p>
+                        <span class="inline-flex items-center text-xs text-gold-400 font-medium tracking-wider group-hover:translate-x-2 transition-transform duration-300">
+                            VIEW CATEGORY <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Collection Card 2 -->
+                <div class="group relative h-[480px] rounded-lg overflow-hidden cursor-pointer border border-stone-800 hover:border-gold-500/50 transition-all duration-500">
+                    <img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?q=80&w=1000&auto=format&fit=crop" 
+                         alt="Everyday Luxury" 
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8">
+                        <span class="text-[10px] tracking-widest text-gold-300 uppercase font-semibold">Essential Wardrobe</span>
+                        <h3 class="font-serif text-2xl font-normal text-white mt-1 mb-2">Everyday Luxury</h3>
+                        <p class="text-xs text-stone-300 font-light mb-4 line-clamp-2">Ultra-soft cashmere knits, tailored blazers, and minimalist elegance.</p>
+                        <span class="inline-flex items-center text-xs text-gold-400 font-medium tracking-wider group-hover:translate-x-2 transition-transform duration-300">
+                            VIEW CATEGORY <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Collection Card 3 -->
+                <div class="group relative h-[480px] rounded-lg overflow-hidden cursor-pointer border border-stone-800 hover:border-gold-500/50 transition-all duration-500">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop" 
+                         alt="High Accessories" 
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/20 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-8">
+                        <span class="text-[10px] tracking-widest text-gold-300 uppercase font-semibold">Leather & Jewelry</span>
+                        <h3 class="font-serif text-2xl font-normal text-white mt-1 mb-2">Atelier Accessories</h3>
+                        <p class="text-xs text-stone-300 font-light mb-4 line-clamp-2">Full-grain Italian leather bags, silk scarves, and artisan jewelry.</p>
+                        <span class="inline-flex items-center text-xs text-gold-400 font-medium tracking-wider group-hover:translate-x-2 transition-transform duration-300">
+                            VIEW CATEGORY <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section id="best-sellers" class="py-24 bg-charcoal-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-medium block mb-2">Most Coveted Pieces</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-normal text-white">The Iconic Selection</h2>
+                <div class="w-12 h-0.5 bg-gold-400 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Filter Categories Pill Buttons -->
+            <div class="flex justify-center space-x-2 sm:space-x-4 mb-12 flex-wrap gap-y-2">
+                <button onclick="filterProducts('all')" class="product-filter-btn active px-5 py-2 text-xs uppercase tracking-widest rounded-full border border-gold-400 bg-gold-400 text-charcoal-950 font-bold transition-all">All</button>
+                <button onclick="filterProducts('dresses')" class="product-filter-btn px-5 py-2 text-xs uppercase tracking-widest rounded-full border border-stone-800 text-stone-300 hover:border-gold-400 transition-all">Dresses</button>
+                <button onclick="filterProducts('suits')" class="product-filter-btn px-5 py-2 text-xs uppercase tracking-widest rounded-full border border-stone-800 text-stone-300 hover:border-gold-400 transition-all">Tailored Suits</button>
+                <button onclick="filterProducts('outerwear')" class="product-filter-btn px-5 py-2 text-xs uppercase tracking-widest rounded-full border border-stone-800 text-stone-300 hover:border-gold-400 transition-all">Outerwear</button>
+            </div>
+
+            <!-- Dynamic Product Grid Container -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Rendered dynamically by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Style Quiz / Lookbook Recommendation Widget -->
+    <section id="style-quiz" class="py-20 bg-gradient-to-b from-charcoal-900 to-charcoal-950 border-t border-b border-stone-800 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel p-8 sm:p-12 rounded-2xl border border-gold-500/20 text-center relative overflow-hidden">
+                <div class="absolute -top-12 -right-12 w-40 h-40 bg-gold-500/10 rounded-full blur-3xl"></div>
+                
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-medium">Interactive AI Stylist</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-normal text-white mt-2 mb-4">Find Your Signature Look</h2>
+                <p class="text-stone-300 text-sm max-w-xl mx-auto mb-8 font-light">
+                    Answer 3 quick styling questions to receive a tailored wardrobe selection curated by our head creative directors.
+                </p>
+
+                <!-- Quiz Container -->
+                <div id="quiz-container" class="bg-charcoal-950/80 p-6 sm:p-8 rounded-xl border border-stone-800 text-left">
+                    <!-- Step 1 -->
+                    <div id="quiz-step-1" class="quiz-step">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs text-gold-400 font-semibold tracking-wider">QUESTION 1 OF 3</span>
+                            <span class="text-xs text-stone-500">33% Completed</span>
+                        </div>
+                        <h3 class="text-lg font-serif text-white mb-6">What is the primary occasion for your upcoming wardrobe addition?</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <button onclick="nextQuizStep(1, 'gala')" class="p-4 rounded-lg border border-stone-800 hover:border-gold-400 bg-charcoal-900 text-stone-200 text-left hover:bg-charcoal-800 transition-all flex flex-col justify-between h-32">
+                                <i class="fa-solid fa-champagne-glasses text-gold-400 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-sm">Gala & Formal Event</p>
+                                    <p class="text-[11px] text-stone-400 mt-1">High glamour, couture silhouettes</p>
+                                </div>
+                            </button>
+                            <button onclick="nextQuizStep(1, 'executive')" class="p-4 rounded-lg border border-stone-800 hover:border-gold-400 bg-charcoal-900 text-stone-200 text-left hover:bg-charcoal-800 transition-all flex flex-col justify-between h-32">
+                                <i class="fa-solid fa-briefcase text-gold-400 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-sm">Executive & Business</p>
+                                    <p class="text-[11px] text-stone-400 mt-1">Structured blazers, refined cuts</p>
+                                </div>
+                            </button>
+                            <button onclick="nextQuizStep(1, 'resort')" class="p-4 rounded-lg border border-stone-800 hover:border-gold-400 bg-charcoal-900 text-stone-200 text-left hover:bg-charcoal-800 transition-all flex flex-col justify-between h-32">
+                                <i class="fa-solid fa-plane text-gold-400 text-xl"></i>
+                                <div>
+                                    <p class="font-medium text-sm">Resort & Private Travel</p>
+                                    <p class="text-[11px] text-stone-400 mt-1">Relaxed silks, effortless luxury</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div id="quiz-step-2" class="quiz-step hidden">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs text-gold-400 font-semibold tracking-wider">QUESTION 2 OF 3</span>
+                            <span class="text-xs text-stone-500">66% Completed</span>
+                        </div>
+                        <h3 class="text-lg font-serif text-white mb-6">Which color palette reflects your aesthetic identity?</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <button onclick="nextQuizStep(2, 'monochrome')" class="p-4 rounded-lg border border-stone-800 hover:border-gold-400 bg-charcoal-900 text-stone-200 text-left hover:bg-charcoal-800 transition-all">
+                                <div class="flex space-x-2 mb-3">
+                                    <span class="w-5 h-5 rounded-full bg-black border border-stone-700"></span>
+                                    <span class="w-5 h-5 rounded-full bg-stone-300"></span>
+                                    <span class="w-5 h-5 rounded-full bg-stone-800"></span>
+                                </div>
+                                <p class="font-medium text-sm">Monochromatic Neutral</p>
+                                <p class="text-[11px] text-stone-400 mt-1">Midnight, ivory, onyx</p>
+                            </button>
+                            <button onclick="nextQuizStep(2, 'jewel')" class="p-4 rounded-lg border border-stone-800 hover:border-gold-400 bg-charcoal-900 text-stone-200 text-left hover:bg-charcoal-800 transition-all">
+                                <div class="flex space-x-2 mb-3">
+                                    <span class="w-5 h-5 rounded-full bg-emerald-900"></span>
+                                    <span class="w-5 h-5 rounded-full bg-ruby-900 bg-red-900"></span>
+                                    <span class="w-5 h-5 rounded-full bg-amber-600"></span>
+                                </div>
+                                <p class="font-medium text-sm">Deep Jewel Tones</p>
+                                <p class="text-[11px] text-stone-400 mt-1">Emerald, burgundy, gold</p>
+                            </button>
+                            <button onclick="nextQuizStep(2, 'earth')" class="p-4 rounded-lg border border-stone-800 hover:border-gold-400 bg-charcoal-900 text-stone-200 text-left hover:bg-charcoal-800 transition-all">
+                                <div class="flex space-x-2 mb-3">
+                                    <span class="w-5 h-5 rounded-full bg-amber-950"></span>
+                                    <span class="w-5 h-5 rounded-full bg-stone-500"></span>
+                                    <span class="w-5 h-5 rounded-full bg-yellow-900"></span>
+                                </div>
+                                <p class="font-medium text-sm">Warm Organic Tones</p>
+                                <p class="text-[11px] text-stone-400 mt-1">Camel, espresso, terracotta</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div id="quiz-step-3" class="quiz-step hidden">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs text-gold-400 font-semibold tracking-wider">QUESTION 3 OF 3</span>
+                            <span class="text-xs text-stone-500">99% Completed</span>
+                        </div>
+                        <h3 class="text-lg font-serif text-white mb-6">What fit preference best aligns with your personal comfort?</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <button onclick="finishQuiz('tailored')" class="p-4 rounded-lg border border-stone-800 hover:border-gold-400 bg-charcoal-900 text-stone-200 text-left hover:bg-charcoal-800 transition-all">
+                                <p class="font-medium text-sm">Precision Tailored</p>
+                                <p class="text-[11px] text-stone-400 mt-1">Sculpted, form-accentuating cuts</p>
+                            </button>
+                            <button onclick="finishQuiz('fluid')" class="p-4 rounded-lg border border-stone-800 hover:border-gold-400 bg-charcoal-900 text-stone-200 text-left hover:bg-charcoal-800 transition-all">
+                                <p class="font-medium text-sm">Fluid & Draped</p>
+                                <p class="text-[11px] text-stone-400 mt-1">Graceful movement and soft silhouettes</p>
+                            </button>
+                            <button onclick="finishQuiz('oversized')" class="p-4 rounded-lg border border-stone-800 hover:border-gold-400 bg-charcoal-900 text-stone-200 text-left hover:bg-charcoal-800 transition-all">
+                                <p class="font-medium text-sm">Modern Oversized</p>
+                                <p class="text-[11px] text-stone-400 mt-1">Avant-garde proportions and relaxed drape</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Results -->
+                    <div id="quiz-results" class="hidden text-center py-6">
+                        <div class="inline-flex p-3 rounded-full bg-gold-400/20 text-gold-300 mb-4">
+                            <i class="fa-solid fa-sparkles text-2xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl text-white mb-2">Your Stylist Curation Is Ready</h3>
+                        <p class="text-xs text-stone-400 mb-6">Based on your choices, we recommend our <span id="quiz-recommendation-title" class="text-gold-300 font-semibold">Haute Evening & Blazer Ensemble</span>.</p>
+                        
+                        <div id="quiz-recommendation-card" class="bg-charcoal-900 p-4 rounded-lg border border-gold-500/30 max-w-sm mx-auto flex items-center space-x-4 text-left mb-6">
+                            <!-- Injected dynamically -->
+                        </div>
+
+                        <button onclick="resetQuiz()" class="text-xs uppercase tracking-widest text-stone-400 hover:text-gold-400 underline">
+                            Retake Style Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Press & Customer Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-charcoal-950 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Press Highlights Banner -->
+            <div class="border-b border-stone-800 pb-16 mb-20">
+                <p class="text-center text-xs uppercase tracking-[0.3em] text-stone-500 mb-8 font-medium">Acclaimed by Global Fashion Press</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="text-center font-serif text-2xl sm:text-3xl text-stone-300 tracking-widest italic font-bold">VOGUE</div>
+                    <div class="text-center font-serif text-2xl sm:text-3xl text-stone-300 tracking-widest uppercase font-black">GQ</div>
+                    <div class="text-center font-serif text-xl sm:text-2xl text-stone-300 tracking-widest uppercase font-medium">Harper's BAZAAR</div>
+                    <div class="text-center font-serif text-2xl sm:text-3xl text-stone-300 tracking-wider font-light">ELLE</div>
+                </div>
+            </div>
+
+            <!-- Customer Reviews Carousel Container -->
+            <div class="max-w-4xl mx-auto text-center relative">
+                <i class="fa-solid fa-quote-left text-4xl sm:text-6xl text-gold-500/20 mb-6 block"></i>
+                
+                <div id="testimonial-slider" class="min-h-[160px] flex items-center justify-center">
+                    <!-- Testimonial Item 1 -->
+                    <div class="testimonial-slide active transition-opacity duration-500">
+                        <p class="font-serif text-xl sm:text-3xl font-light italic text-stone-200 leading-relaxed mb-6">
+                            "The craftsmanship on the Silk Gala Evening Dress is breathtaking. It feels tailored specifically to my frame and garnered endless compliments in Paris."
+                        </p>
+                        <div class="flex items-center justify-center space-x-1 text-gold-400 text-xs mb-2">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-xs uppercase tracking-widest text-gold-300 font-semibold">Lady Eleanor Vance</p>
+                        <p class="text-[11px] text-stone-500">Verified VIP Client — London</p>
+                    </div>
+                </div>
+
+                <!-- Slider Indicators -->
+                <div class="flex justify-center space-x-2 mt-8">
+                    <button onclick="setTestimonial(0)" class="t-dot w-8 h-1 bg-gold-400 rounded-full"></button>
+                    <button onclick="setTestimonial(1)" class="t-dot w-2 h-1 bg-stone-700 rounded-full hover:bg-gold-400/50"></button>
+                    <button onclick="setTestimonial(2)" class="t-dot w-2 h-1 bg-stone-700 rounded-full hover:bg-gold-400/50"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Value Proposition Boosters -->
+    <section id="concierge" class="py-16 bg-charcoal-900 border-t border-b border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="flex items-start space-x-4 p-4 rounded-lg bg-charcoal-950/40 border border-stone-800/60">
+                    <div class="p-3 bg-gold-500/10 text-gold-400 rounded-lg shrink-0">
+                        <i class="fa-solid fa-plane-sharp text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg text-white font-medium">Worldwide Shipping</h4>
+                        <p class="text-xs text-stone-400 mt-1 font-light">Complimentary express air shipping with real-time tracking on all luxury orders.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4 p-4 rounded-lg bg-charcoal-950/40 border border-stone-800/60">
+                    <div class="p-3 bg-gold-500/10 text-gold-400 rounded-lg shrink-0">
+                        <i class="fa-solid fa-rotate-left text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg text-white font-medium">30-Day Easy Returns</h4>
+                        <p class="text-xs text-stone-400 mt-1 font-light">Hassle-free complimentary return pickup service from your home or office.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4 p-4 rounded-lg bg-charcoal-950/40 border border-stone-800/60">
+                    <div class="p-3 bg-gold-500/10 text-gold-400 rounded-lg shrink-0">
+                        <i class="fa-solid fa-shield-halved text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg text-white font-medium">Encrypted Checkout</h4>
+                        <p class="text-xs text-stone-400 mt-1 font-light">256-Bit SSL protection supporting Apple Pay, Visa, Mastercard, and Amex.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4 p-4 rounded-lg bg-charcoal-950/40 border border-stone-800/60">
+                    <div class="p-3 bg-gold-500/10 text-gold-400 rounded-lg shrink-0">
+                        <i class="fa-solid fa-headset text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg text-white font-medium">24/7 VIP Concierge</h4>
+                        <p class="text-xs text-stone-400 mt-1 font-light">Direct phone & chat access to personal fashion stylists anytime.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup Section -->
+    <section class="py-20 bg-gradient-to-r from-charcoal-950 via-charcoal-900 to-charcoal-950 border-b border-stone-800 text-center relative overflow-hidden">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-medium block mb-2">Join the Inner Circle</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-normal text-white mb-4">Enjoy 15% Off Your First Order</h2>
+            <p class="text-stone-300 text-sm max-w-lg mx-auto mb-8 font-light">
+                Subscribe to receive private invitations to runway previews, private sales, and seasonal lookbooks.
+            </p>
+
+            <form onsubmit="handleNewsletterSubmit(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input type="email" required placeholder="Enter your email address..." class="px-4 py-3 bg-charcoal-950 border border-stone-700 rounded text-stone-200 text-sm focus:outline-none focus:border-gold-400 grow">
+                <button type="submit" class="px-6 py-3 bg-gold-400 text-charcoal-950 font-bold text-xs uppercase tracking-widest rounded hover:bg-gold-300 transition-colors shrink-0">
+                    Unlock VIP Access
+                </button>
+            </form>
+            <p class="text-[10px] text-stone-500 mt-3">By joining you agree to our Privacy Policy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Main Footer -->
+    <footer class="bg-charcoal-950 text-stone-400 text-xs border-t border-stone-800/80 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-10 pb-12 border-b border-stone-800">
+                
+                <div class="md:col-span-2">
+                    <a href="#" class="inline-block mb-4">
+                        <span class="font-serif text-2xl tracking-[0.25em] font-bold gold-gradient-text uppercase block">AURA</span>
+                        <span class="text-[9px] tracking-[0.4em] text-stone-400 uppercase font-light block -mt-1">A T E L I E R</span>
+                    </a>
+                    <p class="text-stone-400 text-xs font-light max-w-sm mb-6 leading-relaxed">
+                        AURA Atelier represents the pinnacle of modern luxury fashion—fusing timeless European craftsmanship with bold contemporary silhouettes.
+                    </p>
+                    <div class="flex space-x-4 text-stone-400">
+                        <a href="#" class="hover:text-gold-400 transition-colors text-base" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-gold-400 transition-colors text-base" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                        <a href="#" class="hover:text-gold-400 transition-colors text-base" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="hover:text-gold-400 transition-colors text-base" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-white text-xs uppercase tracking-widest font-semibold mb-4">Boutique</p>
+                    <ul class="space-y-2.5">
+                        <li><a href="#best-sellers" class="hover:text-gold-400 transition-colors">Haute Couture</a></li>
+                        <li><a href="#best-sellers" class="hover:text-gold-400 transition-colors">Tailored Suits</a></li>
+                        <li><a href="#best-sellers" class="hover:text-gold-400 transition-colors">Silk Evening Wear</a></li>
+                        <li><a href="#best-sellers" class="hover:text-gold-400 transition-colors">Leather Goods</a></li>
+                        <li><a href="#best-sellers" class="hover:text-gold-400 transition-colors">Fine Jewelry</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="text-white text-xs uppercase tracking-widest font-semibold mb-4">Client Care</p>
+                    <ul class="space-y-2.5">
+                        <li><a href="#concierge" class="hover:text-gold-400 transition-colors">Book Personal Styling</a></li>
+                        <li><a href="#concierge" class="hover:text-gold-400 transition-colors">Bespoke Fits</a></li>
+                        <li><a href="#concierge" class="hover:text-gold-400 transition-colors">Shipping & Customs</a></li>
+                        <li><a href="#concierge" class="hover:text-gold-400 transition-colors">Returns & Guarantee</a></li>
+                        <li><a href="#concierge" class="hover:text-gold-400 transition-colors">Garment Care Guide</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p class="text-white text-xs uppercase tracking-widest font-semibold mb-4">Flagship Atelier</p>
+                    <p class="text-stone-400 leading-relaxed font-light mb-2">
+                        740 Madison Avenue<br>New York, NY 10065
+                    </p>
+                    <p class="text-stone-400 leading-relaxed font-light">
+                        <span class="text-white">Hours:</span> Mon - Sat, 10am - 7pm<br>By Appointment Only
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-[11px] text-stone-500">
+                <p>&copy; 2026 AURA Atelier Inc. All Rights Reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-stone-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-stone-400">Terms of Service</a>
+                    <a href="#" class="hover:text-stone-400">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OUT SHOPPING CART DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none transition-opacity duration-300 opacity-0">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm pointer-events-auto" onclick="toggleCartDrawer()"></div>
+        
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10 pointer-events-auto">
+            <div class="w-screen max-w-md bg-charcoal-900 border-l border-stone-800 text-stone-200 flex flex-col justify-between shadow-2xl">
+                
+                <!-- Drawer Header -->
+                <div class="p-6 border-b border-stone-800 flex justify-between items-center">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-bag-shopping text-gold-400"></i>
+                        <h3 class="font-serif text-xl text-white font-normal">Your Shopping Bag</h3>
+                        <span id="cart-drawer-count" class="text-xs bg-gold-500/20 text-gold-300 px-2 py-0.5 rounded-full">(0)</span>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-stone-400 hover:text-white p-2">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Free Shipping Progress Bar -->
+                <div class="bg-charcoal-950 p-4 border-b border-stone-800 text-xs">
+                    <div class="flex justify-between mb-1.5 font-medium">
+                        <span id="shipping-progress-text">Add $500.00 more for Free Express Shipping</span>
+                        <span id="shipping-progress-pct" class="text-gold-400">0%</span>
+                    </div>
+                    <div class="w-full bg-stone-800 h-1.5 rounded-full overflow-hidden">
+                        <div id="shipping-bar" class="bg-gradient-to-r from-gold-500 to-gold-300 h-full w-0 transition-all duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Cart Items List Container -->
+                <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-6">
+                    <!-- Dynamic cart items rendered here -->
+                </div>
+
+                <!-- Cart Summary & Checkout Footer -->
+                <div class="p-6 border-t border-stone-800 bg-charcoal-950 space-y-4">
+                    
+                    <!-- Promo Code Input -->
+                    <div class="flex space-x-2">
+                        <input type="text" id="promo-input" placeholder="Promo code (e.g. LUXURY15)" class="bg-charcoal-900 border border-stone-800 rounded px-3 py-2 text-xs text-stone-200 uppercase grow focus:outline-none focus:border-gold-400">
+                        <button onclick="applyPromoCode()" class="bg-stone-800 text-stone-200 text-xs px-4 py-2 rounded font-semibold hover:bg-gold-400 hover:text-charcoal-950 transition-colors">Apply</button>
+                    </div>
+
+                    <!-- Price Calculations -->
+                    <div class="space-y-1.5 text-xs text-stone-400 pt-2">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal" class="text-stone-200">$0.00</span>
+                        </div>
+                        <div id="discount-row" class="flex justify-between text-gold-400 hidden">
+                            <span>VIP Discount (15%)</span>
+                            <span id="cart-discount">-$0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Estimated Shipping</span>
+                            <span id="cart-shipping-cost" class="text-stone-200">Calculated at checkout</span>
+                        </div>
+                        <div class="flex justify-between text-base text-white font-serif font-bold pt-2 border-t border-stone-800">
+                            <span>Estimated Total</span>
+                            <span id="cart-total" class="gold-gradient-text">$0.00</span>
+                        </div>
+                    </div>
+
+                    <button onclick="checkout()" class="w-full py-4 bg-gradient-to-r from-gold-400 to-gold-500 text-charcoal-950 font-bold text-xs uppercase tracking-[0.2em] rounded hover:from-gold-300 hover:to-gold-400 transition-all flex items-center justify-center space-x-2 shadow-lg shadow-gold-500/10">
+                        <i class="fa-solid fa-lock text-xs"></i>
+                        <span>Proceed to Secure Checkout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT QUICK-VIEW MODAL -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-charcoal-900 border border-stone-800 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl relative text-stone-200 flex flex-col md:flex-row max-h-[90vh]">
+            
+            <button onclick="closeModal('product-modal')" class="absolute top-4 right-4 z-10 text-stone-400 hover:text-white p-2 bg-charcoal-950/60 rounded-full">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Product Image Side -->
+            <div class="w-full md:w-1/2 h-64 md:h-auto bg-charcoal-950 relative overflow-hidden">
+                <img id="modal-product-img" src="" alt="Product" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Product Details Side -->
+            <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
+                <div>
+                    <span id="modal-product-category" class="text-[10px] uppercase tracking-widest text-gold-400 font-semibold block mb-1">HAUTE COUTURE</span>
+                    <h3 id="modal-product-title" class="font-serif text-2xl font-normal text-white mb-2">Silk Evening Dress</h3>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span id="modal-product-price" class="font-serif text-xl text-gold-300 font-semibold">$2,450.00</span>
+                        <div class="flex items-center text-xs text-gold-400">
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-stone-400 ml-1 text-xs">(4.9 / 5 reviews)</span>
+                        </div>
+                    </div>
+
+                    <p id="modal-product-desc" class="text-xs text-stone-300 font-light leading-relaxed mb-6">
+                        Crafted in Milan from 100% mulberry silk, designed with structured boning and cascading floor-length elegance.
+                    </p>
+
+                    <!-- Size Selection -->
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-xs font-medium uppercase tracking-wider text-stone-300">Select Size</label>
+                            <button class="text-[10px] text-gold-400 underline">Size Guide</button>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2" id="modal-size-container">
+                            <button onclick="selectSize(this)" class="size-btn py-2 text-xs border border-stone-700 rounded hover:border-gold-400 text-stone-300 font-medium">XS</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2 text-xs border border-gold-400 bg-gold-400/10 text-gold-300 font-medium rounded">S</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2 text-xs border border-stone-700 rounded hover:border-gold-400 text-stone-300 font-medium">M</button>
+                            <button onclick="selectSize(this)" class="size-btn py-2 text-xs border border-stone-700 rounded hover:border-gold-400 text-stone-300 font-medium">L</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-stone-800 space-y-3">
+                    <button id="modal-add-btn" onclick="" class="w-full py-3.5 bg-gold-400 text-charcoal-950 font-bold text-xs uppercase tracking-widest rounded hover:bg-gold-300 transition-colors flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>Add To Shopping Bag</span>
+                    </button>
+                    <p class="text-[10px] text-center text-stone-500">In stock • Ships within 24 hours in signature box</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEARCH MODAL -->
+    <div id="search-modal" class="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-charcoal-900 border border-stone-800 rounded-xl max-w-xl w-full p-6 relative">
+            <button onclick="closeModal('search-modal')" class="absolute top-4 right-4 text-stone-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <h3 class="text-xs uppercase tracking-widest text-gold-400 font-medium mb-4">Search Atelier Catalog</h3>
+            <div class="relative">
+                <input type="text" id="search-input" onkeyup="handleSearch(this.value)" placeholder="Search dresses, blazers, coats..." class="w-full bg-charcoal-950 border border-stone-700 rounded-lg py-3 pl-10 pr-4 text-stone-200 text-sm focus:outline-none focus:border-gold-400">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-stone-500"></i>
+            </div>
+            <div id="search-results" class="mt-4 max-h-60 overflow-y-auto divide-y divide-stone-800">
+                <p class="text-xs text-stone-500 py-4 text-center">Type to begin searching luxury pieces...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROMO CODE NOTIFICATION MODAL -->
+    <div id="promo-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-charcoal-900 border border-gold-500/30 rounded-2xl max-w-sm w-full p-8 text-center relative">
+            <div class="w-12 h-12 bg-gold-500/20 text-gold-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-ticket text-xl"></i>
+            </div>
+            <h3 class="font-serif text-2xl text-white mb-2">Exclusive VIP Reward</h3>
+            <p class="text-xs text-stone-300 mb-6 font-light">Use code <span class="text-gold-400 font-bold">LUXURY15</span> at checkout to enjoy 15% off your entire purchase today.</p>
+            <button onclick="copyPromoCode('LUXURY15')" class="w-full py-3 bg-gold-400 text-charcoal-950 font-bold text-xs uppercase tracking-widest rounded hover:bg-gold-300 transition-colors">
+                Copy Code & Shop
+            </button>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 bg-charcoal-900 border border-gold-400/40 text-stone-100 px-5 py-3 rounded-lg shadow-xl flex items-center space-x-3 transform translate-y-20 opacity-0 transition-all duration-300">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-gold-400"></i>
+        <span id="toast-message" class="text-xs font-medium">Item added to your shopping bag!</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Currency State Logic
+        let currentCurrency = 'USD';
+        const currencySymbols = { USD: '$', EUR: '€', GBP: '£' };
+        const currencyRates = { USD: 1.0, EUR: 0.92, GBP: 0.79 };
+
+        // Product Catalog State Data
+        const products = [
+            {
+                id: 'prod-1',
+                title: 'The Sovereign Silk Gala Dress',
+                category: 'dresses',
+                categoryLabel: 'Haute Couture',
+                priceUSD: 2850,
+                rating: 5.0,
+                reviewsCount: 28,
+                image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?q=80&w=1000&auto=format&fit=crop',
+                altImage: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=1000&auto=format&fit=crop',
+                description: 'Sculpted from pure Italian mulberry silk with hand-draped corsetry and a regal floor-sweeping train.',
+                colors: ['#18181A', '#5C061C', '#C59B27']
+            },
+            {
+                id: 'prod-2',
+                title: 'Monarch Double-Breasted Wool Blazer',
+                category: 'suits',
+                categoryLabel: 'Tailored Suits',
+                priceUSD: 1650,
+                rating: 4.9,
+                reviewsCount: 42,
+                image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1000&auto=format&fit=crop',
+                altImage: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1000&auto=format&fit=crop',
+                description: 'Tailored from 100% Super 150s Merino Wool with gold-plated crest buttons and silk lining.',
+                colors: ['#0F0F10', '#1C2833']
+            },
+            {
+                id: 'prod-3',
+                title: 'Belvedere Cashmere Trench Coat',
+                category: 'outerwear',
+                categoryLabel: 'Outerwear',
+                priceUSD: 3400,
+                rating: 5.0,
+                reviewsCount: 19,
+                image: 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1000&auto=format&fit=crop',
+                altImage: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1000&auto=format&fit=crop',
+                description: 'Luxurious double-faced Mongolian cashmere trench with hand-stitched lapels and removable leather belt.',
+                colors: ['#C5A059', '#18181A']
+            },
+            {
+                id: 'prod-4',
+                title: 'Elysian Velvet Cocktail Gown',
+                category: 'dresses',
+                categoryLabel: 'Haute Couture',
+                priceUSD: 2100,
+                rating: 4.8,
+                reviewsCount: 35,
+                image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=1000&auto=format&fit=crop',
+                altImage: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1000&auto=format&fit=crop',
+                description: 'Deep emerald silk velvet gown featuring off-the-shoulder draping and thigh-high side slit.',
+                colors: ['#0B3C26', '#31111D']
+            }
+        ];
+
+        // Shopping Cart & Wishlist State
+        let cart = [];
+        let wishlist = [];
+        let isPromoApplied = false;
+        let selectedSize = 'S';
+
+        // Initialize App on DOM Load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts(products);
+            updateCartUI();
+        });
+
+        // Format Currency Helper
+        function formatPrice(amountUSD) {
+            const rate = currencyRates[currentCurrency];
+            const symbol = currencySymbols[currentCurrency];
+            const converted = (amountUSD * rate).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+            return `${symbol}${converted}`;
+        }
+
+        // Render Dynamic Product Cards
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = items.map(product => {
+                const isWishlisted = wishlist.includes(product.id);
+                return `
+                    <div class="product-card group bg-charcoal-900 rounded-xl overflow-hidden border border-stone-800/80 hover:border-gold-500/40 transition-all duration-500 flex flex-col justify-between">
+                        <div class="relative overflow-hidden aspect-[3/4] bg-charcoal-950">
+                            <!-- Primary Image -->
+                            <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+                            
+                            <!-- Category Badge -->
+                            <span class="absolute top-3 left-3 bg-charcoal-950/80 backdrop-blur-md border border-stone-800 text-gold-300 text-[9px] uppercase tracking-widest px-2.5 py-1 rounded">
+                                ${product.categoryLabel}
+                            </span>
+
+                            <!-- Wishlist Toggle Button -->
+                            <button onclick="toggleWishlist('${product.id}')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-charcoal-950/80 border border-stone-800 text-stone-300 hover:text-gold-400 flex items-center justify-center transition-colors">
+                                <i class="${isWishlisted ? 'fa-solid fa-heart text-gold-400' : 'fa-regular fa-heart'}"></i>
+                            </button>
+
+                            <!-- Quick Add Hover Overlay -->
+                            <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-charcoal-950 via-charcoal-950/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex space-x-2">
+                                <button onclick="openQuickView('${product.id}')" class="grow py-2.5 bg-charcoal-900/90 text-stone-200 border border-stone-700 text-[10px] font-bold uppercase tracking-wider rounded hover:border-gold-400 hover:text-gold-300 transition-colors">
+                                    Quick View
+                                </button>
+                                <button onclick="addToCart('${product.id}', 'S')" class="py-2.5 px-4 bg-gold-400 text-charcoal-950 text-[10px] font-bold uppercase tracking-wider rounded hover:bg-gold-300 transition-colors">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card Details -->
+                        <div class="p-5 flex flex-col justify-between flex-1">
+                            <div>
+                                <div class="flex items-center justify-between text-xs text-gold-400 mb-1">
+                                    <div class="flex items-center space-x-1">
+                                        <i class="fa-solid fa-star text-[10px]"></i>
+                                        <span class="text-stone-400 text-[11px] font-medium">${product.rating} (${product.reviewsCount})</span>
+                                    </div>
+                                    <!-- Color Swatches -->
+                                    <div class="flex space-x-1">
+                                        ${product.colors.map(c => `<span class="w-2.5 h-2.5 rounded-full border border-stone-700" style="background-color:${c}"></span>`).join('')}
+                                    </div>
+                                </div>
+                                <h3 class="font-serif text-lg text-stone-100 font-normal line-clamp-1 mb-1 group-hover:text-gold-300 transition-colors">${product.title}</h3>
+                            </div>
+                            <div class="mt-4 pt-3 border-t border-stone-800/60 flex justify-between items-center">
+                                <span class="font-serif text-lg font-semibold text-gold-300">${formatPrice(product.priceUSD)}</span>
+                                <button onclick="addToCart('${product.id}', 'S')" class="text-xs text-stone-400 hover:text-gold-400 uppercase tracking-widest font-semibold flex items-center">
+                                    Add <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Product Category Filter Handler
+        function filterProducts(category) {
+            document.querySelectorAll('.product-filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-gold-400', 'text-charcoal-950', 'font-bold');
+                btn.classList.add('border-stone-800', 'text-stone-300');
+            });
+            event.target.classList.add('active', 'bg-gold-400', 'text-charcoal-950', 'font-bold');
+            
+            if (category === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        // Shopping Cart Logic
+        function addToCart(productId, size = 'S') {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId && item.size === size);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    title: product.title,
+                    priceUSD: product.priceUSD,
+                    image: product.image,
+                    size: size,
+                    quantity: 1
+                });
+            }
+
+            updateCartUI();
+            showToast(`Added "${product.title}" to your bag.`);
+        }
+
+        function updateQuantity(productId, size, change) {
+            const item = cart.find(i => i.id === productId && i.size === size);
+            if (!item) return;
+
+            item.quantity += change;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => !(i.id === productId && i.size === size));
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartContainer = document.getElementById('cart-items-container');
+            const totalCount = cart.reduce((acc, i) => acc + i.quantity, 0);
+            
+            document.getElementById('cart-badge').innerText = totalCount;
+            document.getElementById('cart-drawer-count').innerText = `(${totalCount})`;
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `
+                    <div class="text-center py-16 text-stone-500">
+                        <i class="fa-solid fa-bag-shopping text-4xl mb-4 text-stone-700"></i>
+                        <p class="text-sm font-light">Your shopping bag is currently empty.</p>
+                        <button onclick="toggleCartDrawer()" class="mt-4 px-6 py-2.5 bg-gold-400/10 border border-gold-400/30 text-gold-300 text-xs font-semibold uppercase tracking-widest rounded hover:bg-gold-400 hover:text-charcoal-950 transition-colors">
+                            Explore Collections
+                        </button>
+                    </div>
+                `;
+            } else {
+                cartContainer.innerHTML = cart.map(item => `
+                    <div class="flex items-center space-x-4 bg-charcoal-950/60 p-3 rounded-lg border border-stone-800">
+                        <img src="${item.image}" alt="${item.title}" class="w-16 h-20 object-cover rounded bg-charcoal-900">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-xs text-white font-medium truncate">${item.title}</h4>
+                            <p class="text-[10px] text-stone-400 mt-0.5">Size: <span class="text-gold-300 font-semibold">${item.size}</span></p>
+                            <p class="font-serif text-sm text-gold-300 font-semibold mt-1">${formatPrice(item.priceUSD)}</p>
+                        </div>
+                        <div class="flex flex-col items-end space-y-2">
+                            <div class="flex items-center space-x-2 bg-charcoal-900 border border-stone-800 rounded px-2 py-1">
+                                <button onclick="updateQuantity('${item.id}', '${item.size}', -1)" class="text-stone-400 hover:text-white text-xs"><i class="fa-solid fa-minus"></i></button>
+                                <span class="text-xs font-semibold text-white px-1">${item.quantity}</span>
+                                <button onclick="updateQuantity('${item.id}', '${item.size}', 1)" class="text-stone-400 hover:text-white text-xs"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Calculations
+            const subtotalUSD = cart.reduce((acc, i) => acc + (i.priceUSD * i.quantity), 0);
+            const discountUSD = isPromoApplied ? subtotalUSD * 0.15 : 0;
+            const totalUSD = subtotalUSD - discountUSD;
+
+            document.getElementById('cart-subtotal').innerText = formatPrice(subtotalUSD);
+            document.getElementById('cart-total').innerText = formatPrice(totalUSD);
+
+            if (isPromoApplied) {
+                document.getElementById('discount-row').classList.remove('hidden');
+                document.getElementById('cart-discount').innerText = `-${formatPrice(discountUSD)}`;
+            }
+
+            // Free Shipping Threshold Progress Bar ($500)
+            const threshold = 500;
+            const progress = Math.min(100, (subtotalUSD / threshold) * 100);
+            document.getElementById('shipping-bar').style.width = `${progress}%`;
+            document.getElementById('shipping-progress-pct').innerText = `${Math.round(progress)}%`;
+
+            if (subtotalUSD >= threshold) {
+                document.getElementById('shipping-progress-text').innerText = "🎉 You've unlocked Free Worldwide Express Shipping!";
+            } else {
+                const diff = threshold - subtotalUSD;
+                document.getElementById('shipping-progress-text').innerText = `Add ${formatPrice(diff)} more for Free Express Shipping`;
+            }
+        }
+
+        // Toggle Wishlist Logic
+        function toggleWishlist(productId) {
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+                showToast('Removed from your wishlist.');
+            } else {
+                wishlist.push(productId);
+                showToast('Saved to your wishlist.');
+            }
+            const badge = document.getElementById('wishlist-badge');
+            if (wishlist.length > 0) {
+                badge.classList.remove('hidden');
+                badge.innerText = wishlist.length;
+            } else {
+                badge.classList.add('hidden');
+            }
+            renderProducts(products);
+        }
+
+        // Promo Code Validation
+        function applyPromoCode() {
+            const input = document.getElementById('promo-input').value.trim().toUpperCase();
+            if (input === 'LUXURY15') {
+                isPromoApplied = true;
+                updateCartUI();
+                showToast('15% VIP Discount applied successfully!');
+            } else {
+                showToast('Invalid promo code. Try LUXURY15', 'error');
+            }
+        }
+
+        // Modal Helpers
+        function openQuickView(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            document.getElementById('modal-product-img').src = product.image;
+            document.getElementById('modal-product-title').innerText = product.title;
+            document.getElementById('modal-product-category').innerText = product.categoryLabel;
+            document.getElementById('modal-product-price').innerText = formatPrice(product.priceUSD);
+            document.getElementById('modal-product-desc').innerText = product.description;
+            
+            document.getElementById('modal-add-btn').onclick = () => {
+                addToCart(product.id, selectedSize);
+                closeModal('product-modal');
+            };
+
+            openModal('product-modal');
+        }
+
+        function selectSize(btn) {
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.classList.remove('border-gold-400', 'bg-gold-400/10', 'text-gold-300');
+                b.classList.add('border-stone-700', 'text-stone-300');
+            });
+            btn.classList.add('border-gold-400', 'bg-gold-400/10', 'text-gold-300');
+            selectedSize = btn.innerText;
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            if (drawer.classList.contains('opacity-0')) {
+                drawer.classList.remove('opacity-0', 'pointer-events-none');
+                drawer.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                drawer.classList.add('opacity-0', 'pointer-events-none');
+                drawer.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('-translate-x-full');
+        }
+
+        function openSearchModal() {
+            openModal('search-modal');
+            setTimeout(() => document.getElementById('search-input').focus(), 100);
+        }
+
+        function handleSearch(query) {
+            const container = document.getElementById('search-results');
+            if (!query.trim()) {
+                container.innerHTML = '<p class="text-xs text-stone-500 py-4 text-center">Type to begin searching luxury pieces...</p>';
+                return;
+            }
+            const matches = products.filter(p => p.title.toLowerCase().includes(query.toLowerCase()));
+            if (matches.length === 0) {
+                container.innerHTML = '<p class="text-xs text-stone-400 py-4 text-center">No matching luxury pieces found.</p>';
+            } else {
+                container.innerHTML = matches.map(p => `
+                    <div onclick="openQuickView('${p.id}'); closeModal('search-modal');" class="p-3 flex items-center justify-between hover:bg-charcoal-800 cursor-pointer rounded transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <img src="${p.image}" class="w-10 h-12 object-cover rounded">
+                            <div>
+                                <p class="text-xs text-white font-medium">${p.title}</p>
+                                <p class="text-[10px] text-gold-400">${formatPrice(p.priceUSD)}</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-stone-500"></i>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Currency Switching Handler
+        function changeCurrency(newCurrency) {
+            currentCurrency = newCurrency;
+            renderProducts(products);
+            updateCartUI();
+            showToast(`Currency updated to ${newCurrency}`);
+        }
+
+        // Interactive Style Quiz Logic
+        function nextQuizStep(currentStep, value) {
+            document.getElementById(`quiz-step-${currentStep}`).classList.add('hidden');
+            document.getElementById(`quiz-step-${currentStep + 1}`).classList.remove('hidden');
+        }
+
+        function finishQuiz(fitPreference) {
+            document.getElementById('quiz-step-3').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
+
+            const recommendedProduct = products[0]; // Sovereign Silk Gala Dress
+            document.getElementById('quiz-recommendation-title').innerText = recommendedProduct.title;
+            document.getElementById('quiz-recommendation-card').innerHTML = `
+                <img src="${recommendedProduct.image}" class="w-14 h-16 object-cover rounded">
+                <div>
+                    <h4 class="text-xs text-white font-medium">${recommendedProduct.title}</h4>
+                    <p class="text-[11px] text-gold-300 font-serif font-bold mt-1">${formatPrice(recommendedProduct.priceUSD)}</p>
+                    <button onclick="addToCart('${recommendedProduct.id}', 'S')" class="mt-2 text-[10px] bg-gold-400 text-charcoal-950 px-3 py-1 font-bold rounded hover:bg-gold-300">
+                        Add Recommended Look
+                    </button>
+                </div>
+            `;
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('quiz-step-1').classList.remove('hidden');
+        }
+
+        // Newsletter Lead Magnet Handler
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            showToast('VIP Voucher Code LUXURY15 sent to your email!');
+            openModal('promo-modal');
+        }
+
+        function copyPromoCode(code) {
+            navigator.clipboard.writeText(code);
+            closeModal('promo-modal');
+            showToast(`Promo Code ${code} copied to clipboard!`);
+        }
+
+        // Testimonials Slider Logic
+        const testimonials = [
+            {
+                quote: `"The craftsmanship on the Silk Gala Evening Dress is breathtaking. It feels tailored specifically to my frame and garnered endless compliments in Paris."`,
+                author: "Lady Eleanor Vance",
+                location: "Verified VIP Client — London"
+            },
+            {
+                quote: `"AURA Atelier has redefined high fashion online shopping. The bespoke concierge service resolved my sizing questions within minutes."`,
+                author: "Sophia Laurent",
+                location: "Fashion Editor — Milan"
+            },
+            {
+                quote: `"Unmatched quality in every seam. The cashmere trench is easily the most prized garment in my winter wardrobe."`,
+                author: "Camilla Rothschild",
+                location: "Verified VIP Client — New York"
+            }
+        ];
+        let currentTestimonialIndex = 0;
+
+        function setTestimonial(index) {
+            currentTestimonialIndex = index;
+            const slider = document.getElementById('testimonial-slider');
+            const item = testimonials[index];
+            slider.innerHTML = `
+                <div class="testimonial-slide active transition-opacity duration-500">
+                    <p class="font-serif text-xl sm:text-3xl font-light italic text-stone-200 leading-relaxed mb-6">
+                        ${item.quote}
+                    </p>
+                    <div class="flex items-center justify-center space-x-1 text-gold-400 text-xs mb-2">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs uppercase tracking-widest text-gold-300 font-semibold">${item.author}</p>
+                    <p class="text-[11px] text-stone-500">${item.location}</p>
+                </div>
+            `;
+            
+            // Update dots
+            document.querySelectorAll('.t-dot').forEach((dot, i) => {
+                if (i === index) {
+                    dot.className = "t-dot w-8 h-1 bg-gold-400 rounded-full";
+                } else {
+                    dot.className = "t-dot w-2 h-1 bg-stone-700 rounded-full hover:bg-gold-400/50";
+                }
+            });
+        }
+
+        // Checkout Placeholder
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('Your bag is empty.', 'error');
+                return;
+            }
+            showToast('Redirecting to secure encrypted SSL payment portal...');
+        }
+
+        // Global Toast Notification System
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast-notification');
+            const messageEl = document.getElementById('toast-message');
+            const iconEl = document.getElementById('toast-icon');
+
+            messageEl.innerText = message;
+            if (type === 'error') {
+                iconEl.className = 'fa-solid fa-circle-exclamation text-red-400';
+            } else {
+                iconEl.className = 'fa-solid fa-circle-check text-gold-400';
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

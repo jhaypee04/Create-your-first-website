@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasaPerdana Real Estate | Premier Luxury Properties & Developments in Abuja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#142538',
+                            900: '#0D1B2A',
+                            950: '#070F18',
+                        },
+                        gold: {
+                            400: '#DFB971',
+                            500: '#C5A059',
+                            600: '#A8833C',
+                        },
+                        champagne: '#F4EBE1'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F4EBE1 0%, #C5A059 50%, #DFB971 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-bg-gradient {
+            background: linear-gradient(135deg, #C5A059 0%, #A8833C 100%);
+        }
+        .glass-card {
+            background: rgba(13, 27, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        .glass-light {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800 font-sans antialiased selection:bg-gold-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-navy-950 text-xs py-2 px-4 border-b border-gold-500/20 text-gray-300">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center text-gold-400"><i class="fas fa-location-dot mr-1.5"></i> 55 Ebitu Ukiwe St, Jabi, Abuja</span>
+                <span class="hidden md:inline text-gray-500">|</span>
+                <span class="hidden md:flex items-center text-emerald-400"><i class="fas fa-clock mr-1.5"></i> Open 24 Hours</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="tel:+2349154584295" class="hover:text-gold-400 transition-colors flex items-center"><i class="fas fa-phone mr-1.5 text-gold-400"></i> +234 915 458 4295</a>
+                <span class="flex items-center text-amber-400 font-semibold"><i class="fas fa-star mr-1"></i> 5.0 Google Rating</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur-md border-b border-gold-500/20 shadow-xl transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-lg gold-bg-gradient flex items-center justify-center text-navy-950 font-serif font-bold text-2xl shadow-lg group-hover:scale-105 transition-transform">
+                        CP
+                    </div>
+                    <div>
+                        <span class="text-xl font-serif font-bold tracking-wide text-white block leading-none">CASAPERDANA</span>
+                        <span class="text-[10px] uppercase tracking-widest text-gold-400 font-semibold block mt-1">Real Estate Abuja</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Menu -->
+                <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-gray-200">
+                    <a href="#home" class="hover:text-gold-400 transition-colors">Home</a>
+                    <a href="#properties" class="hover:text-gold-400 transition-colors">Featured Properties</a>
+                    <a href="#why-us" class="hover:text-gold-400 transition-colors">Why Choose Us</a>
+                    <a href="#roi-calculator" class="hover:text-gold-400 transition-colors">ROI Calculator</a>
+                    <a href="#testimonials" class="hover:text-gold-400 transition-colors">Testimonials</a>
+                    <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <a href="https://wa.me/2349154584295?text=Hello%20CasaPerdana,%20I%20would%20like%20to%20inquire%20about%20your%20properties." target="_blank" class="px-4 py-2.5 rounded-lg border border-gold-500/40 text-gold-400 hover:bg-gold-500/10 transition-all font-semibold text-xs uppercase tracking-wider flex items-center">
+                        <i class="fab fa-whatsapp text-sm mr-2 text-emerald-400"></i> WhatsApp
+                    </a>
+                    <a href="#schedule-inspection" class="px-5 py-2.5 rounded-lg gold-bg-gradient text-navy-950 font-bold text-xs uppercase tracking-wider hover:opacity-95 shadow-md shadow-gold-500/20 transition-all transform hover:-translate-y-0.5">
+                        Book Inspection
+                    </a>
+                </div>
+
+                <!-- Mobile menu toggle -->
+                <button id="mobileMenuBtn" class="lg:hidden text-gray-300 hover:text-white p-2 rounded-lg" aria-label="Toggle Navigation">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-navy-950 border-b border-gold-500/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="block py-2 text-gray-200 hover:text-gold-400 font-medium border-b border-gray-800">Home</a>
+            <a href="#properties" class="block py-2 text-gray-200 hover:text-gold-400 font-medium border-b border-gray-800">Featured Properties</a>
+            <a href="#why-us" class="block py-2 text-gray-200 hover:text-gold-400 font-medium border-b border-gray-800">Why Choose Us</a>
+            <a href="#roi-calculator" class="block py-2 text-gray-200 hover:text-gold-400 font-medium border-b border-gray-800">ROI Calculator</a>
+            <a href="#testimonials" class="block py-2 text-gray-200 hover:text-gold-400 font-medium border-b border-gray-800">Testimonials</a>
+            <a href="#contact" class="block py-2 text-gray-200 hover:text-gold-400 font-medium border-b border-gray-800">Contact Us</a>
+            <div class="pt-2 space-y-2">
+                <a href="#schedule-inspection" class="block w-full text-center py-3 gold-bg-gradient text-navy-950 font-bold rounded-lg text-sm uppercase">Book Private Inspection</a>
+                <a href="tel:+2349154584295" class="block w-full text-center py-3 border border-gold-500 text-gold-400 font-bold rounded-lg text-sm"><i class="fas fa-phone mr-2"></i> Call +234 915 458 4295</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-navy-950 min-h-[85vh] flex items-center justify-center overflow-hidden py-16 lg:py-24">
+        <!-- High Quality Luxury Background Image with Gradient Mask -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80" alt="Luxury Real Estate Abuja" class="w-full h-full object-cover object-center opacity-30 transform scale-105 hover:scale-100 transition-transform duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/80 to-navy-950/90"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="inline-flex items-center space-x-2 bg-gold-500/10 border border-gold-500/30 rounded-full px-4 py-1.5 mb-6 text-gold-400 text-xs font-semibold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Abuja's Trusted Luxury Property Developer</span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight mb-6">
+                    Find Your Dream Luxury Home in <span class="gold-gradient-text">Prime Abuja</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-300 font-light mb-8 leading-relaxed">
+                    Exquisite, high-ROI residential and commercial properties in Jabi, Guzape, Maitama, and Asokoro. Backed by 100% verified titles and 5.0-star rated service.
+                </p>
+
+                <!-- Hero Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                    <a href="#properties" class="w-full sm:w-auto px-8 py-4 rounded-xl gold-bg-gradient text-navy-950 font-bold text-sm uppercase tracking-wider hover:shadow-lg hover:shadow-gold-500/30 transition-all transform hover:-translate-y-0.5">
+                        <i class="fas fa-building mr-2"></i> Browse Featured Properties
+                    </a>
+                    <a href="#schedule-inspection" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-navy-800/80 border border-gold-500/30 text-white hover:border-gold-400 font-semibold text-sm uppercase tracking-wider transition-all backdrop-blur-sm">
+                        <i class="fas fa-calendar-check mr-2 text-gold-400"></i> Book Private Tour
+                    </a>
+                </div>
+            </div>
+
+            <!-- Interactive Search & Filter Bar -->
+            <div class="glass-card rounded-2xl p-6 shadow-2xl max-w-5xl mx-auto border border-gold-500/30">
+                <form id="heroSearchForm" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" onsubmit="event.preventDefault(); filterProperties();">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gold-400 mb-2"><i class="fas fa-map-marker-alt mr-1"></i> Location</label>
+                        <select id="filterLocation" class="w-full bg-navy-900 border border-gray-700 text-white text-sm rounded-lg p-3 focus:border-gold-500 focus:outline-none">
+                            <option value="all">All Locations (Abuja)</option>
+                            <option value="Jabi">Jabi, Abuja</option>
+                            <option value="Guzape">Guzape, Abuja</option>
+                            <option value="Maitama">Maitama, Abuja</option>
+                            <option value="Asokoro">Asokoro, Abuja</option>
+                            <option value="Katampe">Katampe Extension</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gold-400 mb-2"><i class="fas fa-home mr-1"></i> Property Type</label>
+                        <select id="filterType" class="w-full bg-navy-900 border border-gray-700 text-white text-sm rounded-lg p-3 focus:border-gold-500 focus:outline-none">
+                            <option value="all">All Types</option>
+                            <option value="Apartment">Luxury Apartment</option>
+                            <option value="Villa">Detached Villa / Duplex</option>
+                            <option value="Penthouse">Penthouse</option>
+                            <option value="Commercial">Commercial / Office</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-gold-400 mb-2"><i class="fas fa-tag mr-1"></i> Price Range (NGN)</label>
+                        <select id="filterPrice" class="w-full bg-navy-900 border border-gray-700 text-white text-sm rounded-lg p-3 focus:border-gold-500 focus:outline-none">
+                            <option value="all">Any Price</option>
+                            <option value="under150m">Under ₦150M</option>
+                            <option value="150m-300m">₦150M - ₦300M</option>
+                            <option value="above300m">₦300M+</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-end">
+                        <button type="submit" class="w-full gold-bg-gradient text-navy-950 font-bold p-3 rounded-lg text-sm uppercase tracking-wider hover:opacity-95 transition-all flex items-center justify-center">
+                            <i class="fas fa-search mr-2"></i> Search Properties
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Conversion / Quick Inquiry Strip -->
+    <section class="bg-navy-900 border-y border-gold-500/20 py-8 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div class="text-center lg:text-left">
+                <span class="text-gold-400 text-xs font-bold uppercase tracking-wider block mb-1">Instant Concierge Assistance</span>
+                <h3 class="text-xl sm:text-2xl font-serif text-white font-bold">Looking for off-plan luxury investments or custom land titles?</h3>
+            </div>
+            <form onsubmit="handleQuickInquiry(event)" class="w-full lg:w-auto flex flex-col sm:flex-row gap-3">
+                <input type="text" id="quickName" placeholder="Your Name" required class="bg-navy-950 border border-gray-700 text-white text-sm rounded-lg px-4 py-3 focus:border-gold-500 focus:outline-none w-full sm:w-48">
+                <input type="tel" id="quickPhone" placeholder="WhatsApp / Phone No." required class="bg-navy-950 border border-gray-700 text-white text-sm rounded-lg px-4 py-3 focus:border-gold-500 focus:outline-none w-full sm:w-48">
+                <button type="submit" class="gold-bg-gradient text-navy-950 font-bold px-6 py-3 rounded-lg text-sm uppercase tracking-wider hover:opacity-95 transition-all whitespace-nowrap">
+                    Get VIP Catalog
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section id="properties" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-gold-600 font-semibold text-xs uppercase tracking-widest block mb-2">Exclusive Portfolio</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-navy-950">Featured Abuja Developments</h2>
+                </div>
+                <div class="mt-4 md:mt-0 flex flex-wrap gap-2">
+                    <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-navy-900 text-gold-400 border border-gold-500/30">All</button>
+                    <button onclick="filterCategory('Jabi')" class="cat-btn px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-gray-600 border border-gray-200 hover:border-gold-500">Jabi</button>
+                    <button onclick="filterCategory('Guzape')" class="cat-btn px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-gray-600 border border-gray-200 hover:border-gold-500">Guzape</button>
+                    <button onclick="filterCategory('Maitama')" class="cat-btn px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-white text-gray-600 border border-gray-200 hover:border-gold-500">Maitama</button>
+                </div>
+            </div>
+
+            <!-- Property Cards Grid -->
+            <div id="propertyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Property Card 1 -->
+                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col" data-location="Jabi" data-type="Apartment" data-price="220000000">
+                    <div class="relative h-64 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Jabi Lake View Residences" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 gold-bg-gradient text-navy-950 text-[10px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md">Featured • Off-Plan</span>
+                        <div class="absolute bottom-4 left-4 bg-navy-950/90 text-white px-3 py-1 rounded-lg text-xs font-semibold backdrop-blur-sm">
+                            <i class="fas fa-location-dot text-gold-400 mr-1"></i> Ebitu Ukiwe, Jabi
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-serif font-bold text-navy-950 mb-2">The Perdana Lake View Apartments</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Ultra-modern 4-Bedroom smart luxury apartments featuring waterfront views and private elevators.</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-gray-100 text-center text-xs text-gray-600 mb-4">
+                                <div><i class="fas fa-bed text-gold-600 mr-1"></i> 4 Beds</div>
+                                <div><i class="fas fa-bath text-gold-600 mr-1"></i> 4.5 Baths</div>
+                                <div><i class="fas fa-ruler-combined text-gold-600 mr-1"></i> 420 Sqm</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Price From</span>
+                                <span class="text-xl font-bold text-navy-950">₦220,000,000</span>
+                            </div>
+                            <button onclick="openModal('modal1')" class="px-4 py-2.5 rounded-lg border border-navy-900 text-navy-900 font-bold text-xs uppercase tracking-wider hover:bg-navy-900 hover:text-white transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 2 -->
+                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col" data-location="Guzape" data-type="Villa" data-price="350000000">
+                    <div class="relative h-64 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80" alt="Guzape Hilltop Villa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-emerald-600 text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md">Ready for Move-In</span>
+                        <div class="absolute bottom-4 left-4 bg-navy-950/90 text-white px-3 py-1 rounded-lg text-xs font-semibold backdrop-blur-sm">
+                            <i class="fas fa-location-dot text-gold-400 mr-1"></i> Diplomatic Zone, Guzape
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-serif font-bold text-navy-950 mb-2">Grand Guzape Hilltop Villa</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">5-Bedroom Fully Automated Detached Mansion with Infinity Pool and Panoramic City Skyline Views.</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-gray-100 text-center text-xs text-gray-600 mb-4">
+                                <div><i class="fas fa-bed text-gold-600 mr-1"></i> 5 Beds</div>
+                                <div><i class="fas fa-bath text-gold-600 mr-1"></i> 6 Baths</div>
+                                <div><i class="fas fa-ruler-combined text-gold-600 mr-1"></i> 650 Sqm</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Asking Price</span>
+                                <span class="text-xl font-bold text-navy-950">₦350,000,000</span>
+                            </div>
+                            <button onclick="openModal('modal2')" class="px-4 py-2.5 rounded-lg border border-navy-900 text-navy-900 font-bold text-xs uppercase tracking-wider hover:bg-navy-900 hover:text-white transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 3 -->
+                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300 flex flex-col" data-location="Maitama" data-type="Penthouse" data-price="480000000">
+                    <div class="relative h-64 overflow-hidden group">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Maitama Executive Penthouse" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-purple-900 text-gold-400 border border-gold-500/30 text-[10px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-md">Ultra Luxury</span>
+                        <div class="absolute bottom-4 left-4 bg-navy-950/90 text-white px-3 py-1 rounded-lg text-xs font-semibold backdrop-blur-sm">
+                            <i class="fas fa-location-dot text-gold-400 mr-1"></i> Transcorp Axis, Maitama
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-serif font-bold text-navy-950 mb-2">The Royal Maitama Penthouse</h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-2">Bespoke 4-Bedroom Triplex Penthouse with private rooftop Jacuzzi and executive bulletproof security infrastructure.</p>
+                            
+                            <div class="grid grid-cols-3 gap-2 py-3 border-y border-gray-100 text-center text-xs text-gray-600 mb-4">
+                                <div><i class="fas fa-bed text-gold-600 mr-1"></i> 4 Beds</div>
+                                <div><i class="fas fa-bath text-gold-600 mr-1"></i> 5 Baths</div>
+                                <div><i class="fas fa-ruler-combined text-gold-600 mr-1"></i> 580 Sqm</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase tracking-wider block">Price</span>
+                                <span class="text-xl font-bold text-navy-950">₦480,000,000</span>
+                            </div>
+                            <button onclick="openModal('modal3')" class="px-4 py-2.5 rounded-lg border border-navy-900 text-navy-900 font-bold text-xs uppercase tracking-wider hover:bg-navy-900 hover:text-white transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Modal Details 1 -->
+    <div id="modal1" class="fixed inset-0 z-50 hidden bg-navy-950/80 backdrop-blur-md overflow-y-auto p-4 sm:p-6 flex items-center justify-center">
+        <div class="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-gold-500/30 relative my-8">
+            <button onclick="closeModal('modal1')" class="absolute top-4 right-4 bg-navy-950/80 text-white rounded-full w-10 h-10 flex items-center justify-center z-10 hover:bg-red-600 transition-colors">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+            
+            <div class="h-72 sm:h-96 relative">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-navy-950 to-transparent text-white">
+                    <span class="gold-bg-gradient text-navy-950 font-bold text-xs px-3 py-1 rounded-full uppercase">Off-Plan Investment</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold mt-2">The Perdana Lake View Apartments</h2>
+                    <p class="text-gray-300 text-sm"><i class="fas fa-location-dot text-gold-400 mr-1"></i> 55 Ebitu Ukiwe St Axis, Jabi, Abuja</p>
+                </div>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-6">
+                <div class="flex flex-wrap justify-between items-center bg-gray-50 p-4 rounded-xl border border-gray-100">
+                    <div>
+                        <span class="text-xs text-gray-500 block uppercase">Price</span>
+                        <span class="text-2xl font-bold text-navy-950">₦220,000,000</span>
+                    </div>
+                    <div class="flex space-x-4 text-xs font-semibold text-gray-700">
+                        <span class="bg-white px-3 py-2 rounded-lg border"><i class="fas fa-bed text-gold-600 mr-1"></i> 4 Bedrooms</span>
+                        <span class="bg-white px-3 py-2 rounded-lg border"><i class="fas fa-bath text-gold-600 mr-1"></i> 4.5 Bathrooms</span>
+                        <span class="bg-white px-3 py-2 rounded-lg border"><i class="fas fa-shield-halved text-gold-600 mr-1"></i> C of O Title</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-serif font-bold text-navy-950 text-lg mb-2">Key Amenities</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-medium text-gray-700">
+                        <div class="flex items-center p-2.5 bg-gray-50 rounded-lg"><i class="fas fa-bolt text-gold-500 mr-2 text-sm"></i> 24/7 Uninterrupted Power</div>
+                        <div class="flex items-center p-2.5 bg-gray-50 rounded-lg"><i class="fas fa-swimming-pool text-gold-500 mr-2 text-sm"></i> Infinity Pool</div>
+                        <div class="flex items-center p-2.5 bg-gray-50 rounded-lg"><i class="fas fa-video text-gold-500 mr-2 text-sm"></i> Smart CCTV Security</div>
+                        <div class="flex items-center p-2.5 bg-gray-50 rounded-lg"><i class="fas fa-car text-gold-500 mr-2 text-sm"></i> Underground Parking</div>
+                        <div class="flex items-center p-2.5 bg-gray-50 rounded-lg"><i class="fas fa-wifi text-gold-500 mr-2 text-sm"></i> Fiber Optic Internet</div>
+                        <div class="flex items-center p-2.5 bg-gray-50 rounded-lg"><i class="fas fa-dumbbell text-gold-500 mr-2 text-sm"></i> Executive Fitness Gym</div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-4 border-t">
+                    <a href="https://wa.me/2349154584295?text=I%20am%20interested%20in%20The%20Perdana%20Lake%20View%20Apartments%20(Jabi)." target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white text-center py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center">
+                        <i class="fab fa-whatsapp text-lg mr-2"></i> Inquire via WhatsApp
+                    </a>
+                    <a href="#schedule-inspection" onclick="closeModal('modal1')" class="flex-1 gold-bg-gradient text-navy-950 text-center py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider hover:opacity-95 transition-opacity">
+                        Book Physical Inspection
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose CasaPerdana Section -->
+    <section id="why-us" class="py-20 bg-navy-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-400 font-semibold text-xs uppercase tracking-widest block mb-2">The CasaPerdana Edge</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold">Why Discerning Investors Trust Us in Abuja</h2>
+                <p class="text-gray-400 text-sm mt-3">We eliminate property purchase risk with guaranteed titles, strategic location choices, and unmatched luxury finishings.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-card p-8 rounded-2xl hover:border-gold-500 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl gold-bg-gradient flex items-center justify-center text-navy-950 text-2xl font-bold mb-6">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">100% Verified Titles</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">All properties come with unencumbered Certificates of Occupancy (C of O) and AGIS approvals guaranteed for absolute peace of mind.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl hover:border-gold-500 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl gold-bg-gradient flex items-center justify-center text-navy-950 text-2xl font-bold mb-6">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">High Capital Growth</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Our developments in Jabi and Guzape consistently yield 15-25% annual property value appreciation and high short-let rental returns.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl hover:border-gold-500 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl gold-bg-gradient flex items-center justify-center text-navy-950 text-2xl font-bold mb-6">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">24/7 Dedicated Support</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Operating around the clock from our Jabi office to assist local and diaspora clients with seamless inspections and legal guidance.</p>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl hover:border-gold-500 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-xl gold-bg-gradient flex items-center justify-center text-navy-950 text-2xl font-bold mb-6">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">Uncompromising Luxury</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Architectural precision with premium imported materials, smart home automation, and luxury amenities built to European standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Real Estate ROI / Investment Estimator -->
+    <section id="roi-calculator" class="py-16 bg-navy-950 text-white border-t border-gold-500/20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-navy-900 rounded-2xl border border-gold-500/30 p-8 shadow-2xl">
+                <div class="text-center mb-8">
+                    <span class="text-gold-400 text-xs font-bold uppercase tracking-widest">Financial Forecaster</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold mt-1">Estimate Your Abuja Property ROI</h2>
+                    <p class="text-gray-400 text-xs mt-2">See potential rental income and value appreciation over 5 years.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-2">
+                                <span class="text-gray-300">Investment Amount (NGN)</span>
+                                <span id="calcAmountLabel" class="text-gold-400">₦200,000,000</span>
+                            </div>
+                            <input type="range" id="calcAmount" min="50000000" max="1000000000" step="10000000" value="200000000" oninput="updateCalculator()" class="w-full accent-gold-500 bg-navy-950 h-2 rounded-lg cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-2">
+                                <span class="text-gray-300">Expected Annual Rental Yield (%)</span>
+                                <span id="calcYieldLabel" class="text-gold-400">12%</span>
+                            </div>
+                            <input type="range" id="calcYield" min="8" max="20" step="1" value="12" oninput="updateCalculator()" class="w-full accent-gold-500 bg-navy-950 h-2 rounded-lg cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-2">
+                                <span class="text-gray-300">Est. Annual Property Appreciation (%)</span>
+                                <span id="calcAppreciationLabel" class="text-gold-400">15%</span>
+                            </div>
+                            <input type="range" id="calcAppreciation" min="10" max="30" step="1" value="15" oninput="updateCalculator()" class="w-full accent-gold-500 bg-navy-950 h-2 rounded-lg cursor-pointer">
+                        </div>
+                    </div>
+
+                    <div class="bg-navy-950 p-6 rounded-xl border border-gold-500/20 text-center space-y-4">
+                        <div>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider block">Estimated Annual Rental Revenue</span>
+                            <span id="resAnnualRent" class="text-2xl font-bold text-emerald-400">₦24,000,000 / yr</span>
+                        </div>
+                        <div class="border-t border-gray-800 pt-3">
+                            <span class="text-xs text-gray-400 uppercase tracking-wider block">Projected Total Portfolio Value (5 Years)</span>
+                            <span id="resTotalValue" class="text-3xl font-serif font-bold text-gold-400">₦402,270,000</span>
+                        </div>
+                        <a href="https://wa.me/2349154584295?text=I%20used%20the%20ROI%20calculator%20and%20want%20to%20discuss%20investment%20options." target="_blank" class="block w-full gold-bg-gradient text-navy-950 font-bold py-3 rounded-lg text-xs uppercase tracking-wider mt-2 hover:opacity-95 transition-opacity">
+                            Discuss Investment Strategy
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & Social Proof -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="inline-flex items-center space-x-2 bg-amber-100 border border-amber-300 rounded-full px-4 py-1.5 mb-3 text-amber-800 text-xs font-bold">
+                    <i class="fas fa-star text-amber-500"></i>
+                    <span>5.0 Star Rating on Google Maps</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-navy-950">Trusted by Local & Diaspora Buyers</h2>
+                <p class="text-gray-600 text-sm mt-2">Read real feedback from clients who purchased properties and achieved excellent investment outcomes with CasaPerdana.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-sm italic mb-6">"Excellent results! CasaPerdana guided me through securing my apartment in Jabi with zero title complications. Their professionalism and transparency are unmatched in Abuja."</p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                        <div class="w-10 h-10 rounded-full gold-bg-gradient text-navy-950 font-bold flex items-center justify-center text-sm">
+                            MA
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy-950 text-sm">Muhmmad Amir</h4>
+                            <span class="text-xs text-gray-400"><i class="fab fa-google text-red-500 mr-1"></i> Google Verified Reviewer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-sm italic mb-6">"Top-notch customer service. Being based abroad, I was skeptical about property development in Abuja until I met the CasaPerdana team. 24/7 responsiveness and flawless delivery!"</p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                        <div class="w-10 h-10 rounded-full bg-navy-900 text-gold-400 font-bold flex items-center justify-center text-sm">
+                            JO
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy-950 text-sm">Jeremiah Oladele</h4>
+                            <span class="text-xs text-gray-400"><i class="fab fa-google text-red-500 mr-1"></i> Google Verified Reviewer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-sm italic mb-6">"Smooth transaction and high quality architectural finishing. Their Jabi office staff are welcoming and very knowledgeable regarding land registration."</p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                        <div class="w-10 h-10 rounded-full gold-bg-gradient text-navy-950 font-bold flex items-center justify-center text-sm">
+                            RO
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navy-950 text-sm">Regina Onuh</h4>
+                            <span class="text-xs text-gray-400"><i class="fab fa-google text-red-500 mr-1"></i> Google Verified Reviewer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking & Contact Section -->
+    <section id="schedule-inspection" class="py-20 bg-navy-950 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Inspection Booking Form -->
+                <div class="glass-card p-8 sm:p-10 rounded-2xl border border-gold-500/30">
+                    <span class="text-gold-400 text-xs font-bold uppercase tracking-wider block mb-1">VIP Service</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-6">Schedule a Private Property Inspection</h2>
+                    
+                    <form id="inspectionForm" onsubmit="handleInspectionSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Full Name</label>
+                            <input type="text" required placeholder="e.g. Chief Adeleke" class="w-full bg-navy-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:border-gold-500 focus:outline-none">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Phone / WhatsApp Number</label>
+                                <input type="tel" required placeholder="+234 800 000 0000" class="w-full bg-navy-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:border-gold-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Email Address</label>
+                                <input type="email" placeholder="name@domain.com" class="w-full bg-navy-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:border-gold-500 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Preferred Date</label>
+                                <input type="date" required class="w-full bg-navy-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:border-gold-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Interested Location</label>
+                                <select class="w-full bg-navy-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:border-gold-500 focus:outline-none">
+                                    <option value="Jabi">Jabi, Abuja</option>
+                                    <option value="Guzape">Guzape, Abuja</option>
+                                    <option value="Maitama">Maitama, Abuja</option>
+                                    <option value="Asokoro">Asokoro, Abuja</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Additional Notes / Special Requests</label>
+                            <textarea rows="3" placeholder="Tell us more about your budget or requirement..." class="w-full bg-navy-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:border-gold-500 focus:outline-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full gold-bg-gradient text-navy-950 font-bold py-4 rounded-lg text-sm uppercase tracking-wider hover:opacity-95 transition-all shadow-lg shadow-gold-500/20">
+                            Confirm Inspection Request
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Office Contact Info & Location Map -->
+                <div id="contact" class="space-y-8">
+                    <div>
+                        <span class="text-gold-400 text-xs font-bold uppercase tracking-wider block mb-1">Corporate Office</span>
+                        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-4">Visit Us at Jabi, Abuja</h2>
+                        <p class="text-gray-300 text-sm leading-relaxed">Our office is conveniently located in the commercial heart of Jabi. We are available 24/7 to host walk-in consultations and private portfolio briefings.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-navy-900 border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg gold-bg-gradient flex items-center justify-center text-navy-950 text-lg font-bold shrink-0">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Physical Address</h4>
+                                <p class="text-xs text-gray-300 mt-1">First Floor, Flat 4, 55 Ebitu Ukiwe St, Jabi, Abuja 900108, FCT, Nigeria</p>
+                                <span class="text-[10px] text-gold-400 mt-1 inline-block">Plus Code: 3C7G+Q4 Abuja</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-navy-900 border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg gold-bg-gradient flex items-center justify-center text-navy-950 text-lg font-bold shrink-0">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Phone & WhatsApp Hotline</h4>
+                                <a href="tel:+2349154584295" class="text-xs text-gold-400 hover:underline block mt-1">+234 915 458 4295 (0915 458 4295)</a>
+                                <span class="text-[10px] text-gray-400">Available 24 Hours / 7 Days a week</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 p-4 rounded-xl bg-navy-900 border border-gray-800">
+                            <div class="w-10 h-10 rounded-lg gold-bg-gradient flex items-center justify-center text-navy-950 text-lg font-bold shrink-0">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Official Website</h4>
+                                <a href="https://casaperdana.com" target="_blank" class="text-xs text-gold-400 hover:underline block mt-1">casaperdana.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Container Preview -->
+                    <div class="rounded-xl overflow-hidden border border-gold-500/30 h-48 bg-navy-900 relative">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.927230485903!2d7.424368!3d9.070404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0aeb1f68153b%3A0x6a0c5c32bbbf0a1!2s55%20Ebitu%20Ukiwe%20St%2C%20Jabi%2C%20Abuja!5e0!3m2!1sen!2sng!4v1700000000000" class="w-full h-full border-0 grayscale opacity-80 hover:grayscale-0 transition-all duration-300" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-navy-950 text-gray-400 border-t border-gray-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-9 h-9 rounded-lg gold-bg-gradient flex items-center justify-center text-navy-950 font-serif font-bold text-xl">
+                            CP
+                        </div>
+                        <span class="text-lg font-serif font-bold text-white tracking-wide">CASAPERDANA</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-gray-400">
+                        Premier real estate developer in Abuja. Setting new benchmarks in luxury property design, strategic plot selection, and trusted title delivery.
+                    </p>
+                    <div class="flex space-x-3 text-gold-400 pt-2">
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-900 border border-gray-800 flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 transition-colors"><i class="fab fa-instagram text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-900 border border-gray-800 flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 transition-colors"><i class="fab fa-facebook-f text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-navy-900 border border-gray-800 flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 transition-colors"><i class="fab fa-linkedin-in text-xs"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Quick Links</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-gold-400 transition-colors">Home Page</a></li>
+                        <li><a href="#properties" class="hover:text-gold-400 transition-colors">Featured Abuja Properties</a></li>
+                        <li><a href="#why-us" class="hover:text-gold-400 transition-colors">Why Choose CasaPerdana</a></li>
+                        <li><a href="#roi-calculator" class="hover:text-gold-400 transition-colors">Property ROI Estimator</a></li>
+                        <li><a href="#schedule-inspection" class="hover:text-gold-400 transition-colors">Schedule Private Tour</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Abuja Locations</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><span class="text-gray-400">Jabi Commercial & Lake Axis</span></li>
+                        <li><span class="text-gray-400">Guzape Diplomatic Zone</span></li>
+                        <li><span class="text-gray-400">Maitama Highbrow District</span></li>
+                        <li><span class="text-gray-400">Asokoro Luxury Belt</span></li>
+                        <li><span class="text-gray-400">Katampe Extension</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">Operating Hours</h4>
+                    <div class="text-xs space-y-2">
+                        <p class="text-emerald-400 font-semibold"><i class="fas fa-clock mr-1.5"></i> Open 24 Hours</p>
+                        <p class="text-gray-400">Monday - Sunday</p>
+                        <p class="text-[11px] text-gray-500 mt-2">Walk-ins and diaspora phone calls welcomed anytime.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p>© <span id="year"></span> CasaPerdana Real Estate Company. All Rights Reserved.</p>
+                <p>55 Ebitu Ukiwe St, Jabi, Abuja, Nigeria</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Action Button -->
+    <a href="https://wa.me/2349154584295?text=Hello%20CasaPerdana,%20I%20am%20interested%20in%20learning%20more%20about%20your%20Abuja%20properties." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Custom Notification Box (Replacing alert()) -->
+    <div id="notificationBox" class="fixed bottom-6 left-6 z-50 hidden max-w-sm bg-navy-900 border border-gold-500 text-white p-4 rounded-xl shadow-2xl">
+        <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-full gold-bg-gradient flex items-center justify-center text-navy-950 font-bold text-sm shrink-0">
+                <i class="fas fa-check"></i>
+            </div>
+            <div>
+                <h5 class="font-bold text-xs uppercase tracking-wider text-gold-400">Request Received</h5>
+                <p id="notificationText" class="text-xs text-gray-200 mt-0.5">Thank you! Our concierge team will reach out to you within 15 minutes.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Property Modal Logic
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Notification Message Handler (No alert())
+        function showNotification(msg) {
+            const box = document.getElementById('notificationBox');
+            const txt = document.getElementById('notificationText');
+            txt.innerText = msg;
+            box.classList.remove('hidden');
+            setTimeout(() => {
+                box.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Quick Inquiry Form Handler
+        function handleQuickInquiry(e) {
+            e.preventDefault();
+            const name = document.getElementById('quickName').value;
+            showNotification(`Thank you ${name}! Your VIP Property Catalog request has been sent to our team.`);
+            e.target.reset();
+        }
+
+        // Inspection Booking Form Handler
+        function handleInspectionSubmit(e) {
+            e.preventDefault();
+            showNotification("Your private inspection request has been booked! A representative will call you shortly.");
+            e.target.reset();
+        }
+
+        // Property Filtering Logic
+        function filterProperties() {
+            const loc = document.getElementById('filterLocation').value;
+            const type = document.getElementById('filterType').value;
+            const price = document.getElementById('filterPrice').value;
+
+            const cards = document.querySelectorAll('.property-card');
+
+            cards.forEach(card => {
+                const cardLoc = card.getAttribute('data-location');
+                const cardType = card.getAttribute('data-type');
+                const cardPrice = parseInt(card.getAttribute('data-price'));
+
+                let locMatch = (loc === 'all' || cardLoc === loc);
+                let typeMatch = (type === 'all' || cardType === type);
+                let priceMatch = true;
+
+                if (price === 'under150m') priceMatch = cardPrice < 150000000;
+                else if (price === '150m-300m') priceMatch = cardPrice >= 150000000 && cardPrice <= 300000000;
+                else if (price === 'above300m') priceMatch = cardPrice > 300000000;
+
+                if (locMatch && typeMatch && priceMatch) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterCategory(cat) {
+            const cards = document.querySelectorAll('.property-card');
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-location') === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // ROI Calculator Logic
+        function updateCalculator() {
+            const amount = parseInt(document.getElementById('calcAmount').value);
+            const yieldVal = parseInt(document.getElementById('calcYield').value);
+            const appreciationVal = parseInt(document.getElementById('calcAppreciation').value);
+
+            document.getElementById('calcAmountLabel').innerText = '₦' + amount.toLocaleString();
+            document.getElementById('calcYieldLabel').innerText = yieldVal + '%';
+            document.getElementById('calcAppreciationLabel').innerText = appreciationVal + '%';
+
+            const annualRent = amount * (yieldVal / 100);
+            
+            // Compound 5 year value calculation with appreciation
+            let totalVal = amount;
+            for (let i = 0; i < 5; i++) {
+                totalVal += totalVal * (appreciationVal / 100);
+            }
+
+            document.getElementById('resAnnualRent').innerText = '₦' + Math.round(annualRent).toLocaleString() + ' / yr';
+            document.getElementById('resTotalValue').innerText = '₦' + Math.round(totalVal).toLocaleString();
+        }
+    </script>
+</body>
+</html>

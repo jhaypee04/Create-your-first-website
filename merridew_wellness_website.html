@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merridew Wellness — Rituals for body and mind</title>
+    <!-- Fonts: Instrument Serif & Instrument Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#F3EEE4',
+                        cream2: '#EAE1D2',
+                        redType: '#E1371C',
+                        magentaBlob: '#B3124A',
+                        ink: '#2B1B14',
+                        muted: '#85746A',
+                        footerCream: '#FBEADC',
+                        footerPeach: '#FFD9BF'
+                    },
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        sans: ['"Instrument Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Styles & CSS Variables */
+        :root {
+            --cream-bg: #F3EEE4;
+            --red-type: #E1371C;
+            --ink: #2B1B14;
+            --active-color: #B8461B;
+        }
+
+        body {
+            background-color: var(--cream-bg);
+            color: var(--ink);
+            font-family: 'Instrument Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-serif-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            line-height: 0.88;
+        }
+
+        /* Hide Scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Arc Carousel Canvas & Positioning */
+        .hero-viewport {
+            height: 100vh;
+            height: 100dvh;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        /* Dynamic Blob Shape (Rounded Trapezoid) */
+        .hero-blob {
+            position: absolute;
+            bottom: -5vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 58vw;
+            height: 52vh;
+            background-color: var(--active-color);
+            clip-path: ellipse(50% 50% at 50% 50%);
+            border-top-left-radius: 120px;
+            border-top-right-radius: 120px;
+            transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 5;
+        }
+
+        @media (max-width: 768px) {
+            .hero-blob {
+                width: 88vw;
+                height: 42vh;
+                border-top-left-radius: 80px;
+                border-top-right-radius: 80px;
+            }
+        }
+
+        /* Text Ring Animation */
+        .rotating-ring {
+            animation: spin 35s linear infinite;
+            transform-origin: center;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Custom Drag Pill Cursor */
+        .cursor-pill {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.25s ease, transform 0.1s ease-out;
+            opacity: 0;
+        }
+
+        /* Jar Flying & Wheel Transition Styles */
+        .jar-item {
+            position: absolute;
+            bottom: 12vh;
+            left: 50%;
+            transform-origin: center bottom;
+            transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .jar-img-wrapper {
+            transition: filter 0.4s ease;
+        }
+
+        .jar-item:hover .jar-img-wrapper {
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+        }
+
+        /* Masked Text Reveal Effect */
+        .mask-text-line {
+            overflow: hidden;
+            display: block;
+        }
+        .mask-text-inner {
+            display: block;
+            transform: translateY(105%);
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mask-text-line.active .mask-text-inner {
+            transform: translateY(0%);
+        }
+
+        /* Sticky Hero Scroll Effect */
+        .product-hero-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        /* Bag Counter Bump Animation */
+        @keyframes bump {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1); }
+        }
+        .bump-anim {
+            animation: bump 0.35s ease-out;
+        }
+
+        /* Custom SVGs and Packaging Styling */
+        .jar-svg {
+            filter: drop-shadow(0 20px 30px rgba(43,27,20,0.12));
+        }
+    </style>
+</head>
+<body class="bg-cream text-ink relative selection:bg-redType selection:text-cream">
+
+    <!-- Custom Floating Cursor Pill -->
+    <div id="cursorPill" class="cursor-pill hidden md:flex items-center gap-2 bg-white text-redType px-4 py-2 rounded-full shadow-2xl border border-redType/20 text-xs font-semibold tracking-wider uppercase">
+        <span class="w-2 h-2 rounded-full bg-redType animate-pulse"></span>
+        <span id="cursorText">Discover Ritual</span>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-ink text-footerCream text-xs py-2 px-4 text-center tracking-wide z-50 relative font-sans">
+        <span>Free UK delivery over £30. Subscribe and save 15%</span>
+    </div>
+
+    <!-- Frosted Header Bar -->
+    <header class="sticky top-0 w-full backdrop-blur-md bg-cream/80 z-40 border-b border-ink/10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+            
+            <!-- Navigation Links (Desktop) -->
+            <nav class="hidden lg:flex items-center gap-6 text-xs uppercase tracking-wider font-semibold text-ink">
+                <button onclick="showHome()" class="hover:text-redType transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-redType hover:after:w-full after:transition-all">Shop all</button>
+                <a href="#details" onclick="navigateToProduct(0)" class="hover:text-redType transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-redType hover:after:w-full after:transition-all">Sleep & Calm</a>
+                <a href="#details" onclick="navigateToProduct(1)" class="hover:text-redType transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-redType hover:after:w-full after:transition-all">Immunity</a>
+                <a href="#details" onclick="navigateToProduct(2)" class="hover:text-redType transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-redType hover:after:w-full after:transition-all">Beauty</a>
+                <button onclick="alert('Merridew Wellness was born in Frome, Somerset. We craft slow rituals for modern body and mind using pure, sustainable botanical extracts.')" class="hover:text-redType transition-colors relative py-1">Our Story</button>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden text-ink p-2 focus:outline-none" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+
+            <!-- Brand Logo -->
+            <button onclick="showHome()" class="flex items-center gap-2 group focus:outline-none">
+                <svg class="w-6 h-6 text-redType transform group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-5l-3 3-1.4-1.4 4.4-4.4 4.4 4.4-1.4 1.4-3-3v5h-2z" opacity="0" />
+                    <!-- Sprig Icon -->
+                    <path d="M12 3c-1.1 0-2 .9-2 2 0 3.5 3 6.5 6 9.5-3 1-6 0-8-2-1.5 2.5-1 6 2 8 3.5 0 6.5-3 9.5-6-1-3 0-6-2-8-1.5-2.5-3.5-3.5-5.5-3.5zm-4 12c.8-1.2 2-2.2 3.5-2.8-.8 1.5-.8 3.2 0 4.8-1.5-.6-2.7-1.2-3.5-2s0 0 0 0z"/>
+                </svg>
+                <span class="font-serif text-2xl md:text-3xl tracking-wider uppercase font-normal text-redType">MERRIDEW</span>
+            </button>
+
+            <!-- Actions Right -->
+            <div class="flex items-center gap-4 md:gap-6">
+                <button class="hover:text-redType transition-colors p-1" title="Search">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+                <button class="hidden sm:block hover:text-redType transition-colors p-1" title="Account">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                </button>
+                <!-- Bag Pill -->
+                <button onclick="toggleCartDrawer()" class="bg-redType text-white px-4 py-1.5 rounded-full text-xs uppercase font-semibold flex items-center gap-2 hover:bg-ink transition-colors shadow-sm">
+                    <span>Bag</span>
+                    <span id="bagCount" class="bg-white text-redType w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobileMenu" class="fixed inset-0 bg-magentaBlob z-30 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col justify-between p-8 pt-24 text-footerCream">
+        <div class="flex flex-col gap-6 font-serif text-3xl">
+            <button onclick="showHome(); toggleMobileMenu();" class="text-left hover:text-footerPeach transition-colors">Shop All Rituals</button>
+            <button onclick="navigateToProduct(0); toggleMobileMenu();" class="text-left hover:text-footerPeach transition-colors">Deep Rest</button>
+            <button onclick="navigateToProduct(1); toggleMobileMenu();" class="text-left hover:text-footerPeach transition-colors">Citrus Bright</button>
+            <button onclick="navigateToProduct(2); toggleMobileMenu();" class="text-left hover:text-footerPeach transition-colors">Rose Glow</button>
+            <button onclick="navigateToProduct(4); toggleMobileMenu();" class="text-left hover:text-footerPeach transition-colors">Green Ritual</button>
+        </div>
+        <div class="space-y-4 font-sans text-xs tracking-wider uppercase opacity-80">
+            <p>Frome, Somerset, UK</p>
+            <p>© Merridew Wellness 2026</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <main id="appMain">
+
+        <!-- ================= SECTION 1: HOME ARC CAROUSEL HERO ================= -->
+        <section id="homeHero" class="hero-viewport flex flex-col justify-between relative cursor-grab active:cursor-grabbing">
+            
+            <!-- Top Tagline & Hints -->
+            <div class="pt-6 px-6 text-center z-10 pointer-events-none">
+                <p class="text-xs uppercase tracking-widest text-muted font-semibold">Somerset Botanical Science</p>
+                <h1 class="font-serif text-3xl md:text-5xl text-redType mt-1 italic">Slow rituals for daily renewal</h1>
+            </div>
+
+            <!-- Traversal Control Indicators -->
+            <div class="absolute top-1/2 left-4 md:left-8 -translate-y-1/2 z-20 hidden sm:block">
+                <button onclick="stepCarousel(-1)" class="w-10 h-10 rounded-full border border-ink/20 flex items-center justify-center text-ink hover:bg-redType hover:text-white hover:border-redType transition-all bg-cream/50 backdrop-blur-sm" aria-label="Previous Jar">
+                    ←
+                </button>
+            </div>
+            <div class="absolute top-1/2 right-4 md:right-8 -translate-y-1/2 z-20 hidden sm:block">
+                <button onclick="stepCarousel(1)" class="w-10 h-10 rounded-full border border-ink/20 flex items-center justify-center text-ink hover:bg-redType hover:text-white hover:border-redType transition-all bg-cream/50 backdrop-blur-sm" aria-label="Next Jar">
+                    →
+                </button>
+            </div>
+
+            <!-- Dynamic Magenta/Tinted Blob Shape -->
+            <div id="heroBlob" class="hero-blob flex items-center justify-center">
+                
+                <!-- Rotating Circular Text Path -->
+                <div class="absolute w-[300px] h-[300px] md:w-[420px] md:h-[420px] pointer-events-none opacity-90">
+                    <svg class="w-full h-full rotating-ring" viewBox="0 0 300 300">
+                        <defs>
+                            <path id="textRingPath" d="M 150, 150 m -120, 0 a 120,120 0 1,1 240,0 a 120,120 0 1,1 -240,0"/>
+                        </defs>
+                        <text fill="#FBEADC" font-family="Instrument Serif, Georgia, serif" font-size="14" letter-spacing="2.5">
+                            <textPath href="#textRingPath" startOffset="0%">
+                                Made slowly in Somerset · Rituals for body and mind · Made slowly in Somerset · Rituals for body and mind ·
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Interactive Arc Jar Stage Container -->
+            <div id="jarStage" class="absolute inset-0 overflow-hidden pointer-events-auto">
+                <!-- Jar Elements rendered via JavaScript for 3D Arc calculation -->
+            </div>
+
+            <!-- Bottom Center Hint -->
+            <div id="carouselHint" class="pb-8 text-center z-10 pointer-events-none">
+                <span class="inline-block bg-white/70 backdrop-blur-md text-ink text-xs px-4 py-1.5 rounded-full border border-ink/10 shadow-sm font-medium tracking-wide">
+                    Drag to browse · Tap a jar to open
+                </span>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 2: PRODUCT DETAIL PAGE (DYNAMIC) ================= -->
+        <section id="productPage" class="hidden min-h-screen relative">
+            
+            <!-- Sticky Product Hero Section (230vh height context for smooth scrolling) -->
+            <div class="relative h-[220vh]" id="stickyHeroWrapper">
+                <div class="product-hero-sticky px-4 md:px-12 py-8 bg-cream border-b border-ink/10">
+                    
+                    <!-- Back to Reel Header Action -->
+                    <div class="flex items-center justify-between z-20">
+                        <button onclick="showHome()" class="flex items-center gap-2 text-xs uppercase font-semibold text-muted hover:text-redType transition-colors group">
+                            <span class="transform group-hover:-translate-x-1 transition-transform">←</span>
+                            <span>All Rituals</span>
+                        </button>
+                        <div class="text-xs uppercase font-semibold tracking-wider text-muted" id="pdCategory">
+                            Sleep & Calm
+                        </div>
+                    </div>
+
+                    <!-- Giant Masked Display Titles -->
+                    <div class="my-auto text-center z-10 pointer-events-none">
+                        <div class="mask-text-line" id="lineMask1">
+                            <h2 id="pdTitleLine1" class="mask-text-inner font-serif-title text-[11vw] uppercase text-redType font-normal tracking-tight">
+                                CITRUS
+                            </h2>
+                        </div>
+                        <div class="mask-text-line" id="lineMask2">
+                            <h2 id="pdTitleLine2" class="mask-text-inner font-serif-title text-[11vw] uppercase text-redType font-normal tracking-tight italic">
+                                BRIGHT
+                            </h2>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Animated Jar Container on Product Page -->
+                    <div id="productPageJarSlot" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-64 md:w-80 h-80 md:h-96 flex items-end justify-center pointer-events-none transition-transform duration-100 ease-out">
+                        <div id="flyingJarTarget" class="w-full h-full flex items-end justify-center">
+                            <!-- Cloned Jar renders here -->
+                        </div>
+                    </div>
+
+                    <!-- Meta details footer of Sticky Hero -->
+                    <div class="flex justify-between items-end text-xs uppercase font-semibold tracking-wider text-muted z-20">
+                        <div>
+                            <p class="text-[10px] opacity-60">Format & Size</p>
+                            <p id="pdSizeMeta" class="text-ink">60 Gummies</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[10px] opacity-60">Origin</p>
+                            <p class="text-ink">Somerset, UK</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Details Section (3 Columns) -->
+            <section id="details" class="max-w-7xl mx-auto px-6 md:px-12 py-20 border-b border-ink/10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+                    
+                    <!-- Column 1: What it does & Purchase -->
+                    <div class="space-y-6">
+                        <h3 class="font-serif text-3xl text-redType italic">What it does</h3>
+                        <p id="pdDescription" class="text-sm md:text-base leading-relaxed text-ink/80">
+                            A restorative daily blend designed to support deep restful sleep and regulate nervous system balance. Formulated with highly bioavailable Magnesium Glycinate and wild Somerset chamomile.
+                        </p>
+                        <div class="pt-4 border-t border-ink/10 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-muted block uppercase tracking-wider">Price</span>
+                                <span id="pdPrice" class="font-serif text-3xl text-ink">£28.00</span>
+                            </div>
+                            <button onclick="addToBagCurrent()" class="bg-redType hover:bg-ink text-white px-8 py-3 rounded-full text-xs uppercase font-semibold tracking-wider transition-colors shadow-md transform active:scale-95">
+                                Add to Bag
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: How to take it -->
+                    <div class="space-y-6">
+                        <h3 class="font-serif text-3xl text-redType italic">How to take it</h3>
+                        <ul id="pdDirections" class="space-y-4 text-sm text-ink/80">
+                            <li class="flex items-start gap-3">
+                                <span class="w-5 h-5 rounded-full bg-cream2 flex items-center justify-center text-xs font-bold text-redType shrink-0">1</span>
+                                <span>Take 2 capsules or gummies daily with warm water 30 minutes before rest.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-5 h-5 rounded-full bg-cream2 flex items-center justify-center text-xs font-bold text-redType shrink-0">2</span>
+                                <span>For optimal absorption, enjoy alongside a light evening meal or tea.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: What's inside -->
+                    <div class="space-y-6">
+                        <h3 class="font-serif text-3xl text-redType italic">What's inside</h3>
+                        <div id="pdIngredients" class="space-y-3 text-xs uppercase tracking-wider text-ink/90">
+                            <div class="p-3 bg-cream2/60 rounded-xl flex justify-between">
+                                <span>Magnesium Glycinate</span>
+                                <span class="font-bold">320mg</span>
+                            </div>
+                            <div class="p-3 bg-cream2/60 rounded-xl flex justify-between">
+                                <span>L-Theanine</span>
+                                <span class="font-bold">150mg</span>
+                            </div>
+                            <div class="p-3 bg-cream2/60 rounded-xl flex justify-between">
+                                <span>Somerset Chamomile</span>
+                                <span class="font-bold">100mg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Gallery Section (3 Lifestyle Images) -->
+            <section class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[56vh]">
+                    <!-- Image 1 -->
+                    <div class="md:col-span-5 rounded-2xl overflow-hidden bg-cream2 h-64 md:h-full relative group">
+                        <div id="lifestyleImg1" class="w-full h-full bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700"></div>
+                        <div class="absolute inset-0 bg-ink/10"></div>
+                    </div>
+                    <!-- Image 2 -->
+                    <div class="md:col-span-4 rounded-2xl overflow-hidden bg-cream2 h-64 md:h-full relative group">
+                        <div id="lifestyleImg2" class="w-full h-full bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700"></div>
+                        <div class="absolute inset-0 bg-ink/10"></div>
+                    </div>
+                    <!-- Image 3 -->
+                    <div class="md:col-span-3 rounded-2xl overflow-hidden bg-cream2 h-64 md:h-full relative group">
+                        <div id="lifestyleImg3" class="w-full h-full bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700"></div>
+                        <div class="absolute inset-0 bg-ink/10"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Other Rituals Grid Section -->
+            <section class="max-w-7xl mx-auto px-6 md:px-12 py-20 border-t border-ink/10">
+                <div class="mask-text-line mb-12" id="othersHeadingMask">
+                    <h2 class="mask-text-inner font-serif text-4xl md:text-6xl text-redType uppercase tracking-tight">
+                        THE OTHER / <span class="italic">RITUALS</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" id="othersGrid">
+                    <!-- Cards dynamically populated via JS -->
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-magentaBlob text-footerCream pt-20 pb-12 px-6 md:px-12 border-t border-redType/20">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Giant Brand Typography -->
+            <div class="border-b border-footerCream/20 pb-12 mb-16">
+                <h2 class="font-serif text-[15vw] leading-none text-footerCream uppercase tracking-tight">
+                    MERRIDEW
+                </h2>
+                <p class="font-serif text-3xl md:text-5xl text-footerPeach italic -mt-2 md:-mt-6 ml-2">
+                    Wellness
+                </p>
+            </div>
+
+            <!-- Footer Columns -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-xs font-sans uppercase tracking-wider mb-16">
+                
+                <div class="space-y-4">
+                    <h4 class="text-footerPeach font-bold">Visit</h4>
+                    <p class="leading-relaxed opacity-80">
+                        Merridew Apothecary<br>
+                        Catherine Hill, Frome<br>
+                        Somerset, BA11 1BZ
+                    </p>
+                </div>
+
+                <div class="space-y-4 flex flex-col">
+                    <h4 class="text-footerPeach font-bold">Explore</h4>
+                    <button onclick="showHome()" class="text-left hover:text-footerPeach transition-colors opacity-80">All Products</button>
+                    <a href="#details" onclick="navigateToProduct(0)" class="hover:text-footerPeach transition-colors opacity-80">Sleep & Calm</a>
+                    <a href="#details" onclick="navigateToProduct(1)" class="hover:text-footerPeach transition-colors opacity-80">Immunity</a>
+                    <a href="#details" onclick="navigateToProduct(2)" class="hover:text-footerPeach transition-colors opacity-80">Beauty Rituals</a>
+                </div>
+
+                <div class="space-y-4 flex flex-col">
+                    <h4 class="text-footerPeach font-bold">Say Hello</h4>
+                    <a href="mailto:hello@merridewwellness.co.uk" class="hover:text-footerPeach transition-colors opacity-80">hello@merridewwellness.co.uk</a>
+                    <a href="#" class="hover:text-footerPeach transition-colors opacity-80">Instagram @merridewwellness</a>
+                    <a href="#" class="hover:text-footerPeach transition-colors opacity-80">Journal & Field Notes</a>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="text-footerPeach font-bold">Newsletter</h4>
+                    <p class="opacity-80 text-[11px] normal-case">Receive seasonal wellness notes and 10% off your first order.</p>
+                    <form onsubmit="event.preventDefault(); alert('Thank you for subscribing to Merridew Wellness.');" class="flex flex-col gap-2 pt-2">
+                        <input type="email" placeholder="Your email address" required class="bg-white/10 border border-footerCream/30 text-footerCream placeholder-footerCream/50 px-3 py-2 rounded-lg text-xs focus:outline-none focus:border-footerPeach">
+                        <button type="submit" class="bg-footerCream text-magentaBlob font-bold py-2 rounded-lg hover:bg-footerPeach transition-colors text-xs">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Disclaimer & Legal Base -->
+            <div class="pt-8 border-t border-footerCream/10 flex flex-col md:flex-row justify-between items-center text-[11px] opacity-60 gap-4">
+                <p>© 2026 Merridew Wellness Ltd. Handcrafted in Somerset, UK.</p>
+                <p class="max-w-md text-center md:text-right">Food supplements should not be used as a substitute for a varied diet. Crafted with ethical botanical extracts.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT LOGIC & ANIMATIONS ================= -->
+    <script>
+        /* Product Database Specification */
+        const PRODUCTS = [
+            {
+                id: 'citrus-bright',
+                name: 'Citrus Bright',
+                subtitle: 'Vitamin C + Zinc',
+                category: 'Immunity',
+                size: '60 gummies',
+                price: '£26.00',
+                color: '#B8461B',
+                labelColor: '#F2731C',
+                description: 'A vibrant citrus-infused daily gummy packed with wild rosehip Vitamin C and Zinc to boost natural immune resilience and energetic vitality.',
+                ingredients: [
+                    { name: 'Vitamin C (Rosehip)', amount: '500mg' },
+                    { name: 'Zinc Citrate', amount: '15mg' },
+                    { name: 'Citrus Bioflavonoids', amount: '50mg' }
+                ],
+                svgCapsuleColor: '#F2731C'
+            },
+            {
+                id: 'deep-rest',
+                name: 'Deep Rest',
+                subtitle: 'Magnesium Glycinate',
+                category: 'Sleep & Calm',
+                size: '60 capsules',
+                price: '£28.00',
+                color: '#A27FD6',
+                labelColor: '#6C3FA0',
+                description: 'A soothing evening botanical formulation crafted with pure Magnesium Glycinate and organic Somerset Chamomile for deep restorative rest.',
+                ingredients: [
+                    { name: 'Magnesium Glycinate', amount: '320mg' },
+                    { name: 'L-Theanine', amount: '150mg' },
+                    { name: 'Somerset Chamomile', amount: '100mg' }
+                ],
+                svgCapsuleColor: '#C9A6E8'
+            },
+            {
+                id: 'rose-glow',
+                name: 'Rose Glow',
+                subtitle: 'Marine Collagen',
+                category: 'Beauty',
+                size: '300 g powder',
+                price: '£34.00',
+                color: '#D9446C',
+                labelColor: '#E0365F',
+                description: 'Hydrolysed Type I wild marine collagen peptides infused with organic damask rose petals and hyaluronic acid for skin elasticity.',
+                ingredients: [
+                    { name: 'Marine Collagen Peptides', amount: '5000mg' },
+                    { name: 'Hyaluronic Acid', amount: '120mg' },
+                    { name: 'Damask Rose Extract', amount: '80mg' }
+                ],
+                svgCapsuleColor: '#F4B6C2'
+            },
+            {
+                id: 'calm-root',
+                name: 'Calm Root',
+                subtitle: 'Ashwagandha KSM-66',
+                category: 'Stress & Focus',
+                size: '60 capsules',
+                price: '£29.00',
+                color: '#D49A5B',
+                labelColor: '#C8623B',
+                description: 'Full-spectrum organic Ashwagandha root extract designed to regulate cortisol levels, ease nervous tension and support calm mental clarity.',
+                ingredients: [
+                    { name: 'Ashwagandha KSM-66®', amount: '600mg' },
+                    { name: 'Holy Basil (Tulsi)', amount: '150mg' },
+                    { name: 'Black Pepper Extract', amount: '5mg' }
+                ],
+                svgCapsuleColor: '#EBCB9F'
+            },
+            {
+                id: 'green-ritual',
+                name: 'Green Ritual',
+                subtitle: 'Daily Greens + Matcha',
+                category: 'Energy & Gut',
+                size: '250 g powder',
+                price: '£32.00',
+                color: '#8DB236',
+                labelColor: '#2F6B3A',
+                description: 'A nutrient-dense blend of ceremonial Uji matcha, organic chlorella, spirulina and digestive enzymes to invigorate daily wellness.',
+                ingredients: [
+                    { name: 'Ceremonial Matcha', amount: '1500mg' },
+                    { name: 'Organic Greens Blend', amount: '3500mg' },
+                    { name: 'Probiotic Complex', amount: '2 Billion CFU' }
+                ],
+                svgCapsuleColor: '#B9D94A'
+            },
+            {
+                id: 'berry-shield',
+                name: 'Berry Shield',
+                subtitle: 'Black Elderberry',
+                category: 'Immunity',
+                size: '60 gummies',
+                price: '£25.00',
+                color: '#6D80D6',
+                labelColor: '#22357A',
+                description: 'Concentrated European elderberry gummies enriched with Vitamin D3 to fortify seasonal immune defense with a rich natural berry flavour.',
+                ingredients: [
+                    { name: 'Black Elderberry Extract', amount: '400mg' },
+                    { name: 'Vitamin D3 (Lichen)', amount: '1000 IU' },
+                    { name: 'Echinacea Extract', amount: '100mg' }
+                ],
+                svgCapsuleColor: '#8191E2'
+            },
+            {
+                id: 'golden-hour',
+                name: 'Golden Hour',
+                subtitle: 'Turmeric + Black Pepper',
+                category: 'Joints & Recovery',
+                size: '60 capsules',
+                price: '£27.00',
+                color: '#B0780C',
+                labelColor: '#C4501A',
+                description: 'High-potency organic turmeric curcumin with piperine to soothe body inflammatory response and support flexible joint mobility.',
+                ingredients: [
+                    { name: 'Organic Turmeric (95% Curcuminoids)', amount: '500mg' },
+                    { name: 'Ginger Root Extract', amount: '100mg' },
+                    { name: 'BioPerine® Piperine', amount: '10mg' }
+                ],
+                svgCapsuleColor: '#ECAC22'
+            },
+            {
+                id: 'sea-mineral',
+                name: 'Sea Mineral',
+                subtitle: 'Irish Sea Moss',
+                category: 'Vitality',
+                size: '60 capsules',
+                price: '£28.00',
+                color: '#4FA894',
+                labelColor: '#1F6F6B',
+                description: 'Wild-harvested Irish sea moss containing 92 essential minerals to nourish thyroid health, cellular hydration and vitality.',
+                ingredients: [
+                    { name: 'Organic Irish Sea Moss', amount: '600mg' },
+                    { name: 'Bladderwrack', amount: '200mg' },
+                    { name: 'Burdock Root', amount: '100mg' }
+                ],
+                svgCapsuleColor: '#93D8C9'
+            }
+        ];
+
+        /* Lifestyle Image Mock Asset URLs (High Resolution Editorial Unsplash) */
+        const LIFESTYLE_IMAGES = [
+            'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1000&q=80',
+            'https://images.unsplash.com/photo-1512290900673-0504780efec6?auto=format&fit=crop&w=1000&q=80',
+            'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=1000&q=80'
+        ];
+
+        /* Carousel State Variables */
+        let currentIndex = 0;
+        let activeProduct = PRODUCTS[0];
+        let bagCount = 0;
+        let isDragging = false;
+        let startX = 0;
+        let currentDragX = 0;
+        let autoPlayTimer = null;
+        let isHovered = false;
+
+        /* Generator Function for Realistic Jar Vector Graphic */
+        function createJarSVG(product, isLarge = false) {
+            const width = isLarge ? 220 : 160;
+            const height = isLarge ? 290 : 210;
+            
+            return `
+                <svg width="${width}" height="${height}" viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg" class="jar-svg select-none">
+                    <!-- Glass Body Shadow & Ambient Reflection -->
+                    <rect x="25" y="45" width="150" height="195" rx="24" fill="white" fill-opacity="0.95"/>
+                    <rect x="25" y="45" width="150" height="195" rx="24" stroke="#E2DCD2" stroke-width="2"/>
+                    
+                    <!-- Jar Neck -->
+                    <path d="M45 45V32C45 28 48 25 52 25H148C152 25 155 28 155 32V45H45Z" fill="#F3EEE4" stroke="#D1C9BC" stroke-width="1.5"/>
+                    
+                    <!-- Visible Contents through neck -->
+                    <g opacity="0.85">
+                        <circle cx="70" cy="36" r="5" fill="${product.svgCapsuleColor}"/>
+                        <circle cx="85" cy="35" r="5" fill="${product.svgCapsuleColor}"/>
+                        <circle cx="100" cy="37" r="5" fill="${product.svgCapsuleColor}"/>
+                        <circle cx="115" cy="35" r="5" fill="${product.svgCapsuleColor}"/>
+                        <circle cx="130" cy="36" r="5" fill="${product.svgCapsuleColor}"/>
+                    </g>
+                    
+                    <!-- Ribbed Aluminium Metal Lid -->
+                    <rect x="40" y="8" width="120" height="20" rx="4" fill="url(#metalLid)"/>
+                    <rect x="40" y="8" width="120" height="20" rx="4" stroke="#B8B0A2" stroke-width="1"/>
+                    <!-- Lid Rib Lines -->
+                    <line x1="50" y1="8" x2="50" y2="28" stroke="#A69E90" stroke-width="1"/>
+                    <line x1="60" y1="8" x2="60" y2="28" stroke="#A69E90" stroke-width="1"/>
+                    <line x1="70" y1="8" x2="70" y2="28" stroke="#A69E90" stroke-width="1"/>
+                    <line x1="80" y1="8" x2="80" y2="28" stroke="#A69E90" stroke-width="1"/>
+                    <line x1="90" y1="8" x2="90" y2="28" stroke="#A69E90" stroke-width="1"/>
+                    <line x1="100" y1="8" x2="100" y2="28" stroke="#A69E90" stroke-width="1"/>
+                    <line x1="110" y1="8" x2="110" y2="28" stroke="#A69E90" stroke-width="1"/>
+                    <line x1="120" y1="8" x2="120" y2="28" stroke="#A69E90" stroke-width="1"/>
+                    <line x1="130" y1="8" x2="130" y2="28" stroke="#A69E90" stroke-width="1"/>
+                    <line x1="140" y1="8" x2="140" y2="28" stroke="#A69E90" stroke-width="1"/>
+                    <line x1="150" y1="8" x2="150" y2="28" stroke="#A69E90" stroke-width="1"/>
+
+                    <!-- Wrap-around Matte Paper Label -->
+                    <rect x="27" y="60" width="146" height="165" rx="8" fill="${product.labelColor}"/>
+                    
+                    <!-- Paper Cut Graphic Details on Label -->
+                    <circle cx="100" cy="110" r="28" fill="#F3EEE4" fill-opacity="0.2"/>
+                    <path d="M100 90C110 90 118 98 118 110C118 122 110 130 100 130" stroke="#F3EEE4" stroke-width="2" stroke-linecap="round"/>
+
+                    <!-- Label Typography -->
+                    <text x="100" y="80" font-family="Instrument Sans, sans-serif" font-size="7" font-weight="700" fill="#F3EEE4" text-anchor="middle" letter-spacing="1.5">MERRIDEW</text>
+                    <text x="100" y="152" font-family="Instrument Serif, Georgia, serif" font-size="16" fill="#F3EEE4" text-anchor="middle">${product.name.split(' ')[0].toUpperCase()}</text>
+                    <text x="100" y="168" font-family="Instrument Serif, Georgia, serif" font-size="15" font-style="italic" fill="#F3EEE4" text-anchor="middle">${product.name.split(' ')[1] || ''}</text>
+                    <text x="100" y="188" font-family="Instrument Sans, sans-serif" font-size="7" font-weight="600" fill="#F3EEE4" fill-opacity="0.8" text-anchor="middle" letter-spacing="0.5">${product.subtitle.toUpperCase()}</text>
+                    <text x="100" y="212" font-family="Instrument Sans, sans-serif" font-size="6" font-weight="700" fill="#F3EEE4" fill-opacity="0.6" text-anchor="middle" letter-spacing="1">${product.size.toUpperCase()}</text>
+
+                    <!-- Realistic Glass Specular Highlights -->
+                    <path d="M32 50V230" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+                    <path d="M38 50V230" stroke="white" stroke-width="1" stroke-linecap="round" opacity="0.2"/>
+                    
+                    <defs>
+                        <linearGradient id="metalLid" x1="40" y1="8" x2="160" y2="28" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#DCD6CD"/>
+                            <stop offset="30%" stop-color="#F5F2EC"/>
+                            <stop offset="50%" stop-color="#C5BEB3"/>
+                            <stop offset="80%" stop-color="#EAE5DC"/>
+                            <stop offset="100%" stop-color="#B0A89C"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            `;
+        }
+
+        /* Render Arc Carousel Stage */
+        function renderCarousel() {
+            const stage = document.getElementById('jarStage');
+            if (!stage) return;
+
+            stage.innerHTML = '';
+            const total = PRODUCTS.length;
+            const radius = 620; // Virtual wheel radius
+            
+            PRODUCTS.forEach((product, idx) => {
+                // Calculate position relative to currentIndex on infinite circular loop
+                let diff = (idx - currentIndex) % total;
+                if (diff > total / 2) diff -= total;
+                if (diff < -total / 2) diff += total;
+
+                // Angle along arc
+                const angleDeg = diff * 22; // 22 degrees spacing
+                const angleRad = (angleDeg * Math.PI) / 180;
+
+                // Scale factor
+                let scale = 1 - Math.min(Math.abs(diff) * 0.27, 0.58);
+                if (diff === 0) scale = 1.15;
+
+                // Dynamic coordinates along giant circle wheel
+                const x = Math.sin(angleRad) * radius;
+                const y = (1 - Math.cos(angleRad)) * radius * 0.35;
+                const rotation = angleDeg * 0.7;
+
+                // Z-index ordering
+                const zIndex = 20 - Math.abs(Math.round(diff));
+                const opacity = Math.abs(diff) > 3 ? 0 : 1 - Math.abs(diff) * 0.22;
+
+                const jarDiv = document.createElement('div');
+                jarDiv.className = 'jar-item';
+                jarDiv.style.transform = `translate(-50%, 0) translate3d(${x}px, ${y}px, 0px) rotate(${rotation}deg) scale(${scale})`;
+                jarDiv.style.zIndex = zIndex;
+                jarDiv.style.opacity = opacity;
+
+                jarDiv.innerHTML = `
+                    <div class="jar-img-wrapper" onclick="handleJarClick(${idx})">
+                        ${createJarSVG(product, diff === 0)}
+                    </div>
+                `;
+
+                stage.appendChild(jarDiv);
+            });
+
+            // Update Blob Dynamic Theme Color
+            activeProduct = PRODUCTS[currentIndex];
+            document.documentElement.style.setProperty('--active-color', activeProduct.color);
+        }
+
+        /* Step Carousel */
+        function stepCarousel(dir) {
+            currentIndex = (currentIndex + dir + PRODUCTS.length) % PRODUCTS.length;
+            renderCarousel();
+        }
+
+        /* Click Event Handler on Jar */
+        function handleJarClick(idx) {
+            if (idx === currentIndex) {
+                // Tapping center jar opens product page
+                openProductDetail(PRODUCTS[idx]);
+            } else {
+                // Tapping side jar rotates it to center
+                currentIndex = idx;
+                renderCarousel();
+            }
+        }
+
+        /* Navigate directly to specific product from links */
+        function navigateToProduct(index) {
+            currentIndex = index;
+            renderCarousel();
+            openProductDetail(PRODUCTS[index]);
+        }
+
+        /* Open Product Detail Page with Animation */
+        function openProductDetail(product) {
+            activeProduct = product;
+            
+            // Populate Product Data
+            const titleParts = product.name.split(' ');
+            document.getElementById('pdTitleLine1').innerText = titleParts[0].toUpperCase();
+            document.getElementById('pdTitleLine2').innerText = (titleParts[1] || '').toUpperCase();
+            document.getElementById('pdCategory').innerText = product.category;
+            document.getElementById('pdSizeMeta').innerText = product.size;
+            document.getElementById('pdDescription').innerText = product.description;
+            document.getElementById('pdPrice').innerText = product.price;
+
+            // Render Ingredients
+            const ingContainer = document.getElementById('pdIngredients');
+            ingContainer.innerHTML = product.ingredients.map(ing => `
+                <div class="p-3 bg-cream2/60 rounded-xl flex justify-between">
+                    <span class="font-medium">${ing.name}</span>
+                    <span class="font-bold">${ing.amount}</span>
+                </div>
+            `).join('');
+
+            // Render Lifestyle Images
+            document.getElementById('lifestyleImg1').style.backgroundImage = `url('${LIFESTYLE_IMAGES[0]}')`;
+            document.getElementById('lifestyleImg2').style.backgroundImage = `url('${LIFESTYLE_IMAGES[1]}')`;
+            document.getElementById('lifestyleImg3').style.backgroundImage = `url('${LIFESTYLE_IMAGES[2]}')`;
+
+            // Fly Jar to Target Slot
+            const jarSlot = document.getElementById('flyingJarTarget');
+            jarSlot.innerHTML = createJarSVG(product, true);
+
+            // Hide Home Hero, Show Product Page
+            document.getElementById('homeHero').classList.add('hidden');
+            document.getElementById('productPage').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'instant' });
+
+            // Trigger Text Mask Animations
+            setTimeout(() => {
+                document.getElementById('lineMask1').classList.add('active');
+                document.getElementById('lineMask2').classList.add('active');
+                document.getElementById('othersHeadingMask').classList.add('active');
+            }, 100);
+
+            // Populate Other Rituals Grid
+            renderOtherRitualsGrid();
+        }
+
+        /* Return to Arc Carousel Home */
+        function showHome() {
+            document.getElementById('productPage').classList.add('hidden');
+            document.getElementById('homeHero').classList.remove('hidden');
+            document.getElementById('lineMask1').classList.remove('active');
+            document.getElementById('lineMask2').classList.remove('active');
+            renderCarousel();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* Render "The Other Rituals" 4-Column Card Grid */
+        function renderOtherRitualsGrid() {
+            const grid = document.getElementById('othersGrid');
+            if (!grid) return;
+
+            const others = PRODUCTS.filter(p => p.id !== activeProduct.id).slice(0, 4);
+
+            grid.innerHTML = others.map(p => `
+                <div onclick="navigateToProduct(${PRODUCTS.findIndex(item => item.id === p.id)})" 
+                     class="bg-cream2/40 border border-ink/5 rounded-2xl p-4 flex flex-col justify-between items-center text-center cursor-pointer group hover:bg-white transition-all duration-300 hover:shadow-xl">
+                    <div class="w-full py-6 flex justify-center transform group-hover:-translate-y-2 group-hover:scale-105 transition-transform duration-300">
+                        ${createJarSVG(p, false)}
+                    </div>
+                    <div class="mt-4 w-full pt-3 border-t border-ink/5">
+                        <p class="text-[10px] uppercase font-bold text-muted tracking-wider">${p.category}</p>
+                        <h4 class="font-serif text-xl text-redType">${p.name}</h4>
+                        <p class="text-xs text-ink/70 mt-1">${p.price}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /* Add to Cart Action with Counter Animation */
+        function addToBagCurrent() {
+            bagCount++;
+            const counter = document.getElementById('bagCount');
+            counter.innerText = bagCount;
+            counter.classList.remove('bump-anim');
+            void counter.offsetWidth; // Trigger reflow
+            counter.classList.add('bump-anim');
+        }
+
+        function toggleCartDrawer() {
+            alert(`Your Merridew Wellness Bag contains ${bagCount} ritual items.\n\nFree shipping applied!`);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('translate-x-full');
+        }
+
+        /* Autoplay Wheel Manager */
+        function startAutoplay() {
+            if (autoPlayTimer) clearInterval(autoPlayTimer);
+            autoPlayTimer = setInterval(() => {
+                if (!isHovered && document.getElementById('productPage').classList.contains('hidden')) {
+                    stepCarousel(1);
+                }
+            }, 2700);
+        }
+
+        /* Custom Drag, Touch & Scroll Event Listeners Setup */
+        function initInteractions() {
+            const hero = document.getElementById('homeHero');
+
+            // Mouse Drag & Touch Gestures
+            hero.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                currentDragX = e.clientX - startX;
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (!isDragging) return;
+                if (currentDragX < -50) stepCarousel(1);
+                if (currentDragX > 50) stepCarousel(-1);
+                isDragging = false;
+                currentDragX = 0;
+            });
+
+            // Touch events for Mobile
+            hero.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            hero.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diff = endX - startX;
+                if (diff < -40) stepCarousel(1);
+                if (diff > 40) stepCarousel(-1);
+            });
+
+            // Keyboard Arrow Keys Control
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') stepCarousel(1);
+                if (e.key === 'ArrowLeft') stepCarousel(-1);
+            });
+
+            // Pause autoplay on mouse hover
+            hero.addEventListener('mouseenter', () => { isHovered = true; });
+            hero.addEventListener('mouseleave', () => { isHovered = false; });
+
+            // Custom Trail Cursor Pill Logic
+            const cursor = document.getElementById('cursorPill');
+            window.addEventListener('mousemove', (e) => {
+                if (window.innerWidth > 768) {
+                    cursor.style.left = `${e.clientX}px`;
+                    cursor.style.top = `${e.clientY}px`;
+                    cursor.style.opacity = '1';
+                }
+            });
+
+            hero.addEventListener('mouseleave', () => {
+                cursor.style.opacity = '0';
+            });
+
+            // Sticky Hero Jar Scroll Lifting & Tilting Effect
+            window.addEventListener('scroll', () => {
+                const jarSlot = document.getElementById('productPageJarSlot');
+                if (jarSlot && !document.getElementById('productPage').classList.contains('hidden')) {
+                    const scrollY = window.scrollY;
+                    const progress = Math.min(scrollY / 600, 1);
+                    const lift = progress * -180; // Lift up over title
+                    const tilt = progress * -14;  // Tilt angle
+                    const scale = 1 + progress * 0.12;
+
+                    jarSlot.style.transform = `translate(-50%, ${lift}px) rotate(${tilt}deg) scale(${scale})`;
+                }
+            });
+        }
+
+        /* Application Initializer */
+        window.onload = function() {
+            renderCarousel();
+            initInteractions();
+            startAutoplay();
+        };
+    </script>
+</body>
+</html>
