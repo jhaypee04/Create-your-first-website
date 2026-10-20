@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>ChargeTrack — Daily Charging Business Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#121c2d;--panel2:#172338;--line:#26364d;--muted:#91a1b8;--text:#edf4ff;--green:#35d39a;--blue:#70a5ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#142743 0,transparent 36%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.panel{background:linear-gradient(145deg,rgba(22,34,54,.97),rgba(16,26,43,.97));border:1px solid var(--line);border-radius:20px;box-shadow:0 12px 30px #00000015}
+.muted{color:var(--muted)}.field{width:100%;background:#0b1424;border:1px solid #30425b;border-radius:11px;padding:11px 12px;color:var(--text);outline:none}.field:focus{border-color:var(--blue);box-shadow:0 0 0 3px #70a5ff20}
+.btn{border:1px solid #344760;border-radius:11px;padding:10px 14px;font-weight:650;transition:.18s;cursor:pointer}.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}.primary{background:var(--green);color:#062318;border-color:transparent}.secondary{background:#1c2b42}.danger{background:#3b202b;color:#ffb6c4;border-color:#693141}
+.stat-value{font-size:clamp(1.35rem,3vw,2rem);font-weight:800;letter-spacing:-.04em}.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;font-weight:750;color:var(--muted)}
+.progress-track{height:10px;background:#26364a;border-radius:99px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,#24b77d,#72e6b4);border-radius:99px;transition:width .35s}
+.tab{padding:10px 13px;border-radius:10px;color:var(--muted);font-weight:650;cursor:pointer}.tab.active{background:#21334c;color:#fff}.pill{font-size:.72rem;padding:4px 8px;border-radius:99px;background:#203c35;color:#83f0c3}
+th{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;text-align:left;padding:12px 10px;border-bottom:1px solid var(--line)}td{padding:13px 10px;border-bottom:1px solid #26364d80;font-size:.87rem}tr:last-child td{border-bottom:0}.number{font-variant-numeric:tabular-nums}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#e8fff5;color:#083322;padding:12px 18px;border-radius:12px;font-weight:700;box-shadow:0 12px 35px #0005;z-index:50;display:none}
+@media(max-width:640px){.panel{border-radius:16px}.mobile-scroll{overflow-x:auto}.mobile-scroll table{min-width:590px}.btn{padding:9px 11px}}
+</style>
+</head>
+<body>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 sm:py-8">
+<header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7">
+ <div class="flex items-center gap-3"><div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background:#173d35">⚡</div><div><div class="text-xl sm:text-2xl font-extrabold tracking-tight">ChargeTrack</div><div class="muted text-sm">Your charging business, one clear view.</div></div></div>
+ <div class="flex items-center gap-2 flex-wrap"><span class="pill">● Local-first tracker</span><button class="btn secondary text-sm" id="connectSheetsBtn">Connect Sheets</button><button class="btn secondary text-sm" id="exportBtn">Export CSV ↓</button><button class="btn secondary text-sm" id="backupBtn">Backup data</button><label class="btn secondary text-sm cursor-pointer">Restore<input id="restoreInput" type="file" accept="application/json" class="hidden"></label></div>
+</header>
+<section class="panel p-5 sm:p-7 mb-5">
+ <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+  <div class="flex-1"><div class="eyebrow mb-2">Your first milestone</div><div class="flex flex-wrap items-baseline gap-2"><span class="text-3xl sm:text-4xl font-extrabold number" id="goalProgressText">₦0</span><span class="muted">of ₦211,000 profit goal</span></div><div class="progress-track mt-4"><div class="progress-fill" id="goalBar" style="width:0%"></div></div><div class="flex justify-between gap-3 mt-2 text-sm"><span class="muted" id="goalPercent">0% achieved</span><span class="font-semibold" id="goalRemaining">₦211,000 to go</span></div></div>
+  <div class="grid grid-cols-2 gap-3 lg:w-80"><div class="rounded-xl p-4" style="background:#0c1727"><div class="eyebrow mb-1">Items per round</div><div class="text-2xl font-bold">10 <span class="text-sm muted font-medium">max</span></div></div><div class="rounded-xl p-4" style="background:#0c1727"><div class="eyebrow mb-1">Phone / power bank</div><div class="text-lg font-bold">₦200–₦500</div></div></div>
+ </div>
+</section>
+<section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 mb-5">
+ <div class="panel p-5"><div class="eyebrow mb-2">Today's revenue</div><div class="stat-value number" id="todayRevenue">₦0</div><div class="muted text-xs mt-2">Money collected from customers</div></div>
+ <div class="panel p-5"><div class="eyebrow mb-2">Today's expenses</div><div class="stat-value number" id="todayExpenses">₦0</div><div class="muted text-xs mt-2">Power, transport, repairs, etc.</div></div>
+ <div class="panel p-5"><div class="eyebrow mb-2">Today's net profit</div><div class="stat-value number" id="todayProfit">₦0</div><div class="muted text-xs mt-2">Revenue minus recorded expenses</div></div>
+ <div class="panel p-5"><div class="eyebrow mb-2">All-time net profit</div><div class="stat-value number" id="allProfit">₦0</div><div class="muted text-xs mt-2" id="allItems">0 items charged</div></div>
+</section>
+<section class="grid grid-cols-1 xl:grid-cols-5 gap-5 mb-5">
+ <div class="panel p-5 sm:p-6 xl:col-span-3">
+  <div class="flex items-start justify-between gap-3 mb-5"><div><h2 class="text-lg font-bold">Log a charging round</h2><p class="muted text-sm mt-1">Record up to 10 items in one batch.</p></div><span class="pill">10-item capacity</span></div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+   <div><label class="text-sm font-semibold block mb-2" for="phoneQty">Phones charged <span class="muted font-normal">(₦200 each)</span></label><input id="phoneQty" class="field" type="number" min="0" max="10" value="0" inputmode="numeric"></div>
+   <div><label class="text-sm font-semibold block mb-2" for="bankQty">Power banks charged <span class="muted font-normal">(₦300 each)</span></label><input id="bankQty" class="field" type="number" min="0" max="10" value="0" inputmode="numeric"></div>
+   <div><label class="text-sm font-semibold block mb-2" for="laptopQty">Laptops charged <span class="muted font-normal">(₦400 each)</span></label><input id="laptopQty" class="field" type="number" min="0" max="10" value="0" inputmode="numeric"></div>
+   <div><label class="text-sm font-semibold block mb-2" for="other100Qty">Other items <span class="muted font-normal">(₦100 each)</span></label><input id="other100Qty" class="field" type="number" min="0" max="10" value="0" inputmode="numeric"></div>
+   <div><label class="text-sm font-semibold block mb-2" for="other500Qty">Other items <span class="muted font-normal">(₦500 each)</span></label><input id="other500Qty" class="field" type="number" min="0" max="10" value="0" inputmode="numeric"></div>
+   <div><label class="text-sm font-semibold block mb-2" for="roundDate">Date</label><input id="roundDate" class="field" type="date"></div>
+   <div><label class="text-sm font-semibold block mb-2" for="roundNote">Note <span class="muted font-normal">(optional)</span></label><input id="roundNote" class="field" placeholder="e.g. Morning round"></div>
+  </div>
+  <div class="rounded-xl p-4 mt-4" style="background:#0b1424;border:1px solid #26364d">
+   <div class="flex items-center justify-between gap-3"><div><div class="eyebrow">Round estimate</div><div class="text-2xl font-extrabold number mt-1" id="roundTotal">₦0</div></div><div class="text-right"><div class="text-sm muted" id="capacityText">0 of 10 items</div><div class="progress-track w-28 mt-2"><div class="progress-fill" id="capacityBar" style="width:0%"></div></div></div></div>
+   <div class="text-sm muted mt-3" id="capacityHint">Add the number of items you charged.</div>
+  </div>
+  <button class="btn primary w-full mt-4" id="addRoundBtn">＋ Save charging round</button>
+ </div>
+ <div class="panel p-5 sm:p-6 xl:col-span-2">
+  <h2 class="text-lg font-bold">Record an expense</h2><p class="muted text-sm mt-1 mb-5">Track costs to calculate actual profit.</p>
+  <form id="expenseForm" class="space-y-4">
+   <div><label class="text-sm font-semibold block mb-2" for="expenseAmount">Amount (₦)</label><input id="expenseAmount" class="field" type="number" min="1" step="1" required placeholder="e.g. 500"></div>
+   <div><label class="text-sm font-semibold block mb-2" for="expenseCategory">Category</label><select id="expenseCategory" class="field"><option>Electricity / charging cost</option><option>Transport</option><option>Repairs / maintenance</option><option>Data / airtime</option><option>Other</option></select></div>
+   <div><label class="text-sm font-semibold block mb-2" for="expenseDate">Date</label><input id="expenseDate" class="field" type="date" required></div>
+   <div><label class="text-sm font-semibold block mb-2" for="expenseNote">Description (optional)</label><input id="expenseNote" class="field" placeholder="What was the expense for?"></div>
+   <button class="btn secondary w-full" type="submit">＋ Add expense</button>
+  </form>
+  <div class="mt-5 rounded-xl p-4 text-sm" style="background:#0b1424"><div class="font-semibold mb-1">Profit tip</div><div class="muted">Revenue is not the same as profit. Record your business costs so the milestone reflects your net profit, not just sales.</div></div>
+ </div>
+</section>
+<section class="panel p-5 sm:p-6 mb-5">
+ <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4"><div><h2 class="text-lg font-bold">Business activity</h2><p class="muted text-sm mt-1">Review your charging rounds and expenses.</p></div><div class="flex gap-2 flex-wrap"><button class="tab active" data-filter="all">All activity</button><button class="tab" data-filter="round">Rounds</button><button class="tab" data-filter="expense">Expenses</button></div></div>
+ <div class="mobile-scroll"><table class="w-full"><thead><tr><th>Date</th><th>Activity</th><th>Details</th><th>Amount</th><th></th></tr></thead><tbody id="activityBody"><tr><td colspan="5" class="text-center muted py-8">No activity yet. Save your first charging round above.</td></tr></tbody></table></div>
+ <div class="flex items-center justify-between gap-3 mt-4"><div class="muted text-xs" id="activityCount">0 records</div><button class="btn danger text-xs" id="clearBtn">Clear all records</button></div>
+</section>
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
+ <div class="panel p-5 sm:p-6"><h2 class="text-lg font-bold mb-4">Daily summary</h2><div class="grid grid-cols-2 gap-3"><div class="rounded-xl p-4" style="background:#0b1424"><div class="eyebrow">Rounds saved</div><div class="text-2xl font-bold mt-1" id="roundCount">0</div></div><div class="rounded-xl p-4" style="background:#0b1424"><div class="eyebrow">Items charged</div><div class="text-2xl font-bold mt-1" id="itemCount">0</div></div><div class="rounded-xl p-4" style="background:#0b1424"><div class="eyebrow">Phone revenue</div><div class="text-xl font-bold mt-1 number" id="phoneRevenue">₦0</div></div><div class="rounded-xl p-4" style="background:#0b1424"><div class="eyebrow">Power bank revenue</div><div class="text-xl font-bold mt-1 number" id="bankRevenue">₦0</div></div><div class="rounded-xl p-4" style="background:#0b1424"><div class="eyebrow">Laptop revenue</div><div class="text-xl font-bold mt-1 number" id="laptopRevenue">₦0</div></div><div class="rounded-xl p-4" style="background:#0b1424"><div class="eyebrow">Other items revenue</div><div class="text-xl font-bold mt-1 number" id="otherRevenue">₦0</div></div></div></div>
+ <div class="panel p-5 sm:p-6"><h2 class="text-lg font-bold mb-3">Your charging setup</h2><div class="space-y-3"><div class="flex items-center justify-between gap-3 rounded-xl p-4" style="background:#0b1424"><div class="flex items-center gap-3"><span class="text-2xl">🔋</span><div><div class="font-semibold">itel Power</div><div class="muted text-sm">Capacity per round</div></div></div><div class="text-xl font-bold">6 items</div></div><div class="flex items-center justify-between gap-3 rounded-xl p-4" style="background:#0b1424"><div class="flex items-center gap-3"><span class="text-2xl">⚡</span><div><div class="font-semibold">2 personal power banks</div><div class="muted text-sm">Combined capacity</div></div></div><div class="text-xl font-bold">4 items</div></div><div class="flex justify-between items-center border-t pt-4" style="border-color:var(--line)"><span class="font-semibold">Total at one time</span><span class="text-xl font-extrabold" style="color:var(--green)">10 items</span></div></div></div>
+</section>
+<footer class="text-center muted text-xs py-4">ChargeTrack · Browser records are saved locally. Google Sheets requests cannot be confirmed by this standalone app; verify the Sheet and back up regularly.</footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(()=> {
+
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxhWvb7oIElUxOq1cBeYcbHpJEBzk3FrV8WKxu8hL5kSTGNoU4Y15JCJ0_SUujznbqb/exec';
+const SHEETS_TOKEN_KEY = 'chargetrack_sheets_token';
+
+function getSheetsToken() {
+  return localStorage.getItem(SHEETS_TOKEN_KEY) || '';
+}
+
+function sendToGoogleSheets(type, record) {
+  const token = getSheetsToken();
+  if (!token) return Promise.reject(new Error('Google Sheets is not connected.'));
+
+  const payload = { token, type, record };
+  // Apps Script ContentService generally prevents the browser from reading
+  // its cross-origin response. no-cors only sends the request; it cannot
+  // prove that the backend accepted or saved it.
+  return fetch(GOOGLE_SHEETS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+    body: JSON.stringify(payload)
+  });
+}
+
+ const KEY='chargetrack_v1';
+ const $=id=>document.getElementById(id);
+ const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+ const money=n=>'₦'+Math.round(Number(n)||0).toLocaleString('en-NG');
+ let data={rounds:[],expenses:[]},filter='all';
+ try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&Array.isArray(saved.rounds)&&Array.isArray(saved.expenses))data=saved}catch(e){}
+ $('roundDate').value=today();$('expenseDate').value=today();
+ const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){notify('Could not save: browser storage may be full. Export a backup.')}};
+ function notify(msg){const t=$('toast');t.textContent=msg;t.style.display='block';clearTimeout(notify.timer);notify.timer=setTimeout(()=>t.style.display='none',2600)}
+ $('connectSheetsBtn').addEventListener('click',()=>{const current=getSheetsToken();const token=prompt('Paste the ChargeTrack API token you saved in Apps Script Script Properties. Leave blank and press OK to disconnect.',current);if(token===null)return;if(!token.trim()){localStorage.removeItem(SHEETS_TOKEN_KEY);notify('Google Sheets disconnected. Records will save locally.');return}localStorage.setItem(SHEETS_TOKEN_KEY,token.trim());notify('Token stored in this browser. Test with one record and verify the Google Sheet.');});
+ function totals(date=null){const rs=data.rounds.filter(x=>!date||x.date===date),es=data.expenses.filter(x=>!date||x.date===date);const phone=rs.reduce((s,x)=>s+(x.phones||0)*200,0),bank=rs.reduce((s,x)=>s+(x.banks||0)*300,0),laptop=rs.reduce((s,x)=>s+(x.laptops||0)*400,0),other100=rs.reduce((s,x)=>s+(x.other100||0)*100,0),other500=rs.reduce((s,x)=>s+(x.other500||0)*500,0),revenue=phone+bank+laptop+other100+other500,expenses=es.reduce((s,x)=>s+x.amount,0);return {rs,es,phone,bank,laptop,other:other100+other500,revenue,expenses,profit:revenue-expenses,items:rs.reduce((s,x)=>s+(x.phones||0)+(x.banks||0)+(x.laptops||0)+(x.other100||0)+(x.other500||0),0)}}
+ function render(){const t=totals(today()),all=totals(),ach=Math.max(0,all.profit),pct=Math.min(100,ach/211000*100);
+ $('todayRevenue').textContent=money(t.revenue);$('todayExpenses').textContent=money(t.expenses);$('todayProfit').textContent=money(t.profit);$('allProfit').textContent=money(all.profit);$('allItems').textContent=all.items+' items charged · '+all.rs.length+' rounds';
+ $('goalProgressText').textContent=money(ach);$('goalBar').style.width=pct+'%';$('goalPercent').textContent=pct.toFixed(1)+'% achieved';$('goalRemaining').textContent=ach>=211000?'🎉 Goal reached!':money(211000-ach)+' to go';
+ $('roundCount').textContent=t.rs.length;$('itemCount').textContent=t.items;$('phoneRevenue').textContent=money(t.phone);$('bankRevenue').textContent=money(t.bank);$('laptopRevenue').textContent=money(t.laptop);$('otherRevenue').textContent=money(t.other);
+ const rows=[];data.rounds.forEach(x=>rows.push({id:x.id,type:'round',date:x.date,details:`${x.phones||0} phone(s), ${x.banks||0} power bank(s), ${x.laptops||0} laptop(s), ${x.other100||0} item(s) at ₦100, ${x.other500||0} item(s) at ₦500${x.note?' · '+x.note:''}`,amount:(x.phones||0)*200+(x.banks||0)*300+(x.laptops||0)*400+(x.other100||0)*100+(x.other500||0)*500}));data.expenses.forEach(x=>rows.push({id:x.id,type:'expense',date:x.date,details:`${x.category}${x.note?' · '+x.note:''}`,amount:-x.amount}));rows.sort((a,b)=>b.date.localeCompare(a.date)||b.id-a.id);
+ const shown=rows.filter(x=>filter==='all'||x.type===filter);$('activityCount').textContent=`${shown.length} record${shown.length===1?'':'s'} shown`;
+ $('activityBody').innerHTML=shown.length?shown.map(x=>`<tr><td class="number whitespace-nowrap">${escapeHtml(x.date)}</td><td><span class="pill" style="${x.type==='expense'?'background:#40232c;color:#ffb4c3':''}">${x.type==='round'?'Charging round':'Expense'}</span></td><td>${escapeHtml(x.details)}</td><td class="font-bold number whitespace-nowrap" style="color:${x.amount<0?'#ff9ba9':'#73e5b4'}">${x.amount<0?'−':'+'}${money(Math.abs(x.amount))}</td><td><button class="btn danger text-xs" data-delete="${x.type}:${x.id}">Delete</button></td></tr>`).join(''):'<tr><td colspan="5" class="text-center muted py-8">No matching activity yet.</td></tr>';
+ }
+ function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+ function updateEstimate(){const q=id=>Math.max(0,parseInt($(id).value)||0);let p=q('phoneQty'),b=q('bankQty'),l=q('laptopQty'),o1=q('other100Qty'),o5=q('other500Qty'),n=p+b+l+o1+o5;$('roundTotal').textContent=money(p*200+b*300+l*400+o1*100+o5*500);$('capacityText').textContent=`${n} of 10 items`;$('capacityBar').style.width=Math.min(100,n/10*100)+'%';$('capacityHint').textContent=n>10?'⚠️ Capacity exceeded. Reduce the total to 10 or fewer items.':n===10?'Full round — all 10 charging slots used.':`${10-n} charging slot${10-n===1?'':'s'} remaining.`;$('addRoundBtn').disabled=n<1||n>10||!$('roundDate').value;$('addRoundBtn').style.opacity=$('addRoundBtn').disabled?'.5':'1'}
+ ['phoneQty','bankQty','laptopQty','other100Qty','other500Qty'].forEach(id=>$(id).addEventListener('input',updateEstimate));$('roundDate').addEventListener('change',updateEstimate);
+ $('addRoundBtn').addEventListener('click',()=>{const qty=id=>Math.max(0,parseInt($(id).value)||0),phones=qty('phoneQty'),banks=qty('bankQty'),laptops=qty('laptopQty'),other100=qty('other100Qty'),other500=qty('other500Qty'),count=phones+banks+laptops+other100+other500;if(count<1||count>10){notify('A round must contain 1–10 items in total.');return}
+ data.rounds.push({
+    id:Date.now(),
+    date:$('roundDate').value,
+    phones,
+    banks,
+    laptops,
+    other100,
+    other500,
+    note:$('roundNote').value.trim()});
+    
+const savedRound = data.rounds[data.rounds.length - 1];
+
+const roundSync = sendToGoogleSheets('round', savedRound);
+ roundSync.catch(err => console.warn('Google Sheets request not sent:', err));
+
+save();render();['phoneQty','bankQty','laptopQty','other100Qty','other500Qty'].forEach(id=>$(id).value=0);$('roundNote').value='';updateEstimate();notify(getSheetsToken()?'Round saved locally; cloud request sent. Verify the Sheet.':'Round saved locally only. Connect Google Sheets to send it.');});
+ $('expenseForm').addEventListener('submit',e=>{e.preventDefault();const amount=Number($('expenseAmount').value);if(!Number.isFinite(amount)||amount<=0){notify('Enter a valid expense amount.');return}
+ data.expenses.push({id:Date.now(),
+    date:$('expenseDate').value,
+    amount,
+    category:$('expenseCategory').value,
+    note:$('expenseNote').value.trim()});
+    
+const savedExpense = data.expenses[data.expenses.length - 1];
+
+const expenseSync = sendToGoogleSheets('expense', savedExpense);
+ expenseSync.catch(err => console.warn('Google Sheets request not sent:', err));
+
+save();render();$('expenseAmount').value='';$('expenseNote').value='';notify(getSheetsToken()?'Expense saved locally; cloud request sent. Verify the Sheet.':'Expense saved locally only. Connect Google Sheets to send it.');});
+ document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()}));
+ $('activityBody').addEventListener('click',e=>{const b=e.target.closest('[data-delete]');if(!b)return;const [type,id]=b.dataset.delete.split(':');if(!confirm('Delete this record?'))return;if(type==='round')data.rounds=data.rounds.filter(x=>String(x.id)!==id);else data.expenses=data.expenses.filter(x=>String(x.id)!==id);save();render();notify('Record deleted.')});
+ $('clearBtn').addEventListener('click',()=>{if(!data.rounds.length&&!data.expenses.length){notify('There are no records to clear.');return}if(!confirm('Delete ALL charging rounds and expenses? This cannot be undone unless you have a backup.'))return;data={rounds:[],expenses:[]};save();render();notify('All records cleared.')});
+ $('exportBtn').addEventListener('click',()=>{const rows=[['Type','Date','Phones','Power banks','Laptops','Other items at 100','Other items at 500','Category','Note','Revenue (NGN)','Expense (NGN)','Net (NGN)']];data.rounds.forEach(x=>{const rev=(x.phones||0)*200+(x.banks||0)*300+(x.laptops||0)*400+(x.other100||0)*100+(x.other500||0)*500;rows.push(['Charging round',x.date,x.phones||0,x.banks||0,x.laptops||0,x.other100||0,x.other500||0,'',x.note||'',rev,0,rev])});data.expenses.forEach(x=>rows.push(['Expense',x.date,0,0,0,0,0,x.category,x.note||'',0,x.amount,-x.amount]));const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');download(csv,'chargetrack-activity.csv','text/csv;charset=utf-8;');notify('CSV exported.')});
+ $('backupBtn').addEventListener('click',()=>{download(JSON.stringify({app:'ChargeTrack',version:1,exportedAt:new Date().toISOString(),...data},null,2),'chargetrack-backup.json','application/json');notify('Backup downloaded.')});
+ $('restoreInput').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(!Array.isArray(x.rounds)||!Array.isArray(x.expenses))throw Error();if(!confirm('Restore this backup? Current records will be replaced.'))return;data={rounds:x.rounds,expenses:x.expenses};save();render();notify('Backup restored.')}catch(err){notify('Invalid ChargeTrack backup file.')}finally{e.target.value=''}});
+ function download(content,name,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+ updateEstimate();render();
+})();
+</script>
+</body>
+</html>
