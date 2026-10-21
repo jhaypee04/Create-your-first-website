@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0b1220">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ChargeTrack">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
 <meta name="description" content="ChargeTrack charging business records and daily profit dashboard.">
 <title>ChargeTrack — Charging Business Tracker</title>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +26,7 @@
 <div id="top" class="shell max-w-7xl mx-auto px-4 sm:px-6 py-5 sm:py-8">
 <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7">
  <div class="flex items-center gap-3"><div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background:#173d35">⚡</div><div><div class="text-2xl font-extrabold tracking-tight">ChargeTrack</div><div class="muted text-sm">A clearer view of your charging business.</div></div></div>
- <div class="header-actions flex flex-wrap items-center gap-2"><span id="connectionBadge" class="pill">● Checking connection</span><select id="themeSelect" class="btn secondary" aria-label="Appearance"><option value="dark">Dark mode</option><option value="light">Light mode</option></select><button id="exportBtn" class="btn secondary">Export CSV ↓</button><button id="backupBtn" class="btn secondary">Backup data</button><label class="btn secondary cursor-pointer">Restore<input id="restoreInput" type="file" accept="application/json" hidden></label></div>
+ <div class="header-actions flex flex-wrap items-center gap-2"><span id="connectionBadge" class="pill">● Checking connection</span><select id="themeSelect" class="btn secondary" aria-label="Appearance"><option value="dark">Dark mode</option><option value="light">Light mode</option></select><button id="exportBtn" class="btn secondary">Export CSV ↓</button><button id="backupBtn" class="btn secondary">Backup data</button><button id="pwaInstallBtn" class="btn primary" type="button" aria-label="Install ChargeTrack">＋ Install app</button><label class="btn secondary cursor-pointer">Restore<input id="restoreInput" type="file" accept="application/json" hidden></label></div>
   <div class="desktop-menu-wrap hidden sm:block relative">
     <button id="desktopMenuToggle" class="btn secondary" type="button" aria-expanded="false" aria-controls="desktopMenu">
       ☰ <span class="hidden md:inline">Menu</span>
@@ -78,7 +84,71 @@
       frame.srcdoc = new TextDecoder("utf-8").decode(bytes);
       managerLoaded = true;
     } catch (error) {
-      frame.srcdoc = "<!doctype html><html><body style='font-family:system-ui;padding:24px'>Could not load the Charging Station Manager. Please reload the page.</body></html>";
+      frame.srcdoc = "<!doctype html><html><body style='font-family:system-ui;padding:24px'>Could not load the Charging Station Manager. Please reload the page.
+<div id="pwaInstallHelp" class="hidden" role="dialog" aria-modal="true" aria-labelledby="pwaInstallHelpTitle" style="position:fixed;inset:0;z-index:200;background:#020617cc;align-items:center;justify-content:center;padding:20px">
+  <div class="panel p-5" style="max-width:420px;width:100%">
+    <div class="flex items-start justify-between gap-3"><h2 id="pwaInstallHelpTitle" class="text-lg font-extrabold">Install ChargeTrack</h2><button id="pwaInstallHelpClose" class="btn secondary" type="button" aria-label="Close install instructions">✕</button></div>
+    <p id="pwaInstallHelpText" class="muted text-sm mt-3">Use your browser menu to add ChargeTrack to your home screen.</p>
+    <button id="pwaInstallHelpOkay" class="btn primary w-full mt-4" type="button">Got it</button>
+  </div>
+</div>
+<script>
+(() => {
+  const installBtn = document.getElementById('pwaInstallBtn');
+  const help = document.getElementById('pwaInstallHelp');
+  const helpText = document.getElementById('pwaInstallHelpText');
+  const closeHelp = () => help.classList.add('hidden');
+  document.getElementById('pwaInstallHelpClose').addEventListener('click', closeHelp);
+  document.getElementById('pwaInstallHelpOkay').addEventListener('click', closeHelp);
+  help.addEventListener('click', event => { if (event.target === help) closeHelp(); });
+  let deferredInstallPrompt = null;
+  const isStandalone = () => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if (isStandalone()) {
+    installBtn.textContent = '✓ App installed';
+    installBtn.disabled = true;
+    installBtn.classList.remove('primary');
+    installBtn.classList.add('secondary');
+  }
+  window.addEventListener('beforeinstallprompt', event => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    installBtn.hidden = false;
+    installBtn.textContent = '＋ Install app';
+  });
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    installBtn.textContent = '✓ App installed';
+    installBtn.disabled = true;
+    installBtn.classList.remove('primary');
+    installBtn.classList.add('secondary');
+  });
+  installBtn.addEventListener('click', async () => {
+    if (isStandalone()) return;
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      return;
+    }
+    const ua = navigator.userAgent || '';
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      helpText.textContent = 'In Safari, tap the Share button, scroll down, then choose “Add to Home Screen” and tap Add.';
+    } else if (/Android/i.test(ua)) {
+      helpText.textContent = 'In Chrome, open the ⋮ menu and choose “Install app” or “Add to Home screen”. If the option is missing, open this site over HTTPS and reload it.';
+    } else {
+      helpText.textContent = 'Open this site in a supported browser over HTTPS. Use the browser’s Install app option, or the install icon in the address bar if available.';
+    }
+    help.classList.remove('hidden');
+    help.style.display = 'flex';
+  });
+  // A standalone PWA needs HTTPS (or localhost), a manifest and a registered service worker.
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(error => console.error('ChargeTrack service worker registration failed:', error)));
+  }
+})();
+</script>
+
+</body></html>";
       console.error("ChargeTrack manager embed failed:", error);
     }
   }
@@ -115,4 +185,68 @@
 })();
 </script>
 <script src="config.js"></script><script src="app.js"></script>
+
+<div id="pwaInstallHelp" class="hidden" role="dialog" aria-modal="true" aria-labelledby="pwaInstallHelpTitle" style="position:fixed;inset:0;z-index:200;background:#020617cc;align-items:center;justify-content:center;padding:20px">
+  <div class="panel p-5" style="max-width:420px;width:100%">
+    <div class="flex items-start justify-between gap-3"><h2 id="pwaInstallHelpTitle" class="text-lg font-extrabold">Install ChargeTrack</h2><button id="pwaInstallHelpClose" class="btn secondary" type="button" aria-label="Close install instructions">✕</button></div>
+    <p id="pwaInstallHelpText" class="muted text-sm mt-3">Use your browser menu to add ChargeTrack to your home screen.</p>
+    <button id="pwaInstallHelpOkay" class="btn primary w-full mt-4" type="button">Got it</button>
+  </div>
+</div>
+<script>
+(() => {
+  const installBtn = document.getElementById('pwaInstallBtn');
+  const help = document.getElementById('pwaInstallHelp');
+  const helpText = document.getElementById('pwaInstallHelpText');
+  const closeHelp = () => help.classList.add('hidden');
+  document.getElementById('pwaInstallHelpClose').addEventListener('click', closeHelp);
+  document.getElementById('pwaInstallHelpOkay').addEventListener('click', closeHelp);
+  help.addEventListener('click', event => { if (event.target === help) closeHelp(); });
+  let deferredInstallPrompt = null;
+  const isStandalone = () => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if (isStandalone()) {
+    installBtn.textContent = '✓ App installed';
+    installBtn.disabled = true;
+    installBtn.classList.remove('primary');
+    installBtn.classList.add('secondary');
+  }
+  window.addEventListener('beforeinstallprompt', event => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    installBtn.hidden = false;
+    installBtn.textContent = '＋ Install app';
+  });
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    installBtn.textContent = '✓ App installed';
+    installBtn.disabled = true;
+    installBtn.classList.remove('primary');
+    installBtn.classList.add('secondary');
+  });
+  installBtn.addEventListener('click', async () => {
+    if (isStandalone()) return;
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      return;
+    }
+    const ua = navigator.userAgent || '';
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      helpText.textContent = 'In Safari, tap the Share button, scroll down, then choose “Add to Home Screen” and tap Add.';
+    } else if (/Android/i.test(ua)) {
+      helpText.textContent = 'In Chrome, open the ⋮ menu and choose “Install app” or “Add to Home screen”. If the option is missing, open this site over HTTPS and reload it.';
+    } else {
+      helpText.textContent = 'Open this site in a supported browser over HTTPS. Use the browser’s Install app option, or the install icon in the address bar if available.';
+    }
+    help.classList.remove('hidden');
+    help.style.display = 'flex';
+  });
+  // A standalone PWA needs HTTPS (or localhost), a manifest and a registered service worker.
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(error => console.error('ChargeTrack service worker registration failed:', error)));
+  }
+})();
+</script>
+
 </body></html>
