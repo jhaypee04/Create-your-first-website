@@ -150,7 +150,7 @@
   const installBtn = document.getElementById('pwaInstallBtn');
   const help = document.getElementById('pwaInstallHelp');
   const helpText = document.getElementById('pwaInstallHelpText');
-  const closeHelp = () => help.classList.add('hidden');
+  const closeHelp = () => { help.classList.add('hidden'); help.style.display = 'none'; };
   document.getElementById('pwaInstallHelpClose').addEventListener('click', closeHelp);
   document.getElementById('pwaInstallHelpOkay').addEventListener('click', closeHelp);
   help.addEventListener('click', event => { if (event.target === help) closeHelp(); });
