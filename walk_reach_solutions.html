@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Walk Reach Solutions — High-Speed Web & Mobile Engineering</title>
+  <meta name="description" content="Engineering high-speed web and mobile platforms built for real revenue. Serving healthcare clinics, logistics companies, real estate firms, and funded startups in Nigeria and globally." />
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: {
+              950: '#04060A',
+              900: '#080C14',
+              850: '#0D131F',
+              800: '#131B2E',
+              700: '#1E293B',
+            },
+            emerald: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+            },
+            indigo: {
+              400: '#818CF8',
+              500: '#6366F1',
+              600: '#4F46E5',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom subtle grid & glass effects for high-contrast tech aesthetic */
+    body {
+      background-color: #04060A;
+      color: #F8FAFC;
+      overflow-x: hidden;
+    }
+
+    .bg-grid-pattern {
+      background-size: 44px 44px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    .glass-nav {
+      background: rgba(8, 12, 20, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-card {
+      background: linear-gradient(145deg, rgba(19, 27, 46, 0.65) 0%, rgba(13, 19, 31, 0.85) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(16, 185, 129, 0.35);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(16, 185, 129, 0.12);
+    }
+
+    /* Scroll reveal transitions */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #04060A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1E293B;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
+
+  <!-- Toast Notification Container (Replaces alert()) -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- 1. STICKY GLASSMORPHIC NAVIGATION BAR -->
+  <header class="fixed top-0 inset-x-0 z-40 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Brand Logo & Wordmark -->
+        <a href="#" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-indigo-600 p-[1px] shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-shadow">
+            <div class="w-full h-full bg-obsidian-950 rounded-[11px] flex items-center justify-center">
+              <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-lg tracking-tight text-white leading-none">Walk Reach</span>
+            <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-emerald-400 mt-1">Solutions</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#solutions" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Solutions</a>
+          <a href="#process" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Process</a>
+          <a href="#pricing" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</a>
+          <a href="#agencies" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Agencies</a>
+        </nav>
+
+        <!-- Primary CTA + Mobile Toggle -->
+        <div class="flex items-center gap-3">
+          <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-semibold text-sm transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/35 active:scale-[0.98]">
+            <span>Book Discovery Call</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" type="button" aria-label="Toggle Menu" class="md:hidden p-2.5 rounded-xl bg-obsidian-800/80 border border-white/10 text-slate-300 hover:text-white focus:outline-none">
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-obsidian-900/95 backdrop-blur-xl px-4 pt-4 pb-6 space-y-3">
+      <a href="#solutions" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-emerald-400">Solutions</a>
+      <a href="#process" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-emerald-400">Process</a>
+      <a href="#pricing" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-emerald-400">Pricing</a>
+      <a href="#agencies" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-white/5 hover:text-emerald-400">Agencies</a>
+      <div class="pt-2">
+        <a href="#contact" class="mobile-nav-link w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-emerald-500 text-obsidian-950 font-semibold text-base shadow-lg shadow-emerald-500/20">
+          <span>Book Discovery Call</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION -->
+  <section class="relative pt-32 pb-20 lg:pt-44 lg:pb-32 bg-grid-pattern overflow-hidden">
+    <!-- Ambient Radial Glows -->
+    <div class="absolute top-16 left-1/2 -translate-x-1/2 w-[680px] h-[380px] bg-emerald-500/15 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute top-48 right-10 w-[420px] h-[420px] bg-indigo-600/15 rounded-full blur-[130px] pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Status Pill -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-obsidian-800/90 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-medium mb-8 shadow-inner">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+        </span>
+        <span>Accepting Q4 / Q1 Custom Engineering Projects</span>
+      </div>
+
+      <!-- Value Proposition Headline -->
+      <h1 class="max-w-4xl mx-auto text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
+        Engineering High-Speed Web &amp; Mobile Platforms <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400">Built for Real Revenue</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="max-w-2xl mx-auto mt-6 text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed font-normal">
+        Custom software engineering for healthcare clinics, logistics companies, real estate firms, and funded startups in Nigeria and globally. Zero bloat—just fast, conversion-engineered products shipped on fixed timelines.
+      </p>
+
+      <!-- Dual CTAs -->
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-bold text-base transition-all shadow-xl shadow-emerald-500/25 hover:shadow-emerald-500/40 active:scale-[0.98]">
+          <span>Start Your Project</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </a>
+        <a href="#solutions" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-obsidian-800/90 hover:bg-obsidian-800 border border-white/15 hover:border-white/25 text-white font-semibold text-base transition-all">
+          <span>Explore Featured Solutions</span>
+        </a>
+      </div>
+
+      <!-- Key Trust Badges -->
+      <div class="mt-14 pt-8 border-t border-white/10 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+        <div class="flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-obsidian-900/70 border border-white/5">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">Fixed Scope</span>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-obsidian-900/70 border border-white/5">
+          <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400 shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">Weekly Live Demos</span>
+        </div>
+
+        <div class="flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-obsidian-900/70 border border-white/5">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-center justify-center text-emerald-400 shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>
+          </div>
+          <span class="text-sm font-semibold text-slate-200">Abuja HQ / Global Remote</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FEATURED SOLUTIONS -->
+  <section id="solutions" class="py-20 lg:py-28 relative border-t border-white/5 bg-obsidian-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="max-w-3xl reveal">
+        <span class="font-mono text-xs uppercase tracking-widest text-emerald-400 font-semibold">Featured Solutions</span>
+        <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+          Built for Speed &amp; Real Revenue
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+          Examples of platforms we engineer for healthcare clinics, logistics companies, real estate firms, and funded startups.
+        </p>
+      </div>
+
+      <!-- 3 Interactive Case-Study Cards -->
+      <div class="mt-14 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- CARD 1: MediBook Clinic Portal -->
+        <article data-solution="medibook" class="solution-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between cursor-pointer group reveal">
+          <div>
+            <!-- Custom UI Mockup Illustration -->
+            <div class="relative h-56 bg-gradient-to-br from-emerald-950/90 via-obsidian-900 to-obsidian-950 p-5 border-b border-white/10 overflow-hidden">
+              <div class="absolute -right-8 -top-8 w-36 h-36 bg-emerald-500/20 rounded-full blur-2xl group-hover:bg-emerald-500/30 transition-colors"></div>
+              <!-- Browser / Dashboard Mini UI -->
+              <div class="relative z-10 h-full rounded-2xl bg-obsidian-950/90 border border-white/10 p-4 shadow-2xl flex flex-col justify-between group-hover:scale-[1.02] transition-transform duration-300">
+                <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                  </div>
+                  <span class="font-mono text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">Paystack Verified ✓</span>
+                </div>
+                <div class="space-y-2 my-auto py-2">
+                  <div class="flex items-center justify-between bg-obsidian-800/80 p-2.5 rounded-xl border border-white/5">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold">DR</div>
+                      <div>
+                        <p class="text-xs font-semibold text-white">Dr. Amina Bello — Cardiology</p>
+                        <p class="text-[10px] text-slate-400">Today, 2:30 PM • WhatsApp Sent</p>
+                      </div>
+                    </div>
+                    <span class="text-[11px] font-mono font-semibold text-emerald-400">₦25,000</span>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <div class="bg-obsidian-800/50 p-2 rounded-lg border border-white/5">
+                      <p class="text-[10px] text-slate-400">Booking Delay</p>
+                      <p class="text-xs font-bold text-emerald-400">-70% Faster</p>
+                    </div>
+                    <div class="bg-obsidian-800/50 p-2 rounded-lg border border-white/5">
+                      <p class="text-[10px] text-slate-400">No-Show Rate</p>
+                      <p class="text-xs font-bold text-white">4.2% (Auto-SMS)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-6 sm:p-7">
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Healthcare &amp; Booking</span>
+                <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Web App + Payments</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-emerald-300 transition-colors">
+                MediBook Clinic Portal
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+                Automated patient appointment booking system with WhatsApp reminders and Paystack consultation pre-payments. Cut front-desk booking delays by 70%.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card Footer -->
+          <div class="px-6 sm:px-7 pb-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-400">Turnaround: <strong class="text-white">3 Weeks</strong></span>
+            <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 group-hover:translate-x-1 transition-transform">
+              Inspect Architecture
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </span>
+          </div>
+        </article>
+
+        <!-- CARD 2: SwiftDrop Dispatch App -->
+        <article data-solution="swiftdrop" class="solution-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between cursor-pointer group reveal">
+          <div>
+            <!-- Custom UI Mockup Illustration -->
+            <div class="relative h-56 bg-gradient-to-br from-indigo-950/90 via-obsidian-900 to-obsidian-950 p-5 border-b border-white/10 overflow-hidden">
+              <div class="absolute -left-8 -bottom-8 w-36 h-36 bg-indigo-500/25 rounded-full blur-2xl group-hover:bg-indigo-500/35 transition-colors"></div>
+              <!-- Mobile Dispatch UI -->
+              <div class="relative z-10 h-full rounded-2xl bg-obsidian-950/90 border border-white/10 p-4 shadow-2xl flex flex-col justify-between group-hover:scale-[1.02] transition-transform duration-300">
+                <div class="flex items-center justify-between">
+                  <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-indigo-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    Live Rider GPS
+                  </span>
+                  <span class="font-mono text-[10px] text-slate-300 bg-white/5 px-2 py-0.5 rounded-md">ETA: 11 mins</span>
+                </div>
+                <!-- Stylized Route Graphic -->
+                <div class="relative my-2 h-16 rounded-xl bg-obsidian-900 border border-white/5 px-4 flex items-center justify-between overflow-hidden">
+                  <svg class="absolute inset-0 w-full h-full opacity-25" viewBox="0 0 200 60" fill="none">
+                    <path d="M15 45 C 60 10, 130 55, 185 18" stroke="#818CF8" stroke-width="2.5" stroke-dasharray="4 4"/>
+                  </svg>
+                  <div class="relative z-10 flex flex-col">
+                    <span class="text-[10px] text-slate-400">Pickup</span>
+                    <span class="text-xs font-semibold text-white">Wuse II, Abuja</span>
+                  </div>
+                  <div class="relative z-10 px-2.5 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/40 text-[10px] font-mono text-indigo-300">
+                    ₦2,400 Est.
+                  </div>
+                  <div class="relative z-10 flex flex-col text-right">
+                    <span class="text-[10px] text-slate-400">Dropoff</span>
+                    <span class="text-xs font-semibold text-white">Gwarinpa</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between text-[11px] pt-1 border-t border-white/5">
+                  <span class="text-slate-400">Vendor Wallet Payout</span>
+                  <span class="font-mono font-semibold text-emerald-400">Instant Split ✓</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-6 sm:p-7">
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Mobile App MVP</span>
+                <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">iOS + Android + Admin</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">
+                SwiftDrop Dispatch App
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+                Cross-platform iOS &amp; Android delivery app featuring live rider GPS tracking, instant fare estimation, and vendor wallet payouts.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card Footer -->
+          <div class="px-6 sm:px-7 pb-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-400">Turnaround: <strong class="text-white">6 Weeks</strong></span>
+            <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-400 group-hover:translate-x-1 transition-transform">
+              Inspect Architecture
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </span>
+          </div>
+        </article>
+
+        <!-- CARD 3: PrimeHaven Property Hub -->
+        <article data-solution="primehaven" class="solution-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between cursor-pointer group reveal">
+          <div>
+            <!-- Custom UI Mockup Illustration -->
+            <div class="relative h-56 bg-gradient-to-br from-teal-950/90 via-obsidian-900 to-obsidian-950 p-5 border-b border-white/10 overflow-hidden">
+              <div class="absolute right-4 bottom-0 w-36 h-36 bg-teal-500/20 rounded-full blur-2xl group-hover:bg-teal-500/30 transition-colors"></div>
+              <!-- PropTech Listing UI -->
+              <div class="relative z-10 h-full rounded-2xl bg-obsidian-950/90 border border-white/10 p-4 shadow-2xl flex flex-col justify-between group-hover:scale-[1.02] transition-transform duration-300">
+                <div class="flex items-center justify-between">
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[10px]">360° Virtual Tour</span>
+                  <span class="text-[11px] font-bold text-white">$185,000 / ₦260M</span>
+                </div>
+                <div class="my-2 p-2.5 rounded-xl bg-obsidian-800/75 border border-white/5 flex items-center justify-between">
+                  <div>
+                    <p class="text-xs font-bold text-white">4-Bed Detached Duplex</p>
+                    <p class="text-[10px] text-slate-400">Maitama District • C of O Verified</p>
+                  </div>
+                  <div class="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center text-indigo-300">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="px-2.5 py-1.5 rounded-lg bg-white/5 text-[10px] text-slate-300 flex items-center justify-between">
+                    <span>Mortgage Calc</span>
+                    <span class="text-emerald-400 font-mono">Live</span>
+                  </div>
+                  <div class="px-2.5 py-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-[10px] text-emerald-300 font-semibold text-center">
+                    Book Inspection
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="p-6 sm:p-7">
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-xs font-semibold uppercase tracking-wider text-teal-400">Real Estate &amp; PropTech</span>
+                <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">Custom Web Platform</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-teal-300 transition-colors">
+                PrimeHaven Property Hub
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+                High-speed property listing platform with virtual tour embeds, mortgage calculators, and direct inspection scheduling for diaspora and local buyers.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card Footer -->
+          <div class="px-6 sm:px-7 pb-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs font-mono text-slate-400">Turnaround: <strong class="text-white">3 Weeks</strong></span>
+            <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-400 group-hover:translate-x-1 transition-transform">
+              Inspect Architecture
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. HOW WE WORK -->
+  <section id="process" class="py-20 lg:py-28 relative border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto reveal">
+        <span class="font-mono text-xs uppercase tracking-widest text-indigo-400 font-semibold">How We Work</span>
+        <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+          Zero Guesswork From Day 1 to Launch
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-slate-300">
+          A transparent, milestone-driven engineering sprint structure designed to eliminate delays and keep you in full control.
+        </p>
+      </div>
+
+      <!-- 4-Step Grid Timeline -->
+      <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
+        <!-- Connecting Line on Desktop -->
+        <div class="hidden lg:block absolute top-10 left-[12%] right-[12%] h-[1px] bg-gradient-to-r from-emerald-500/40 via-indigo-500/40 to-emerald-500/40 pointer-events-none"></div>
+
+        <!-- Step 1 -->
+        <div class="glass-card rounded-3xl p-7 relative reveal">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-mono font-bold text-lg flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/10">
+            1
+          </div>
+          <h3 class="text-xl font-bold text-white">15-Min Discovery</h3>
+          <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+            We clarify your goals, target users, required features, and exact launch timeline.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card rounded-3xl p-7 relative reveal">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 border border-indigo-500/40 text-indigo-400 font-mono font-bold text-lg flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/10">
+            2
+          </div>
+          <h3 class="text-xl font-bold text-white">Fixed Scope &amp; Quote</h3>
+          <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+            You receive a clear roadmap with transparent milestone pricing—no hidden surprises.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card rounded-3xl p-7 relative reveal">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-mono font-bold text-lg flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/10">
+            3
+          </div>
+          <h3 class="text-xl font-bold text-white">Weekly Live Demos</h3>
+          <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+            Watch your website or app take shape every week via live staging links and updates.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-card rounded-3xl p-7 relative reveal">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-500/15 border border-indigo-500/40 text-indigo-400 font-mono font-bold text-lg flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/10">
+            4
+          </div>
+          <h3 class="text-xl font-bold text-white">Launch &amp; Support</h3>
+          <p class="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+            We deploy to production, set up analytics/SEO, and provide post-launch technical support.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TRANSPARENT PACKAGES -->
+  <section id="pricing" class="py-20 lg:py-28 relative border-t border-white/5 bg-obsidian-900/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header & Currency Toggle -->
+      <div class="text-center max-w-3xl mx-auto reveal">
+        <span class="font-mono text-xs uppercase tracking-widest text-emerald-400 font-semibold">Transparent Packages</span>
+        <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+          Clear Starting Tiers for Every Stage
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-slate-300">
+          Switch currency below to view estimated starting investments for Nigerian and international projects.
+        </p>
+
+        <!-- Interactive Currency Switch -->
+        <div class="mt-8 inline-flex flex-col items-center">
+          <div class="p-1.5 rounded-2xl bg-obsidian-950 border border-white/15 inline-flex items-center gap-1 shadow-xl" role="group" aria-label="Currency Toggle">
+            <button type="button" id="btn-usd" class="currency-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-emerald-500 text-obsidian-950 shadow-md">
+              International (USD $)
+            </button>
+            <button type="button" id="btn-ngn" class="currency-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white">
+              Nigeria (NGN ₦)
+            </button>
+          </div>
+          <span id="currency-note" class="mt-2.5 text-xs font-mono text-slate-400">
+            Showing estimated starting investments in USD ($)
+          </span>
+        </div>
+      </div>
+
+      <!-- 3 Pricing Cards -->
+      <div class="mt-14 grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- TIER 1: Starter Business Website -->
+        <div class="glass-card rounded-3xl p-7 sm:p-8 flex flex-col justify-between reveal">
+          <div>
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">
+              2–3 Weeks Delivery
+            </div>
+            <h3 class="mt-5 text-2xl font-bold text-white">Starter Business Website</h3>
+            <p class="mt-2.5 text-sm text-slate-300 leading-relaxed">
+              Ideal for clinics, real estate firms, consultants, and growing SMEs.
+            </p>
+
+            <div class="mt-6 pt-6 border-t border-white/10">
+              <span class="text-xs uppercase tracking-wider font-mono text-slate-400">Starting from</span>
+              <div class="mt-1 flex items-baseline gap-2">
+                <span data-price-usd="$1,200" data-price-ngn="₦1,500,000" class="price-display text-4xl font-extrabold text-white tracking-tight transition-opacity duration-200">
+                  $1,200
+                </span>
+                <span class="text-xs text-slate-400 font-mono">est.</span>
+              </div>
+            </div>
+
+            <ul class="mt-7 space-y-3.5 text-sm text-slate-200">
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>Up to 7 Custom Responsive Pages</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>Lead Capture &amp; WhatsApp Integration</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>On-Page SEO &amp; Speed Optimization</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>30 Days Free Post-Launch Support</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6">
+            <button type="button" data-package="Starter Business Website" class="select-package-btn w-full py-3.5 px-6 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-white/15 hover:border-emerald-400/50 text-white font-semibold text-sm transition-all active:scale-[0.98]">
+              Get Started
+            </button>
+          </div>
+        </div>
+
+        <!-- TIER 2: E-Commerce / Custom Web App (Most Popular) -->
+        <div class="relative rounded-3xl p-7 sm:p-8 flex flex-col justify-between bg-gradient-to-b from-obsidian-800/95 to-obsidian-900 border-2 border-emerald-500/60 shadow-2xl shadow-emerald-500/15 reveal">
+          <!-- Most Popular Badge -->
+          <div class="absolute -top-3.5 right-6 px-3.5 py-1 rounded-full bg-emerald-500 text-obsidian-950 font-bold text-xs uppercase tracking-wider shadow-lg">
+            Most Popular
+          </div>
+
+          <div>
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-xs font-mono text-emerald-300">
+              3–5 Weeks Delivery
+            </div>
+            <h3 class="mt-5 text-2xl font-bold text-white">E-Commerce / Custom Web App</h3>
+            <p class="mt-2.5 text-sm text-slate-300 leading-relaxed">
+              Ideal for retail brands, booking platforms, and custom web portals.
+            </p>
+
+            <div class="mt-6 pt-6 border-t border-white/10">
+              <span class="text-xs uppercase tracking-wider font-mono text-emerald-400">Starting from</span>
+              <div class="mt-1 flex items-baseline gap-2">
+                <span data-price-usd="$2,800" data-price-ngn="₦3,500,000" class="price-display text-4xl font-extrabold text-white tracking-tight transition-opacity duration-200">
+                  $2,800
+                </span>
+                <span class="text-xs text-slate-400 font-mono">est.</span>
+              </div>
+            </div>
+
+            <ul class="mt-7 space-y-3.5 text-sm text-slate-100">
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>Custom Admin &amp; Customer Dashboards</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>Paystack, Flutterwave &amp; Stripe Checkout</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>Automated Email &amp; Booking Workflows</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>60 Days Free Technical Support</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6">
+            <button type="button" data-package="E-Commerce / Custom Web App" class="select-package-btn w-full py-3.5 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-bold text-sm transition-all shadow-lg shadow-emerald-500/25 active:scale-[0.98]">
+              Book Scope Call
+            </button>
+          </div>
+        </div>
+
+        <!-- TIER 3: Mobile App MVP (iOS & Android) -->
+        <div class="glass-card rounded-3xl p-7 sm:p-8 flex flex-col justify-between reveal">
+          <div>
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/30 text-xs font-mono text-indigo-300">
+              4–8 Weeks Delivery
+            </div>
+            <h3 class="mt-5 text-2xl font-bold text-white">Mobile App MVP (iOS &amp; Android)</h3>
+            <p class="mt-2.5 text-sm text-slate-300 leading-relaxed">
+              Ideal for startups launching consumer apps, marketplaces, or SaaS.
+            </p>
+
+            <div class="mt-6 pt-6 border-t border-white/10">
+              <span class="text-xs uppercase tracking-wider font-mono text-slate-400">Starting from</span>
+              <div class="mt-1 flex items-baseline gap-2">
+                <span data-price-usd="$4,500" data-price-ngn="₦5,800,000" class="price-display text-4xl font-extrabold text-white tracking-tight transition-opacity duration-200">
+                  $4,500
+                </span>
+                <span class="text-xs text-slate-400 font-mono">est.</span>
+              </div>
+            </div>
+
+            <ul class="mt-7 space-y-3.5 text-sm text-slate-200">
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>Full UI/UX Prototype + iOS &amp; Android App</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>Secure Backend API &amp; Admin Panel</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>App Store &amp; Google Play Deployment</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+                <span>90 Days Priority Maintenance</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6">
+            <button type="button" data-package="Mobile App MVP (iOS & Android)" class="select-package-btn w-full py-3.5 px-6 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-white/15 hover:border-indigo-400/50 text-white font-semibold text-sm transition-all active:scale-[0.98]">
+              Discuss Your App
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. AGENCY PARTNERSHIP BANNER -->
+  <section id="agencies" class="py-16 lg:py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+      <div class="relative rounded-3xl overflow-hidden border border-indigo-500/30 bg-gradient-to-br from-indigo-950/60 via-obsidian-900 to-emerald-950/40 p-8 sm:p-12 lg:p-16 shadow-2xl">
+        <!-- Decorative Ambient Glow -->
+        <div class="absolute -right-20 -top-20 w-80 h-80 bg-indigo-500/20 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-emerald-500/15 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+          <div class="max-w-2xl">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-400/30 text-xs font-mono uppercase tracking-wider text-indigo-300">
+              For Creative &amp; Marketing Agencies
+            </span>
+            <h2 class="mt-4 text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Need a Reliable White-Label Dev Partner?
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+              Stop turning away lucrative web and mobile app projects. We work silently behind your brand—turning your Figma designs into production-ready code on strict deadlines so your agency keeps the client relationship and healthy margins.
+            </p>
+          </div>
+
+          <div class="shrink-0">
+            <button type="button" data-package="Agency White-Label Partnership" class="select-package-btn w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-white hover:bg-slate-100 text-obsidian-950 font-bold text-base transition-all shadow-xl active:scale-[0.98]">
+              <span>Partner With Us</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. START YOUR PROJECT / CONTACT SECTION -->
+  <section id="contact" class="py-20 lg:py-28 relative border-t border-white/5 bg-obsidian-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl reveal">
+        <span class="font-mono text-xs uppercase tracking-widest text-emerald-400 font-semibold">Start Your Project</span>
+        <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+          Book a 15-Min Discovery Call
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+          Tell us briefly what you’re building. We’ll review your goals and give you an honest timeline and fixed quote within 24 hours.
+        </p>
+      </div>
+
+      <!-- Two-Column Layout -->
+      <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        
+        <!-- Left Column: Direct Contact Cards with Click-to-Copy -->
+        <div class="lg:col-span-5 space-y-5 reveal">
+          <!-- Headquarters Card -->
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs font-mono uppercase tracking-wider text-slate-400">Headquarters</p>
+                <p class="mt-1 text-base font-semibold text-white">Abuja, Nigeria (Global Remote Delivery)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Card -->
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-start gap-4 min-w-0">
+                <div class="w-11 h-11 rounded-xl bg-indigo-500/15 border border-indigo-500/30 text-indigo-400 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-xs font-mono uppercase tracking-wider text-slate-400">Email</p>
+                  <a href="mailto:pauledozie004@gmail.com" class="mt-1 block text-base font-semibold text-white hover:text-emerald-400 transition-colors truncate">
+                    pauledozie004@gmail.com
+                  </a>
+                </div>
+              </div>
+              <button type="button" data-copy="pauledozie004@gmail.com" title="Copy Email" class="copy-btn p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Direct WhatsApp / Phone Card -->
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-start gap-4 min-w-0">
+                <div class="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <p class="text-xs font-mono uppercase tracking-wider text-slate-400">Direct WhatsApp / Phone</p>
+                  <a href="https://wa.me/2348141531489" target="_blank" rel="noopener noreferrer" class="mt-1 block text-base font-semibold text-white hover:text-emerald-400 transition-colors">
+                    +2348141531489
+                  </a>
+                  <a href="https://wa.me/2348141531489" target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:underline">
+                    <span>Chat instantly on WhatsApp</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <button type="button" data-copy="+2348141531489" title="Copy Phone Number" class="copy-btn p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-colors shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Discovery Call & Quote Request Form -->
+        <div class="lg:col-span-7 reveal">
+          <div class="glass-card rounded-3xl p-7 sm:p-10">
+            <form id="discovery-form" class="space-y-6" novalidate>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Name Input -->
+                <div>
+                  <label for="client-name" class="block text-sm font-medium text-slate-200 mb-2">Your Name *</label>
+                  <input type="text" id="client-name" name="name" required placeholder="e.g. Chinedu Okafor"
+                    class="w-full px-4 py-3.5 rounded-xl bg-obsidian-950/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors" />
+                  <p id="error-name" class="hidden mt-1.5 text-xs text-rose-400">Please enter your full name.</p>
+                </div>
+
+                <!-- Email / WhatsApp Input -->
+                <div>
+                  <label for="client-contact" class="block text-sm font-medium text-slate-200 mb-2">Email or WhatsApp Number *</label>
+                  <input type="text" id="client-contact" name="contact" required placeholder="you@company.com or +234..."
+                    class="w-full px-4 py-3.5 rounded-xl bg-obsidian-950/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors" />
+                  <p id="error-contact" class="hidden mt-1.5 text-xs text-rose-400">Please provide a valid email or WhatsApp number.</p>
+                </div>
+              </div>
+
+              <!-- Package / Project Type Dropdown -->
+              <div>
+                <label for="project-type" class="block text-sm font-medium text-slate-200 mb-2">Package / Project Type</label>
+                <div class="relative">
+                  <select id="project-type" name="projectType"
+                    class="w-full appearance-none px-4 py-3.5 rounded-xl bg-obsidian-950/90 border border-white/10 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors">
+                    <option value="Starter Business Website">Starter Business Website (2–3 Weeks)</option>
+                    <option value="E-Commerce / Custom Web App" selected>E-Commerce / Custom Web App (3–5 Weeks)</option>
+                    <option value="Mobile App MVP (iOS & Android)">Mobile App MVP — iOS &amp; Android (4–8 Weeks)</option>
+                    <option value="Agency White-Label Partnership">Agency White-Label Partnership</option>
+                    <option value="Custom Enterprise Solution">Custom Enterprise Solution</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Brief Textarea -->
+              <div>
+                <label for="project-brief" class="block text-sm font-medium text-slate-200 mb-2">Project Brief &amp; Goals *</label>
+                <textarea id="project-brief" name="brief" rows="4" required placeholder="Briefly describe what you're building, key features (e.g., Paystack checkout, booking workflow, mobile app), and target launch date..."
+                  class="w-full px-4 py-3.5 rounded-xl bg-obsidian-950/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"></textarea>
+                <p id="error-brief" class="hidden mt-1.5 text-xs text-rose-400">Please tell us a little about your project.</p>
+              </div>
+
+              <!-- Submit Actions -->
+              <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                <button type="submit" class="flex-1 py-4 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-bold text-base transition-all shadow-lg shadow-emerald-500/25 active:scale-[0.98]">
+                  Request Fixed Quote &amp; Timeline
+                </button>
+              </div>
+            </form>
+
+            <!-- Interactive Post-Submission Confirmation State -->
+            <div id="form-success-panel" class="hidden mt-6 p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/35">
+              <div class="flex items-start gap-3.5">
+                <div class="w-9 h-9 rounded-full bg-emerald-500 text-obsidian-950 flex items-center justify-center font-bold shrink-0">✓</div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-bold text-white">Discovery Request Prepared!</h4>
+                  <p class="mt-1 text-sm text-slate-300">
+                    Your project brief is ready. Send it immediately via WhatsApp or Email for a guaranteed response within 24 hours:
+                  </p>
+                  <div class="mt-4 flex flex-wrap gap-3">
+                    <a id="send-whatsapp-btn" href="#" target="_blank" rel="noopener noreferrer"
+                      class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-bold text-sm transition-colors">
+                      <span>Send via WhatsApp</span>
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                      </svg>
+                    </a>
+                    <a id="send-email-btn" href="#"
+                      class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-white/15 text-white font-semibold text-sm transition-colors">
+                      <span>Send via Email</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FOOTER -->
+  <footer class="border-t border-white/10 bg-obsidian-950 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div>
+          <a href="#" class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-indigo-600 p-[1px]">
+              <div class="w-full h-full bg-obsidian-950 rounded-[11px] flex items-center justify-center">
+                <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="4 17 10 11 4 5"></polyline>
+                  <line x1="12" y1="19" x2="20" y2="19"></line>
+                </svg>
+              </div>
+            </div>
+            <span class="font-bold text-lg text-white">Walk Reach Solutions</span>
+          </a>
+          <p class="mt-3 text-sm text-slate-400 max-w-md">
+            High-speed web and mobile software engineering built for real revenue. Headquarters in Abuja, Nigeria — delivering remotely to clients worldwide.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-6 text-sm text-slate-400">
+          <a href="#solutions" class="hover:text-white transition-colors">Solutions</a>
+          <a href="#process" class="hover:text-white transition-colors">Process</a>
+          <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+          <a href="#agencies" class="hover:text-white transition-colors">Agencies</a>
+          <a href="#contact" class="hover:text-emerald-400 transition-colors">Book Discovery Call</a>
+        </div>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>&copy; <span id="current-year"></span> Walk Reach Solutions. All rights reserved.</p>
+        <p class="font-mono">Abuja, Nigeria • Global Remote Delivery</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE SOLUTION ARCHITECTURE MODAL -->
+  <div id="solution-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-obsidian-950/85 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div id="solution-modal-panel" class="relative w-full max-w-2xl rounded-3xl bg-obsidian-900 border border-white/15 shadow-2xl overflow-hidden transform transition-all">
+      <!-- Modal Header -->
+      <div class="px-6 sm:px-8 py-5 border-b border-white/10 flex items-center justify-between bg-obsidian-850">
+        <div>
+          <span id="modal-tag" class="font-mono text-xs uppercase tracking-wider text-emerald-400">Category</span>
+          <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-white mt-0.5">Solution Title</h3>
+        </div>
+        <button id="close-modal-btn" type="button" aria-label="Close Modal" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 sm:p-8 space-y-6 max-h-[75vh] overflow-y-auto">
+        <p id="modal-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed"></p>
+
+        <!-- Key Metrics Grid -->
+        <div id="modal-metrics" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+
+        <!-- Architecture & Engineering Breakdown -->
+        <div>
+          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">System Architecture &amp; Deliverables</h4>
+          <ul id="modal-features" class="space-y-2.5 text-sm text-slate-200"></ul>
+        </div>
+
+        <!-- Tech Stack Pills -->
+        <div>
+          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2.5">Production Stack</h4>
+          <div id="modal-stack" class="flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 sm:px-8 py-4 border-t border-white/10 bg-obsidian-850 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span id="modal-turnaround" class="text-xs font-mono text-slate-400">Turnaround: 3 Weeks</span>
+        <button id="modal-cta-btn" type="button" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-obsidian-950 font-bold text-sm transition-colors">
+          Build a Similar Platform
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VANILLA JAVASCRIPT INTERACTIVITY -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set current year in footer
+      const yearEl = document.getElementById('current-year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // ---------------------------------------------------------
+      // 1. Toast Notification Helper (Zero alert() usage)
+      // ---------------------------------------------------------
+      function showToast(message, type = 'success') {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        const borderColor = type === 'success' ? 'border-emerald-500/40' : 'border-indigo-500/40';
+        const iconColor = type === 'success' ? 'text-emerald-400' : 'text-indigo-400';
+
+        toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl bg-obsidian-900/95 border ${borderColor} text-white text-sm font-medium shadow-2xl backdrop-blur-xl transform transition-all duration-300 translate-y-4 opacity-0`;
+        toast.innerHTML = `
+          <span class="${iconColor} font-bold">✓</span>
+          <span>${message}</span>
+        `;
+
+        container.appendChild(toast);
+        requestAnimationFrame(() => {
+          toast.classList.remove('translate-y-4', 'opacity-0');
+        });
+
+        setTimeout(() => {
+          toast.classList.add('translate-y-2', 'opacity-0');
+          setTimeout(() => toast.remove(), 300);
+        }, 3200);
+      }
+
+      // ---------------------------------------------------------
+      // 2. Mobile Navigation Toggle
+      // ---------------------------------------------------------
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden', !isHidden);
+        iconOpen.classList.toggle('hidden', isHidden);
+        iconClose.classList.toggle('hidden', !isHidden);
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        });
+      });
+
+      // ---------------------------------------------------------
+      // 3. Scroll-Reveal Animations via IntersectionObserver
+      // ---------------------------------------------------------
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // ---------------------------------------------------------
+      // 4. Interactive Currency Toggle (USD $ vs NGN ₦)
+      // ---------------------------------------------------------
+      const btnUsd = document.getElementById('btn-usd');
+      const btnNgn = document.getElementById('btn-ngn');
+      const currencyNote = document.getElementById('currency-note');
+      const priceDisplays = document.querySelectorAll('.price-display');
+
+      function setCurrency(currency) {
+        const isUsd = currency === 'USD';
+
+        if (isUsd) {
+          btnUsd.className = 'currency-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-emerald-500 text-obsidian-950 shadow-md';
+          btnNgn.className = 'currency-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white';
+          currencyNote.textContent = 'Showing estimated starting investments in USD ($)';
+        } else {
+          btnNgn.className = 'currency-btn px-5 py-2.5 rounded-xl text-sm font-bold transition-all bg-emerald-500 text-obsidian-950 shadow-md';
+          btnUsd.className = 'currency-btn px-5 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white';
+          currencyNote.textContent = 'Showing estimated starting investments in NGN (₦)';
+        }
+
+        priceDisplays.forEach(el => {
+          el.style.opacity = '0';
+          setTimeout(() => {
+            el.textContent = isUsd ? el.dataset.priceUsd : el.dataset.priceNgn;
+            el.style.opacity = '1';
+          }, 150);
+        });
+      }
+
+      btnUsd.addEventListener('click', () => setCurrency('USD'));
+      btnNgn.addEventListener('click', () => setCurrency('NGN'));
+
+      // ---------------------------------------------------------
+      // 5. Featured Solutions Architecture Modal
+      // ---------------------------------------------------------
+      const solutionsData = {
+        medibook: {
+          tag: 'Healthcare & Booking • Web App + Payments',
+          title: 'MediBook Clinic Portal',
+          description: 'Engineered for multi-doctor clinics and diagnostic centers to eliminate front-desk bottlenecks. Patients self-book available slots, pre-pay consultation fees via Paystack, and receive automated WhatsApp confirmations and reminders.',
+          turnaround: 'Turnaround: 3 Weeks',
+          packageMatch: 'E-Commerce / Custom Web App',
+          metrics: [
+            { label: 'Front-Desk Delay', value: '-70% Reduction' },
+            { label: 'Pre-Payment Rate', value: '94% Upfront' },
+            { label: 'Turnaround', value: '3 Weeks' }
+          ],
+          features: [
+            'Real-time doctor schedule & calendar conflict prevention engine',
+            'Paystack split-payment & instant receipt generation',
+            'Automated WhatsApp Cloud API reminders 24h & 2h before visit',
+            'Role-based Receptionist, Doctor & Medical Director admin portal'
+          ],
+          stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Paystack API', 'WhatsApp Cloud API', 'Tailwind CSS']
+        },
+        swiftdrop: {
+          tag: 'Mobile App MVP • iOS + Android + Admin',
+          title: 'SwiftDrop Dispatch App',
+          description: 'A high-concurrency logistics and last-mile delivery ecosystem built for dispatch fleets and e-commerce vendors. Includes separate customer/vendor and rider apps backed by a real-time fleet command dashboard.',
+          turnaround: 'Turnaround: 6 Weeks',
+          packageMatch: 'Mobile App MVP (iOS & Android)',
+          metrics: [
+            { label: 'GPS Latency', value: '< 1.5s Live' },
+            { label: 'Platforms', value: 'iOS & Android' },
+            { label: 'Turnaround', value: '6 Weeks' }
+          ],
+          features: [
+            'WebSocket live rider GPS tracking & animated route polylines',
+            'Dynamic distance-based instant fare & surge estimation',
+            'Automated vendor wallet payouts & rider commission ledger',
+            'Super-admin dispatch console with zone & fleet analytics'
+          ],
+          stack: ['React Native', 'Node.js', 'Redis', 'Socket.io', 'Google Maps SDK', 'Flutterwave']
+        },
+        primehaven: {
+          tag: 'Real Estate & PropTech • Custom Web Platform',
+          title: 'PrimeHaven Property Hub',
+          description: 'Built for luxury developers and real estate brokerages targeting both local buyers and diaspora investors. Combines sub-second property search with immersive 360° virtual tours and automated inspection booking.',
+          turnaround: 'Turnaround: 3 Weeks',
+          packageMatch: 'E-Commerce / Custom Web App',
+          metrics: [
+            { label: 'Page Speed', value: '99/100 Score' },
+            { label: 'Diaspora Leads', value: '+3.2x Conversion' },
+            { label: 'Turnaround', value: '3 Weeks' }
+          ],
+          features: [
+            'Edge-cached property filtering by neighborhood, title & price',
+            'Interactive NGN/USD mortgage & payment-plan calculator',
+            'Embedded Matterport 360° virtual walkthroughs & floorplans',
+            'Direct physical or live-video inspection scheduler synced with agents'
+          ],
+          stack: ['React', 'Tailwind CSS', 'Node.js', 'Cloudinary CDN', 'CRM Webhook', 'SEO Schema']
+        }
+      };
+
+      const modal = document.getElementById('solution-modal');
+      const modalTag = document.getElementById('modal-tag');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-desc');
+      const modalMetrics = document.getElementById('modal-metrics');
+      const modalFeatures = document.getElementById('modal-features');
+      const modalStack = document.getElementById('modal-stack');
+      const modalTurnaround = document.getElementById('modal-turnaround');
+      const modalCtaBtn = document.getElementById('modal-cta-btn');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+
+      let currentModalPackage = 'E-Commerce / Custom Web App';
+
+      function openSolutionModal(key) {
+        const data = solutionsData[key];
+        if (!data) return;
+
+        currentModalPackage = data.packageMatch;
+        modalTag.textContent = data.tag;
+        modalTitle.textContent = data.title;
+        modalDesc.textContent = data.description;
+        modalTurnaround.textContent = data.turnaround;
+
+        modalMetrics.innerHTML = data.metrics.map(m => `
+          <div class="p-3 rounded-xl bg-obsidian-950 border border-white/10">
+            <p class="text-[11px] font-mono text-slate-400">${m.label}</p>
+            <p class="text-sm sm:text-base font-bold text-emerald-400 mt-0.5">${m.value}</p>
+          </div>
+        `).join('');
+
+        modalFeatures.innerHTML = data.features.map(f => `
+          <li class="flex items-start gap-2.5">
+            <span class="text-emerald-400 font-bold mt-0.5">✓</span>
+            <span>${f}</span>
+          </li>
+        `).join('');
+
+        modalStack.innerHTML = data.stack.map(tech => `
+          <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 font-mono text-xs text-slate-300">${tech}</span>
+        `).join('');
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSolutionModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.solution-card').forEach(card => {
+        card.addEventListener('click', () => {
+          openSolutionModal(card.dataset.solution);
+        });
+      });
+
+      closeModalBtn.addEventListener('click', closeSolutionModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeSolutionModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeSolutionModal();
+        }
+      });
+
+      modalCtaBtn.addEventListener('click', () => {
+        closeSolutionModal();
+        selectPackageAndScroll(currentModalPackage);
+      });
+
+      // ---------------------------------------------------------
+      // 6. Pre-select Package from Pricing / Agency Buttons
+      // ---------------------------------------------------------
+      const projectTypeSelect = document.getElementById('project-type');
+      const contactSection = document.getElementById('contact');
+
+      function selectPackageAndScroll(packageName) {
+        if (projectTypeSelect) {
+          projectTypeSelect.value = packageName;
+        }
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+        showToast(`Selected: ${packageName}`, 'info');
+      }
+
+      document.querySelectorAll('.select-package-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectPackageAndScroll(btn.dataset.package);
+        });
+      });
+
+      // ---------------------------------------------------------
+      // 7. Click-to-Copy Contact Info (using execCommand fallback)
+      // ---------------------------------------------------------
+      document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const textToCopy = btn.dataset.copy;
+          const tempInput = document.createElement('textarea');
+          tempInput.value = textToCopy;
+          tempInput.style.position = 'fixed';
+          tempInput.style.opacity = '0';
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          try {
+            document.execCommand('copy');
+            showToast(`Copied "${textToCopy}" to clipboard`);
+          } catch (err) {
+            showToast('Unable to copy automatically', 'info');
+          }
+          document.body.removeChild(tempInput);
+        });
+      });
+
+      // ---------------------------------------------------------
+      // 8. Discovery Call Form Validation & Direct Dispatch Links
+      // ---------------------------------------------------------
+      const discoveryForm = document.getElementById('discovery-form');
+      const successPanel = document.getElementById('form-success-panel');
+      const sendWhatsappBtn = document.getElementById('send-whatsapp-btn');
+      const sendEmailBtn = document.getElementById('send-email-btn');
+
+      discoveryForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('client-name');
+        const contactInput = document.getElementById('client-contact');
+        const briefInput = document.getElementById('project-brief');
+        const typeInput = document.getElementById('project-type');
+
+        const errName = document.getElementById('error-name');
+        const errContact = document.getElementById('error-contact');
+        const errBrief = document.getElementById('error-brief');
+
+        let isValid = true;
+
+        if (!nameInput.value.trim()) {
+          errName.classList.remove('hidden');
+          isValid = false;
+        } else {
+          errName.classList.add('hidden');
+        }
+
+        if (!contactInput.value.trim()) {
+          errContact.classList.remove('hidden');
+          isValid = false;
+        } else {
+          errContact.classList.add('hidden');
+        }
+
+        if (!briefInput.value.trim()) {
+          errBrief.classList.remove('hidden');
+          isValid = false;
+        } else {
+          errBrief.classList.add('hidden');
+        }
+
+        if (!isValid) return;
+
+        const name = nameInput.value.trim();
+        const contact = contactInput.value.trim();
+        const projectType = typeInput.value;
+        const brief = briefInput.value.trim();
+
+        const formattedMessage = `Hello Walk Reach Solutions,%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Contact:* ${encodeURIComponent(contact)}%0A*Package:* ${encodeURIComponent(projectType)}%0A%0A*Project Brief:*%0A${encodeURIComponent(brief)}`;
+
+        const emailSubject = encodeURIComponent(`Discovery Call Request — ${projectType} (${name})`);
+        const emailBody = encodeURIComponent(
+          `Hello Walk Reach Solutions,\n\nName: ${name}\nContact: ${contact}\nPackage / Project Type: ${projectType}\n\nProject Brief:\n${brief}`
+        );
+
+        sendWhatsappBtn.href = `https://wa.me/2348141531489?text=${formattedMessage}`;
+        sendEmailBtn.href = `mailto:pauledozie004@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+
+        successPanel.classList.remove('hidden');
+        showToast('Brief validated! Choose WhatsApp or Email below to send.');
+      });
+    });
+  </script>
+</body>
+</html>
